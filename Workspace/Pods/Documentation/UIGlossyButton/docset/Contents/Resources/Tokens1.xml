@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/UIGBadgeButton.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/UIGBadgeButton</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIGBadgeButton/setNumberOfEdges:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) NSInteger numberOfEdges</Declaration>
+			
+			
+			<Anchor>//api/name/numberOfEdges</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UIGBadgeButton/numberOfEdges</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) NSInteger numberOfEdges</Declaration>
+			
+			
+			<Anchor>//api/name/numberOfEdges</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIGBadgeButton/setInnerRadiusRatio:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) CGFloat innerRadiusRatio</Declaration>
+			
+			
+			<Anchor>//api/name/innerRadiusRatio</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UIGBadgeButton/innerRadiusRatio</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) CGFloat innerRadiusRatio</Declaration>
+			
+			
+			<Anchor>//api/name/innerRadiusRatio</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

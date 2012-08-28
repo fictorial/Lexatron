@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Categories/UIAlertView+Block.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cat/UIAlertView(Block)</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIAlertView+MKBlockAdditions.h</DeclaredIn>
+			
+			<NodeRef refid="3"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UIAlertView(Block)/alertViewWithTitle:message:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIAlertView+MKBlockAdditions.h</DeclaredIn>			
+			
+			<Declaration>+ (UIAlertView *)alertViewWithTitle:(NSString *)title message:(NSString *)message</Declaration>
+			
+			
+			<Anchor>//api/name/alertViewWithTitle:message:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UIAlertView(Block)/alertViewWithTitle:message:cancelButtonTitle:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIAlertView+MKBlockAdditions.h</DeclaredIn>			
+			
+			<Declaration>+ (UIAlertView *)alertViewWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle</Declaration>
+			
+			
+			<Anchor>//api/name/alertViewWithTitle:message:cancelButtonTitle:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UIAlertView(Block)/alertViewWithTitle:message:cancelButtonTitle:otherButtonTitles:onDismiss:onCancel:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIAlertView+MKBlockAdditions.h</DeclaredIn>			
+			
+			<Declaration>+ (UIAlertView *)alertViewWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray *)otherButtons onDismiss:(DismissBlock)dismissed onCancel:(CancelBlock)cancelled</Declaration>
+			
+			
+			<Anchor>//api/name/alertViewWithTitle:message:cancelButtonTitle:otherButtonTitles:onDismiss:onCancel:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UIAlertView(Block)/setDismissBlock:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIAlertView+MKBlockAdditions.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) DismissBlock dismissBlock</Declaration>
+			
+			
+			<Anchor>//api/name/dismissBlock</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfp/UIAlertView(Block)/dismissBlock</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIAlertView+MKBlockAdditions.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) DismissBlock dismissBlock</Declaration>
+			
+			
+			<Anchor>//api/name/dismissBlock</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UIAlertView(Block)/setCancelBlock:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIAlertView+MKBlockAdditions.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) CancelBlock cancelBlock</Declaration>
+			
+			
+			<Anchor>//api/name/cancelBlock</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfp/UIAlertView(Block)/cancelBlock</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIAlertView+MKBlockAdditions.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) CancelBlock cancelBlock</Declaration>
+			
+			
+			<Anchor>//api/name/cancelBlock</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

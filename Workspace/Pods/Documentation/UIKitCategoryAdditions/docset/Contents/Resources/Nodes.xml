@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DocSetNodes version="1.0">
+    <TOC>
+        <Node type="folder">
+            <Name>UIKitCategoryAdditions 0.0.1</Name>
+            <Path>index.html</Path>
+			<Subnodes>
+                
+				
+				
+				<Node type="folder">
+					<Name>Categories</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="1"/>
+						<NodeRef refid="2"/>
+						<NodeRef refid="3"/>
+						
+					</Subnodes>
+				</Node>
+				
+				
+			</Subnodes>
+        </Node>
+    </TOC>
+	<Library>
+		
+		
+		<Node id="1">
+			<Name>NSObject(MKBlockAdditions)</Name>
+			<Path>Categories/NSObject+MKBlockAdditions.html</Path>
+		</Node>
+		<Node id="2">
+			<Name>UIActionSheet(MKBlockAdditions)</Name>
+			<Path>Categories/UIActionSheet+MKBlockAdditions.html</Path>
+		</Node>
+		<Node id="3">
+			<Name>UIAlertView(Block)</Name>
+			<Path>Categories/UIAlertView+Block.html</Path>
+		</Node>
+		
+		
+	</Library>
+</DocSetNodes>

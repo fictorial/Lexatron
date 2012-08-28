@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Categories/UIButton+UIGlossyButton.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cat/UIButton(UIGlossyButton)</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>
+			
+			<NodeRef refid="4"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UIButton(UIGlossyButton)/useWhiteLabel:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>- (void)useWhiteLabel:(BOOL)dimOnClickedOrDisabled</Declaration>
+			
+			
+			<Anchor>//api/name/useWhiteLabel:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UIButton(UIGlossyButton)/useBlackLabel:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>- (void)useBlackLabel:(BOOL)dimOnClickedOrDisabled</Declaration>
+			
+			
+			<Anchor>//api/name/useBlackLabel:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

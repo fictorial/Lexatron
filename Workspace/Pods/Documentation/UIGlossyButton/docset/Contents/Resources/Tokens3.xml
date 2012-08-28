@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/UIGlossyButton.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/UIGlossyButton</TokenIdentifier>
+			<Abstract type="html">  Create color button without any images,
+  draw with different gradient, frame and glossy effect
+*</Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>
+			
+			<NodeRef refid="3"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIGlossyButton/setTintColor:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIColor *tintColor</Declaration>
+			
+			
+			<Anchor>//api/name/tintColor</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UIGlossyButton/tintColor</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIColor *tintColor</Declaration>
+			
+			
+			<Anchor>//api/name/tintColor</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIGlossyButton/setDisabledColor:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIColor *disabledColor</Declaration>
+			
+			
+			<Anchor>//api/name/disabledColor</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UIGlossyButton/disabledColor</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIColor *disabledColor</Declaration>
+			
+			
+			<Anchor>//api/name/disabledColor</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIGlossyButton/setButtonCornerRadius:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) CGFloat buttonCornerRadius</Declaration>
+			
+			
+			<Anchor>//api/name/buttonCornerRadius</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UIGlossyButton/buttonCornerRadius</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) CGFloat buttonCornerRadius</Declaration>
+			
+			
+			<Anchor>//api/name/buttonCornerRadius</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIGlossyButton/setButtonInsets:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) UIEdgeInsets buttonInsets</Declaration>
+			
+			
+			<Anchor>//api/name/buttonInsets</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UIGlossyButton/buttonInsets</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) UIEdgeInsets buttonInsets</Declaration>
+			
+			
+			<Anchor>//api/name/buttonInsets</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIGlossyButton/setBorderColor:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIColor *borderColor</Declaration>
+			
+			
+			<Anchor>//api/name/borderColor</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UIGlossyButton/borderColor</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIColor *borderColor</Declaration>
+			
+			
+			<Anchor>//api/name/borderColor</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIGlossyButton/setDisabledBorderColor:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIColor *disabledBorderColor</Declaration>
+			
+			
+			<Anchor>//api/name/disabledBorderColor</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UIGlossyButton/disabledBorderColor</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIColor *disabledBorderColor</Declaration>
+			
+			
+			<Anchor>//api/name/disabledBorderColor</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIGlossyButton/setButtonBorderWidth:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) CGFloat buttonBorderWidth</Declaration>
+			
+			
+			<Anchor>//api/name/buttonBorderWidth</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UIGlossyButton/buttonBorderWidth</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) CGFloat buttonBorderWidth</Declaration>
+			
+			
+			<Anchor>//api/name/buttonBorderWidth</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIGlossyButton/setInnerBorderWidth:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) CGFloat innerBorderWidth</Declaration>
+			
+			
+			<Anchor>//api/name/innerBorderWidth</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UIGlossyButton/innerBorderWidth</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) CGFloat innerBorderWidth</Declaration>
+			
+			
+			<Anchor>//api/name/innerBorderWidth</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIGlossyButton/setStrokeType:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) UIGlossyButtonStrokeType strokeType</Declaration>
+			
+			
+			<Anchor>//api/name/strokeType</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UIGlossyButton/strokeType</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) UIGlossyButtonStrokeType strokeType</Declaration>
+			
+			
+			<Anchor>//api/name/strokeType</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIGlossyButton/setExtraShadingType:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) UIGlossyButtonExtraShadingType extraShadingType</Declaration>
+			
+			
+			<Anchor>//api/name/extraShadingType</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UIGlossyButton/extraShadingType</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) UIGlossyButtonExtraShadingType extraShadingType</Declaration>
+			
+			
+			<Anchor>//api/name/extraShadingType</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIGlossyButton/setInvertGraidentOnSelected:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) BOOL invertGraidentOnSelected</Declaration>
+			
+			
+			<Anchor>//api/name/invertGraidentOnSelected</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UIGlossyButton/invertGraidentOnSelected</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) BOOL invertGraidentOnSelected</Declaration>
+			
+			
+			<Anchor>//api/name/invertGraidentOnSelected</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIGlossyButton/setBackgroundOpacity:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) CGFloat backgroundOpacity</Declaration>
+			
+			
+			<Anchor>//api/name/backgroundOpacity</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UIGlossyButton/backgroundOpacity</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) CGFloat backgroundOpacity</Declaration>
+			
+			
+			<Anchor>//api/name/backgroundOpacity</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIGlossyButton/pathForButton:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>- (UIBezierPath *)pathForButton:(CGFloat)inset</Declaration>
+			
+			
+			<Anchor>//api/name/pathForButton:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIGlossyButton/setGradientType:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>- (void)setGradientType:(UIGlossyButtonGradientType)type</Declaration>
+			
+			
+			<Anchor>//api/name/setGradientType:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIGlossyButton/setActionSheetButtonWithColor:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>- (void)setActionSheetButtonWithColor:(UIColor *)color</Declaration>
+			
+			
+			<Anchor>//api/name/setActionSheetButtonWithColor:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIGlossyButton/setNavigationButtonWithColor:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIGlossyButton.h</DeclaredIn>			
+			
+			<Declaration>- (void)setNavigationButtonWithColor:(UIColor *)color</Declaration>
+			
+			
+			<Anchor>//api/name/setNavigationButtonWithColor:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

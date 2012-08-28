@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DocSetNodes version="1.0">
+    <TOC>
+        <Node type="folder">
+            <Name>UIGlossyButton 0.0.7</Name>
+            <Path>index.html</Path>
+			<Subnodes>
+                
+				
+				<Node type="folder">
+					<Name>Classes</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="1"/>
+						<NodeRef refid="2"/>
+						<NodeRef refid="3"/>
+						
+					</Subnodes>
+				</Node>
+				
+				
+				<Node type="folder">
+					<Name>Categories</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="4"/>
+						<NodeRef refid="5"/>
+						<NodeRef refid="6"/>
+						
+					</Subnodes>
+				</Node>
+				
+				
+			</Subnodes>
+        </Node>
+    </TOC>
+	<Library>
+		
+		<Node id="1">
+			<Name>UIGBadgeButton</Name>
+			<Path>Classes/UIGBadgeButton.html</Path>
+		</Node>
+		<Node id="2">
+			<Name>UIGNavigationButton</Name>
+			<Path>Classes/UIGNavigationButton.html</Path>
+		</Node>
+		<Node id="3">
+			<Name>UIGlossyButton</Name>
+			<Path>Classes/UIGlossyButton.html</Path>
+		</Node>
+		
+		<Node id="4">
+			<Name>UIButton(UIGlossyButton)</Name>
+			<Path>Categories/UIButton+UIGlossyButton.html</Path>
+		</Node>
+		<Node id="5">
+			<Name>UIColor(UIGlossyButton)</Name>
+			<Path>Categories/UIColor+UIGlossyButton.html</Path>
+		</Node>
+		<Node id="6">
+			<Name>UIView(LayerEffects)</Name>
+			<Path>Categories/UIView+LayerEffects.html</Path>
+		</Node>
+		
+		
+	</Library>
+</DocSetNodes>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Categories/UIActionSheet+MKBlockAdditions.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cat/UIActionSheet(MKBlockAdditions)</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIActionSheet+MKBlockAdditions.h</DeclaredIn>
+			
+			<NodeRef refid="2"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UIActionSheet(MKBlockAdditions)/actionSheetWithTitle:message:buttons:showInView:onDismiss:onCancel:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIActionSheet+MKBlockAdditions.h</DeclaredIn>			
+			
+			<Declaration>+ (void)actionSheetWithTitle:(NSString *)title message:(NSString *)message buttons:(NSArray *)buttonTitles showInView:(UIView *)view onDismiss:(DismissBlock)dismissed onCancel:(CancelBlock)cancelled</Declaration>
+			
+			
+			<Anchor>//api/name/actionSheetWithTitle:message:buttons:showInView:onDismiss:onCancel:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UIActionSheet(MKBlockAdditions)/actionSheetWithTitle:message:destructiveButtonTitle:buttons:showInView:onDismiss:onCancel:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIActionSheet+MKBlockAdditions.h</DeclaredIn>			
+			
+			<Declaration>+ (void)actionSheetWithTitle:(NSString *)title message:(NSString *)message destructiveButtonTitle:(NSString *)destructiveButtonTitle buttons:(NSArray *)buttonTitles showInView:(UIView *)view onDismiss:(DismissBlock)dismissed onCancel:(CancelBlock)cancelled</Declaration>
+			
+			
+			<Anchor>//api/name/actionSheetWithTitle:message:destructiveButtonTitle:buttons:showInView:onDismiss:onCancel:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UIActionSheet(MKBlockAdditions)/photoPickerWithTitle:showInView:presentVC:onPhotoPicked:onCancel:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIActionSheet+MKBlockAdditions.h</DeclaredIn>			
+			
+			<Declaration>+ (void)photoPickerWithTitle:(NSString *)title showInView:(UIView *)view presentVC:(UIViewController *)presentView onPhotoPicked:(PhotoPickedBlock)photoPicked onCancel:(CancelBlock)cancelled</Declaration>
+			
+			
+			<Anchor>//api/name/photoPickerWithTitle:showInView:presentVC:onPhotoPicked:onCancel:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

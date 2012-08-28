@@ -1,0 +1,233 @@
+<html>
+  <head>
+    <link href="help.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <a name="top"></a>
+    <h3>How to Play Lexatron</h3>
+
+    <a href="#overview">Overview</a> &#8226;
+    <a href="#gameplay">Gameplay</a> &#8226;
+    <a href="#objectives">Objectives</a> &#8226;
+    <a href="#swapping">Swapping Letters</a> &#8226;
+    <a href="#blanks">Blank Letters</a> &#8226;
+    <a href="#scoring">Scoring</a> &#8226;
+    <a href="#gameover">Game-over Conditions</a> &#8226;
+    <a href="#controls">Controls</a> &#8226;
+    <a href="#dictionary">Dictionary</a> &#8226;
+    <a href="#duration">Match Duration</a> &#8226;
+    <a href="#distribution">Letter Distribution</a> &#8226;
+    <a href="#points">Letter Point Values</a>
+
+    <a name="overview"></a>
+    <h3>Overview
+      <span style="float: right"><a href="#top">&#9650;</a></span>
+    </h3>
+    <p>In Lexatron, a match consists of two <em>players</em>, two <em>letter racks</em>, a <em>letter bag</em>,
+    and an X-shaped <i>board</i> which consists of <i>spaces</i> on which <i>letters</i> may be placed to form <i>words</i>.
+    The first player has <em>green</em> letters while the second player has <em>orange</em> letters.</p>
+
+    <center>
+      <img src="HelpLetters.png" width="224px" />
+    </center>
+
+    <p>Each player's letter rack consists of up to 7 letters chosen randomly from the
+    letter bag. </p>
+
+    <center>
+      <img src="HelpRack.png" width="226px" style="border: 1px solid #444" />
+    </center>
+
+    <a name="gameplay"></a>
+    <h3>Gameplay
+      <span style="float: right"><a href="#top">&#9650;</a></span>
+    </h3>
+
+    <p>
+    Each player takes a turn until the match ends.
+    A player may do any of the following to take a turn:</p>
+
+    <ul>
+      <li>take one or more letters from their letter rack and place them on the board to form one or more words</li>
+      <li>pass their turn</li>
+      <li>resign the match</li>
+      <li>swap one or more letters from their letter rack with replacement letters selected at random from the letter bag</li>
+    </ul>
+
+    <p>On a player's first placement of letters on the board, one of the letters must
+    be placed on the player's <em>start space</em>.  The first player's start space is the
+    top-left space, and is green with an arrow on it.  The second player's
+    start space is the bottom-left space, and is orange with an arrow on it.</p>
+
+    <center>
+      <img src="HelpStartEnd.png" width="275px" />
+    </center>
+
+    <p>Thereafter, one of the words formed in a turn must include a letter
+    from a word formed earlier by the same player.</p>
+
+    <p>Words extend horizontally and vertically just like in other word games.
+    In Lexatron however, horizontally means "diagonally up to the right" while
+    vertically means "diagonally down and to the right". That means words formed
+    on the board must be read in either the left to right direction or up to down
+    direction.</p>
+
+    <center>
+      <img src="HelpDirection.png" width="224px" />
+    </center>
+
+    <p>Words can of course overlap your other words already on the board.</p>
+
+    <center>
+      <img src="HelpOverlap.png" width="225px" />
+    </center>
+
+    <p>Words formed do not take into account the letters of words already formed by the opponent. While it is
+    possible to form a word with a letter adjacent to an opponent's letters,
+    it is not possible to form a word that spans a word of the opponent.
+    For example, in the following screenshot, the orange word ZIT is independent of
+    the green word PREY. That is, the (invalid) words IPIG and WAITR are not considered.
+    </p>
+
+    <center>
+      <img src="HelpAdjacent.png" width="125px" style="border: 1px solid #444" />
+    </center>
+
+    <a name="objectives"></a>
+    <h3>Objectives
+      <span style="float: right"><a href="#top">&#9650;</a></span>
+    </h3>
+
+    <p>A player's primary objective in Lexatron is to reach their end space before
+    their opponent reaches their end space.</p>
+
+    <p>A player's secondary objective is to score as many points as possible. Should
+    the players be blocked from reaching their respective end spaces, a match
+    may still be won by having the most points when the letter bag is fully
+    depleted.</p>
+
+    <a name="swapping"></a>
+    <h3>Swapping
+      <span style="float: right"><a href="#top">&#9650;</a></span>
+    </h3>
+
+    <p>A player may swap or exchange one or more letters from their letter rack.
+    After selecting which letters to swap, the player's turn ends.
+    There must be at least 7 letters in the letter bag for swapping to be allowed.</p>
+
+    <a name="blanks"></a>
+    <h3>Blank Letters
+      <span style="float: right"><a href="#top">&#9650;</a></span>
+    </h3>
+
+    <p>There are a number of blank letters in the letter bag at the start of a match.
+    When placed on the board (or moved around on the board in the same turn), the
+    player is prompted to pick a substitute letter to represent the blank.  The
+    substitute letter has <i>a point value of 0</i> but of course may be used to form words.</p>
+
+    <a name="scoring"></a>
+    <h3>Scoring
+      <span style="float: right"><a href="#top">&#9650;</a></span>
+    </h3>
+
+    <p>Each letter has an assigned point value.  Each word formed is the sum of the point
+    values that comprise the word.</p>
+
+    <p>The scoring of letters and words may be increased by placing letters atop
+    <em>modifier spaces</em>.</p>
+
+    <ul>
+      <li><em>2L</em> doubles the point value of the letter</li>
+      <li><em>3L</em> triples the point value of the letter</li>
+      <li><em>2W</em> doubles the point value of the word formed</li>
+      <li><em>3W</em> triples the value of the word formed</li>
+      <li><em>!</em> is a one-time bonus of 35 points</li>
+    </ul>
+
+    <center>
+      <img src="HelpMods.png" width="225px" />
+    </center>
+
+    <p>Modifiers only take effect during the turn in which they are encountered.  For
+    instance, words formed by extending a word that contains a letter atop a 3W
+    does not triple the extended word's point value.</p>
+
+    <p>A player earns a 50 bonus points for using all 7 letters in their letter rack
+    in a single turn.</p>
+
+    <a name="gameover"></a>
+    <h3>Game-over Conditions
+      <span style="float: right"><a href="#top">&#9650;</a></span>
+    </h3>
+
+    <p>A match ends when any of the following occur:</p>
+
+    <ul>
+      <li>a player reaches their end space before their opponent reaches their own end
+        space</li>
+      <li>a player resigns the match</li>
+      <li>both players pass their turns twice consecutively (stalemate)</li>
+      <li>no letters remain to replenish player racks and both player racks are empty</li>
+    </ul>
+
+    <p>If no letters remain in the letter bag and both letter racks are empty, the
+    winner is the player with more points.</p>
+
+    <a name="controls"></a>
+    <h3>Controls
+      <span style="float: right"><a href="#top">&#9650;</a></span>
+    </h3>
+
+    <center>
+      <img src="HelpControlsZoom.png" width="225px" /><p/>
+      <img src="HelpControlsPinch.png" width="225px" /><p/>
+      <img src="HelpControlsDragRack.png" width="225px" /><p/>
+      <img src="HelpControlsDragBoard.png" width="225px" /><p/>
+      <img src="HelpControlsSubmit.png" width="225px" /><p/>
+    </center>
+
+    <a name="dictionary"></a>
+    <h3>Dictionary
+      <span style="float: right"><a href="#top">&#9650;</a></span>
+    </h3>
+
+    <p>Lexatron uses a slightly modified ENABLE1 (Enhanced North American Benchmark Lexicon)
+    dictionary as its source of supported words.  Some derogatory words have been removed to
+    keep everybody happy; we hope you understand. Please visit the following URL to view Lexatron's
+    dictionary:</p>
+
+    <center>
+      http://fictorial.com/lexatron/dictionary.txt
+    </center>
+
+    <a name="duration"></a>
+    <h3>Match Duration
+      <span style="float: right"><a href="#top">&#9650;</a></span>
+    </h3>
+
+    <p>Online matches may take a while to finish with turns sometimes taking <em>days</em>.
+    This is normal.  Start more matches if you'd like!  You can play up to 25
+    simultaneous matches.  Don't worry... if your opponent fails to play a turn
+    after some time, you will be declared the winner.</p>
+
+    <a name="distribution"></a>
+    <h3>Letter Distribution
+      <span style="float: right"><a href="#top">&#9650;</a></span>
+    </h3>
+
+    <p>The distribution of letters in the letter bag at the start of each match is as
+    follows.</p>
+
+    <p>A: 18, B: 4, C: 4, D: 10, E: 2, F: 4, G: 6, H: 8, I: 16, J: 2, K: 2, L: 8, M: 4, N: 10, O: 16, P: 4, Q: 2, R: 12, S: 10, T: 14, U: 8, V: 4, W: 4, X: 2, Y: 4, Z: 2, blank: 4</p>
+
+    <a name="points"></a>
+    <h3>Letter Point Values
+      <span style="float: right"><a href="#top">&#9650;</a></span>
+    </h3>
+
+    <p>The point values for each letter are as follows.</p>
+
+    <p>A: 1, B: 4, C: 5, D: 2, E: 1, F: 4, G: 3, H: 3, I: 1, J: 10, K: 5, L: 2, M: 5, N: 2, O: 1, P: 4, Q: 10, R: 1, S: 1, T: 1, U: 2, V: 5, W: 4, X: 8, Y: 3, Z: 10, blank: 0</p>
+    
+  </body>
+</html>

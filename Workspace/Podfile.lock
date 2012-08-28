@@ -1,0 +1,35 @@
+PODS:
+  - ABContactHelper (0.0.1)
+  - AFNetworking (1.0RC1)
+  - CMPopTipView (0.0.1)
+  - FTUtils (1.1.1)
+  - JSONKit (1.5pre)
+  - KNMultiItemSelector (1.0):
+    - SDWebImage
+  - RegexKitLite (4.0)
+  - SDWebImage (2.6)
+  - SSPullToRefresh (1.0.1)
+  - SSToolkit (1.0.2)
+  - TestFlightSDK (1.0)
+  - UIGlossyButton (0.0.7):
+    - UIGlossyButton/Core (= 0.0.7)
+    - UIGlossyButton/LayerEffects (= 0.0.7)
+  - UIGlossyButton/Core (0.0.7)
+  - UIGlossyButton/LayerEffects (0.0.7)
+  - UIImage+PDF (1.0.0)
+  - YIPopupTextView (0.0.1)
+
+DEPENDENCIES:
+  - ABContactHelper
+  - AFNetworking
+  - CMPopTipView
+  - FTUtils
+  - JSONKit
+  - KNMultiItemSelector
+  - RegexKitLite
+  - SSPullToRefresh
+  - SSToolkit
+  - TestFlightSDK
+  - UIGlossyButton
+  - UIImage+PDF
+  - YIPopupTextView

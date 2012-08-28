@@ -1,0 +1,33 @@
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
+
+#import <Parse/Parse.h>
+#import <Parse/PFConstants.h>
+#import "PFUser-AppAdditions.h"
+#import "PFObject-Convenience.h"
+
+#import "TestFlight.h"
+#import "FTAnimation+UIView.h"
+#import "LogHelper.h"
+#import "iPadHelper.h"
+#import "AppConstants.h"
+#import "AppDelegate.h"
+#import "BaseViewController.h"
+#import "NSDictionary-Convenience.h"
+#import "NSString-AppSpecific.h"
+#import "NSError-AppAdditions.h"
+#import "UIView-AppAdditions.h"
+#import "NSArray+SSToolkitAdditions.h"
+#import "NSDate-WordsAddition.h"
+#import "UIImage-AppAdditions.h"
+#import "NSObject-PerformBlock.h"
+
+#import "NSArray+BlocksKit.h"
+#import "NSDictionary+BlocksKit.h"
+#import "NSMutableArray+BlocksKit.h"
+#import "NSMutableDictionary+BlocksKit.h"
+
+//#import "UIAlertView-Convenience.h"
+
+#define REQUIRE_USER [(AppDelegate *)[UIApplication sharedApplication].delegate requireLoggedInUser]

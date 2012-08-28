@@ -1,0 +1,8 @@
+HEADER_SEARCH_PATHS = ${PODS_HEADERS_SEARCH_PATHS}
+OTHER_LDFLAGS = -ObjC -lTestFlight -licucore -lz -framework AddressBook -framework AddressBookUI -framework CoreGraphics -framework Foundation -framework ImageIO -framework QuartzCore -framework SystemConfiguration -framework UIKit
+LIBRARY_SEARCH_PATHS = "$(PODS_ROOT)/TestFlightSDK"
+PODS_BUILD_HEADERS_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/ABContactHelper" "${PODS_ROOT}/BuildHeaders/AFNetworking" "${PODS_ROOT}/BuildHeaders/CMPopTipView" "${PODS_ROOT}/BuildHeaders/FTUtils" "${PODS_ROOT}/BuildHeaders/JSONKit" "${PODS_ROOT}/BuildHeaders/KNMultiItemSelector" "${PODS_ROOT}/BuildHeaders/RegexKitLite" "${PODS_ROOT}/BuildHeaders/SDWebImage" "${PODS_ROOT}/BuildHeaders/SSPullToRefresh" "${PODS_ROOT}/BuildHeaders/SSToolkit" "${PODS_ROOT}/BuildHeaders/TestFlightSDK" "${PODS_ROOT}/BuildHeaders/UIGlossyButton" "${PODS_ROOT}/BuildHeaders/UIImage+PDF" "${PODS_ROOT}/BuildHeaders/YIPopupTextView"
+ALWAYS_SEARCH_USER_PATHS = YES
+PODS_ROOT = ${SRCROOT}/Pods
+PODS_HEADERS_SEARCH_PATHS = ${PODS_PUBLIC_HEADERS_SEARCH_PATHS}
+PODS_PUBLIC_HEADERS_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/ABContactHelper" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/CMPopTipView" "${PODS_ROOT}/Headers/FTUtils" "${PODS_ROOT}/Headers/JSONKit" "${PODS_ROOT}/Headers/KNMultiItemSelector" "${PODS_ROOT}/Headers/RegexKitLite" "${PODS_ROOT}/Headers/SDWebImage" "${PODS_ROOT}/Headers/SSPullToRefresh" "${PODS_ROOT}/Headers/SSToolkit" "${PODS_ROOT}/Headers/TestFlightSDK" "${PODS_ROOT}/Headers/UIGlossyButton" "${PODS_ROOT}/Headers/UIImage+PDF" "${PODS_ROOT}/Headers/YIPopupTextView"

@@ -1,0 +1,26 @@
+I designed the board in Omnigraffle which is HORRIBLE for pixel-level support.
+
+Select what you want to export and export Current Selection.
+
+If you have some object which non-pixel boundaries, OG will pad by say 2 pixels
+all around for no reason.
+
+If you stroke an object, it's rendered centered so be prepared for cut-off
+pixels.
+
+Do not enable shadows at any cost
+
+Etc. etc.
+
+The easiest way to get the area of the board I want for the game is to 
+- select all
+- export Current Selection to PDF
+- Load the PDF into Preview.app
+- Set a crop box of 2.5, 2.5, 450, 225 and resave
+- Use UIImage+PDF in the app to convert to a UIImage
+
+In the app, I create 2 images from the PDF, one for when the board is zoomed out
+and another for when the board is zoomed in.  Why?  Well, if we use the
+high-resolution image when zoomed out, you'll notice jaggies along cell
+boundaries b/c information must be thrown away to scale down.
+

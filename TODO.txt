@@ -1,0 +1,57 @@
+------------------------------------------------------------------------
+to do
+------------------------------------------------------------------------
+- ios6 compat check esp. screen size for iphone5
+    - dl new xcode and ios6 sdk; test
+    - do the simulator trick to get the weird screen size
+- add tweet button to find-opponent like in WordGame
+- acl security
+- matches stored with no turns... wtf? "no description available" in activity
+    - Show match id in the logs so I can cross-ref with data browser
+- modal views don't autorotate on ipad?
+- auto-detect no turn played in X days => timeout
+    - run job on heroku?
+- in-match chat
+    - just add a single message per turn; disable the button otherwise
+------------------------------------------------------------------------
+launch
+------------------------------------------------------------------------
+- video trailer on youtube, website
+    - use fictorial.com/lexatron/trailer (bit.ly/lexatron)
+- press release
+- how to build-up hype?
+- iversion support
+- ask beta testers who wants to be listed in the credits
+- itunesconnect metadata (screenshots, copy)
+    - launch at $0.99 and stay there or later go up to $1.99
+      with copy like "limited time 50% off launch sale"
+------------------------------------------------------------------------
+post-launch
+------------------------------------------------------------------------
+- update facebook auth dialog settings with itunes app store app id
+------------------------------------------------------------------------
+maybe later features
+------------------------------------------------------------------------
+- 
+- game center leaderboards
+    - most wins, highest scores
+    - anyone really give a shit about this?
+- add a particle emitter over the two stars
+    - only current player's is displayed
+    - as they get closer, more particles are emitted...
+- handle dropping to dead zone by adding to nearest cell?
+- look up placed word in iOS dictionary and show in a ticker
+- animate the shuffle
+- nudge an opponent
+    - sends a new push if time since last turn > 3 days
+    - if > 7 days, auto-win
+    - check time on the server not the client (how?)
+- only play against users with same version of app
+    - this would allow us to update the rules/words post launch
+- detect pirated copy
+    - if detected, say server not available
+- blocked users (add, delete, list)
+- cheaters can hack the word list and add words to cheat. perhaps the opponent
+  should verify that a played word is actually in their local dictionary too?
+  - add md5sum of wordlist into the app? hmac-sha1? check it at startup
+- mac os x version for the mac app store using chameleon or something

@@ -1,0 +1,19 @@
+<style>
+  body {
+    color: rgb(20, 20, 20);
+    font-family: 'Baskerville', sans-serif;
+  }
+  @media screen and (-webkit-device-pixel-ratio: 2) {
+    body {
+      font-size: large;
+    }
+  }
+  h3 {
+    font-family: 'Futura', sans-serif;
+  }
+  a {
+    text-decoration: none;
+    color: rgb(20, 20, 40);
+    font-family: 'Futura-CondensedMedium', sans-serif;
+  }
+  </style>

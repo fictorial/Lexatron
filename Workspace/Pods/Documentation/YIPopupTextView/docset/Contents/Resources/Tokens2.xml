@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/YIPopupTextView.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/YIPopupTextView</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>YIPopupTextView.h</DeclaredIn>
+			
+			<NodeRef refid="2"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/YIPopupTextView/setDelegate:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>YIPopupTextView.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) id&lt;&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/YIPopupTextView/delegate</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>YIPopupTextView.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) id&lt;&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/YIPopupTextView/setShowCloseButton:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>YIPopupTextView.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) BOOL showCloseButton</Declaration>
+			
+			
+			<Anchor>//api/name/showCloseButton</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/YIPopupTextView/showCloseButton</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>YIPopupTextView.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) BOOL showCloseButton</Declaration>
+			
+			
+			<Anchor>//api/name/showCloseButton</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/YIPopupTextView/initWithPlaceHolder:maxCount:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>YIPopupTextView.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithPlaceHolder:(NSString *)placeHolder maxCount:(NSUInteger)maxCount</Declaration>
+			
+			
+			<Anchor>//api/name/initWithPlaceHolder:maxCount:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/YIPopupTextView/showInView:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>YIPopupTextView.h</DeclaredIn>			
+			
+			<Declaration>- (void)showInView:(UIView *)view</Declaration>
+			
+			
+			<Anchor>//api/name/showInView:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/YIPopupTextView/dismiss</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>YIPopupTextView.h</DeclaredIn>			
+			
+			<Declaration>- (void)dismiss</Declaration>
+			
+			
+			<Anchor>//api/name/dismiss</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

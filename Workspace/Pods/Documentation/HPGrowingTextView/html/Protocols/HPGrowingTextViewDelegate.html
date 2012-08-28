@@ -1,0 +1,463 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>HPGrowingTextViewDelegate Protocol Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">HPGrowingTextView 0.0.1 </a></h1>
+				<a id="developerHome" href="../index.html">Hans Pinckaers</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">HPGrowingTextViewDelegate Protocol Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/growingTextView:didChangeHeight:">&nbsp;&nbsp;&nbsp;&nbsp;- growingTextView:didChangeHeight:</option>
+	
+	<option value="//api/name/growingTextView:shouldChangeTextInRange:replacementText:">&nbsp;&nbsp;&nbsp;&nbsp;- growingTextView:shouldChangeTextInRange:replacementText:</option>
+	
+	<option value="//api/name/growingTextView:willChangeHeight:">&nbsp;&nbsp;&nbsp;&nbsp;- growingTextView:willChangeHeight:</option>
+	
+	<option value="//api/name/growingTextViewDidBeginEditing:">&nbsp;&nbsp;&nbsp;&nbsp;- growingTextViewDidBeginEditing:</option>
+	
+	<option value="//api/name/growingTextViewDidChange:">&nbsp;&nbsp;&nbsp;&nbsp;- growingTextViewDidChange:</option>
+	
+	<option value="//api/name/growingTextViewDidChangeSelection:">&nbsp;&nbsp;&nbsp;&nbsp;- growingTextViewDidChangeSelection:</option>
+	
+	<option value="//api/name/growingTextViewDidEndEditing:">&nbsp;&nbsp;&nbsp;&nbsp;- growingTextViewDidEndEditing:</option>
+	
+	<option value="//api/name/growingTextViewShouldBeginEditing:">&nbsp;&nbsp;&nbsp;&nbsp;- growingTextViewShouldBeginEditing:</option>
+	
+	<option value="//api/name/growingTextViewShouldEndEditing:">&nbsp;&nbsp;&nbsp;&nbsp;- growingTextViewShouldEndEditing:</option>
+	
+	<option value="//api/name/growingTextViewShouldReturn:">&nbsp;&nbsp;&nbsp;&nbsp;- growingTextViewShouldReturn:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/growingTextView:didChangeHeight:">growingTextView:didChangeHeight:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/growingTextView:shouldChangeTextInRange:replacementText:">growingTextView:shouldChangeTextInRange:replacementText:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/growingTextView:willChangeHeight:">growingTextView:willChangeHeight:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/growingTextViewDidBeginEditing:">growingTextViewDidBeginEditing:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/growingTextViewDidChange:">growingTextViewDidChange:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/growingTextViewDidChangeSelection:">growingTextViewDidChangeSelection:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/growingTextViewDidEndEditing:">growingTextViewDidEndEditing:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/growingTextViewShouldBeginEditing:">growingTextViewShouldBeginEditing:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/growingTextViewShouldEndEditing:">growingTextViewShouldEndEditing:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/growingTextViewShouldReturn:">growingTextViewShouldReturn:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="HPGrowingTextViewDelegate Protocol Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">HPGrowingTextViewDelegate Protocol Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">HPGrowingTextView.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/growingTextViewShouldBeginEditing:">&ndash;&nbsp;growingTextViewShouldBeginEditing:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/growingTextViewShouldEndEditing:">&ndash;&nbsp;growingTextViewShouldEndEditing:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/growingTextViewDidBeginEditing:">&ndash;&nbsp;growingTextViewDidBeginEditing:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/growingTextViewDidEndEditing:">&ndash;&nbsp;growingTextViewDidEndEditing:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/growingTextView:shouldChangeTextInRange:replacementText:">&ndash;&nbsp;growingTextView:shouldChangeTextInRange:replacementText:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/growingTextViewDidChange:">&ndash;&nbsp;growingTextViewDidChange:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/growingTextView:willChangeHeight:">&ndash;&nbsp;growingTextView:willChangeHeight:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/growingTextView:didChangeHeight:">&ndash;&nbsp;growingTextView:didChangeHeight:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/growingTextViewDidChangeSelection:">&ndash;&nbsp;growingTextViewDidChangeSelection:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/growingTextViewShouldReturn:">&ndash;&nbsp;growingTextViewShouldReturn:</a></code>
+		
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/growingTextView:didChangeHeight:" title="growingTextView:didChangeHeight:"></a>
+	<h3 class="subsubtitle method-title">growingTextView:didChangeHeight:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)growingTextView:(HPGrowingTextView *)<em>growingTextView</em> didChangeHeight:(float)<em>height</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/growingTextView:shouldChangeTextInRange:replacementText:" title="growingTextView:shouldChangeTextInRange:replacementText:"></a>
+	<h3 class="subsubtitle method-title">growingTextView:shouldChangeTextInRange:replacementText:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)growingTextView:(HPGrowingTextView *)<em>growingTextView</em> shouldChangeTextInRange:(NSRange)<em>range</em> replacementText:(NSString *)<em>text</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/growingTextView:willChangeHeight:" title="growingTextView:willChangeHeight:"></a>
+	<h3 class="subsubtitle method-title">growingTextView:willChangeHeight:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)growingTextView:(HPGrowingTextView *)<em>growingTextView</em> willChangeHeight:(float)<em>height</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/growingTextViewDidBeginEditing:" title="growingTextViewDidBeginEditing:"></a>
+	<h3 class="subsubtitle method-title">growingTextViewDidBeginEditing:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)growingTextViewDidBeginEditing:(HPGrowingTextView *)<em>growingTextView</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/growingTextViewDidChange:" title="growingTextViewDidChange:"></a>
+	<h3 class="subsubtitle method-title">growingTextViewDidChange:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)growingTextViewDidChange:(HPGrowingTextView *)<em>growingTextView</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/growingTextViewDidChangeSelection:" title="growingTextViewDidChangeSelection:"></a>
+	<h3 class="subsubtitle method-title">growingTextViewDidChangeSelection:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)growingTextViewDidChangeSelection:(HPGrowingTextView *)<em>growingTextView</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/growingTextViewDidEndEditing:" title="growingTextViewDidEndEditing:"></a>
+	<h3 class="subsubtitle method-title">growingTextViewDidEndEditing:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)growingTextViewDidEndEditing:(HPGrowingTextView *)<em>growingTextView</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/growingTextViewShouldBeginEditing:" title="growingTextViewShouldBeginEditing:"></a>
+	<h3 class="subsubtitle method-title">growingTextViewShouldBeginEditing:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)growingTextViewShouldBeginEditing:(HPGrowingTextView *)<em>growingTextView</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/growingTextViewShouldEndEditing:" title="growingTextViewShouldEndEditing:"></a>
+	<h3 class="subsubtitle method-title">growingTextViewShouldEndEditing:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)growingTextViewShouldEndEditing:(HPGrowingTextView *)<em>growingTextView</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/growingTextViewShouldReturn:" title="growingTextViewShouldReturn:"></a>
+	<h3 class="subsubtitle method-title">growingTextViewShouldReturn:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)growingTextViewShouldReturn:(HPGrowingTextView *)<em>growingTextView</em></code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2012 Hans Pinckaers. All rights reserved. (Last updated: 2012-08-25)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

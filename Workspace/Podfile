@@ -1,0 +1,17 @@
+platform :ios, :deployment_target => '5.0'
+
+xcodeproj 'Lexatron.xcodeproj'
+
+pod 'ABContactHelper'
+pod 'FTUtils'
+pod 'SSToolkit'
+pod 'CMPopTipView'
+pod 'RegexKitLite'
+pod 'TestFlightSDK'
+pod 'KNMultiItemSelector'
+pod 'UIImage+PDF'
+pod 'SSPullToRefresh'
+pod 'UIGlossyButton'
+pod 'AFNetworking'
+pod 'JSONKit'
+pod 'YIPopupTextView'

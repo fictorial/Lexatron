@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/HPGrowingTextViewDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/HPGrowingTextViewDelegate</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HPGrowingTextView.h</DeclaredIn>
+			
+			<NodeRef refid="3"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/HPGrowingTextViewDelegate/growingTextViewShouldBeginEditing:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HPGrowingTextView.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)growingTextViewShouldBeginEditing:(HPGrowingTextView *)growingTextView</Declaration>
+			
+			
+			<Anchor>//api/name/growingTextViewShouldBeginEditing:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/HPGrowingTextViewDelegate/growingTextViewShouldEndEditing:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HPGrowingTextView.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)growingTextViewShouldEndEditing:(HPGrowingTextView *)growingTextView</Declaration>
+			
+			
+			<Anchor>//api/name/growingTextViewShouldEndEditing:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/HPGrowingTextViewDelegate/growingTextViewDidBeginEditing:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HPGrowingTextView.h</DeclaredIn>			
+			
+			<Declaration>- (void)growingTextViewDidBeginEditing:(HPGrowingTextView *)growingTextView</Declaration>
+			
+			
+			<Anchor>//api/name/growingTextViewDidBeginEditing:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/HPGrowingTextViewDelegate/growingTextViewDidEndEditing:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HPGrowingTextView.h</DeclaredIn>			
+			
+			<Declaration>- (void)growingTextViewDidEndEditing:(HPGrowingTextView *)growingTextView</Declaration>
+			
+			
+			<Anchor>//api/name/growingTextViewDidEndEditing:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/HPGrowingTextViewDelegate/growingTextView:shouldChangeTextInRange:replacementText:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HPGrowingTextView.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)growingTextView:(HPGrowingTextView *)growingTextView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text</Declaration>
+			
+			
+			<Anchor>//api/name/growingTextView:shouldChangeTextInRange:replacementText:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/HPGrowingTextViewDelegate/growingTextViewDidChange:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HPGrowingTextView.h</DeclaredIn>			
+			
+			<Declaration>- (void)growingTextViewDidChange:(HPGrowingTextView *)growingTextView</Declaration>
+			
+			
+			<Anchor>//api/name/growingTextViewDidChange:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/HPGrowingTextViewDelegate/growingTextView:willChangeHeight:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HPGrowingTextView.h</DeclaredIn>			
+			
+			<Declaration>- (void)growingTextView:(HPGrowingTextView *)growingTextView willChangeHeight:(float)height</Declaration>
+			
+			
+			<Anchor>//api/name/growingTextView:willChangeHeight:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/HPGrowingTextViewDelegate/growingTextView:didChangeHeight:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HPGrowingTextView.h</DeclaredIn>			
+			
+			<Declaration>- (void)growingTextView:(HPGrowingTextView *)growingTextView didChangeHeight:(float)height</Declaration>
+			
+			
+			<Anchor>//api/name/growingTextView:didChangeHeight:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/HPGrowingTextViewDelegate/growingTextViewDidChangeSelection:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HPGrowingTextView.h</DeclaredIn>			
+			
+			<Declaration>- (void)growingTextViewDidChangeSelection:(HPGrowingTextView *)growingTextView</Declaration>
+			
+			
+			<Anchor>//api/name/growingTextViewDidChangeSelection:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/HPGrowingTextViewDelegate/growingTextViewShouldReturn:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HPGrowingTextView.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)growingTextViewShouldReturn:(HPGrowingTextView *)growingTextView</Declaration>
+			
+			
+			<Anchor>//api/name/growingTextViewShouldReturn:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

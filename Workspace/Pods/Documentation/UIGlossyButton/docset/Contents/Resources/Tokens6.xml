@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Categories/UIView+LayerEffects.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cat/UIView(LayerEffects)</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIView+LayerEffects.h</DeclaredIn>
+			
+			<NodeRef refid="6"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UIView(LayerEffects)/setCornerRadius:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIView+LayerEffects.h</DeclaredIn>			
+			
+			<Declaration>- (void)setCornerRadius:(CGFloat)radius</Declaration>
+			
+			
+			<Anchor>//api/name/setCornerRadius:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UIView(LayerEffects)/setBorder:width:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIView+LayerEffects.h</DeclaredIn>			
+			
+			<Declaration>- (void)setBorder:(UIColor *)color width:(CGFloat)width</Declaration>
+			
+			
+			<Anchor>//api/name/setBorder:width:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UIView(LayerEffects)/setShadow:opacity:offset:blurRadius:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIView+LayerEffects.h</DeclaredIn>			
+			
+			<Declaration>- (void)setShadow:(UIColor *)color opacity:(CGFloat)opacity offset:(CGSize)offset blurRadius:(CGFloat)blurRadius</Declaration>
+			
+			
+			<Anchor>//api/name/setShadow:opacity:offset:blurRadius:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

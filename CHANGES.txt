@@ -1,0 +1,60 @@
+Lexatron 1.0.8.5
+- Enhancement: in-game chat
+- Fix: board goes low resolution when another view controller is loaded
+- Fix: logout while viewing a match should hide resign button
+
+Lexatron 1.0.5
+- Enhancement: Username search in Find a Friend is now an EXACT match (e.g. search for "judyb" not "jud") to be less confusing
+- Enhancement: "Their Turn" makes opponent name more prominent
+- Enhancement: "Their Turn" now uses same sort order as "Your Turn" (most recent on top)
+- Enhancement: Only allow usernames with letter prefix during signup
+- Enhancement: "No matches" language made less harsh with "Tap + to ..."
+- Enhancement: Removed done button in user picker as it was redundant with cancel
+- Fix: In signup, username uniqueness check was case sensitive; no longer
+- Fix: cannot drag back to the rack with new drag offset...
+- Fix: ACLs failing (101 error)
+- Fix: double tap letters just placed no longer hides them
+- Fix: no longer can create words with spaces in them but on the same diagonal
+- Fix: don't zoom on start square if it's not your turn
+
+
+
+Lexatron 1.0.4
+- Added more beta testers
+- Fixed crash when going back from match while auto-zoom in progress
+- Scoreboard labels auto-reframe themselves after turn played
+
+Lexatron 1.0.3
+- offset letters during dragging for more precise placement on the board;
+  just drop where the letter is, not your finger.
+- update button placement; now you shake to recall, shake to shuffle.
+- added "Resign Match" button to settings
+- removed extra "action" menu button on match screen
+- swap button added to match screen
+- combined pass turn with done button; no letters placed and submit means "pass"
+- replaced confusing "recall" button ("refresh icon") with shake-device-to-recall		
+- now highlights recently played letters of opponent with yellow text		
+- fix sporadic crash when sending a match to the backend after playing a turn
+- fixed "No description available" on random-based matches
+- using timers to deal with poor network conditions
+- fixed display issue with challenge alerts that launch the app (ipad)
+- rematch flow fixed; only losing player gets to rematch
+- extra security added via ACLs
+- dropped the "Player 1 it's your turn HUD message" in PNP matches		
+- "Unsupported word" changed to "invalid word"
+
+Lexatron 1.0.2
+- Fix for crash when search by username has no results
+- Minor enhancement; a match being viewed will auto-reload when the app is foregrounded as long as it is not your turn (you could have started to play a turn and we wouldn't want to lose that)
+
+Lexatron 1.0.1
+- Fix for frozen screen "Find a friend to play"
+- Fix for username search autocorrect (should be OFF)
+- Fix for username case-insensitive searches
+- Fix for "Your Turn" data not updating after you play a turn
+- Disallow playing against yourself when searching by username
+
+Lexatron 1.0
+- First release!
+
+vim:wrap

@@ -1,0 +1,147 @@
+In-Game Chat
+------------
+
+Uses the disqus API over HTTPS.
+
+Depends on AFNetworking and JSONKit.
+
+Concepts
+--------
+- Application is the app using the disqus API
+- Forums are sites within the Application
+- Threads are threads of discussion within a Forum
+- Posts are user-generated comments and are a part of a Thread
+
+Get the API secret and public key from here:
+    
+    http://disqus.com/api/applications/
+
+For Lexatron, the Disqus Application is Lexatron and we have 1 forum.
+Each match has 1 thread with posts being the chat messages.
+
+I created a forum using their API Console.
+You can get the user admin access token from:
+
+    http://disqus.com/api/applications/1635147/
+
+Create the forum:
+-----------------
+
+    curl -d api_key=$API_KEY \
+         -d access_token=$ACCESS_TOKEN \
+         -d website=$SITE \
+         -d name=$FORUM \ 
+         -d short_name=$FORUM \
+         https://disqus.com/api/3.0/threads/create.json
+
+Create a thread
+----------------
+
+For each match, create a single thread once. Use a UUID for the title:
+
+    curl -d api_key=$API_KEY \
+         -d access_token=$ACCESS_TOKEN \
+         -d forum=$FORUM \
+         -d title=$UUID \
+         https://disqus.com/api/3.0/threads/create.json
+
+This returns JSON:
+
+    {"code": 0, "response": 
+        {"feed": "http://$FORUM.disqus.com/matchchat/latest.rss", "reactions": 0, 
+         "author": "1661102", "forum": "$FORUM", "title": "matchchat", "userScore": 0,
+         "identifiers": [], "dislikes": 0, "createdAt": "2012-08-24T04:58:18",
+         "slug": "matchchat", "isClosed": false, "posts": 0, "userSubscription": false, 
+         "link": null, "likes": 0, "message": "", "category": "1684416", 
+         "id": "816518184", "isDeleted": false}}
+
+What you care about is a code of 0 and the 'id' which hereafter is $THREAD_ID.
+
+Post a message
+--------------
+
+To post a comment/chat to the thread, do not include the access_token:
+
+    curl -d api_key=$API_KEY \
+         -d thread=$THREAD_ID \
+         -d author_email=$PF_USER_OBJECT_ID@$FORUM.com \
+         -d author_name=$PF_USER_DISPLAY_NAME \
+         -d message=$CHAT_BODY \
+        https://disqus.com/api/3.0/posts/create.json
+
+Get posts in thread
+-------------------
+
+To list posts in a thread (by default most recent 25 posts):
+
+    curl "https://disqus.com/api/3.0/posts/list.json?thread=$THREAD_ID&api_key=$API_KEY"
+
+This returns JSON like:
+
+    {
+      "cursor": {
+        "prev": null,
+        "hasNext": false,
+        "next": "1345785067262870:25:0",
+        "hasPrev": false,
+        "total": null,
+        "id": "1345785067262870:25:0",
+        "more": false
+      },
+      "code": 0,
+      "response": [
+        {
+          "isJuliaFlagged": true,
+          "isFlagged": false,
+          "forum": "lexatron",
+          "parent": null,
+          "author": {
+            "name": "Brian",
+            "url": "",
+            "profileUrl": "http://disqus.com/guest/6c93a2a7a93e0585aa82a1a17c47f704/",
+            "emailHash": "6c93a2a7a93e0585aa82a1a17c47f704",
+            "avatar": {
+              "small": {
+                "permalink": "http://www.gravatar.com/avatar.php?default=http%3A%2F%2Fmediacdn.disqus.com%2F1345846826%2Fimages%2Fnoavatar32.png&size=32&gravatar_id=6c93a2a7a93e0585aa82a1a17c47f704",
+                "cache": "http://www.gravatar.com/avatar.php?default=http%3A%2F%2Fmediacdn.disqus.com%2F1345846826%2Fimages%2Fnoavatar32.png&size=32&gravatar_id=6c93a2a7a93e0585aa82a1a17c47f704"
+              },
+              "large": {
+                "permalink": "http://www.gravatar.com/avatar.php?default=http%3A%2F%2Fmediacdn.disqus.com%2F1345846826%2Fimages%2Fnoavatar92.png&size=92&gravatar_id=6c93a2a7a93e0585aa82a1a17c47f704",
+                "cache": "http://www.gravatar.com/avatar.php?default=http%3A%2F%2Fmediacdn.disqus.com%2F1345846826%2Fimages%2Fnoavatar92.png&size=92&gravatar_id=6c93a2a7a93e0585aa82a1a17c47f704"
+              },
+              "permalink": "http://www.gravatar.com/avatar.php?default=http%3A%2F%2Fmediacdn.disqus.com%2F1345846826%2Fimages%2Fnoavatar92.png&size=92&gravatar_id=6c93a2a7a93e0585aa82a1a17c47f704",
+              "cache": "http://www.gravatar.com/avatar.php?default=http%3A%2F%2Fmediacdn.disqus.com%2F1345846826%2Fimages%2Fnoavatar92.png&size=92&gravatar_id=6c93a2a7a93e0585aa82a1a17c47f704"
+            },
+            "isAnonymous": true
+          },
+          "media": [],
+          "isDeleted": false,
+          "isApproved": true,
+          "dislikes": 0,
+          "raw_message": "Testing",
+          "createdAt": "2012-08-24T05:11:07",
+          "id": "627296083",
+          "thread": "816518184",
+          "numReports": 0,
+          "likes": 0,
+          "isEdited": false,
+          "points": 0,
+          "message": "<p>Testing</p>",
+          "isSpam": false,
+          "isHighlighted": false,
+          "userScore": 0
+        }
+      ]
+    }
+
+What you want from this is of course the key paths: "response.author.name" and "response.message"
+
+
+
+To view everyone's chat messages (!):
+
+    http://lexatron.disqus.com/admin/moderate/#/all
+
+Login as brian@fictorial.com
+
+
