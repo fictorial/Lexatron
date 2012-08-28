@@ -34,4 +34,10 @@
 
 - (void)countOfActiveMatches:(PFIntegerResultBlock)block;
 
+// Records
+
+- (void)countOfMatchesWon:(PFIntegerResultBlock)block;
+- (void)countOfMatchesLost:(PFIntegerResultBlock)block;
+- (void)countOfMatchesTied:(PFIntegerResultBlock)block;
+
 @end

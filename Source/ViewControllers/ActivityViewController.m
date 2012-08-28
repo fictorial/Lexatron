@@ -14,6 +14,7 @@
 #import "FindOpponentViewController.h"
 #import "LQAudioManager.h"
 #import "WelcomeViewController.h"
+#import "UIView-GeomHelpers.h"
 
 #import "SSPullToRefreshSimpleContentView.h"
 
@@ -416,6 +417,12 @@ typedef enum {
       [weakSelf noMatchesLabel].hidden = YES;
     }
 
+    if ([weakSelf mode] == kActivityModeCompleted) {
+      [weakSelf showRecordLabel:YES];
+    } else {
+      [weakSelf showRecordLabel:NO];
+    }
+
     [[weakSelf tableView] reloadData];
     [[weakSelf tableView] setHidden:NO];
 
@@ -432,6 +439,85 @@ typedef enum {
 - (void)refresh {
   [self updateChooserButtonState];
   [_pullToRefreshView startLoadingAndExpand:YES];
+}
+
+enum {
+  kRecordLabelTag = 9898
+};
+
+- (void)showRecordLabel:(BOOL)show {
+  UILabel *label = (UILabel *)[self.view viewWithTag:kRecordLabelTag];
+
+  if (label) {
+    if (!label.hidden)
+      _tableView.top = _tableView.top - label.height;
+    
+    [label removeFromSuperview];
+  }
+
+  if (!show)
+    return;
+
+  label = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(_tableView.frame),
+                                                    CGRectGetMinY(_tableView.frame),
+                                                    CGRectGetWidth(_tableView.frame),
+                                                    kFontSizeSmall+SCALED(5))];
+  label.font = [UIFont fontWithName:kFontName size:kFontSizeSmall];
+  label.tag = kRecordLabelTag;
+  label.backgroundColor = [self accentColor];
+  label.textColor = [self bgColor];
+  label.textAlignment = UITextAlignmentCenter;
+  label.hidden = YES;
+  label.layer.cornerRadius = SCALED(4);
+  [_containerView addSubview:label];
+
+  __block int won = -1;
+  __block int lost = -1;
+  __block int ties = -1;
+
+  __weak id weakSelf = self;
+
+  [[PFUser currentUser] countOfMatchesWon:^(int number, NSError *error) {
+    won = MAX(0, number);
+    if (won != -1 && lost != -1 && ties != -1)
+      [weakSelf updateAndShowRecordLabelWon:won lost:lost tied:ties];
+  }];
+
+  [[PFUser currentUser] countOfMatchesLost:^(int number, NSError *error) {
+    lost = MAX(0, number);
+    if (won != -1 && lost != -1 && ties != -1)
+      [weakSelf updateAndShowRecordLabelWon:won lost:lost tied:ties];
+  }];
+
+  [[PFUser currentUser] countOfMatchesTied:^(int number, NSError *error) {
+    ties = MAX(0, number);
+    if (won != -1 && lost != -1 && ties != -1)
+      [weakSelf updateAndShowRecordLabelWon:won lost:lost tied:ties];
+  }];
+}
+
+- (void)updateAndShowRecordLabelWon:(int)won lost:(int)lost tied:(int)tied {
+  DLog(@"done fetching your record: %d-%d-%d", won, lost, tied);
+
+  UILabel *label = (UILabel *)[self.view viewWithTag:kRecordLabelTag];
+
+  if (!label)
+    return;
+
+  if (won == 0 && lost == 0 && tied == 0) {
+    if (!label.hidden)
+      _tableView.top = _tableView.top - label.height;
+
+    label.hidden = YES;
+    return;
+  }
+
+  label.text = [NSString stringWithFormat:@"Your Record: %d-%d-%d", won, lost, tied];
+
+  if (label.hidden) {
+    label.hidden = NO;
+    _tableView.top = _tableView.top + label.height;
+  }
 }
 
 #pragma mark - notifications

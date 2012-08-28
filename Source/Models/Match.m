@@ -721,16 +721,22 @@
 
     continuationBlock();
   } else {
-    DLog(@"saving the match object to Parse");
 
-    [_delegate matchWillSaveRemotely:self];
+    if (matchEnded && _turns.count == 1 && turn.type == kTurnTypeResign) {
+      DLog(@"not saving the match object to Parse since there was only one turn: resignation ==> canceled match.");
+      continuationBlock();
+    } else {
+      DLog(@"saving the match object to Parse");
 
-    [self saveMatch:^(BOOL succeeded, NSError *error) {
-      [[weakSelf delegate] matchDidSaveRemotely:self success:succeeded];
+      [_delegate matchWillSaveRemotely:self];
 
-      if (succeeded)
-        continuationBlock();
-    }];
+      [self saveMatch:^(BOOL succeeded, NSError *error) {
+        [[weakSelf delegate] matchDidSaveRemotely:self success:succeeded];
+
+        if (succeeded)
+          continuationBlock();
+      }];
+    }
   }
 }
 

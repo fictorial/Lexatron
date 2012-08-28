@@ -136,16 +136,65 @@ static NSString * const kBlockedUsersKey = @"blockedUsers";
   PFQuery *firstPlayerQuery = [PFQuery queryWithClassName:@"Match"];
   [firstPlayerQuery whereKey:@"firstPlayer" equalTo:self];
   [firstPlayerQuery whereKey:@"state" containedIn:@[@(kMatchStateEndedNormal), @(kMatchStateEndedResign), @(kMatchStateEndedTimeout)]];
-  
+
   PFQuery *secondPlayerQuery = [PFQuery queryWithClassName:@"Match"];
   [secondPlayerQuery whereKey:@"secondPlayer" equalTo:self];
   [secondPlayerQuery whereKey:@"state" containedIn:@[@(kMatchStateEndedNormal), @(kMatchStateEndedResign), @(kMatchStateEndedTimeout)]];
-  
+
   PFQuery *orQuery = [PFQuery orQueryWithSubqueries:@[firstPlayerQuery, secondPlayerQuery]];
   [orQuery orderByDescending:@"updatedAt"];  // want newest COMPLETED matches first.
   [orQuery includeKey:@"firstPlayer"];
   [orQuery includeKey:@"secondPlayer"];
+  orQuery.limit = 50;
   [orQuery findObjectsInBackgroundWithBlock:block];
 }
+
+- (void)countOfMatchesWon:(PFIntegerResultBlock)block {
+  PFQuery *firstPlayerQuery = [PFQuery queryWithClassName:@"Match"];
+  [firstPlayerQuery whereKey:@"firstPlayer" equalTo:self];
+  [firstPlayerQuery whereKey:@"winningPlayer" equalTo:@(0)];
+  [firstPlayerQuery whereKey:@"state" containedIn:@[@(kMatchStateEndedNormal), @(kMatchStateEndedResign), @(kMatchStateEndedTimeout)]];
+
+  PFQuery *secondPlayerQuery = [PFQuery queryWithClassName:@"Match"];
+  [secondPlayerQuery whereKey:@"secondPlayer" equalTo:self];
+  [secondPlayerQuery whereKey:@"winningPlayer" equalTo:@(1)];
+  [secondPlayerQuery whereKey:@"state" containedIn:@[@(kMatchStateEndedNormal), @(kMatchStateEndedResign), @(kMatchStateEndedTimeout)]];
+
+  PFQuery *orQuery = [PFQuery orQueryWithSubqueries:@[firstPlayerQuery, secondPlayerQuery]];
+  [orQuery countObjectsInBackgroundWithBlock:block];
+}
+
+- (void)countOfMatchesLost:(PFIntegerResultBlock)block {
+  PFQuery *firstPlayerQuery = [PFQuery queryWithClassName:@"Match"];
+  [firstPlayerQuery whereKey:@"firstPlayer" equalTo:self];
+  [firstPlayerQuery whereKey:@"losingPlayer" equalTo:@(0)];
+  [firstPlayerQuery whereKey:@"state" containedIn:@[@(kMatchStateEndedNormal), @(kMatchStateEndedResign), @(kMatchStateEndedTimeout)]];
+
+  PFQuery *secondPlayerQuery = [PFQuery queryWithClassName:@"Match"];
+  [secondPlayerQuery whereKey:@"secondPlayer" equalTo:self];
+  [secondPlayerQuery whereKey:@"losingPlayer" equalTo:@(1)];
+  [secondPlayerQuery whereKey:@"state" containedIn:@[@(kMatchStateEndedNormal), @(kMatchStateEndedResign), @(kMatchStateEndedTimeout)]];
+
+  PFQuery *orQuery = [PFQuery orQueryWithSubqueries:@[firstPlayerQuery, secondPlayerQuery]];
+  [orQuery countObjectsInBackgroundWithBlock:block];
+}
+
+- (void)countOfMatchesTied:(PFIntegerResultBlock)block {
+  PFQuery *firstPlayerQuery = [PFQuery queryWithClassName:@"Match"];
+  [firstPlayerQuery whereKey:@"firstPlayer" equalTo:self];
+  [firstPlayerQuery whereKey:@"losingPlayer" equalTo:@(-1)];
+  [firstPlayerQuery whereKey:@"winningPlayer" equalTo:@(-1)];
+  [firstPlayerQuery whereKey:@"state" containedIn:@[@(kMatchStateEndedNormal), @(kMatchStateEndedResign), @(kMatchStateEndedTimeout)]];
+
+  PFQuery *secondPlayerQuery = [PFQuery queryWithClassName:@"Match"];
+  [secondPlayerQuery whereKey:@"secondPlayer" equalTo:self];
+  [secondPlayerQuery whereKey:@"losingPlayer" equalTo:@(-1)];
+  [secondPlayerQuery whereKey:@"winningPlayer" equalTo:@(-1)];
+  [secondPlayerQuery whereKey:@"state" containedIn:@[@(kMatchStateEndedNormal), @(kMatchStateEndedResign), @(kMatchStateEndedTimeout)]];
+
+  PFQuery *orQuery = [PFQuery orQueryWithSubqueries:@[firstPlayerQuery, secondPlayerQuery]];
+  [orQuery countObjectsInBackgroundWithBlock:block];
+}
+
 
 @end
