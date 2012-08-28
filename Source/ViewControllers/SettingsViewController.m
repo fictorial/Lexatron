@@ -93,10 +93,14 @@
   [self.view addSubview:_idLabel];
 }
 
-- (BOOL)isMatchBeingViewed {
-  id nav = [UIApplication sharedApplication].keyWindow.rootViewController;
-  if ([nav isKindOfClass:UINavigationController.class])
-    return [((UINavigationController *)nav).topViewController isKindOfClass:MatchViewController.class];
+- (BOOL)isViewingMatchAsCurrentPlayer {
+  if ([[UIApplication sharedApplication].keyWindow.rootViewController isKindOfClass:UINavigationController.class]) {
+    UINavigationController *nav = (UINavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    if ([nav.topViewController isKindOfClass:MatchViewController.class]) {
+      MatchViewController *matchVC = (MatchViewController *)nav.topViewController;
+      return [matchVC.match currentUserIsCurrentPlayer];
+    }
+  }
   return NO;
 }
 
@@ -123,7 +127,9 @@
   [super viewWillAppear:animated];
   [self updateUserContext];
 
-  _resignButton.hidden = ![self isMatchBeingViewed];
+  _resignButton.hidden = ![self isViewingMatchAsCurrentPlayer];
+
+  DLog(@"resign button is hidden? %@", _resignButton.hidden ? @"Y" : @"N");
 }
 
 - (void)updateUserContext {

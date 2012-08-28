@@ -1558,6 +1558,9 @@
   if (_passAndPlay)
     return _currentPlayerNumber;
 
+  if (_state == kMatchStatePending && _turns.count == 0)
+    return 0;
+
   NSString *currentUserObjectId = [PFUser currentUser].objectId;
 
   if ([currentUserObjectId isEqualToString:_firstPlayer.objectId])
