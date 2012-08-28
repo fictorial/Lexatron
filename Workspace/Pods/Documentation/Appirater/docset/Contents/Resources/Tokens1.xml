@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/Appirater.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/Appirater</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>Appirater.h</DeclaredIn>
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Appirater/setRatingAlert:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>Appirater.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIAlertView *ratingAlert</Declaration>
+			
+			
+			<Anchor>//api/name/ratingAlert</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/Appirater/ratingAlert</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>Appirater.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIAlertView *ratingAlert</Declaration>
+			
+			
+			<Anchor>//api/name/ratingAlert</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/Appirater/appLaunched</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>Appirater.h</DeclaredIn>			
+			
+			<Declaration>+ (void)appLaunched</Declaration>
+			
+			
+			<Anchor>//api/name/appLaunched</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/Appirater/appLaunched:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>Appirater.h</DeclaredIn>			
+			
+			<Declaration>+ (void)appLaunched:(BOOL)canPromptForRating</Declaration>
+			
+			
+			<Anchor>//api/name/appLaunched:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/Appirater/appEnteredForeground:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>Appirater.h</DeclaredIn>			
+			
+			<Declaration>+ (void)appEnteredForeground:(BOOL)canPromptForRating</Declaration>
+			
+			
+			<Anchor>//api/name/appEnteredForeground:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/Appirater/userDidSignificantEvent:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>Appirater.h</DeclaredIn>			
+			
+			<Declaration>+ (void)userDidSignificantEvent:(BOOL)canPromptForRating</Declaration>
+			
+			
+			<Anchor>//api/name/userDidSignificantEvent:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/Appirater/rateApp</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>Appirater.h</DeclaredIn>			
+			
+			<Declaration>+ (void)rateApp</Declaration>
+			
+			
+			<Anchor>//api/name/rateApp</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

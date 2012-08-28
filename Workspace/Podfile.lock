@@ -1,7 +1,8 @@
 PODS:
   - ABContactHelper (0.0.1)
   - AFNetworking (1.0RC1)
-  - CMPopTipView (0.0.1)
+  - Appirater (0.0.3)
+  - CMPopTipView (1.1.0)
   - FTUtils (1.1.1)
   - JSONKit (1.5pre)
   - KNMultiItemSelector (1.0):
@@ -18,10 +19,12 @@ PODS:
   - UIGlossyButton/LayerEffects (0.0.7)
   - UIImage+PDF (1.0.0)
   - YIPopupTextView (0.0.1)
+  - iVersion (1.9)
 
 DEPENDENCIES:
   - ABContactHelper
   - AFNetworking
+  - Appirater
   - CMPopTipView
   - FTUtils
   - JSONKit
@@ -33,3 +36,4 @@ DEPENDENCIES:
   - UIGlossyButton
   - UIImage+PDF
   - YIPopupTextView
+  - iVersion

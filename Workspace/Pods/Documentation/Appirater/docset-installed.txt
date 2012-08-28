@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/bhammond/Library/Developer/Shared/Documentation/DocSets/org.cocoapods.Appirater-0.0.3.docset
+Time: 2012-08-28 19:31:24 +0000

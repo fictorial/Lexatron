@@ -17,6 +17,7 @@
 #import "PushManager.h"
 #import "MatchViewController.h"
 #import "ActivityViewController.h"
+#import "Appirater.h"
 
 @implementation AppDelegate {
   UINavigationController *_navigationController;
@@ -117,7 +118,13 @@
     [_navigationController pushViewController:vc animated:NO];
   }
 
+  [Appirater appLaunched:YES];
+
   return YES;
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+  [Appirater appEnteredForeground:YES];
 }
 
 - (void)dealloc {
@@ -282,6 +289,11 @@
 
   if (match.passAndPlay)
     return;
+
+  if (match.state == kMatchStateEndedNormal && match.winningPlayer == [match currentUserPlayerNumber]) {
+    DLog(@"local player won the match -- notifying appirater of this SIGNIFICANT event");
+    [Appirater userDidSignificantEvent:YES];
+  }
 
   [self refreshAppIconBadge];
 }
