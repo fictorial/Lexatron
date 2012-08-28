@@ -26,7 +26,8 @@ enum {
 
 enum {
   kMatchEndSummaryLabelTag = 888,
-  kMatchEndRematchButtonTag
+  kMatchEndRematchButtonTag,
+  kDropTargetViewTag
 };
 
 @interface MatchViewController ()
@@ -1023,6 +1024,8 @@ enum {
 
   TileView *tileView = (TileView *)draggableView;
 
+  [self removeDropTargetView];
+
   if ([self isDropOnRack:point]) {
     DLog(@"------ end dragging operation: dropped on rack");
     return [self tileView:tileView wasDroppedOnRackAtPoint:point];
@@ -1059,11 +1062,32 @@ enum {
   tileView.alpha = 1;
 }
 
+- (void)removeDropTargetView {
+  [[_boardScrollView.boardView viewWithTag:kDropTargetViewTag] removeFromSuperview];
+}
+
 - (void)draggableViewIsBeingDragged:(DraggableView *)draggableView currentPoint:(CGPoint)point {
-  //  if (![draggableView isKindOfClass:[TileView class]])
-  //    return;
-  //
-  //  TileView *tileView = (TileView *)draggableView;
+  if (![draggableView isKindOfClass:[TileView class]])
+    return;
+
+  [self removeDropTargetView];
+
+  point = [self.boardScrollView.boardView convertPoint:point fromView:self.view];
+
+  CGPoint boardCell = [_boardScrollView.boardView boardToCell:point];
+
+  if (boardCell.x < 0 || boardCell.y < 0)
+    return;
+
+  CGRect cellRect = [_boardScrollView.boardView boardFromCellX:boardCell.x y:boardCell.y];
+
+//  DLog(@"hover tile atop board cell (%d, %d)", (int)boardCell.x, (int)boardCell.y);
+
+  TileView *tempView = [TileView viewWithFrame:cellRect letter:0];
+  [tempView configureForBoardDisplayAsPlaceholder];
+  tempView.tag = kDropTargetViewTag;
+  [_boardScrollView.boardView addSubview:tempView];
+  tempView.userInteractionEnabled = NO;
 }
 
 - (void)draggableViewWasTouched:(DraggableView *)draggableView {

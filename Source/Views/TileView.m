@@ -15,7 +15,9 @@ enum {
   kPointLabelTag
 };
 
-@implementation TileView
+@implementation TileView {
+  BOOL _isPlaceholder;
+}
 
 - (id)init {
   self = [super initWithFrame:CGRectZero];
@@ -35,7 +37,7 @@ enum {
 // Thus, we can configure a tile view to draw itself at a larger size and scale it down for "normal" zoomed-out display.
 // When zoomed in, et voila, higher quality.
 
-- (void)configureForBoardDisplay {
+- (void)configureBoardDisplayCommon {
   CGFloat newWidth = kTileWidth * kBoardMaxZoomScale;
   CGFloat newHeight = kTileHeight * kBoardMaxZoomScale;
 
@@ -44,8 +46,23 @@ enum {
                           newWidth, newHeight);
 
   self.transform = CGAffineTransformMakeScale(1 / kBoardMaxZoomScale, 1 / kBoardMaxZoomScale);
+}
+
+- (void)configureForBoardDisplay {
+  _isPlaceholder = NO;
+
+  [self configureBoardDisplayCommon];
 
   [self updateLabels];
+}
+
+- (void)configureForBoardDisplayAsPlaceholder {
+  _isPlaceholder = YES;
+
+  [self configureBoardDisplayCommon];
+
+  [[self viewWithTag:kLetterLabelTag] removeFromSuperview];
+  [[self viewWithTag:kPointLabelTag] removeFromSuperview];
 }
 
 // When on the rack, the tile is zoomed-out so draw at 1:1
@@ -133,7 +150,7 @@ enum {
   CGContextRef c = UIGraphicsGetCurrentContext();
   CGContextSetFillColorWithColor(c, [self tileColor].CGColor);
 
-  if (_letter.cellIndex != -1) {
+  if (_letter.cellIndex != -1) {           // on the board
     CGContextBeginPath(c);                 // fill 2:1 isometric diamond shape
     CGContextMoveToPoint(c, 0.5, hh);      // W
     CGContextAddLineToPoint(c, hw, 0.5);   // N
@@ -142,9 +159,17 @@ enum {
     CGContextAddLineToPoint(c, 0.5, hh);   // W
 
     CGContextClosePath(c);
-    CGContextFillPath(c);
-  } else {
-    CGContextFillRect(c, self.bounds);   // Rack tiles aren't isometric
+
+    if (_isPlaceholder) {                  // user is hovering over the board.
+      CGContextSetStrokeColorWithColor(c, [UIColor darkGrayColor].CGColor);
+      CGContextSetLineWidth(c, SCALED(2));
+      CGContextSetFillColorWithColor(c, [[UIColor grayColor] colorWithAlphaComponent:0.5].CGColor);
+      CGContextDrawPath(c, kCGPathFillStroke);
+    } else {
+      CGContextFillPath(c);
+    }
+  } else {                                 // on the rack
+    CGContextFillRect(c, self.bounds);     // Rack tiles aren't isometric
   }
 }
 

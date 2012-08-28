@@ -18,6 +18,7 @@
 + (id)viewWithFrame:(CGRect)frame letter:(Letter *)letter;
 
 - (void)configureForBoardDisplay;
+- (void)configureForBoardDisplayAsPlaceholder;
 - (void)configureForRackDisplayWithSize:(CGFloat)size;
 
 @end
