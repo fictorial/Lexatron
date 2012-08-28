@@ -622,7 +622,7 @@ enum {
 
   if (_chatVC) {
     [_chatVC refresh];
-  } else {
+  } else if (!_match.passAndPlay) {
     [self addChatButton];
     self.chatVC = [ChatViewController controllerForMatch:_match delegate:self];
   }
@@ -647,6 +647,11 @@ enum {
                                  [weakSelf setupRack];
                                  [weakRack popTilesIn];
                                  [weakSelf hideActivityHUD];
+
+                                 if ([weakSelf match].passAndPlay) {
+                                   [weakSelf highlightLettersPlayedByOpponentInMostRecentTurn];
+                                 }
+
                                  [weakSelf performBlock:^(id sender) {
                                    [weakSelf zoomToLettersOwnedByCurrentPlayer];
                                  } afterDelay:2];
@@ -723,6 +728,9 @@ enum {
           tileView.letter = [_match letterAtCellIndex:tileView.letter.cellIndex];
           tileView.isNew = YES;
           [tileView fadeIn:0.4 delegate:nil];
+        } else if (tileView.letter.turnNumber == _match.turns.count-1) {
+          tileView.letter = [_match letterAtCellIndex:tileView.letter.cellIndex];
+          tileView.isNew = NO;
         }
       }
     }

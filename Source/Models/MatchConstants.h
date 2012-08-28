@@ -1,6 +1,6 @@
 enum {
   kRackTileCount = 7,
-  kBoardSize = 29,
+  kBoardSize = 21,
   kBoardCellCount = kBoardSize*kBoardSize,
   kBingoBonusPoints = 50
 };

@@ -18,19 +18,19 @@ int modifierAtcellIndexFor(int cellIndex) {
 }
 
 int modifierAt(int x, int y) {
-  if (x == 0 && y == kBoardSize-1)
+  if (x == 2 && y == 2)
     return kModifierFirstPlayerStart;
 
-  if (x == kBoardSize-1 && y == 0)
+  if (x == 18 && y == 18)
     return kModifierFirstPlayerEnd;
 
-  if (x == 0 && y == 0)
+  if (x == 2 && y == 18)
     return kModifierSecondPlayerStart;
 
-  if (x == kBoardSize-1 && y == kBoardSize-1)
+  if (x == 18 && y == 2)
     return kModifierSecondPlayerEnd;
 
-  if ((x == 6 && y == 14) || (x == 22 && y == 14))
+  if ((x == 4 && y == 10) || (x == 16 && y == 10))
     return kModifierMystery;
 
 #define checkMod(mod, locs) \
@@ -38,10 +38,25 @@ for (int i=0; i < sizeof(locs)/sizeof(float); i += 2) \
   if (locs[i] == x && locs[i+1] == y) \
     return mod;
 
-  static float TLs[] = {0,8, 8,0, 8,8, 20,8, 20,0, 28,8, 0,20, 8,20, 8,28, 20,20, 20,28, 28,20};
-  static float DLs[] = {2,6, 6,2, 6,6, 6,10, 10,6, 12,12, 16,16, 18,6, 22,10, 22,6, 22,2, 26,6, 6,18, 2,22, 6,22, 10,22, 6,26, 22,18, 18,22, 22,22, 26,22, 22,26 };
-  static float DWs[] = {4,4, 24,4, 16,12, 12,16, 4,24, 24,24};
-  static float TWs[] = {14,8, 14,20};
+  static float TLs[] = {
+    6,0,  14,0,
+    0,6,  20,6,
+    0,14, 20,14,
+    6,20, 14,20
+  };
+
+  static float DLs[] = {
+    5,5,  15,5,
+    5,15, 15,15
+  };
+
+  static float DWs[] = {
+    10,4, 10,16
+  };
+
+  static float TWs[] = {
+    10,10
+  };
 
   checkMod(kModifierTL, TLs);
   checkMod(kModifierDL, DLs);
@@ -86,22 +101,29 @@ BOOL isMystery(int cellIndex) {
 }
 
 BOOL isDeadZone(int tx, int ty) {
-  BOOL dead = NO;
+  static int locs[] = {
+    0,0, 2,0, 4,0, 8,0, 10,0, 12,0, 16,0, 18,0, 20,0,
+    1,1, 3,1, 9,1, 11,1, 17,1, 19,1,
+    0,2, 10,2, 20,2,
+    1,3, 19,3,
+    0,4, 20,4,
+    0,8, 20,8,
+    1,9, 19,9,
+    0,10, 2,10, 18,10, 20,10,
+    1,11, 19,11,
+    0,12, 20,12,
+    0,16, 20,16,
+    1,17, 19,17,
+    0,18, 10,18, 20,18,
+    1,19, 3,19, 9,19, 11,19, 17,19, 19,19,
+    0,20, 2,20, 4,20, 8,20, 10,20, 12,20, 16,20, 18,20, 20,20
+  };
 
-  switch (ty) {
-    case 0:  case 28: dead = (tx >= 10 && tx < 19); break;
-    case 1:  case 27: dead = (tx >= 11 && tx < 18); break;
-    case 2:  case 26: dead = (tx >= 12 && tx < 17); break;
-    case 3:  case 25: dead = (tx >= 13 && tx < 16); break;
-    case 4:  case 24: dead = (tx == 14);            break;
-    case 10: case 19: dead = (tx < 1 || tx > 27);   break;
-    case 11: case 18: dead = (tx < 2 || tx > 26);   break;
-    case 12: case 17: dead = (tx < 3 || tx > 25);   break;
-    case 13: case 16: dead = (tx < 4 || tx > 24);   break;
-    case 14: case 15: dead = (tx < 5 || tx > 23);   break;
-  }
+  for (int i=0; i < sizeof(locs)/sizeof(float); i += 2)
+    if (locs[i] == tx && locs[i+1] == ty)
+      return YES;
 
-  return dead;
+  return NO;
 }
 
 BOOL isValidCellIndex(int cellIndex) {

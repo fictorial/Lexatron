@@ -1000,9 +1000,13 @@
 
     Letter *aLetter = [self letterAtCellIndex:cellIndexFor(x, y)];
 
-    if (aLetter && aLetter.playerOwner == _currentPlayerNumber) {
-      lastXWithLetter = x;
-      lastYWithLetter = y;
+    if (aLetter) {
+      if (aLetter.playerOwner == _currentPlayerNumber) {
+        lastXWithLetter = x;
+        lastYWithLetter = y;
+      } else {
+        break;
+      }
     }
   }
 
