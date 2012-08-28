@@ -129,7 +129,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
   return [[self textForIndexPath:indexPath]
           sizeWithFont:_font
-          constrainedToSize:CGSizeMake(_containerView.bounds.size.width, HUGE_VAL)
+          constrainedToSize:CGSizeMake(_tableView.bounds.size.width*0.8, HUGE_VAL)
           lineBreakMode:UILineBreakModeWordWrap].height;
 }
 
