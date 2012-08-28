@@ -16,7 +16,7 @@
 #define kFontSizeHUD            SCALED(16)
 
 #define kBoardMaxZoomScale      (ISPAD ? 2.0 : 3.0)
-#define BOARDSCALED(x)          ceilf(ISPAD ? (x*2.13333333333) : x)
+#define BOARDSCALED(x)          ceilf(ISPAD ? (x*2.3) : x)
 #define kBoardWidthPoints       BOARDSCALED(440)
 #define kBoardHeightPoints      BOARDSCALED(220)
 
