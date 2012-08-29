@@ -1072,6 +1072,14 @@ enum {
 
   [self removeDropTargetView];
 
+  _rackView.layer.borderWidth = 0;
+
+  if ([self isDropOnRack:point]) {
+    _rackView.layer.borderColor = kTileDropHighlightColor.CGColor;
+    _rackView.layer.borderWidth = SCALED(2);
+    return;
+  }
+
   point = [self.boardScrollView.boardView convertPoint:point fromView:self.view];
 
   CGPoint boardCell = [_boardScrollView.boardView boardToCell:point];

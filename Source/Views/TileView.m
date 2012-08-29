@@ -163,7 +163,7 @@ enum {
     if (_isPlaceholder) {                  // user is hovering over the board.
       CGContextSetStrokeColorWithColor(c, [UIColor darkGrayColor].CGColor);
       CGContextSetLineWidth(c, SCALED(2));
-      CGContextSetFillColorWithColor(c, [[UIColor grayColor] colorWithAlphaComponent:0.5].CGColor);
+      CGContextSetFillColorWithColor(c, kTileDropHighlightColor.CGColor);
       CGContextDrawPath(c, kCGPathFillStroke);
     } else {
       CGContextFillPath(c);
