@@ -18,12 +18,16 @@
 #import "MatchViewController.h"
 #import "ActivityViewController.h"
 #import "Appirater.h"
+#import "iVersion.h"
 
 @implementation AppDelegate {
   UINavigationController *_navigationController;
 }
 
-@synthesize window = _window;
++ (void)initialize {
+  [iVersion sharedInstance].appStoreID = [kAppStoreAppID integerValue];
+  [iVersion sharedInstance].remoteVersionsPlistURL = @"http://fictorial.com/lexatron/versions.plist";
+}
 
 - (void)setupTestFlight {
 #ifndef APPSTORE
@@ -118,13 +122,13 @@
     [_navigationController pushViewController:vc animated:NO];
   }
 
-  [Appirater appLaunched:YES];
+  [Appirater appLaunched:NO];
 
   return YES;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-  [Appirater appEnteredForeground:YES];
+  [Appirater appEnteredForeground:NO];
 }
 
 - (void)dealloc {

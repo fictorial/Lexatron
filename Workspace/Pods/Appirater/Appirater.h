@@ -53,7 +53,8 @@ extern NSString *const kAppiraterReminderRequestDate;
 /*
  Your localized app's name.
  */
-#define APPIRATER_LOCALIZED_APP_NAME    [[[NSBundle mainBundle] localizedInfoDictionary] objectForKey:(NSString *)kCFBundleNameKey]
+#define APPIRATER_LOCALIZED_APP_NAME    @"Lexatron"
+//[[[NSBundle mainBundle] localizedInfoDictionary] objectForKey:(NSString *)kCFBundleNameKey]
 
 /*
  Your app's name.
@@ -87,7 +88,7 @@ extern NSString *const kAppiraterReminderRequestDate;
 /*
  Text for button to remind the user to review later.
  */
-#define APPIRATER_RATE_LATER			NSLocalizedString(@"Remind me later", nil)
+#define APPIRATER_RATE_LATER			NSLocalizedString(@"Later", nil)
 
 /*
  Users will need to have the same version of your app installed for this many
@@ -118,14 +119,14 @@ extern NSString *const kAppiraterReminderRequestDate;
  a significant event, call the method:
  [Appirater userDidSignificantEvent:];
  */
-#define APPIRATER_SIG_EVENTS_UNTIL_PROMPT	-1	// integer
+#define APPIRATER_SIG_EVENTS_UNTIL_PROMPT	5	// integer
 
 /*
  Once the rating alert is presented to the user, they might select
  'Remind me later'. This value specifies how long (in days) Appirater
  will wait before reminding them.
  */
-#define APPIRATER_TIME_BEFORE_REMINDING		1	// double
+#define APPIRATER_TIME_BEFORE_REMINDING		5	// double
 
 /*
  'YES' will show the Appirater alert everytime. Useful for testing how your message

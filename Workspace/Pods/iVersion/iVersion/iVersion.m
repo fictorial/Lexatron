@@ -453,7 +453,7 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
 - (NSString *)URLEncodedString:(NSString *)string
 {
     CFStringRef encoded = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                                                  (__bridge CFStringRef)string,
+                                                                  (CFStringRef)string,
                                                                   NULL,
                                                                   CFSTR("!*'\"();:@&=+$,/?%#[]% "),
                                                                   kCFStringEncodingUTF8);

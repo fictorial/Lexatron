@@ -111,8 +111,8 @@ NSString *templateReviewURL = @"itms-apps://ax.itunes.apple.com/WebObjects/MZSto
 	UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:APPIRATER_MESSAGE_TITLE
 														 message:APPIRATER_MESSAGE
 														delegate:self
-											   cancelButtonTitle:APPIRATER_CANCEL_BUTTON
-											   otherButtonTitles:APPIRATER_RATE_BUTTON, APPIRATER_RATE_LATER, nil] autorelease];
+											   cancelButtonTitle:APPIRATER_RATE_LATER
+											   otherButtonTitles:APPIRATER_RATE_BUTTON, nil] autorelease];
 	self.ratingAlert = alertView;
 	[alertView show];
 }
@@ -336,20 +336,20 @@ NSString *templateReviewURL = @"itms-apps://ax.itunes.apple.com/WebObjects/MZSto
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	
 	switch (buttonIndex) {
-		case 0:
-		{
-			// they don't want to rate it
-			[userDefaults setBool:YES forKey:kAppiraterDeclinedToRate];
-			[userDefaults synchronize];
-			break;
-		}
+//		case 0:
+//		{
+//			// they don't want to rate it
+//			[userDefaults setBool:YES forKey:kAppiraterDeclinedToRate];
+//			[userDefaults synchronize];
+//			break;
+//		}
 		case 1:
 		{
 			// they want to rate it
 			[Appirater rateApp];
 			break;
 		}
-		case 2:
+		case 0:
 			// remind them later
 			[userDefaults setDouble:[[NSDate date] timeIntervalSince1970] forKey:kAppiraterReminderRequestDate];
 			[userDefaults synchronize];
