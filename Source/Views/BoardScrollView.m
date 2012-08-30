@@ -110,6 +110,8 @@
 - (void)zoomOut {
   DLog(@"zoom out");
 
+  [self zoomToRect:self.bounds animated:NO];
+
   [UIView animateWithDuration:0.4 animations:^{
     self.zoomScale = self.minimumZoomScale;
   } completion:^(BOOL finished) {
