@@ -447,6 +447,7 @@ enum {
 
   if (selectedIndexes.count > 0) {
     [_match exchangeRackLettersAtIndexes:[selectedIndexes allObjects]];
+    [[LQAudioManager sharedManager] playEffect:kEffectShuffle];
     [TestFlight passCheckpoint:@"matchSwappedLetters"];
   }
 

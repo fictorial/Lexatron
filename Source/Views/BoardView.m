@@ -151,7 +151,8 @@ static inline int sideOfLine(CGPoint A, CGPoint B, CGPoint P) {
   [_label removeFromSuperview];
 
   _label = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(_imageView.bounds)-kFontSizeSmall, CGRectGetWidth(_imageView.bounds), kFontSizeSmall)];
-  _label.text = [NSString stringWithFormat:@"%d letters remain", [match bagTileCount]];
+  int count = [match bagTileCount];
+  _label.text = [NSString stringWithFormat:@"%d letter%@ remain%@", count, count == 1 ? @"" : @"s", count == 1 ? @"s" : @""];
   _label.textAlignment = UITextAlignmentCenter;
   _label.textColor = [UIColor colorWithWhite:0.4 alpha:1];
   _label.backgroundColor = [UIColor clearColor];
