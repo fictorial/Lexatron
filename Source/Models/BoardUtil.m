@@ -18,19 +18,19 @@ int modifierAtcellIndexFor(int cellIndex) {
 }
 
 int modifierAt(int x, int y) {
-  if (x == 2 && y == 2)
+  if (x == 0 && y == 0)
     return kModifierFirstPlayerStart;
 
-  if (x == 18 && y == 18)
+  if (x == kBoardSize-1 && y == kBoardSize-1)
     return kModifierFirstPlayerEnd;
 
-  if (x == 2 && y == 18)
+  if (x == 0 && y == kBoardSize-1)
     return kModifierSecondPlayerStart;
 
-  if (x == 18 && y == 2)
+  if (x == kBoardSize-1 && y == 0)
     return kModifierSecondPlayerEnd;
 
-  if ((x == 4 && y == 10) || (x == 16 && y == 10))
+  if ((x == 2 && y == 10) || (x == 18 && y == 10))
     return kModifierMystery;
 
 #define checkMod(mod, locs) \
@@ -55,7 +55,9 @@ for (int i=0; i < sizeof(locs)/sizeof(float); i += 2) \
   };
 
   static float TWs[] = {
-    10,10
+    10,2,
+    10,10,
+    10,18
   };
 
   checkMod(kModifierTL, TLs);
@@ -102,21 +104,14 @@ BOOL isMystery(int cellIndex) {
 
 BOOL isDeadZone(int tx, int ty) {
   static int locs[] = {
-    0,0, 2,0, 4,0, 8,0, 10,0, 12,0, 16,0, 18,0, 20,0,
-    1,1, 3,1, 9,1, 11,1, 17,1, 19,1,
-    0,2, 10,2, 20,2,
-    1,3, 19,3,
-    0,4, 20,4,
-    0,8, 20,8,
-    1,9, 19,9,
-    0,10, 2,10, 18,10, 20,10,
-    1,11, 19,11,
-    0,12, 20,12,
-    0,16, 20,16,
-    1,17, 19,17,
-    0,18, 10,18, 20,18,
-    1,19, 3,19, 9,19, 11,19, 17,19, 19,19,
-    0,20, 2,20, 4,20, 8,20, 10,20, 12,20, 16,20, 18,20, 20,20
+    8,0, 10,0, 12,0,
+    9,1, 11,1,
+    0,8, 0,10, 0,12,
+    1,9, 1,11,
+    19,9, 19,11,
+    20,8, 20,10, 20,12,
+    9,19, 11,19,
+    8,20, 10,20, 12,20
   };
 
   for (int i=0; i < sizeof(locs)/sizeof(float); i += 2)

@@ -233,6 +233,9 @@ typedef enum {
 
   id desc = [_turnDescriptions objectAtIndex:indexPath.row];
 
+  if (desc == [NSNull null])
+    desc = @"No description";
+
   if (_mode == kActivityModeYourTurn || _mode == kActivityModeCompleted) {
     cell.textLabel.text = desc;
     cell.detailTextLabel.text = updatedAtInWords;

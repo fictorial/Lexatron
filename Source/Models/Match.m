@@ -58,12 +58,15 @@
 
     // See Texts/Tiles.txt
 
-    NSDictionary *tileDistribution = @{ @'A':@(18), @'B':@(4), @'C':@(4), @'D':@(10), @'E':@(12), @'F':@(4), @'G':@(6), @'H':@(8), @'I':@(16), @'J':@(2), @'K':@(2), @'L':@(8), @'M':@(4), @'N':@(10), @'O':@(16), @'P':@(4), @'Q':@(2), @'R':@(12), @'S':@(10), @'T':@(14), @'U':@(8), @'V':@(4), @'W':@(4), @'X':@(2), @'Y':@(4), @'Z':@(2), @' ':@(4) };
+    NSDictionary *tileDistribution = @{ @'A':@(12), @'B':@(2), @'C':@(2),
+    @'D':@(6), @'E':@(8), @'F':@(2), @'G':@(4), @'H':@(5), @'I':@(10),
+    @'J':@(1), @'K':@(1), @'L':@(5), @'M':@(2), @'N':@(6), @'O':@(10),
+    @'P':@(2), @'Q':@(1), @'R':@(8), @'S':@(6), @'T':@(9), @'U':@(5),
+    @'V':@(2), @'W':@(2), @'X':@(1), @'Y':@(2), @'Z':@(1), @' ':@(4) };
 
     // Bag is just a shuffled, flattened array of letters.
-    // There's only 400 or so of these so it's not a memory concern really.
 
-    _bag = [NSMutableArray arrayWithCapacity:400];
+    _bag = [NSMutableArray arrayWithCapacity:105];
 
     [tileDistribution enumerateKeysAndObjectsUsingBlock:^(NSNumber *letterValue, NSNumber *letterCount, BOOL *stop) {
       for (int i = 0; i < letterCount.integerValue; ++i)
