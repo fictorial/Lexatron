@@ -822,7 +822,6 @@ typedef enum {
 }
 
 - (void)continueScanningContacts {
-  [self showActivityHUD];
 
   // Get all contacts from the local address book.
   // Search the Parse users for those with an email address matching one of the contacts.
@@ -844,10 +843,11 @@ typedef enum {
 
   if (nameForEmail.count == 0) {
     [self showNoticeAlertWithCaption:@"No contacts in address book"];
-    [self hideActivityHUD];
     self.selectorMode = kSelectorModeNone;
     return;
   }
+
+  [self showActivityHUD];
 
   self.selectorMode = kSelectorModeContacts;
 
@@ -869,6 +869,8 @@ typedef enum {
     DLog(@"found %d users from contacts (email) with the app installed", usersWithAppInstalledFromContacts.count);
 
     if (usersWithAppInstalledFromContacts.count == 0) {
+      [weakSelf hideActivityHUD];
+
       NSString *fmt = NSLocalizedString(@"None of your contacts are playing %@. Invite them to join in the fun!", @"%@ is the app name");
       NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
       NSString *message = [NSString stringWithFormat:fmt, appName];
