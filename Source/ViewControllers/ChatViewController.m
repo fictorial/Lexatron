@@ -186,6 +186,8 @@
   if (msg.length == 0)
     return;
 
+  msg = [msg substringToIndex:MIN(msg.length, 150)];
+
   [_chat postMessage:msg];
 }
 
