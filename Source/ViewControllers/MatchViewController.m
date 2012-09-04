@@ -1284,8 +1284,8 @@ enum {
   BOOL isTie = (_match.winningPlayer == -1 && _match.losingPlayer == -1);
   BOOL currentPlayerWon = (_match.winningPlayer == [_match currentUserPlayerNumber] && !isTie);
 
-  // Loser gets to rematch.
-  BOOL showRematchOption = !currentPlayerWon;
+  // Loser gets to rematch or in PNP matches, whomever is holding the device...
+  BOOL showRematchOption = !currentPlayerWon || _match.passAndPlay;
 
   NSString *caption;
   if (currentPlayerWon) {
