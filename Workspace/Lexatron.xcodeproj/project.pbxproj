@@ -1078,7 +1078,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 79B5CFF097734030963C564F /* Pods.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Fictorial LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brian Hammond (QZ382G94SW)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1092,7 +1092,7 @@
 				INFOPLIST_FILE = "Lexatron/Lexatron-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4AF6BF76-906A-457B-B9C7-56606C1F4745";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4CEE9B14-2AA8-4EAD-899A-372E38CA3B45";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

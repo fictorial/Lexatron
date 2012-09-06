@@ -513,9 +513,10 @@ enum {
     self.viewState = kViewStateNormal;
 
     if ([_match currentUserIsCurrentPlayer]) {
-      [self performBlock:^(id sender) {
-        [weakSelf zoomToLettersOwnedByCurrentPlayer];
-      } afterDelay:2];
+      [self.boardScrollView zoomOut];
+//      [self performBlock:^(id sender) {
+//        [weakSelf zoomToLettersOwnedByCurrentPlayer];
+//      } afterDelay:2];
     }
 
     [self updateScoreboardTiles];

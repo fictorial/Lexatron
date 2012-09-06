@@ -183,7 +183,7 @@
 }
 
 - (void)showCredits:(id)sender {
-  [self showAlertWithCaption:@"Lexatron was made by Fictorial.\n\nThanks to all the play testers and thank you for playing!"
+  [self showAlertWithCaption:@"Lexatron was made by Fictorial.\n\nBig thanks to Lexatron beta testers Andre, Bobbi, Chris, Christoph, Colin, Craig, Doug, Ellen, Faysie, Frank, Greg, HB, Judy, Krish, Lisa, Mats, Melissa, Nettie, Nitin, Oz, Sean, Sharai, Stephanie, Thomas, and Troy."
                      titles:@[ @"OK", @"Twitter", @"Facebook" ]
                 colors:@[ kGlossyBlackColor, kGlossyLightBlueColor, kGlossyBlueColor ]
                        block:^(int buttonPressed) {

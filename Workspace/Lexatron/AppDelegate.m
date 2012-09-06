@@ -294,10 +294,17 @@
   if (match.passAndPlay)
     return;
 
+#if APPSTORE
+
   if (match.state == kMatchStateEndedNormal && match.winningPlayer == [match currentUserPlayerNumber]) {
     DLog(@"local player won the match -- notifying appirater of this SIGNIFICANT event");
-    [Appirater userDidSignificantEvent:YES];
+
+    [self performBlock:^(id sender) {
+      [Appirater userDidSignificantEvent:YES];
+    } afterDelay:2];
   }
+
+#endif
 
   [self refreshAppIconBadge];
 }
