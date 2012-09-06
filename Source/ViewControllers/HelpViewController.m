@@ -35,7 +35,7 @@
 
   float webViewMargin = margin/2;
   float width = cw-webViewMargin*2;
-  CGRect webViewFrame = CGRectMake(cw/2 - width/2, webViewMargin, width, CGRectGetHeight(_containerView.bounds) - webViewMargin);
+  CGRect webViewFrame = CGRectMake(cw/2 - width/2, webViewMargin, width, CGRectGetHeight(_containerView.bounds) - webViewMargin*2);
   self.webView = [[UIWebView alloc] initWithFrame:webViewFrame];
   _webView.delegate = self;
   _webView.backgroundColor = [UIColor clearColor];
