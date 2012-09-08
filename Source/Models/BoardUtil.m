@@ -46,12 +46,13 @@ for (int i=0; i < sizeof(locs)/sizeof(float); i += 2) \
   };
 
   static float DLs[] = {
-    5,5,  15,5,
-    5,15, 15,15
+    8,8, 12,8,
+    8,12, 12,12
   };
 
   static float DWs[] = {
-    10,4, 10,16
+    5,5, 15,5,
+    5,15, 15,15
   };
 
   static float TWs[] = {
