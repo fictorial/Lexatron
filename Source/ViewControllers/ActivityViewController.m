@@ -515,8 +515,11 @@ enum {
     return;
   }
 
-  label.text = [NSString stringWithFormat:@"Your Record: %d-%d-%d", won, lost, tied];
-
+  label.text = [NSString stringWithFormat:@"Your Record: %d Win%@, %d Loss%@, %d Tie%@",
+                won, won == 1 ? @"" : @"s",
+                lost, lost == 1 ? @"" : @"es",
+                tied, tied == 1 ? @"" : @"s"];
+  
   if (label.hidden) {
     label.hidden = NO;
     _tableView.top = _tableView.top + label.height;

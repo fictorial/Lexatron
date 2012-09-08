@@ -694,7 +694,7 @@ enum {
 - (void)displayScoreChangeMessage:(Turn *)turn {
   NSString *caption;
 
-  if (turn.playerNumber == [_match currentUserPlayerNumber]) {
+  if (turn.playerNumber == [_match currentUserPlayerNumber] || _match.passAndPlay) {
     NSString *opponentName = [[_match opponentPlayer] usernameForDisplay];
     caption = [NSString stringWithFormat:NSLocalizedString(@"You scored %d points this turn! 😃", nil), turn.scoreDelta, opponentName];
   } else {

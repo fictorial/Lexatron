@@ -566,13 +566,13 @@
 
 - (BOOL)checkGameOverConditions {
 
-#if 0  // DEBUG
-  if (_state == kMatchStateActive && _turns.count >= 2) {
+#if DEBUG
+  if (_state == kMatchStateActive && _turns.count >= 5) {
     DLog(@"FAKING GAME OVER STATE");
 
     self.state = kMatchStateEndedNormal;
-    self.winningPlayer = -1;
-    self.losingPlayer = -1;
+    self.winningPlayer = 0;
+    self.losingPlayer = 1;
 
     return YES;
   }
