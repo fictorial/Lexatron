@@ -178,4 +178,16 @@ enum {
   return tileView;
 }
 
+- (void)jumpWithDelay:(NSTimeInterval)delay {
+  CGPoint originalCenter = self.center;
+  [UIView animateWithDuration:0.3 delay:delay options:0 animations:^{
+    self.center = CGPointMake(self.center.x, self.center.y - kTileHalfHeight);  // "jump up"
+  } completion:^(BOOL finished) {
+    [UIView animateWithDuration:0.3 delay:0 options:0 animations:^{
+      self.center = originalCenter;  // "and get down"
+    } completion:^(BOOL finished) {
+    }];
+  }];
+}
+
 @end

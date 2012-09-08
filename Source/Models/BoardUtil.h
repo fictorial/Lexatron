@@ -14,7 +14,17 @@ BOOL isValidCellIndex(int index);
 
 // order defined: NW, SE, NW, SE
 
-#define kStartCellIndexForFirstPlayer  cellIndexFor(0, 0)
-#define kStartCellIndexForSecondPlayer cellIndexFor(0, kBoardSize-1)
-#define kEndCellIndexForFirstPlayer    cellIndexFor(kBoardSize-1, kBoardSize-1)
-#define kEndCellIndexForSecondPlayer   cellIndexFor(kBoardSize-1, 0)
+#define kStartCellXForFirstPlayer   0
+#define kStartCellYForFirstPlayer   0
+#define kStartCellXForSecondPlayer  0
+#define kStartCellYForSecondPlayer  (kBoardSize-1)
+
+#define kEndCellXForFirstPlayer     (kBoardSize-1)
+#define kEndCellYForFirstPlayer     (kBoardSize-1)
+#define kEndCellXForSecondPlayer    (kBoardSize-1)
+#define kEndCellYForSecondPlayer    0
+
+#define kStartCellIndexForFirstPlayer  cellIndexFor(kStartCellXForFirstPlayer, kStartCellYForFirstPlayer)
+#define kStartCellIndexForSecondPlayer cellIndexFor(kStartCellXForSecondPlayer, kStartCellYForSecondPlayer)
+#define kEndCellIndexForFirstPlayer    cellIndexFor(kEndCellXForFirstPlayer, kEndCellYForFirstPlayer)
+#define kEndCellIndexForSecondPlayer   cellIndexFor(kEndCellXForSecondPlayer, kEndCellYForSecondPlayer)

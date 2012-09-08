@@ -722,22 +722,53 @@ enum {
   } afterDelay:2.5];
 }
 
+float squaredDistance(float x1, float y1, float x2, float y2) {
+  return (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1);
+}
+
+- (NSArray *)lettersPlayedByOpponentInMostRecentTurn {
+  return [[_boardScrollView.boardView.subviews select:^BOOL(id subview) {
+    if ([subview isKindOfClass:[TileView class]]) {
+      TileView *tileView = (TileView *)subview;
+      return (tileView.letter.turnNumber == _match.turns.count);
+    }
+    return NO;
+  }] sortedArrayUsingComparator:^NSComparisonResult(TileView *A, TileView *B) {
+    float endX = (A.letter.playerOwner == 0) ? kEndCellXForFirstPlayer : kEndCellXForSecondPlayer;
+    float endY = (A.letter.playerOwner == 0) ? kEndCellYForFirstPlayer : kEndCellYForSecondPlayer;
+
+    float dA = squaredDistance(cellX(A.letter.cellIndex), cellY(A.letter.cellIndex), endX, endY);
+    float dB = squaredDistance(cellX(B.letter.cellIndex), cellY(B.letter.cellIndex), endX, endY);
+
+    if (dA == dB)
+      return NSOrderedSame;
+
+    return dA > dB ? NSOrderedAscending : NSOrderedDescending;
+  }];
+}
+
+- (NSArray *)allLetters {
+  return [_boardScrollView.boardView.subviews select:^BOOL(id subview) {
+    return [subview isKindOfClass:[TileView class]];
+  }];
+}
+
 - (void)highlightLettersPlayedByOpponentInMostRecentTurn {
   [self performBlock:^(id sender) {
-    for (UIView *subview in _boardScrollView.boardView.subviews) {
-      if ([subview isKindOfClass:[TileView class]]) {
-        TileView *tileView = (TileView *)subview;
-        if (tileView.letter.turnNumber == _match.turns.count) {
-          tileView.letter = [_match letterAtCellIndex:tileView.letter.cellIndex];
-          tileView.isNew = YES;
-          [tileView fadeIn:0.4 delegate:nil];
-        } else if (tileView.letter.turnNumber == _match.turns.count-1) {
-          tileView.letter = [_match letterAtCellIndex:tileView.letter.cellIndex];
-          tileView.isNew = NO;
-        }
-      }
-    }
-  } afterDelay:1.25];
+    [[self allLetters] each:^(TileView *tileView) {
+      tileView.letter = [_match letterAtCellIndex:tileView.letter.cellIndex];
+      tileView.isNew = NO;
+    }];
+
+    __block NSTimeInterval delay = 0;
+
+    [[self lettersPlayedByOpponentInMostRecentTurn] each:^(TileView *tileView) {
+      tileView.letter = [_match letterAtCellIndex:tileView.letter.cellIndex];
+      tileView.isNew = YES;
+      [tileView jumpWithDelay:delay];
+      delay += 0.1;
+    }];
+  } afterDelay:1.33];
 }
 
 - (BOOL)shouldDisplayBackgroundBoardImage {
