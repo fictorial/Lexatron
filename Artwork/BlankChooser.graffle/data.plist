@@ -7,7 +7,7 @@
 	<key>ApplicationVersion</key>
 	<array>
 		<string>com.omnigroup.OmniGrafflePro</string>
-		<string>139.7.0.167456</string>
+		<string>139.16.0.171715</string>
 	</array>
 	<key>AutoAdjust</key>
 	<false/>
@@ -69,6 +69,114 @@
 	<array>
 		<dict>
 			<key>Bounds</key>
+			<string>{{80, 160}, {160, 40}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FitText</key>
+			<string>Clip</string>
+			<key>Flow</key>
+			<string>Clip</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Color</key>
+				<dict>
+					<key>b</key>
+					<string>0.884511</string>
+					<key>g</key>
+					<string>0.362084</string>
+					<key>r</key>
+					<string>0.402995</string>
+				</dict>
+				<key>Font</key>
+				<string>Futura-CondensedMedium</string>
+				<key>Size</key>
+				<real>23</real>
+			</dict>
+			<key>GridCenter</key>
+			<string>YES</string>
+			<key>ID</key>
+			<integer>51927</integer>
+			<key>Shape</key>
+			<string>Rectangle</string>
+			<key>Style</key>
+			<dict>
+				<key>fill</key>
+				<dict>
+					<key>Color</key>
+					<dict>
+						<key>b</key>
+						<string>0.552959</string>
+						<key>g</key>
+						<string>0.558712</string>
+						<key>r</key>
+						<string>0.551041</string>
+					</dict>
+					<key>MiddleFraction</key>
+					<real>1</real>
+				</dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>stroke</key>
+				<dict>
+					<key>Cap</key>
+					<integer>0</integer>
+					<key>Color</key>
+					<dict>
+						<key>b</key>
+						<string>0.176814</string>
+						<key>g</key>
+						<string>0.382954</string>
+						<key>r</key>
+						<string>0.446619</string>
+					</dict>
+					<key>Draws</key>
+					<string>NO</string>
+					<key>Join</key>
+					<integer>0</integer>
+					<key>Width</key>
+					<real>2</real>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Pad</key>
+				<integer>0</integer>
+				<key>RTFD</key>
+				<data>
+				BAtzdHJlYW10eXBlZIHoA4QBQISEhBJOU0F0dHJpYnV0
+				ZWRTdHJpbmcAhIQITlNPYmplY3QAhZKEhIQITlNTdHJp
+				bmcBlIQBKwZDQU5DRUyGhAJpSQEGkoSEhAxOU0RpY3Rp
+				b25hcnkAlIQBaQSShJaWEE5TUGFyYWdyYXBoU3R5bGWG
+				koSEhBBOU1BhcmFncmFwaFN0eWxlAJSEBENDQFMCAISE
+				hAdOU0FycmF5AJSZDJKEhIQJTlNUZXh0VGFiAJSEAkNm
+				AByGkoSfngA4hpKEn54AVIaShJ+eAHCGkoSfngCBjACG
+				koSfngCBqACGkoSfngCBxACGkoSfngCB4ACGkoSfngCB
+				/ACGkoSfngCBGAGGkoSfngCBNAGGkoSfngCBUAGGhoEA
+				CIQEWzFmXYPNzEw9hpKElpYGTlNLZXJuhpKEhIQITlNO
+				dW1iZXIAhIQHTlNWYWx1ZQCUhAEqhIQBZKMAhpKElpYG
+				TlNGb250hpKEhIQGTlNGb250HpSZOIQFWzU2Y10GAAAA
+				LgAAAP/+RgB1AHQAdQByAGEALQBDAG8AbgBkAGUAbgBz
+				AGUAZABNAGUAZABpAHUAbQAAAIQBZheEAWMApwGnAKcA
+				hpKElpYHTlNDb2xvcoaShISEB05TQ29sb3IAlKcChARm
+				ZmZmg+XjYz+D6ednP4Pk4mI/AYaGhg==
+				</data>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
+{\colortbl;\red255\green255\blue255;\red220\green226\blue219;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\fs46 \cf2 \expnd0\expndtw0\kerning0
+CANCEL}</string>
+			</dict>
+			<key>Wrap</key>
+			<string>NO</string>
+		</dict>
+		<dict>
+			<key>Bounds</key>
 			<string>{{40, 160}, {40, 40}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
@@ -84,9 +192,9 @@
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -142,11 +250,11 @@
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 Z}</string>
 			</dict>
 			<key>Wrap</key>
@@ -169,9 +277,9 @@ Z}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -227,11 +335,11 @@ Z}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 Y}</string>
 			</dict>
 			<key>Wrap</key>
@@ -254,9 +362,9 @@ Y}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -312,11 +420,11 @@ Y}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 X}</string>
 			</dict>
 			<key>Wrap</key>
@@ -339,9 +447,9 @@ X}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -397,11 +505,11 @@ X}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 W}</string>
 			</dict>
 			<key>Wrap</key>
@@ -424,9 +532,9 @@ W}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -482,11 +590,11 @@ W}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 V}</string>
 			</dict>
 			<key>Wrap</key>
@@ -509,9 +617,9 @@ V}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -567,11 +675,11 @@ V}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 U}</string>
 			</dict>
 			<key>Wrap</key>
@@ -594,9 +702,9 @@ U}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -652,11 +760,11 @@ U}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 T}</string>
 			</dict>
 			<key>Wrap</key>
@@ -679,9 +787,9 @@ T}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -737,11 +845,11 @@ T}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 S}</string>
 			</dict>
 			<key>Wrap</key>
@@ -764,9 +872,9 @@ S}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -822,11 +930,11 @@ S}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 R}</string>
 			</dict>
 			<key>Wrap</key>
@@ -849,9 +957,9 @@ R}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -907,11 +1015,11 @@ R}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 Q}</string>
 			</dict>
 			<key>Wrap</key>
@@ -934,9 +1042,9 @@ Q}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -992,11 +1100,11 @@ Q}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 P}</string>
 			</dict>
 			<key>Wrap</key>
@@ -1019,9 +1127,9 @@ P}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -1077,11 +1185,11 @@ P}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 O}</string>
 			</dict>
 			<key>Wrap</key>
@@ -1104,9 +1212,9 @@ O}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -1162,11 +1270,11 @@ O}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 N}</string>
 			</dict>
 			<key>Wrap</key>
@@ -1189,9 +1297,9 @@ N}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -1247,11 +1355,11 @@ N}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 M}</string>
 			</dict>
 			<key>Wrap</key>
@@ -1274,9 +1382,9 @@ M}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -1332,11 +1440,11 @@ M}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 L}</string>
 			</dict>
 			<key>Wrap</key>
@@ -1359,9 +1467,9 @@ L}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -1417,11 +1525,11 @@ L}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 K}</string>
 			</dict>
 			<key>Wrap</key>
@@ -1444,9 +1552,9 @@ K}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -1502,11 +1610,11 @@ K}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 J}</string>
 			</dict>
 			<key>Wrap</key>
@@ -1529,9 +1637,9 @@ J}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -1587,11 +1695,11 @@ J}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 I}</string>
 			</dict>
 			<key>Wrap</key>
@@ -1614,9 +1722,9 @@ I}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -1672,11 +1780,11 @@ I}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 H}</string>
 			</dict>
 			<key>Wrap</key>
@@ -1699,9 +1807,9 @@ H}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -1757,11 +1865,11 @@ H}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 G}</string>
 			</dict>
 			<key>Wrap</key>
@@ -1784,9 +1892,9 @@ G}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -1842,11 +1950,11 @@ G}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 F}</string>
 			</dict>
 			<key>Wrap</key>
@@ -1869,9 +1977,9 @@ F}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -1927,11 +2035,11 @@ F}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 E}</string>
 			</dict>
 			<key>Wrap</key>
@@ -1954,9 +2062,9 @@ E}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -2012,11 +2120,11 @@ E}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 D}</string>
 			</dict>
 			<key>Wrap</key>
@@ -2039,9 +2147,9 @@ D}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -2097,11 +2205,11 @@ D}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 C}</string>
 			</dict>
 			<key>Wrap</key>
@@ -2124,9 +2232,9 @@ C}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -2182,11 +2290,11 @@ C}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 B}</string>
 			</dict>
 			<key>Wrap</key>
@@ -2209,9 +2317,9 @@ B}</string>
 					<string>0</string>
 				</dict>
 				<key>Font</key>
-				<string>Futura-Medium</string>
+				<string>Futura-CondensedMedium</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>30</real>
 			</dict>
 			<key>GridCenter</key>
 			<string>YES</string>
@@ -2267,11 +2375,11 @@ B}</string>
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
-{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs60 \cf0 \expnd0\expndtw0\kerning0
 A}</string>
 			</dict>
 			<key>Wrap</key>
@@ -2336,7 +2444,7 @@ A}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2012-08-11 04:37:35 +0000</string>
+	<string>2012-09-09 04:41:29 +0000</string>
 	<key>Modifier</key>
 	<string>Brian Hammond</string>
 	<key>NotesVisible</key>

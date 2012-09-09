@@ -49,9 +49,11 @@
   
   int letter = 'A' + cellsPerRow*row + col;
   
-  if (letter > 'Z')
+  if (letter > 'Z') {
+    _callback(0);
     return;
-  
+  }
+
   DLog(@"touched chooser at %d %d for letter '%c'", col, row, letter);
 
   if (_callback)

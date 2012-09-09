@@ -959,6 +959,8 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
   Letter *letter = [[_match rackForCurrentUser] objectAtIndex:tileView.letter.rackIndex];
 
+  int rackIndexBefore = letter.rackIndex;
+
   if (![_match moveLetter:letter toBoardAtCellIndex:cellIndex])
     return NO;
 
@@ -975,11 +977,12 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
       boardTileView.dragDelegate = self;
       [_boardScrollView.boardView addSubview:boardTileView];
 
-      //      [_rackView clearAtIndex:tileView.letter.rackIndex];
-
       [weakSelf performBlock:^(id sender) {
         [weakSelf zoomToLettersPlacedInThisTurn];
       } afterDelay:0.5];
+    } else {
+      [_match moveLetter:letter toRackAtIndex:rackIndexBefore];
+      [weakSelf setupRack];
     }
   };
 
@@ -1287,7 +1290,7 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
     [weakSelf performBlock:^(id sender) {
       [weakSelf hideActivityHUD];
-    } afterDelay:1.5+0.6];
+    } afterDelay:1+0.6];
   }
 }
 
