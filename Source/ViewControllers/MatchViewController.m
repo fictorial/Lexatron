@@ -902,6 +902,16 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
   if (boardCell.x < 0 || boardCell.y < 0)
     return NO;
 
+  if (_match.currentPlayerNumber == 0 && boardCell.x == kStartCellXForSecondPlayer && boardCell.y == kStartCellYForSecondPlayer) {
+    [self showNoticeAlertWithCaption:NSLocalizedString(@"Start by forming a word from your start space (the green one with the arrow in top-left corner)", nil)];
+    return NO;
+  }
+
+  if (_match.currentPlayerNumber == 1 && boardCell.x == kStartCellXForFirstPlayer && boardCell.y == kStartCellYForFirstPlayer) {
+    [self showNoticeAlertWithCaption:NSLocalizedString(@"Start by forming a word from your start space (the orange one with the arrow in bottom-left corner)", nil)];
+    return NO;
+  }
+
   CGRect cellRect = [_boardScrollView.boardView boardFromCellX:boardCell.x y:boardCell.y];
 
   DLog(@"dropped tile on board cell (%d, %d)", (int)boardCell.x, (int)boardCell.y);
