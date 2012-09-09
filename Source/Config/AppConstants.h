@@ -52,6 +52,8 @@
 
 #define kTileDropHighlightColor [[UIColor darkGrayColor] colorWithAlphaComponent:0.5]
 
+#define ALLOW_OPPONENTS_LETTERS 1
+
 extern NSString * const kAppStoreAppID;
 extern NSString * const kAppStorePublicURL;
 extern NSString * const kAppStoreReviewURL;

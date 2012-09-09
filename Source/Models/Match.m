@@ -1009,6 +1009,21 @@
 
     Letter *aLetter = [self letterAtCellIndex:cellIndexFor(x, y)];
 
+#if ALLOW_OPPONENTS_LETTERS
+
+    // Players are allowed to use their opponent's letters already placed on the
+    // board in a previous turn to form their own letters.
+
+    if (aLetter) {
+      lastXWithLetter = x;
+      lastYWithLetter = y;
+    }
+
+#else
+
+    // Players are disallowed from using their opponent's letters already placed on the
+    // board in a previous turn to form their own letters.
+
     if (aLetter) {
       if (aLetter.playerOwner == _currentPlayerNumber) {
         lastXWithLetter = x;
@@ -1017,9 +1032,9 @@
         break;
       }
     }
-  }
 
-  DLog(@"direction=%d aLetter=%d,%d lastX=%d lastY=%d", direction, cellX(aLetter.cellIndex), cellY(aLetter.cellIndex), lastXWithLetter, lastYWithLetter);
+#endif
+  }
 
   return CGPointMake(lastXWithLetter, lastYWithLetter);
 }
