@@ -275,7 +275,9 @@ NSString * const kPushNotificationHandledNotification = @"PushNotificationHandle
                        alertTitle:(NSString *)title
                 cancelButtonTitle:(NSString *)cancelButtonTitle
                     okButtonTitle:(NSString *)okButtonTitle
-                      cancelBlock:(void(^)())cancelBlock {
+                 otherButtonTitle:(NSString *)otherButtonTitle
+                      cancelBlock:(void(^)())cancelBlock
+                       otherBlock:(void(^)())otherBlock {
 
   NSString *pushType = [userInfo objectForKey:@"pushType"];
   NSString *alert = [userInfo valueForKeyPath:@"aps.alert"];
@@ -287,21 +289,33 @@ NSString * const kPushNotificationHandledNotification = @"PushNotificationHandle
   
   __weak id weakSelf = self;
 
+  NSArray *titles, *colors;
+  if (otherButtonTitle) {
+    titles = @[ cancelButtonTitle, okButtonTitle, otherButtonTitle ];
+    colors = @[ kGlossyRedColor, kGlossyGreenColor, kGlossyBlackColor ];
+  } else {
+    titles = @[ cancelButtonTitle, okButtonTitle ];
+    colors = @[ kGlossyBlackColor, kGlossyGreenColor ];
+  }
+
   BaseViewController *topBaseVC = [self getTopBaseViewControllerIfAny];
   [topBaseVC
    showAlertWithCaption:alert
-   titles:@[ cancelButtonTitle, okButtonTitle ]
-   colors:@[ kGlossyBlackColor, kGlossyGreenColor ]
+   titles:titles
+   colors:colors
    block:^(int buttonPressed) {
      [[NSNotificationCenter defaultCenter] postNotificationName:kPushNotificationHandledNotification object:nil];
 
-     if (buttonPressed == 0) { // cancel
+     if (buttonPressed == 0) {  // cancel
        DLog(@"%@ canceled/rejected/declined", pushType);
        if (cancelBlock) cancelBlock();
-     } else {
+     } else if (buttonPressed == 1) {  // ok
        DLog(@"%@ will play", pushType);
        BOOL alreadyViewingThisMatch = [self currentlyViewingMatchWithID:[userInfo objectForKey:@"matchID"]];
        [weakSelf fetchAndShowMatchWithMatchID:matchID viewingThisMatchAlready:alreadyViewingThisMatch];
+     } else if (buttonPressed == 2) {  // other
+       DLog(@"%@ selected other (%@)", pushType, otherButtonTitle);
+       if (otherBlock) otherBlock();
      }
    }];
 }
@@ -322,14 +336,31 @@ NSString * const kPushNotificationHandledNotification = @"PushNotificationHandle
   NSString *pushType = [userInfo objectForKey:@"pushType"];
   
   if ([pushType isEqualToString:kPushTypeChallenge]) {
+    BaseViewController *topBaseVC = [self getTopBaseViewControllerIfAny];
+    
+    if ([topBaseVC isKindOfClass:MatchViewController.class]) {
+      DLog(@"not showing challenge now since user is viewing match currently... would be annoying.");
+      return NO;
+    }
+
+    if (topBaseVC && [topBaseVC isShowingAlert]) {
+      DLog(@"not showing challenge now since user has alert open already");
+      return NO;
+    }
+
     __weak id weakSelf = self;
+
     [self handleInboundPushUserInfo:userInfo
                          alertTitle:NSLocalizedString(@"Challenge", nil)
                   cancelButtonTitle:NSLocalizedString(@"Reject", nil)
                       okButtonTitle:NSLocalizedString(@"Accept", nil)
+                   otherButtonTitle:NSLocalizedString(@"Later", nil)
                         cancelBlock:^{
                           [weakSelf declineMatchChallenge:userInfo];
-                        }];
+                        }
+                         otherBlock:^{
+                           // just close the alert
+                         }];
   } else if ([pushType isEqualToString:kPushTypeTurn]) {
     if ([self currentlyViewingMatchWithID:[userInfo objectForKey:@"matchID"]]) {
       // Skip the alert and just "refresh" the match
@@ -339,7 +370,7 @@ NSString * const kPushNotificationHandledNotification = @"PushNotificationHandle
                            alertTitle:NSLocalizedString(@"Your Turn", nil)
                     cancelButtonTitle:NSLocalizedString(@"Later", nil)
                         okButtonTitle:NSLocalizedString(@"Play", nil)
-                          cancelBlock:nil];
+                     otherButtonTitle:nil cancelBlock:nil otherBlock:nil];
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:kPushNotificationHandledNotification object:nil];
   } else if ([pushType isEqualToString:kPushTypeEnded]) {
@@ -351,7 +382,7 @@ NSString * const kPushNotificationHandledNotification = @"PushNotificationHandle
                            alertTitle:NSLocalizedString(@"Match Ended", nil)
                     cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
                         okButtonTitle:NSLocalizedString(@"View", nil)
-                          cancelBlock:nil];
+                     otherButtonTitle:nil cancelBlock:nil otherBlock:nil];
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:kPushNotificationHandledNotification object:nil];
   } else {

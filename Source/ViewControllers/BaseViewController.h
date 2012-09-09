@@ -50,6 +50,7 @@
 - (void)showConfirmAlertWithCaption:(NSString *)caption block:(AlertBlock)block;
 - (void)showActionableAlertWithCaption:(NSString *)caption block:(AlertBlock)block;
 - (void)hideAllAlerts;
+- (BOOL)isShowingAlert;
 
 - (void)startTimeoutTimer;
 - (void)removeTimeoutTimer;

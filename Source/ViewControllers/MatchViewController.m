@@ -485,8 +485,8 @@ enum {
     NSString *text = [NSString stringWithFormat:format, [_match.firstPlayer usernameForDisplay]];
 
     [self showAlertWithCaption:text
-                        titles:@[ @"Reject", @"Accept", @"Later" ]
-                        colors:@[ kGlossyBlackColor, kGlossyGreenColor ]
+                        titles:@[ @"Reject", @"Accept" ]
+                        colors:@[ kGlossyRedColor, kGlossyGreenColor ]
                          block:^(int buttonPressed) {
                            if (buttonPressed == 0) {  // Reject
                              [_match decline];
@@ -501,8 +501,6 @@ enum {
                              } afterDelay:2];
 
                              [TestFlight passCheckpoint:@"matchAcceptedChallenge"];
-                           } else if (buttonPressed == 2) {  // Later
-                             [weakSelf hideAllAlerts];
                            }
                          }];
   } else if (_match.state == kMatchStateEndedNormal ||

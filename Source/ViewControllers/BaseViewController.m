@@ -278,6 +278,14 @@ enum {
   }
 }
 
+- (BOOL)isShowingAlert {
+  for (UIView *subview in self.view.subviews) {
+    if ([subview isKindOfClass:AlertView.class])
+      return YES;
+  }
+  return NO;
+}
+
 - (void)startTimeoutTimer {
   [self removeTimeoutTimer];
   
