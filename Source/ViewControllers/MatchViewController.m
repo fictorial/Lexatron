@@ -1368,7 +1368,6 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
   if (currentPlayerWon) {
     NSArray *playerLetters = [self lettersOwnedByPlayer:_match.currentPlayerNumber];
-    NSArray *opponentLetters = [self lettersOwnedByPlayer:_match.currentPlayerNumber == 0 ? 1 : 0];
 
     [self performBlock:^(id sender) {
       [summaryLabel popIn:0.4 delegate:nil];
