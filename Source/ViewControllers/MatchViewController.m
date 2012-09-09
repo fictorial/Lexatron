@@ -485,15 +485,15 @@ enum {
     NSString *text = [NSString stringWithFormat:format, [_match.firstPlayer usernameForDisplay]];
 
     [self showAlertWithCaption:text
-                        titles:@[ @"Reject", @"Accept" ]
+                        titles:@[ @"Reject", @"Accept", @"Later" ]
                         colors:@[ kGlossyBlackColor, kGlossyGreenColor ]
                          block:^(int buttonPressed) {
-                           if (buttonPressed == 0) {  // reject
+                           if (buttonPressed == 0) {  // Reject
                              [_match decline];
                              [weakSelf showActivityHUD];
                              [TestFlight passCheckpoint:@"matchDeclinedChallenge"];
                              // See -match:turnDidHappen: for when we go back and why not here.
-                           } else {
+                           } else if (buttonPressed == 1) {  // Accept
                              [weakSelf setViewState:kViewStateNormal];
 
                              [weakSelf performBlock:^(id sender) {
@@ -501,6 +501,8 @@ enum {
                              } afterDelay:2];
 
                              [TestFlight passCheckpoint:@"matchAcceptedChallenge"];
+                           } else if (buttonPressed == 2) {  // Later
+                             [weakSelf hideAllAlerts];
                            }
                          }];
   } else if (_match.state == kMatchStateEndedNormal ||
@@ -705,7 +707,7 @@ enum {
   [self showHUDWithActivity:NO caption:caption];
   [self performBlock:^(id sender) {
     [self hideActivityHUD];
-  } afterDelay:2];
+  } afterDelay:1.45];
 }
 
 - (void)changeHighlightedLettersToNormal {
