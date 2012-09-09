@@ -339,8 +339,13 @@ NSString * const kPushNotificationHandledNotification = @"PushNotificationHandle
     BaseViewController *topBaseVC = [self getTopBaseViewControllerIfAny];
     
     if ([topBaseVC isKindOfClass:MatchViewController.class]) {
-      DLog(@"not showing challenge now since user is viewing match currently... would be annoying.");
-      return NO;
+      MatchViewController *matchVC = (MatchViewController *)topBaseVC;
+      Match *match = matchVC.match;
+
+      if (match.currentUserIsCurrentPlayer) {
+        DLog(@"not showing challenge now since user is viewing match in which it is their turn currently... would be annoying to be interrupted for a new match challenge here.");
+        return NO;
+      }
     }
 
     if (topBaseVC && [topBaseVC isShowingAlert]) {
