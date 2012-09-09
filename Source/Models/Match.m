@@ -1270,6 +1270,8 @@
     [self addLetter:letter toRack:rack];
   }
 
+  letter.substituteLetter = 0;
+
   DLog(@"after %@ rack = %@", NSStringFromSelector(_cmd), [self rackAsString:rack]);
 
   return YES;
