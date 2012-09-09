@@ -132,7 +132,7 @@ typedef enum {
  - stop
 
  - query for Match where key 'setupRandom' exists and key 'suitors' does not exist.
- - limit to say 20 matches
+ - limit to 24 matches
 
  - if none found:
  - create a Match object

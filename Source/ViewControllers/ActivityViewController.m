@@ -398,7 +398,11 @@ typedef enum {
 
     [weakSelf setMatches:[[objects select:^BOOL(PFObject *matchObj) {
       // Random matches in pending state have no first player; remove those.
-      return [matchObj objectForKey:@"firstPlayer"] != nil;
+      // Random matches in which a player has been found and set have no turns yet potentially.
+      // Note that other matches will not have this setup.
+      // Thus, exclude matches that have 0-length 'turns'.
+
+      return [matchObj objectForKey:@"firstPlayer"] != nil && [[matchObj objectForKey:@"turns"] count] > 0;
     }] map:^id(PFObject *matchObj) {
       return [Match matchWithExistingMatchObject:matchObj block:^(Match *match, NSError *error) {
         if (error) {
