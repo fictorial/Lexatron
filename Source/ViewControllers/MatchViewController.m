@@ -1104,13 +1104,13 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
   [self removeDropTargetView];
 
-  _rackView.layer.borderWidth = 0;
-
   if ([self isDropOnRack:point]) {
     _rackView.layer.borderColor = kTileDropHighlightColor.CGColor;
     _rackView.layer.borderWidth = SCALED(2);
     return;
   }
+
+  _rackView.layer.borderWidth = 0;
 
   point = [self.boardScrollView.boardView convertPoint:point fromView:self.view];
 

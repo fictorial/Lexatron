@@ -31,7 +31,7 @@ enum {
   self = [super initWithFrame:frame];
 
   if (self) {
-    int cellSize = CGRectGetWidth(self.bounds) / kRackTileCount;
+    int cellSize = (CGRectGetWidth(self.bounds) - (kRackTileCount - 1) * SCALED(1)) / kRackTileCount;
 
     for (int i=0; i < kRackTileCount; ++i) {
       id letter = [letters objectAtIndex:i];
@@ -39,7 +39,7 @@ enum {
       if (letter == [NSNull null])
         continue;
 
-      TileView *tileView = [[TileView alloc] initWithFrame:CGRectMake(i * cellSize + i * SCALED(1) + 0.5, 0, cellSize, cellSize)];
+      TileView *tileView = [[TileView alloc] initWithFrame:CGRectMake(0.5 + i * cellSize + i * SCALED(1), 0, cellSize, cellSize)];
       tileView.letter = letter;
       tileView.letter.rackIndex = i;
       tileView.userInteractionEnabled = YES;
