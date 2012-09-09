@@ -8,7 +8,7 @@
 
 #import "ExplosionView.h"
 
-static const CGFloat kExplosionDuration = 1;
+static const CGFloat kExplosionDuration = 4;
 
 @implementation ExplosionView {
   CAEmitterLayer* emitter;
@@ -50,28 +50,27 @@ static const CGFloat kExplosionDuration = 1;
 
 - (CAEmitterCell *)starEmitterCell {
   CAEmitterCell* cell = [CAEmitterCell emitterCell];
-  [cell setName:@"explosion"];
+  [cell setName:@"cell"];
 //  cell.color = [[UIColor colorWithRed:0.7 green:0.4 blue:0.2 alpha:0.1] CGColor];
   cell.contents = (id)[[UIImage imageWithName:@"Star"] CGImage];
   cell.birthRate = 0;
   cell.lifetime = kExplosionDuration;
   cell.lifetimeRange = kExplosionDuration/3;
   cell.velocity = CGRectGetWidth(self.bounds);
-  cell.velocityRange = 20;
+  cell.velocityRange = 60;
   cell.emissionRange = 2*M_PI;
-  cell.scaleSpeed = 2;
-  cell.spin = 0.2;
+  cell.spin = 1.25;
   return cell;
 }
 
 - (void)explodeFromPoint:(CGPoint)point completion:(void(^)())completion {
   emitter.emitterPosition = point;
   
-  [emitter setValue:[NSNumber numberWithInt:CGRectGetWidth(self.bounds)*0.20] forKeyPath:@"emitterCells.explosion.birthRate"];
+  [emitter setValue:[NSNumber numberWithInt:CGRectGetWidth(self.bounds)*0.20] forKeyPath:@"emitterCells.cell.birthRate"];
 
   [self performBlock:^(id sender) {
-    [emitter setValue:[NSNumber numberWithInt:0] forKeyPath:@"emitterCells.explosion.birthRate"];
-  } afterDelay:0.1];
+    [emitter setValue:[NSNumber numberWithInt:0] forKeyPath:@"emitterCells.cell.birthRate"];
+  } afterDelay:kExplosionDuration/2];
 
   [self performBlock:^(id sender) {
     if (completion)

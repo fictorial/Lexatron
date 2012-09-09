@@ -178,15 +178,18 @@ enum {
   return tileView;
 }
 
-- (void)jumpWithDelay:(NSTimeInterval)delay {
+- (void)jumpWithDelay:(NSTimeInterval)delay repeat:(BOOL)repeat {
+  int flags = (repeat) ? UIViewAnimationOptionAutoreverse|UIViewAnimationOptionRepeat : 0;
   CGPoint originalCenter = self.center;
-  [UIView animateWithDuration:0.3 delay:delay options:0 animations:^{
-    self.center = CGPointMake(self.center.x, self.center.y - kTileHalfHeight);  // "jump up"
+  [UIView animateWithDuration:0.3 delay:delay options:flags animations:^{
+    self.center = CGPointMake(self.center.x, self.center.y - kTileHalfHeight);
   } completion:^(BOOL finished) {
-    [UIView animateWithDuration:0.3 delay:0 options:0 animations:^{
-      self.center = originalCenter;  // "and get down"
-    } completion:^(BOOL finished) {
-    }];
+    if (!repeat) {
+      [UIView animateWithDuration:0.3 delay:0 options:0 animations:^{
+        self.center = originalCenter;
+      } completion:^(BOOL finished) {
+      }];
+  }
   }];
 }
 

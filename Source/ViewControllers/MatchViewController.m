@@ -726,24 +726,23 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
   return (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1);
 }
 
+- (NSArray *)lettersOwnedByPlayer:(int)playerNumber {
+  return [_boardScrollView.boardView.subviews select:^BOOL(id subview) {
+    if ([subview isKindOfClass:[TileView class]]) {
+      TileView *tileView = (TileView *)subview;
+      return (tileView.letter.playerOwner == playerNumber);
+    }
+    return NO;
+  }];
+}
+
 - (NSArray *)lettersPlayedByOpponentInMostRecentTurn {
-  return [[_boardScrollView.boardView.subviews select:^BOOL(id subview) {
+  return [_boardScrollView.boardView.subviews select:^BOOL(id subview) {
     if ([subview isKindOfClass:[TileView class]]) {
       TileView *tileView = (TileView *)subview;
       return (tileView.letter.turnNumber == _match.turns.count);
     }
     return NO;
-  }] sortedArrayUsingComparator:^NSComparisonResult(TileView *A, TileView *B) {
-    float endX = (A.letter.playerOwner == 0) ? kEndCellXForFirstPlayer : kEndCellXForSecondPlayer;
-    float endY = (A.letter.playerOwner == 0) ? kEndCellYForFirstPlayer : kEndCellYForSecondPlayer;
-
-    float dA = squaredDistance(cellX(A.letter.cellIndex), cellY(A.letter.cellIndex), endX, endY);
-    float dB = squaredDistance(cellX(B.letter.cellIndex), cellY(B.letter.cellIndex), endX, endY);
-
-    if (dA == dB)
-      return NSOrderedSame;
-
-    return dA > dB ? NSOrderedAscending : NSOrderedDescending;
   }];
 }
 
@@ -765,7 +764,7 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
     [[self lettersPlayedByOpponentInMostRecentTurn] each:^(TileView *tileView) {
       tileView.letter = [_match letterAtCellIndex:tileView.letter.cellIndex];
       tileView.isNew = YES;
-      [tileView jumpWithDelay:delay];
+      [tileView jumpWithDelay:delay repeat:NO];
       delay += 0.1;
     }];
   } afterDelay:1.33];
@@ -1305,6 +1304,8 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 }
 
 - (void)enterGameOverState {
+  [self.boardScrollView zoomOut];
+
   _rackView.hidden = YES;
   _endedLabel.hidden = NO;
   _submitButton.hidden = YES;
@@ -1321,7 +1322,7 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
   NSString *caption;
   if (currentPlayerWon) {
-    caption = NSLocalizedString(@"You won! Congratulations!", nil);
+    caption = NSLocalizedString(@"YOU WON THE MATCH!", nil);
     [[LQAudioManager sharedManager] playEffect:kEffectEndWon];
     [TestFlight passCheckpoint:@"matchWon"];
   } else {
@@ -1337,17 +1338,18 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
   }
 
   UILabel *summaryLabel = [[UILabel alloc] initWithFrame:_rackView.frame];
-  summaryLabel.font = [UIFont fontWithName:kFontName size:kFontSizeRegular];
+  summaryLabel.font = [UIFont fontWithName:kFontName size:kFontSizeHeader];
   summaryLabel.lineBreakMode = UILineBreakModeWordWrap;
   summaryLabel.numberOfLines = 3;
   summaryLabel.textColor = [UIColor whiteColor];
   summaryLabel.backgroundColor = _match.winningPlayer == 0 ? kTileColorPlayerOne : _match.winningPlayer == 1 ? kTileColorPlayerTwo : [UIColor brownColor];
-  summaryLabel.shadowColor = [UIColor blackColor];
+  summaryLabel.shadowColor = [UIColor darkGrayColor];
   summaryLabel.shadowOffset = CGSizeMake(0, 1);
   summaryLabel.text = caption;
   summaryLabel.tag = kMatchEndSummaryLabelTag;
   summaryLabel.textAlignment = UITextAlignmentCenter;
   summaryLabel.layer.cornerRadius = 8;
+  summaryLabel.hidden = YES;
   [[self.view viewWithTag:kMatchEndSummaryLabelTag] removeFromSuperview];
   [self.view addSubview:summaryLabel];
 
@@ -1365,13 +1367,34 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
   }
 
   if (currentPlayerWon) {
-    // TODO better end-game sequence.
+    NSArray *playerLetters = [self lettersOwnedByPlayer:_match.currentPlayerNumber];
+    NSArray *opponentLetters = [self lettersOwnedByPlayer:_match.currentPlayerNumber == 0 ? 1 : 0];
 
-    ExplosionView *boomView = [ExplosionView new];
-    [self.view.window addSubview:boomView];
-    [boomView explodeFromPoint:self.view.window.center completion:^{
-      [boomView removeFromSuperview];
-    }];
+    [self performBlock:^(id sender) {
+      [summaryLabel popIn:0.4 delegate:nil];
+
+      [self performBlock:^(id sender) {
+        ExplosionView *boomView = [ExplosionView new];
+        [self.view.window addSubview:boomView];
+        [boomView explodeFromPoint:self.view.window.center completion:^{
+          [UIView animateWithDuration:0.4 animations:^{
+            boomView.alpha = 0;
+          } completion:^(BOOL finished) {
+            [boomView removeFromSuperview];
+          }];
+        }];
+      } afterDelay:playerLetters.count * 0.1];
+
+      __block NSTimeInterval delay = 0;
+      [playerLetters each:^(TileView *tileView) {
+        tileView.letter = [_match letterAtCellIndex:tileView.letter.cellIndex];
+        tileView.isNew = NO;
+        [tileView jumpWithDelay:delay repeat:YES];
+        delay += 0.15;
+      }];      
+    } afterDelay:2.5];
+
+    _boardScrollView.clipsToBounds = NO;
   }
 }
 

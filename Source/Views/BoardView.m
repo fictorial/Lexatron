@@ -150,6 +150,9 @@ static inline int sideOfLine(CGPoint A, CGPoint B, CGPoint P) {
 - (void)updateTilesRemainingLabelFromMatch:(Match *)match {
   [_label removeFromSuperview];
 
+  if (match.state != kMatchStateActive)
+    return;
+
   _label = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(_imageView.bounds)-kFontSizeSmall, CGRectGetWidth(_imageView.bounds), kFontSizeSmall)];
   int count = [match bagTileCount];
   _label.text = [NSString stringWithFormat:@"%d letter%@ remain%@", count, count == 1 ? @"" : @"s", count == 1 ? @"s" : @""];

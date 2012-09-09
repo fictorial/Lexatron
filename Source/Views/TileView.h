@@ -21,6 +21,6 @@
 - (void)configureForBoardDisplayAsPlaceholder;
 - (void)configureForRackDisplayWithSize:(CGFloat)size;
 
-- (void)jumpWithDelay:(NSTimeInterval)delay;
+- (void)jumpWithDelay:(NSTimeInterval)delay repeat:(BOOL)repeat;
 
 @end
