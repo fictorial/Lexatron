@@ -234,12 +234,12 @@
 
 - (void)willPostMessage:(NSString *)message chat:(Chat *)chat {
   [self startTimeoutTimer];
-  [self showActivityHUD];
+//  [self showActivityHUD];
 }
 
 - (void)didPostMessage:(NSString *)message chat:(Chat *)chat {
   [self removeTimeoutTimer];
-  [self hideActivityHUD];
+//  [self hideActivityHUD];
 
   [_tableView reloadData];
 
