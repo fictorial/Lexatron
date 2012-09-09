@@ -72,7 +72,7 @@ NSString * const kSignupNotification = @"UserDidSignup";
   _emailField.autocorrectionType = UITextAutocorrectionTypeNo;
   [self.view addSubview:_emailField];
 
-  [self addButtonWithTitle:@"Signup"
+  [self addButtonWithTitle:@"Sign up"
                      color:kGlossyGreenColor
                   selector:@selector(doSignup:)
                     center:CGPointMake(w-w/4,
@@ -200,7 +200,7 @@ NSString * const kSignupNotification = @"UserDidSignup";
                                      [_emailField becomeFirstResponder];
                                    }];
         } else {
-          [error showParseError:@"signup"];
+          [error showParseError:@"sign up"];
         }
       }
     }];

@@ -38,7 +38,7 @@
                                  selector:@selector(doLogin:)
                                    center:CGPointMake(cx, cy-pad/2-kGlossyButtonHeight-pad-kGlossyButtonHeight/2)];
 
-  _signupButton = [self addButtonWithTitle:@"Signup"
+  _signupButton = [self addButtonWithTitle:@"Sign up"
                                      color:kGlossyOrangeColor
                                   selector:@selector(doSignup:)
                                     center:CGPointMake(cx, cy-pad/2-kGlossyButtonHeight/2)];
