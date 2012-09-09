@@ -171,6 +171,9 @@
   YIPopupTextView *popupTextView = [[YIPopupTextView alloc] initWithPlaceHolder:@"" maxCount:150];
   popupTextView.delegate = self;
   popupTextView.showCloseButton = NO;
+  popupTextView.autocorrectionType = UITextAutocorrectionTypeDefault;
+  popupTextView.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+  popupTextView.spellCheckingType = UITextSpellCheckingTypeDefault;
   [popupTextView showInView:self.view];
 }
 

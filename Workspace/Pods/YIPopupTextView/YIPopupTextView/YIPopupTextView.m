@@ -125,8 +125,8 @@
         self.font = [UIFont systemFontOfSize:TEXT_SIZE];
         self.keyboardAppearance = UIKeyboardAppearanceAlert;
       self.returnKeyType = UIReturnKeyGo;
-        self.autocorrectionType = UITextAutocorrectionTypeNo;
-        self.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        self.autocorrectionType = UITextAutocorrectionTypeDefault;
+        self.autocapitalizationType = UITextAutocapitalizationTypeSentences;
         self.layer.cornerRadius = 10;
         self.backgroundColor = [UIColor whiteColor];
         [_popupView addSubview:self];
