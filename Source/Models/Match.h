@@ -98,4 +98,8 @@ typedef void (^DecodeMatchCompletionBlock)(Match *match, NSError *error);
 - (NSString *)mostRecentTurnDescription;
 - (NSString *)updatedAtInWords;
 
+// Which player owns each star: e.g. 0 => [0,2], 1 => [1,3]
+
+- (NSDictionary *)starOwners;
+
 @end

@@ -31,9 +31,6 @@
   if (isTripleLetter(_cellIndex))
     return val * 3;
 
-  if (isMystery(_cellIndex))
-    return val + 25;
-
   return val;
 }
 

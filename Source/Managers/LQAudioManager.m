@@ -34,7 +34,7 @@ static NSString * const kDefaultsKeySoundDisabled = @"LQSoundDisabled";
     NSArray *sounds = @[ @"end-lost.caf", @"end-won.caf", @"error.caf",
     @"notification.caf", @"played-word.caf", @"prompt.caf", @"select.caf",
     @"tile.caf", @"back.caf", @"shuffle.caf", @"recall.caf", @"slide.caf", 
-    @"new-game.caf"
+    @"new-game.caf", @"earn-star.caf"
     ];
 
     for (int i = 0; i < kEffectCount; ++i) {

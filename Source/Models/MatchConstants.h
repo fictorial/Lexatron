@@ -16,15 +16,16 @@ enum {
 
 enum {
   kModifierNone,
+  kModifierStart,
   kModifierDL,
   kModifierTL,
   kModifierDW,
   kModifierTW,
-  kModifierFirstPlayerStart,
-  kModifierFirstPlayerEnd,
-  kModifierSecondPlayerStart,
-  kModifierSecondPlayerEnd,
-  kModifierMystery
+  kModifierStar0,
+  kModifierStar1,
+  kModifierStar2,
+  kModifierStar3,
+  kModifierStar4
 };
 
 enum {

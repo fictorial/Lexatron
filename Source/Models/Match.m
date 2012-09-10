@@ -437,11 +437,10 @@
 }
 
 - (BOOL)addLetterToBoard:(Letter *)letter {
-  NSNumber *cellKey = [NSNumber numberWithInt:letter.cellIndex];
-  Letter *existingLetter = [_board objectForKey:cellKey];
+  Letter *existingLetter = [_board objectForKey:@(letter.cellIndex)];
   if (existingLetter)
     return NO;
-  [_board setObject:letter forKey:cellKey];
+  [_board setObject:letter forKey:@(letter.cellIndex)];
   return YES;
 }
 
@@ -555,9 +554,33 @@
   return [self sizeOfRack:[self rackForCurrentUser]] == 0 && _bag.count == 0;
 }
 
+- (NSDictionary *)starOwners {
+  Letter *a = [_board objectForKey:@(kCellIndexForStar0)];
+  Letter *b = [_board objectForKey:@(kCellIndexForStar1)];
+  Letter *c = [_board objectForKey:@(kCellIndexForStar2)];
+  Letter *d = [_board objectForKey:@(kCellIndexForStar3)];
+  Letter *e = [_board objectForKey:@(kCellIndexForStar4)];
+
+  NSMutableArray *p0 = [NSMutableArray array];
+  NSMutableArray *p1 = [NSMutableArray array];
+
+  if (a) [(a.playerOwner == 0 ? p0 : p1) addObject:@0];
+  if (b) [(b.playerOwner == 0 ? p0 : p1) addObject:@1];
+  if (c) [(c.playerOwner == 0 ? p0 : p1) addObject:@2];
+  if (d) [(d.playerOwner == 0 ? p0 : p1) addObject:@3];
+  if (e) [(e.playerOwner == 0 ? p0 : p1) addObject:@4];
+
+  return @{ @0: p0, @1: p1 };
+}
+
+- (int)starCountForPlayerNumber:(int)playerNumber {
+  NSParameterAssert(playerNumber == 0 || playerNumber == 1);
+  return [[[self starOwners] objectForKey:@(playerNumber)] count];
+}
+
 /*
 
- A match ends when a player reaches their end space;
+ A match ends when a player earns the majority of the stars;
  when a player resigns the match;
  when both players pass their turns twice consecutively; or
  when no tiles remain to replenish player racks and both player racks are empty.
@@ -600,21 +623,21 @@
     return YES;
   }
 
-  // Check if player reached opposite corner (end cell) and has more points.
-  // Player 1's end cell is in the top-right corner; player 2's in the bottom-right corner.
+  // Check if one player has the majority of stars.
 
-  int endCellIndexForCurrentPlayer = (_currentPlayerNumber == 0) ? kEndCellIndexForFirstPlayer : kEndCellIndexForSecondPlayer;
+  int starCount = [self starCountForPlayerNumber:_currentPlayerNumber];
 
-  Letter *letterAtEndCell = [self letterAtCellIndex:endCellIndexForCurrentPlayer];
+  DLog(@"currentPlayer: %d starCount: %d", _currentPlayerNumber, starCount);
 
-  if (letterAtEndCell != nil && letterAtEndCell.playerOwner == _currentPlayerNumber) {
+  if (starCount >= 3) {
     self.state = kMatchStateEndedNormal;
-    self.winningPlayer = _currentPlayerNumber;
-    self.losingPlayer = _currentPlayerNumber == 0 ? 1 : 0;
 
-    DLog(@"normal end (reached end cell); %@ lost; %@ win",
-         [[self loser] usernameForDisplay],
-         [[self winner] usernameForDisplay]);
+    self.winningPlayer = _currentPlayerNumber;
+    self.losingPlayer = [self opponentPlayerNumber];
+
+    DLog(@"local player %@ got the majority of the stars; opponent %@ lost",
+         [[self winner] usernameForDisplay],
+         [[self loser] usernameForDisplay]);
 
     return YES;
   }
@@ -747,11 +770,9 @@
   return [self playTurn];
 }
 
-// If the given player has not placed any tiles yet, then yes, the current turn will place their first word.
-
-- (BOOL)isFirstWordForPlayerNumber:(int)playerNumber {
+- (BOOL)isFirstWord {
   return [_board select:^BOOL(NSNumber *cellIndex, Letter *letter) {
-    return letter.playerOwner == playerNumber && letter.turnNumber != -1;
+    return letter.turnNumber != -1;
   }].count == 0;
 }
 
@@ -766,20 +787,11 @@
     return [NSError errorWithDomain:kMatchErrorDomain code:kMatchErrorCodeNothingPlayed userInfo:userInfo];
   }
 
-  BOOL isFirstWord = [self isFirstWordForPlayerNumber:_currentPlayerNumber];
+  BOOL firstWord = [self isFirstWord];
 
-  DLog(@"first word %@", isFirstWord ? @"YES" : @"NO");
-
-  // On first turn of match, the word placed must start on the player's start cell...
-
-  if (isFirstWord && _currentPlayerNumber == 0) {
-    if ([addedLetters select:^BOOL(Letter *letter) { return letter.cellIndex == kStartCellIndexForFirstPlayer; }].count == 0) {
-      NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: NSLocalizedString(@"Start by forming a word from your start space (the green one with the arrow in top-left corner)", nil) };
-      return [NSError errorWithDomain:kMatchErrorDomain code:kMatchErrorCodeFirstNotOnStart userInfo:userInfo];
-    }
-  } else if (isFirstWord && _currentPlayerNumber == 1) {
-    if ([addedLetters select:^BOOL(Letter *letter) { return letter.cellIndex == kStartCellIndexForSecondPlayer; }].count == 0) {
-      NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: NSLocalizedString(@"Start by forming a word from your start space (the orange one with the arrow in bottom-left corner)", nil) };
+  if (firstWord) {
+    if ([addedLetters select:^BOOL(Letter *letter) { return letter.cellIndex == kStartCellIndex; }].count == 0) {
+      NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: NSLocalizedString(@"Start by forming a word on the start space in the center of the board.", nil) };
       return [NSError errorWithDomain:kMatchErrorDomain code:kMatchErrorCodeFirstNotOnStart userInfo:userInfo];
     }
   }
@@ -808,10 +820,10 @@
     return [NSError errorWithDomain:kMatchErrorDomain code:kMatchErrorCodeNothingPlayed userInfo:userInfo];
   }
 
-  // Check that the words formed are built off of existing words (owned by same player [checked earlier]).
+  // Check that the words formed are built off of existing words
   // NB: first turns for each player aren't built off existing words
 
-  if (!isFirstWord) {
+  if (!firstWord) {
     BOOL somePlacedWordHasAnExistingLetter = NO;
 
     for (Word *word in allWords) {
@@ -874,6 +886,19 @@
   turn.type = kTurnTypePlay;
   turn.matchState = _state;
   turn.wordsFormed = [validWords allObjects];
+
+  // Check if any stars were earned this turn
+
+  turn.starEarned = -1;
+  for (Letter *letter in addedLetters) {
+    int starEarned = starAt(letter.cellIndex);
+    if (starEarned != -1) {
+      DLog(@"player earned star # %d on this turn", starEarned);
+      turn.starEarned = starEarned;
+      break;  // can only earn one per turn due to board layout and rack size.
+    }
+  }
+  
   [self playerDidAct:turn];
 
   return nil;

@@ -127,7 +127,13 @@
   DLog(@"currentUser.isNew=%d", [PFUser currentUser].isNew);
 
   [[PFUser currentUser] setObject:[result objectForKey:@"id"] forKey:@"fbId"];
-  [[PFUser currentUser] setObject:[result objectForKey:@"name"] forKey:@"displayName"];
+
+  NSString *name = [result objectForKey:@"name"];
+  if (name.length >= kMaxUsernameLength) {
+    name = [[name substringToIndex:kMaxUsernameLength - 3] stringByAppendingString:@"..."];
+  }
+
+  [[PFUser currentUser] setObject:name forKey:@"displayName"];
   [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
     if (!succeeded) {
       [error showParseError:NSLocalizedString(@"finalize logging in via Facebook", nil)];

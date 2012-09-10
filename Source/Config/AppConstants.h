@@ -21,9 +21,9 @@
 #define kBoardHeightPoints      BOARDSCALED(220)
 
 #define kTileColorPlayerOne     [UIColor colorWithRed:0.572 green:0.741 blue:0.479 alpha:1.000]
-#define kTileColorPlayerTwo     [UIColor colorWithRed:0.819 green:0.598 blue:0.214 alpha:1.000]
+#define kTileColorPlayerTwo     [UIColor colorWithRed:0.572 green:0.741 blue:0.479 alpha:1.000]
 #define kTileTextColorPlayerOne [UIColor colorWithRed:0.286 green:0.369 blue:0.239 alpha:1.000]
-#define kTileTextColorPlayerTwo [UIColor colorWithRed:0.329 green:0.251 blue:0.173 alpha:1.000]
+#define kTileTextColorPlayerTwo [UIColor colorWithRed:0.286 green:0.369 blue:0.239 alpha:1.000]
 #define kTileWidth              BOARDSCALED(40)
 #define kTileHeight             (kTileWidth/2.0)
 #define kTileHalfWidth          (kTileWidth/2.0)
@@ -52,7 +52,7 @@
 
 #define kTileDropHighlightColor [[UIColor darkGrayColor] colorWithAlphaComponent:0.5]
 
-#define ALLOW_OPPONENTS_LETTERS 0
+#define ALLOW_OPPONENTS_LETTERS 1
 
 extern NSString * const kAppStoreAppID;
 extern NSString * const kAppStorePublicURL;

@@ -14,5 +14,6 @@ enum {
 @property (nonatomic) int matchState;              // state of match after turn
 @property (nonatomic, copy) NSArray *wordsFormed;  // NSString objects
 @property (nonatomic) int scoreDelta;
+@property (nonatomic) int starEarned;              // 0 for none, else kModifierStarX for X=[0,4]
 
 @end

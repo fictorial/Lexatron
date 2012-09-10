@@ -32,9 +32,9 @@
     int letterScore = [letter score];
     wordScore += letterScore;
 
-    DLog(@"word scoring '%@': letter score for '%c' = %d (letterValue=%d, isTL=%d isDL=%d isMystery=%d)",
+    DLog(@"word scoring '%@': letter score for '%c' = %d (letterValue=%d, isTL=%d isDL=%d)",
          [self string], letter.letter, letterScore, letterValue(letter.letter),
-         isTripleLetter(letter.cellIndex), isDoubleLetter(letter.cellIndex), isMystery(letter.cellIndex));
+         isTripleLetter(letter.cellIndex), isDoubleLetter(letter.cellIndex));
 
     if (letter.turnNumber == -1) {  // modifiers are only effective on first-use.
       if (isTripleWord(letter.cellIndex))

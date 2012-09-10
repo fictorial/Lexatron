@@ -19,6 +19,7 @@
 		600A3FDC15D22156006402E5 /* TileChooserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 600A3FDA15D22156006402E5 /* TileChooserView.m */; };
 		600A3FDF15D29FB5006402E5 /* BlankChooser.png in Resources */ = {isa = PBXBuildFile; fileRef = 600A3FDD15D29FB5006402E5 /* BlankChooser.png */; };
 		600A3FE015D29FB5006402E5 /* BlankChooser@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 600A3FDE15D29FB5006402E5 /* BlankChooser@2x.png */; };
+		600C3EFF15FE4D0C00579B12 /* earn-star.caf in Resources */ = {isa = PBXBuildFile; fileRef = 600C3EFE15FE4D0C00579B12 /* earn-star.caf */; };
 		6011535A15DE0C8B00B82CD6 /* NSObject-PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 6011535915DE0C8B00B82CD6 /* NSObject-PerformBlock.m */; };
 		6011537715DE120600B82CD6 /* UIAlertView-Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 6011537615DE120600B82CD6 /* UIAlertView-Convenience.m */; };
 		601153B115DE161700B82CD6 /* ATMHud.m in Sources */ = {isa = PBXBuildFile; fileRef = 6011539415DE161700B82CD6 /* ATMHud.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -134,6 +135,13 @@
 		60BA6E0C15E8A2B600BBBB05 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60BA6E0B15E8A2B600BBBB05 /* ChatViewController.m */; };
 		60BA6E2015EB1A4F00BBBB05 /* Chat.m in Sources */ = {isa = PBXBuildFile; fileRef = 60BA6E1F15EB1A4F00BBBB05 /* Chat.m */; };
 		60DABB8015DD6F460081B12A /* help.css in Resources */ = {isa = PBXBuildFile; fileRef = 60DABB7F15DD6F460081B12A /* help.css */; };
+		60DCC88F15FE5DCA003D78A7 /* ParticleTrailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DCC88E15FE5DCA003D78A7 /* ParticleTrailView.m */; };
+		60DCC89415FE6407003D78A7 /* LittleStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 60DCC89315FE6407003D78A7 /* LittleStar.png */; };
+		60DCC89A15FE6A31003D78A7 /* PurpleStar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60DCC89515FE6A31003D78A7 /* PurpleStar.pdf */; };
+		60DCC89B15FE6A31003D78A7 /* GreenStar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60DCC89615FE6A31003D78A7 /* GreenStar.pdf */; };
+		60DCC89C15FE6A31003D78A7 /* OrangeStar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60DCC89715FE6A31003D78A7 /* OrangeStar.pdf */; };
+		60DCC89D15FE6A31003D78A7 /* GreyStar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60DCC89815FE6A31003D78A7 /* GreyStar.pdf */; };
+		60DCC89E15FE6A31003D78A7 /* BlueStar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60DCC89915FE6A31003D78A7 /* BlueStar.pdf */; };
 		60DD11AC15D4CBE2008E07B5 /* Board.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60DD11A915D4CBE2008E07B5 /* Board.pdf */; };
 		60DD11B615D62B48008E07B5 /* Star.png in Resources */ = {isa = PBXBuildFile; fileRef = 60DD11B415D62B48008E07B5 /* Star.png */; };
 		60DD11B715D62B48008E07B5 /* Star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60DD11B515D62B48008E07B5 /* Star@2x.png */; };
@@ -173,6 +181,7 @@
 		600A3FDA15D22156006402E5 /* TileChooserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileChooserView.m; sourceTree = "<group>"; };
 		600A3FDD15D29FB5006402E5 /* BlankChooser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlankChooser.png; sourceTree = "<group>"; };
 		600A3FDE15D29FB5006402E5 /* BlankChooser@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlankChooser@2x.png"; sourceTree = "<group>"; };
+		600C3EFE15FE4D0C00579B12 /* earn-star.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "earn-star.caf"; sourceTree = "<group>"; };
 		6011535815DE0C3000B82CD6 /* NSObject-PerformBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject-PerformBlock.h"; sourceTree = "<group>"; };
 		6011535915DE0C8B00B82CD6 /* NSObject-PerformBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject-PerformBlock.m"; sourceTree = "<group>"; };
 		6011537415DE11D800B82CD6 /* UIAlertView-Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView-Convenience.h"; sourceTree = "<group>"; };
@@ -334,6 +343,14 @@
 		60DABB7515DD44F60081B12A /* AppConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConstants.h; sourceTree = "<group>"; };
 		60DABB7615DD45390081B12A /* iPadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPadHelper.h; sourceTree = "<group>"; };
 		60DABB7F15DD6F460081B12A /* help.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = help.css; sourceTree = "<group>"; };
+		60DCC88D15FE5DCA003D78A7 /* ParticleTrailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleTrailView.h; sourceTree = "<group>"; };
+		60DCC88E15FE5DCA003D78A7 /* ParticleTrailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticleTrailView.m; sourceTree = "<group>"; };
+		60DCC89315FE6407003D78A7 /* LittleStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LittleStar.png; sourceTree = "<group>"; };
+		60DCC89515FE6A31003D78A7 /* PurpleStar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PurpleStar.pdf; sourceTree = "<group>"; };
+		60DCC89615FE6A31003D78A7 /* GreenStar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = GreenStar.pdf; sourceTree = "<group>"; };
+		60DCC89715FE6A31003D78A7 /* OrangeStar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = OrangeStar.pdf; sourceTree = "<group>"; };
+		60DCC89815FE6A31003D78A7 /* GreyStar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = GreyStar.pdf; sourceTree = "<group>"; };
+		60DCC89915FE6A31003D78A7 /* BlueStar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = BlueStar.pdf; sourceTree = "<group>"; };
 		60DD11A915D4CBE2008E07B5 /* Board.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Board.pdf; sourceTree = "<group>"; };
 		60DD11B415D62B48008E07B5 /* Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star.png; sourceTree = "<group>"; };
 		60DD11B515D62B48008E07B5 /* Star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star@2x.png"; sourceTree = "<group>"; };
@@ -511,6 +528,12 @@
 		605FB18715D0B93200766E5C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				60DCC89515FE6A31003D78A7 /* PurpleStar.pdf */,
+				60DCC89615FE6A31003D78A7 /* GreenStar.pdf */,
+				60DCC89715FE6A31003D78A7 /* OrangeStar.pdf */,
+				60DCC89815FE6A31003D78A7 /* GreyStar.pdf */,
+				60DCC89915FE6A31003D78A7 /* BlueStar.pdf */,
+				60DCC89315FE6407003D78A7 /* LittleStar.png */,
 				60E9830415DBF391005B1EC3 /* Help */,
 				60DD11B415D62B48008E07B5 /* Star.png */,
 				60DD11B515D62B48008E07B5 /* Star@2x.png */,
@@ -586,6 +609,7 @@
 		605FB1C815D0B93200766E5C /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				600C3EFE15FE4D0C00579B12 /* earn-star.caf */,
 				60DD11B815D96BF5008E07B5 /* new-game.caf */,
 				600A3FA015D190F8006402E5 /* back.caf */,
 				605FB1C915D0B93200766E5C /* end-lost.caf */,
@@ -734,6 +758,8 @@
 				600A3FDA15D22156006402E5 /* TileChooserView.m */,
 				605FB21215D0B93200766E5C /* DraggableView.h */,
 				605FB21315D0B93200766E5C /* DraggableView.m */,
+				60DCC88D15FE5DCA003D78A7 /* ParticleTrailView.h */,
+				60DCC88E15FE5DCA003D78A7 /* ParticleTrailView.m */,
 				605FB21415D0B93200766E5C /* ExplosionView.h */,
 				605FB21515D0B93200766E5C /* ExplosionView.m */,
 				600A3FCE15D21566006402E5 /* TileView.h */,
@@ -903,6 +929,13 @@
 				60DABB8015DD6F460081B12A /* help.css in Resources */,
 				60AF510815E414F300AF5B07 /* SwapButton.png in Resources */,
 				60AF510915E414F300AF5B07 /* SwapButton@2x.png in Resources */,
+				600C3EFF15FE4D0C00579B12 /* earn-star.caf in Resources */,
+				60DCC89415FE6407003D78A7 /* LittleStar.png in Resources */,
+				60DCC89A15FE6A31003D78A7 /* PurpleStar.pdf in Resources */,
+				60DCC89B15FE6A31003D78A7 /* GreenStar.pdf in Resources */,
+				60DCC89C15FE6A31003D78A7 /* OrangeStar.pdf in Resources */,
+				60DCC89D15FE6A31003D78A7 /* GreyStar.pdf in Resources */,
+				60DCC89E15FE6A31003D78A7 /* BlueStar.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -984,6 +1017,7 @@
 				60767F7115DF53DD000D2488 /* AlertView.m in Sources */,
 				60BA6E0C15E8A2B600BBBB05 /* ChatViewController.m in Sources */,
 				60BA6E2015EB1A4F00BBBB05 /* Chat.m in Sources */,
+				60DCC88F15FE5DCA003D78A7 /* ParticleTrailView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,6 +22,7 @@ enum {
   kEffectRecall,
   kEffectSlide,
   kEffectNewGame,
+  kEffectStarEarned,
 
   kEffectCount
 };

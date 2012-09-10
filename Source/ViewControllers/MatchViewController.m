@@ -16,6 +16,8 @@
 #import "ExplosionView.h"
 #import "Chat.h"
 #import "ChatViewController.h"
+#import "ParticleTrailView.h"
+#import "UIImage+PDF.h"
 
 enum {
   kViewStateNormal,        // viewing/playing active match
@@ -27,7 +29,8 @@ enum {
 enum {
   kMatchEndSummaryLabelTag = 888,
   kMatchEndRematchButtonTag,
-  kDropTargetViewTag
+  kDropTargetViewTag,
+  kStarImageTagBase
 };
 
 @interface MatchViewController ()
@@ -36,8 +39,6 @@ enum {
 @property (nonatomic, strong) RackView *rackView;
 @property (nonatomic, strong) UILabel *player1Label;
 @property (nonatomic, strong) UILabel *player2Label;
-@property (nonatomic, strong) UIImageView *player1ColorTile;
-@property (nonatomic, strong) UIImageView *player2ColorTile;
 @property (nonatomic, strong) UIButton *submitButton;
 @property (nonatomic, strong) UIButton *chatButton;
 @property (nonatomic, strong) UIButton *swapButton;
@@ -88,7 +89,7 @@ enum {
 
   self.boardScrollView = [[BoardScrollView alloc] initWithFrame:CGRectMake(0, 0, kBoardWidthPoints, kBoardHeightPoints)];
   _boardScrollView.backgroundColor = [UIColor clearColor];
-  _boardScrollView.center = CGPointMake(w/2, h/2);
+  _boardScrollView.center = CGPointMake(w/2, h/2 - (ISPAD ? 10 : 4));
   _boardScrollView.delegate = self;
   [self.view addSubview:_boardScrollView];
   [self updateBoardFromMatchState];
@@ -116,21 +117,19 @@ enum {
 }
 
 - (void)setupScoreboard {
-  self.player1Label = [self makeScoreboardLabel];
-  self.player2Label = [self makeScoreboardLabel];
-  [self.view addSubview:_player1Label];
-  [self.view addSubview:_player2Label];
-
-  self.player1ColorTile = [[UIImageView alloc] initWithImage:[UIImage imageWithName:@"Player1Tile"]];
-  self.player2ColorTile = [[UIImageView alloc] initWithImage:[UIImage imageWithName:@"Player2Tile"]];
-  [self.view addSubview:_player1ColorTile];
-  [self.view addSubview:_player2ColorTile];
-
-  [self updateScoreboard];  // sets .text
-  [self updateScoreboardTiles];
+  [self updateScoreboard];
 }
 
 - (void)updateScoreboard {
+  [_player1Label removeFromSuperview];
+  [_player2Label removeFromSuperview];
+
+  self.player1Label = [self makeScoreboardLabel];
+  self.player2Label = [self makeScoreboardLabel];
+
+  [self.view addSubview:_player1Label];
+  [self.view addSubview:_player2Label];
+
   _player1Label.text = [NSString stringWithFormat:@"%@   %d",
                         [[_match playerForPlayerNumber:0] usernameForDisplay],
                         _match.scoreForFirstPlayer];
@@ -145,14 +144,8 @@ enum {
   float player1Width = [_player1Label.text sizeWithFont:_player1Label.font].width;
   float player2Width = [_player2Label.text sizeWithFont:_player2Label.font].width;
 
-  float margin = SCALED(10);
-  float bigMargin = SCALED(25);
-
-
-  float fullWidth = (_player1ColorTile.image.size.width + margin +
-                     player1Width + bigMargin + player2Width +
-                     margin + _player2ColorTile.image.size.width);
-
+  float bigMargin = SCALED(40);
+  float fullWidth = (player1Width + bigMargin + player2Width);
   float labelHeight = SCALED(20);
   float labelY = SCALED(30) - labelHeight/2;
 
@@ -161,34 +154,80 @@ enum {
 
   float cx = CGRectGetWidth(self.view.bounds)/2;
 
-  _player1ColorTile.center = CGPointMake(cx - fullWidth/2 + _player1ColorTile.image.size.width/2, labelY);
-  _player1Label.center = CGPointMake(CGRectGetMaxX(_player1ColorTile.frame) + margin + player1Width/2, labelY);
+  _player1Label.center = CGPointMake(cx - fullWidth/2 + player1Width/2, labelY);
+  _player2Label.center = CGPointMake(CGRectGetMaxX(_player1Label.frame) + bigMargin + player2Width/2, labelY);
 
-  _player2ColorTile.center = CGPointMake(CGRectGetMaxX(_player1Label.frame) + bigMargin + _player2ColorTile.image.size.width/2, labelY);
-  _player2Label.center = CGPointMake(CGRectGetMaxX(_player2ColorTile.frame) + margin + player2Width/2, labelY);
-}
+  // Make the current player's label pulse
 
-- (void)updateScoreboardTiles {
-  UIImageView *activeIV, *inactiveIV;
+  [_player1Label.layer removeAllAnimations];
+  [_player2Label.layer removeAllAnimations];
 
-  if (_match.currentPlayerNumber == 0) {
-    activeIV = _player1ColorTile;
-    inactiveIV = _player2ColorTile;
-  } else {
-    activeIV = _player2ColorTile;
-    inactiveIV = _player1ColorTile;
+  if (_match.state == kMatchStateActive) {
+    UILabel *activePlayerLabel, *inactivePlayerLabel;
+
+    if (_match.currentPlayerNumber == 0) {
+      activePlayerLabel = _player1Label;
+      inactivePlayerLabel = _player2Label;
+    } else {
+      activePlayerLabel = _player2Label;
+      inactivePlayerLabel = _player1Label;
+    }
+
+    [activePlayerLabel.layer addAnimation:[self pulseAnimation] forKey:@"transform.scale"];
   }
 
-  [inactiveIV.layer removeAllAnimations];
-  [activeIV.layer addAnimation:[self pulseAnimation] forKey:@"transform.scale"];
+  // Show the stars each player has earned
+
+  NSDictionary *starOwners = [_match starOwners];
+
+  NSArray *starsForFirstPlayer = [starOwners objectForKey:@0];
+  NSArray *starsForSecondPlayer = [starOwners objectForKey:@1];
+
+  float starSize = roundf(labelHeight * 1.1);
+  int initialStarsMargin = SCALED(15);
+  int starsMargin = SCALED(2);
+  int firstStarsWidth = starsForFirstPlayer.count * (starSize + starsMargin);
+  int firstX = CGRectGetMinX(_player1Label.frame) - initialStarsMargin - firstStarsWidth;
+  int secondX = CGRectGetMaxX(_player2Label.frame) + initialStarsMargin;
+
+  int tag = kStarImageTagBase;
+
+  for (int i = tag; i < tag + 5; ++i)
+    [[self.view viewWithTag:i] removeFromSuperview];
+
+  DLog(@"stars for p0 = %@ p1 = %@ starSize = %f", starsForFirstPlayer, starsForSecondPlayer, starSize);
+
+  for (NSNumber *starNumber in starsForFirstPlayer) {
+    UIImage *starImage = [self imageForStarNumber:[starNumber intValue] size:starSize];
+    NSAssert(starImage != nil, @"Expected star image");
+
+    UIImageView *starImageView = [[UIImageView alloc] initWithImage:starImage];
+    starImageView.frame = CGRectIntegral(CGRectMake(firstX, CGRectGetMidY(_player1Label.frame) - starSize/2, starSize, starSize));
+    starImageView.tag = tag++;
+    [self.view addSubview:starImageView];
+
+    firstX += starSize + starsMargin;
+  }
+
+  for (NSNumber *starNumber in starsForSecondPlayer) {
+    UIImage *starImage = [self imageForStarNumber:[starNumber intValue] size:starSize];
+    NSAssert(starImage != nil, @"Expected star image");
+
+    UIImageView *starImageView = [[UIImageView alloc] initWithImage:starImage];
+    starImageView.frame = CGRectIntegral(CGRectMake(secondX, CGRectGetMidY(_player2Label.frame) - starSize/2, starSize, starSize));
+    starImageView.tag = tag++;
+    [self.view addSubview:starImageView];
+
+    secondX += starSize + starsMargin;
+  }
 }
 
 - (CABasicAnimation *)pulseAnimation {
   CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
 
-  animation.duration = 0.4;
+  animation.duration = 0.6;
   animation.fromValue = @(1);
-  animation.toValue = @(0.65);
+  animation.toValue = @(0.86);
   animation.repeatCount = HUGE_VALF;
   animation.autoreverses = YES;
 
@@ -497,7 +536,8 @@ enum {
                              [weakSelf setViewState:kViewStateNormal];
 
                              [weakSelf performBlock:^(id sender) {
-                               [weakSelf zoomToLettersOwnedByCurrentPlayer];
+//                               [weakSelf zoomToLettersOwnedByCurrentPlayer];
+                               [weakSelf zoomToAllLetters];
                              } afterDelay:2];
 
                              [TestFlight passCheckpoint:@"matchAcceptedChallenge"];
@@ -512,14 +552,7 @@ enum {
   } else {
     self.viewState = kViewStateNormal;
 
-    if ([_match currentUserIsCurrentPlayer]) {
-      [self.boardScrollView zoomOut];
-//      [self performBlock:^(id sender) {
-//        [weakSelf zoomToLettersOwnedByCurrentPlayer];
-//      } afterDelay:2];
-    }
-
-    [self updateScoreboardTiles];
+    [self updateScoreboard];
   }
 
   [_rackView popTilesIn];
@@ -587,7 +620,6 @@ enum {
 - (void)leaveNormalState {
 }
 
-
 - (void)goBack {
   if (_viewState == kViewStateSwap) {
     self.viewState = kViewStateNormal;
@@ -610,8 +642,12 @@ enum {
     return;
   }
 
-  [self updateScoreboard];
-  [self updateScoreboardTiles];
+  if (turn.starEarned == -1) {
+    __weak id weakSelf = self;
+    [self performBlock:^(id sender) {
+      [weakSelf updateScoreboard];
+    } afterDelay:1.5];
+  }
 
   if (match.state == kMatchStateEndedNormal ||
       match.state == kMatchStateEndedResign) {
@@ -656,7 +692,8 @@ enum {
                                  }
 
                                  [weakSelf performBlock:^(id sender) {
-                                   [weakSelf zoomToLettersOwnedByCurrentPlayer];
+//                                   [weakSelf zoomToLettersOwnedByCurrentPlayer];
+                                   [weakSelf zoomToAllLetters];
                                  } afterDelay:2];
                                }];
     } afterDelay:delay];   // Let score show in HUD for a bit.
@@ -686,9 +723,63 @@ enum {
   [self displayScoreChangeMessage:turn];
   [self changeHighlightedLettersToNormal];
 
-  [[LQAudioManager sharedManager] playEffect:kEffectPlayedWord];
+  if (turn.starEarned != -1) {
+    __weak id weakSelf = self;
+    [self performBlock:^(id sender) {
+      [weakSelf showStarEarnedEffects:turn.starEarned];
+    } afterDelay:1];
+  } else {
+    [[LQAudioManager sharedManager] playEffect:kEffectPlayedWord];
+  }
 
   [TestFlight passCheckpoint:@"matchPlayedWord"];
+}
+
+// starEarned in [0, 4] for [kModifierStar0, kModifierStar4]
+
+- (UIImage *)imageForStarNumber:(int)starNumber size:(CGFloat)size {
+  NSArray *starImageNames = @[ @"BlueStar.pdf", @"OrangeStar.pdf", @"GreenStar.pdf", @"PurpleStar.pdf", @"GreyStar.pdf" ];
+  NSParameterAssert(starNumber >= 0 && starNumber < starImageNames.count);
+  return [UIImage imageWithPDFNamed:[starImageNames objectAtIndex:starNumber] atWidth:size];
+}
+
+- (void)showStarEarnedEffects:(int)starEarned {
+  UIImage *starImage = [self imageForStarNumber:starEarned size:self.view.bounds.size.height/2];
+  NSAssert(starImage != nil, @"expected star image");
+
+  UIImageView *imageView = [[UIImageView alloc] initWithImage:starImage];
+  [imageView sizeToFit];
+
+  UIView *container = [[UIView alloc] initWithFrame:imageView.frame];
+  container.backgroundColor = [UIColor clearColor];
+  container.center = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2);
+
+  [self.view addSubview:container];
+
+  [container addSubview:[[ParticleTrailView alloc] initWithFrame:imageView.bounds]];
+  [container addSubview:imageView];
+
+  [container backInFrom:kFTAnimationBottom withFade:YES duration:0.5 delegate:nil];
+
+  __weak id weakSelf = self;
+
+  [self performBlock:^(id sender) {
+    [[LQAudioManager sharedManager] playEffect:kEffectStarEarned];
+    CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.toValue = [NSNumber numberWithFloat:2*M_PI];
+    rotationAnimation.duration = 0.5;
+    [imageView.layer addAnimation:rotationAnimation forKey:@"spinner"];
+
+    [weakSelf updateScoreboard];
+  } afterDelay:0.7];
+
+  [self performBlock:^(id sender) {
+    [container backOutTo:kFTAnimationTop withFade:YES duration:0.4 delegate:nil];
+  } afterDelay:2];
+
+  [self performBlock:^(id sender) {
+    [container removeFromSuperview];
+  } afterDelay:2.5];
 }
 
 - (void)displayScoreChangeMessage:(Turn *)turn {
@@ -901,16 +992,6 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
   if (boardCell.x < 0 || boardCell.y < 0)
     return NO;
-
-  if (_match.currentPlayerNumber == 0 && boardCell.x == kStartCellXForSecondPlayer && boardCell.y == kStartCellYForSecondPlayer) {
-    [self showNoticeAlertWithCaption:NSLocalizedString(@"Start by forming a word from your start space (the green one with the arrow in top-left corner)", nil)];
-    return NO;
-  }
-
-  if (_match.currentPlayerNumber == 1 && boardCell.x == kStartCellXForFirstPlayer && boardCell.y == kStartCellYForFirstPlayer) {
-    [self showNoticeAlertWithCaption:NSLocalizedString(@"Start by forming a word from your start space (the orange one with the arrow in bottom-left corner)", nil)];
-    return NO;
-  }
 
   CGRect cellRect = [_boardScrollView.boardView boardFromCellX:boardCell.x y:boardCell.y];
 
@@ -1183,8 +1264,7 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 - (CGRect)boundingRectForLettersOwnedByCurrentPlayer {
   CGRect bounds = [self boundingRectForLetters:[_match lettersOwnedByPlayerNumber:_match.currentPlayerNumber]];
   if (bounds.size.width == 0) {
-    int index = _match.currentPlayerNumber == 0 ? kStartCellIndexForFirstPlayer : kStartCellIndexForSecondPlayer;
-    return [_boardScrollView.boardView boardFromCellX:cellX(index) y:cellY(index)];
+    return [_boardScrollView.boardView boardFromCellX:kStartCellX y:kStartCellY];
   }
   return bounds;
 }
@@ -1207,8 +1287,8 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
   CGFloat boardCellSizeUnscaled = CGRectGetWidth(self.boardScrollView.bounds) / kBoardSize;
   bounds = CGRectInset(bounds,
-                       -boardCellSizeUnscaled * 1.5,
-                       -boardCellSizeUnscaled * 1.5);
+                       -boardCellSizeUnscaled * 2,
+                       -boardCellSizeUnscaled * 2);
 
   [self.boardScrollView zoomToRect:bounds animated:YES];
 }
@@ -1220,8 +1300,8 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
   if (rect.size.width > 0) {
     CGRect boundsForAll = CGRectInset(rect,
-                                      -boardCellSizeUnscaled * 1.5,
-                                      -boardCellSizeUnscaled * 1.5);
+                                      -boardCellSizeUnscaled * 2,
+                                      -boardCellSizeUnscaled * 2);
 
     DLog(@"zoom to %@", NSStringFromCGRect(boundsForAll));
 
@@ -1310,10 +1390,11 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
     return;
   }
 
+  [self updateScoreboard];
+
   [self performBlock:^(id sender) {
     self.viewState = kViewStateEnded;
   } afterDelay:1];
-
 }
 
 - (void)enterGameOverState {
@@ -1380,7 +1461,7 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
   }
 
   if (currentPlayerWon) {
-    NSArray *playerLetters = [self lettersOwnedByPlayer:_match.currentPlayerNumber];
+    NSArray *allLetters = [self allLetters];
 
     [self performBlock:^(id sender) {
       [summaryLabel popIn:0.4 delegate:nil];
@@ -1395,15 +1476,23 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
             [boomView removeFromSuperview];
           }];
         }];
-      } afterDelay:playerLetters.count * 0.1];
+      } afterDelay:allLetters.count * 0.1];
 
       __block NSTimeInterval delay = 0;
-      [playerLetters each:^(TileView *tileView) {
+      [allLetters each:^(TileView *tileView) {
         tileView.letter = [_match letterAtCellIndex:tileView.letter.cellIndex];
         tileView.isNew = NO;
         [tileView jumpWithDelay:delay repeat:YES];
+        [tileView.superview bringSubviewToFront:tileView];
         delay += 0.15;
-      }];      
+      }];
+
+      for (int i=kStarImageTagBase; i<kStarImageTagBase+5; ++i) {
+        UIView *aView = [self.view viewWithTag:i];
+        if (aView) {
+          [aView.layer addAnimation:[self pulseAnimation] forKey:@"win"];
+        }
+      }
     } afterDelay:2.5];
 
     _boardScrollView.clipsToBounds = NO;
@@ -1498,7 +1587,8 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
     [_match recallLettersPlacedInCurrentTurn];
     [self setupRack];
-    [self zoomToLettersOwnedByCurrentPlayer];
+//    [self zoomToLettersOwnedByCurrentPlayer];
+    [self zoomToAllLetters];
   }
 }
 
