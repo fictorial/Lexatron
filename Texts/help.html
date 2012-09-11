@@ -25,7 +25,7 @@
     </h3>
     <p>In Lexatron, a match consists of two <em>players</em>, two <em>letter racks</em>, a <em>letter bag</em>,
     and an X-shaped <i>board</i> which consists of <i>spaces</i> on which <i>letters</i> may be placed to form <i>words</i>.
-    The first player has <em>green</em> letters while the second player has <em>orange</em> letters.</p>
+    There are 5 spaces on the extremes of the board containing stars with colors blue, gray, orange, green, and purple.
 
     <center>
       <img src="HelpLetters.png" width="224px" />
@@ -48,23 +48,21 @@
     A player may do any of the following to take a turn:</p>
 
     <ul>
-      <li>take one or more letters from their letter rack and place them on the board to form one or more words</li>
+      <li>drag one or more letters from their letter rack and place them on the board to form one or more words</li>
       <li>pass their turn</li>
       <li>resign the match</li>
       <li>swap one or more letters from their letter rack with replacement letters selected at random from the letter bag</li>
     </ul>
 
     <p>On a player's first placement of letters on the board, one of the letters must
-    be placed on the player's <em>start space</em>.  The first player's start space is the
-    top-left space, and is green with an arrow on it.  The second player's
-    start space is the bottom-left space, and is orange with an arrow on it.</p>
+    be placed on the <em>START space</em>.</p>
 
     <center>
-      <img src="HelpStartEnd.png" width="275px" />
+      <img src="HelpStartEnd.png" width="280px" />
     </center>
 
     <p>Thereafter, one of the words formed in a turn must include a letter
-    from a word formed earlier by the same player.</p>
+    from a word formed in a previous turn by either player.</p>
 
     <p>Words extend horizontally and vertically just like in other word games.
     In Lexatron however, horizontally means "diagonally up to the right" while
@@ -76,21 +74,10 @@
       <img src="HelpDirection.png" width="224px" />
     </center>
 
-    <p>Words can of course overlap your other words already on the board.</p>
+    <p>Words can of course be formed using letters already on the board.</p>
 
     <center>
       <img src="HelpOverlap.png" width="225px" />
-    </center>
-
-    <p>Words formed do not take into account the letters of words already formed by the opponent. While it is
-    possible to form a word with a letter adjacent to an opponent's letters,
-    it is not possible to form a word that spans a word of the opponent.
-    For example, in the following screenshot, the orange word ZIT is independent of
-    the green word PREY. That is, the (invalid) words IPIG and WAITR are not considered.
-    </p>
-
-    <center>
-      <img src="HelpAdjacent.png" width="125px" style="border: 1px solid #444" />
     </center>
 
     <a name="objectives"></a>
@@ -98,11 +85,10 @@
       <span style="float: right"><a href="#top">&#9650;</a></span>
     </h3>
 
-    <p>A player's primary objective in Lexatron is to reach their end space before
-    their opponent reaches their end space.</p>
+    <p>A player's primary objective in Lexatron is to reach any 3 of the 5 star spaces.</p>
 
     <p>A player's secondary objective is to score as many points as possible. Should
-    the players be blocked from reaching their respective end spaces, a match
+    the players find themselves unable to reach 3 star spaces, a match
     may still be won by having the most points when the letter bag is fully
     depleted.</p>
 
@@ -141,7 +127,6 @@
       <li><em>3L</em> triples the point value of the letter</li>
       <li><em>2W</em> doubles the point value of the word formed</li>
       <li><em>3W</em> triples the value of the word formed</li>
-      <li><em>!</em> is a one-time bonus of 25 points</li>
     </ul>
 
     <center>
@@ -163,11 +148,10 @@
     <p>A match ends when any of the following occur:</p>
 
     <ul>
-      <li>a player reaches their end space before their opponent reaches their own end
-        space</li>
-      <li>a player resigns the match</li>
-      <li>both players pass their turns twice consecutively</li>
-      <li>no letters remain to replenish player racks and both player racks are empty</li>
+      <li>a player reaches any 3 of the 5 star spaces;</li>
+      <li>a player resigns the match;</li>
+      <li>both players pass their turns twice consecutively; or</li>
+      <li>no letters remain to replenish player racks and both player racks are empty.</li>
     </ul>
 
     <p>In the latter two cases, the winner is the player with more points.</p>
@@ -181,7 +165,7 @@
       <img src="HelpControlsZoom.png" width="225px" /><p/>
       <img src="HelpControlsPinch.png" width="225px" /><p/>
       <img src="HelpControlsDragRack.png" width="225px" /><p/>
-      <img src="HelpControlsDragBoard.png" width="225px" /><p/>
+      <img src="HelpControlsDragBoard.png" width="288px" /><p/>
       <img src="HelpControlsSubmit.png" width="225px" /><p/>
     </center>
 

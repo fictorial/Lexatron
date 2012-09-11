@@ -1507,8 +1507,8 @@
 
     case kTurnTypeExchange:
       if ([self currentUserPlayerNumber] == _currentPlayerNumber)
-        return [NSString stringWithFormat:NSLocalizedString(@"%@ exchanged tiles", nil), opponentName];
-      return [NSString stringWithFormat:NSLocalizedString(@"You exchanged tiles vs %@", nil), opponentName];
+        return [NSString stringWithFormat:NSLocalizedString(@"%@ swapped tiles", nil), opponentName];
+      return [NSString stringWithFormat:NSLocalizedString(@"You swapped tiles vs %@", nil), opponentName];
   }
 
   return nil;
