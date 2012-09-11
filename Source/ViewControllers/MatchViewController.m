@@ -183,7 +183,7 @@ enum {
   NSArray *starsForFirstPlayer = [starOwners objectForKey:@0];
   NSArray *starsForSecondPlayer = [starOwners objectForKey:@1];
 
-  float starSize = roundf(labelHeight * 1.1);
+  float starSize = _player1Label.font.pointSize;
   int initialStarsMargin = SCALED(15);
   int starsMargin = SCALED(2);
   int firstStarsWidth = starsForFirstPlayer.count * (starSize + starsMargin);
@@ -558,20 +558,77 @@ enum {
   [_rackView popTilesIn];
 }
 
+- (BOOL)maybeShowSimpleTutorial {
+
+  // Show "I'm too lazy to read more than 2 lines of text but this game is the sux0r lol" tutorial.
+  // But, show it only once lest we be inundated with 1-star reviews from our oh-so-gentle App Store reviewers.
+  // </bitter-neckbeard>.
+
+  NSString *basicTipKey = @"shownSimpleHowToPlayTip";
+
+  if ([[NSUserDefaults standardUserDefaults] boolForKey:basicTipKey])
+    return NO;
+
+  __weak id weakSelf = self;
+
+  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:basicTipKey];
+  [self performBlock:^(id sender) {
+    [self showHUDWithActivity:NO caption:NSLocalizedString(@"Place letters to form words ...", nil)];
+    [self performBlock:^(id sender) {
+      [weakSelf hideActivityHUD];
+      [self showHUDWithActivity:NO caption:NSLocalizedString(@"Reach any 3 out of the 5 stars and you win!", nil)];
+
+      // Highlight where the stars since people are fucking blind apparently.
+      // Only show it on each player's first turn of a match.
+
+      UIImageView *starLabels = [[UIImageView alloc] initWithImage:[UIImage imageWithName:@"StarLabels"]];
+      starLabels.bounds = CGRectMake(0, 0, kBoardWidthPoints, kBoardHeightPoints);
+      starLabels.center = CGPointMake(_boardScrollView.bounds.size.width/2, _boardScrollView.bounds.size.height/2);
+      starLabels.contentMode = UIViewContentModeCenter;
+      starLabels.alpha = 0;
+      [_boardScrollView addSubview:starLabels];
+
+      [UIView animateWithDuration:0.4 delay:2.5 options:0 animations:^{
+        starLabels.alpha = 1;
+      } completion:^(BOOL finished) {
+      }];
+
+      [self performBlock:^(id sender) {
+        [weakSelf hideActivityHUD];
+
+        [UIView animateWithDuration:0.4 delay:2 options:0 animations:^{
+          starLabels.alpha = 0;
+        } completion:^(BOOL finished) {
+          [starLabels removeFromSuperview];
+        }];
+
+      } afterDelay:3.5];
+    } afterDelay:2.5];
+  } afterDelay:1.5];
+
+  return YES;
+}
+
 - (void)viewDidAppear:(BOOL)animated {
   __weak id weakSelf = self;
 
-  if (!_seenMostRecentTurnDescription && [_match currentUserPlayerNumber] == _match.currentPlayerNumber) {
+  [[LQAudioManager sharedManager] playEffect:kEffectNewGame];
+
+  BOOL shown = [self maybeShowSimpleTutorial];
+
+  if (!shown &&
+      !_seenMostRecentTurnDescription &&
+      [_match currentUserPlayerNumber] == _match.currentPlayerNumber) {
+
+    // Show what the opponent did in their turn.
+
     self.seenMostRecentTurnDescription = YES;
 
     [self showHUDWithActivity:NO caption:[_match mostRecentTurnDescription]];
     [self makeHUDNonModal];  // Can get annoying if you just want to get going.
-
     [self performBlock:^(id sender) {
       [weakSelf hideActivityHUD];
     } afterDelay:1.5];
-
-    [[LQAudioManager sharedManager] playEffect:kEffectNewGame];
 
     [self highlightLettersPlayedByOpponentInMostRecentTurn];
   }
@@ -1403,7 +1460,7 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
   _rackView.hidden = YES;
   _endedLabel.hidden = NO;
   _submitButton.hidden = YES;
-  _chatButton.hidden = YES;
+  _chatButton.hidden = NO; // can still chat after game ends.
   _shuffleButton.hidden = YES;
   _swapButton.hidden = YES;
   _swapInfoView.hidden = YES;

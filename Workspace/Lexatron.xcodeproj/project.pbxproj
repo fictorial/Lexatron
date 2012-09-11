@@ -142,6 +142,8 @@
 		60DCC89C15FE6A31003D78A7 /* OrangeStar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60DCC89715FE6A31003D78A7 /* OrangeStar.pdf */; };
 		60DCC89D15FE6A31003D78A7 /* GreyStar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60DCC89815FE6A31003D78A7 /* GreyStar.pdf */; };
 		60DCC89E15FE6A31003D78A7 /* BlueStar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60DCC89915FE6A31003D78A7 /* BlueStar.pdf */; };
+		60DCC8A015FECDED003D78A7 /* StarLabels@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60DCC89F15FECDED003D78A7 /* StarLabels@2x.png */; };
+		60DCC8A215FEDB6E003D78A7 /* StarLabels.png in Resources */ = {isa = PBXBuildFile; fileRef = 60DCC8A115FEDB6E003D78A7 /* StarLabels.png */; };
 		60DD11AC15D4CBE2008E07B5 /* Board.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60DD11A915D4CBE2008E07B5 /* Board.pdf */; };
 		60DD11B615D62B48008E07B5 /* Star.png in Resources */ = {isa = PBXBuildFile; fileRef = 60DD11B415D62B48008E07B5 /* Star.png */; };
 		60DD11B715D62B48008E07B5 /* Star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60DD11B515D62B48008E07B5 /* Star@2x.png */; };
@@ -351,6 +353,8 @@
 		60DCC89715FE6A31003D78A7 /* OrangeStar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = OrangeStar.pdf; sourceTree = "<group>"; };
 		60DCC89815FE6A31003D78A7 /* GreyStar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = GreyStar.pdf; sourceTree = "<group>"; };
 		60DCC89915FE6A31003D78A7 /* BlueStar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = BlueStar.pdf; sourceTree = "<group>"; };
+		60DCC89F15FECDED003D78A7 /* StarLabels@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarLabels@2x.png"; sourceTree = "<group>"; };
+		60DCC8A115FEDB6E003D78A7 /* StarLabels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarLabels.png; sourceTree = "<group>"; };
 		60DD11A915D4CBE2008E07B5 /* Board.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Board.pdf; sourceTree = "<group>"; };
 		60DD11B415D62B48008E07B5 /* Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star.png; sourceTree = "<group>"; };
 		60DD11B515D62B48008E07B5 /* Star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star@2x.png"; sourceTree = "<group>"; };
@@ -528,6 +532,8 @@
 		605FB18715D0B93200766E5C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				60DCC89F15FECDED003D78A7 /* StarLabels@2x.png */,
+				60DCC8A115FEDB6E003D78A7 /* StarLabels.png */,
 				60DCC89515FE6A31003D78A7 /* PurpleStar.pdf */,
 				60DCC89615FE6A31003D78A7 /* GreenStar.pdf */,
 				60DCC89715FE6A31003D78A7 /* OrangeStar.pdf */,
@@ -936,6 +942,8 @@
 				60DCC89C15FE6A31003D78A7 /* OrangeStar.pdf in Resources */,
 				60DCC89D15FE6A31003D78A7 /* GreyStar.pdf in Resources */,
 				60DCC89E15FE6A31003D78A7 /* BlueStar.pdf in Resources */,
+				60DCC8A015FECDED003D78A7 /* StarLabels@2x.png in Resources */,
+				60DCC8A215FEDB6E003D78A7 /* StarLabels.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -36,8 +36,12 @@ static inline int sideOfLine(CGPoint A, CGPoint B, CGPoint P) {
   CGSize zoomedInSize  = CGSizeMake(zoomedOutSize.width * kBoardMaxZoomScale,
                                     zoomedOutSize.height * kBoardMaxZoomScale);
 
+  DLog(@"converting PDF to images...");
+
   self.zoomedOutBoardImage = [UIImage imageWithPDFNamed:@"Board.pdf" atSize:zoomedOutSize];
   self.zoomedInBoardImage = [UIImage imageWithPDFNamed:@"Board.pdf" atSize:zoomedInSize];
+
+  DLog(@"done converting PDF to images.");
 
   _imageView = [[UIImageView alloc] initWithImage:_zoomedOutBoardImage];
 
