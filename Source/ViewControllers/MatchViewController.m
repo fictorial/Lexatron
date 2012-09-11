@@ -483,7 +483,8 @@ enum {
 
   __weak id weakSelf = self;
 
-  if (_match.state == kMatchStatePending &&
+  if (_match != nil &&
+      _match.state == kMatchStatePending &&
       !_match.passAndPlay &&
       [_match currentUserPlayerNumber] != 0 &&
       !_hasAcceptedChallenge) {

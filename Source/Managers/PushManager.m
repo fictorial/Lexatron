@@ -66,6 +66,19 @@ NSString * const kPushNotificationHandledNotification = @"PushNotificationHandle
   
   if ([PFUser currentUser]) {
     NSString *channelName = [[PFUser currentUser] pushChannelName];
+
+    // It's possible to login as one user, subscribe to their channel, then delete the app,
+    // reinstall, then login as another user... and get both user's pushes.  Ugh.
+    // Thus, unsubscribe from all channels other than the current logged-in user's channel
+    // and the global broadcast channel.
+
+    [[[[PFInstallation currentInstallation] channels] select:^BOOL(NSString *channel) {
+      return ![channel isEqualToString:@""] && ![channel isEqualToString:channelName];
+    }] each:^(NSString *channel) {
+      DLog(@"oops, subscribed to some other channel %@ ... unsubscribing", channel);
+      [PFPush unsubscribeFromChannelInBackground:channel];
+    }];
+
     DLog(@"subscribing to %@", channelName);
   
     [PFPush subscribeToChannelInBackground:channelName block:^(BOOL succeeded, NSError *error) {
