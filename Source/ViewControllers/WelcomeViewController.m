@@ -48,11 +48,11 @@ enum {
                                        lineBreakMode:UILineBreakModeWordWrap];
 
   UIView *welcomeBg = [[UIView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width-welcomeTextSize.width-40,
-                                                               CGRectGetMaxY(newMatchButton.frame)+20,
+                                                               CGRectGetMaxY(newMatchButton.frame)+60,
                                                                welcomeTextSize.width+20,
                                                                welcomeTextSize.height+30)];
   welcomeBg.layer.cornerRadius = 8;
-  welcomeBg.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
+  welcomeBg.backgroundColor = [UIColor colorWithWhite:0 alpha:0.6];
   welcomeBg.tag = kWelcomeViewTag;
   [self.view addSubview:welcomeBg];
 
