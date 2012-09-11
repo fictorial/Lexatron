@@ -1594,6 +1594,10 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 }
 
 - (void)appBecameActive:(NSNotification *)notification {
+  if (_match.state != kMatchStateActive && _match.state != kMatchStatePending) {
+    [self goBack];
+  }
+
   if (!_match.currentUserIsCurrentPlayer && self.navigationController.topViewController == self) {
     DLog(@"app became active and it's not your turn and we're on top -- reload!");
 
