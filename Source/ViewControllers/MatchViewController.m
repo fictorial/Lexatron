@@ -523,7 +523,6 @@ enum {
     [self updateScoreboard];
   }
 
-  [_rackView popTilesIn];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -630,10 +629,11 @@ enum {
     self.chatVC = [ChatViewController controllerForMatch:_match delegate:self];
   }
 
+  __weak id weakSelf = self;
+
   if (_match.passAndPlay) {
     float delay = turn.type == kTurnTypePlay ? 1.5 : 0.1;
 
-    __weak id weakSelf = self;
     __weak id weakMatch = _match;
     __weak id weakRack = _rackView;
 

@@ -13,3 +13,7 @@ NSString * const kAppStoreReviewURL = @"itms-apps://ax.itunes.apple.com/WebObjec
 // How to jump to the app in the App Store app from within the app
 
 NSString * const kAppStoreInternalURL = @"itms-apps://itunes.apple.com/app/id549386086";
+
+
+
+NSString * const kSettingKeyDisableAutoZoom = @"disableAutoZoom";
