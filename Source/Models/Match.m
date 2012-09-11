@@ -782,7 +782,7 @@
 
   NSArray *addedLetters = [self lettersOnBoardPlacedInCurrentTurn];
 
-  if (addedLetters.count == 0 || (addedLetters.count <= 1 && _turns.count < 2)) {
+  if (addedLetters.count == 0 || (addedLetters.count <= 1 && _turns.count == 0)) {
     NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: NSLocalizedString(@"Drag some letters from the rack to the board and try again.", nil) };
     return [NSError errorWithDomain:kMatchErrorDomain code:kMatchErrorCodeNothingPlayed userInfo:userInfo];
   }

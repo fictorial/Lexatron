@@ -325,6 +325,10 @@ enum {
 }
 
 - (void)doShuffle:(id)sender {
+  if (!_match.passAndPlay && ![_match currentUserIsCurrentPlayer]) {
+    [self showNotYourTurnError];
+    return;
+  }
   [self recall];
   [_match shuffleRack];
   [self setupRack];
@@ -441,6 +445,11 @@ enum {
 }
 
 - (void)doShowSwapView:(id)sender {
+  if (!_match.passAndPlay && ![_match currentUserIsCurrentPlayer]) {
+    [self showNotYourTurnError];
+    return;
+  }
+
   if (![_match canExchangeLettersInRack]) {
     [self showNoticeAlertWithCaption:@"There are not enough letters remaining to swap"];
     return;
@@ -1608,6 +1617,10 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
       }];
     }];
   }
+
+  // Pulse animations stop when backgrounded.
+
+  [self updateScoreboard];
 }
 
 - (BOOL)canBecomeFirstResponder {
@@ -1615,6 +1628,11 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 }
 
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+  if (!_match.passAndPlay && ![_match currentUserIsCurrentPlayer]) {
+    [self showNotYourTurnError];
+    return;
+  }
+
   DLog(@"shook device");
 
   NSArray *currentLetters = [_match lettersOnBoardPlacedInCurrentTurn];
