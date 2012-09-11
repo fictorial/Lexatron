@@ -2,6 +2,11 @@
 #import "MatchLogic.h"
 #import "NSDictionary-Convenience.h"
 
+// https://parse.com/questions/error-102-bad-special-key-__type-say-what
+// If you drop the Match class, set this to 1, start and save a match.
+// Then set it back to 0 and run again. *sigh*
+#define WORKAROUND_PARSE_NO_CLASS_ERROR 0
+
 static NSString * const kBlockedUsersKey = @"blockedUsers";
 
 @implementation PFUser (AppAdditions)
@@ -85,6 +90,11 @@ static NSString * const kBlockedUsersKey = @"blockedUsers";
 }
 
 - (void)countOfActiveMatches:(PFIntegerResultBlock)block {
+#if WORKAROUND_PARSE_NO_CLASS_ERROR
+  block(0,nil);
+  return;
+#endif
+
   DLog(@"getting count of active matches...");
 
   PFQuery *query = [self queryForActiveMatches];
@@ -113,6 +123,11 @@ static NSString * const kBlockedUsersKey = @"blockedUsers";
 }
 
 - (void)countOfActionableMatches:(PFIntegerResultBlock)block {
+#if WORKAROUND_PARSE_NO_CLASS_ERROR
+  block(0,nil);
+  return;
+#endif
+
   DLog(@"getting count of actionable matches...");
 
   PFQuery *query = [self queryForMyTurn:YES];
@@ -123,11 +138,21 @@ static NSString * const kBlockedUsersKey = @"blockedUsers";
 }
 
 - (void)actionableMatches:(PFArrayResultBlock)block {
+#if WORKAROUND_PARSE_NO_CLASS_ERROR
+  block(@[],nil);
+  return;
+#endif
+
   PFQuery *query = [self actionableQuery];
   [query findObjectsInBackgroundWithBlock:block];
 }
 
 - (void)unactionableMatches:(PFArrayResultBlock)block {
+#if WORKAROUND_PARSE_NO_CLASS_ERROR
+  block(@[],nil);
+  return;
+#endif
+
   PFQuery *query = [self unactionableQuery];
   [query findObjectsInBackgroundWithBlock:block];
 }
