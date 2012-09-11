@@ -551,8 +551,8 @@ enum {
                              [weakSelf setViewState:kViewStateNormal];
 
                              [weakSelf performBlock:^(id sender) {
-                               [weakSelf zoomToAllLetters];
-                               [weakSelf maybeShowSimpleTutorialPendingCheck:NO];
+                               if (![weakSelf maybeShowSimpleTutorialPendingCheck:NO])
+                                 [weakSelf zoomToAllLetters];
                              } afterDelay:2];
 
                              [TestFlight passCheckpoint:@"matchAcceptedChallenge"];
@@ -595,7 +595,7 @@ enum {
 
   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:basicTipKey];
   [self performBlock:^(id sender) {
-    [[weakSelf boardScrollView] zoomOut];
+    [weakSelf zoomOut];
     
     [self showHUDWithActivity:NO caption:NSLocalizedString(@"Place letters to form words ...", nil)];
     [self performBlock:^(id sender) {
@@ -748,10 +748,11 @@ enum {
     self.chatVC = [ChatViewController controllerForMatch:_match delegate:self];
   }
 
+  __weak id weakSelf = self;
+
   if (_match.passAndPlay) {
     float delay = turn.type == kTurnTypePlay ? 1.5 : 0.1;
 
-    __weak id weakSelf = self;
     __weak id weakMatch = _match;
     __weak id weakRack = _rackView;
 
@@ -773,7 +774,7 @@ enum {
                                  }
 
                                  [weakSelf performBlock:^(id sender) {
-                                   [[weakSelf boardScrollView] zoomOut];
+                                   [weakSelf zoomOut];
                                  } afterDelay:2];
                                }];
     } afterDelay:delay];   // Let score show in HUD for a bit.
@@ -782,7 +783,7 @@ enum {
   }
 
   [self performBlock:^(id sender) {
-    [_boardScrollView zoomOut];
+    [weakSelf zoomOut];
   } afterDelay:0.75];
 }
 
@@ -1362,12 +1363,29 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
   return [self boundingRectForLetters:[_match allLetters]];
 }
 
+- (BOOL)autoZoomEnabled {
+  return ![[NSUserDefaults standardUserDefaults] boolForKey:kSettingKeyDisableAutoZoom];
+}
+
+- (void)zoomOut {
+  if (![self autoZoomEnabled])
+    return;
+
+  [_boardScrollView zoomOut];
+}
+
 - (void)zoomToLettersPlacedInThisTurn {
+  if (![self autoZoomEnabled])
+    return;
+
   CGRect boundsForAll = [self boundingRectForLettersPlacedThisTurn];
   [self.boardScrollView zoomToRect:boundsForAll animated:YES];
 }
 
 - (void)zoomToLettersOwnedByCurrentPlayer {
+  if (![self autoZoomEnabled])
+    return;
+
   CGRect bounds = [self boundingRectForLettersOwnedByCurrentPlayer];
 
   CGFloat boardCellSizeUnscaled = CGRectGetWidth(self.boardScrollView.bounds) / kBoardSize;
@@ -1379,6 +1397,9 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 }
 
 - (void)zoomToAllLetters {
+  if (![self autoZoomEnabled])
+    return;
+
   CGFloat boardCellSizeUnscaled = CGRectGetWidth(self.boardScrollView.bounds) / kBoardSize;
 
   CGRect rect = [self boundingRectForAllLetters];
@@ -1390,9 +1411,9 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
     DLog(@"zoom to %@", NSStringFromCGRect(boundsForAll));
 
-    [self.boardScrollView zoomToRect:boundsForAll animated:YES];
+    [_boardScrollView zoomToRect:boundsForAll animated:YES];
   } else {
-    [self.boardScrollView zoomOut];
+    [_boardScrollView zoomOut];
   }
 }
 
@@ -1483,7 +1504,7 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 }
 
 - (void)enterGameOverState {
-  [self.boardScrollView zoomOut];
+  [_boardScrollView zoomOut];  // bypass auto-zoom setting
 
   _rackView.hidden = YES;
   _endedLabel.hidden = NO;
@@ -1685,9 +1706,7 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
     [_match recallLettersPlacedInCurrentTurn];
     [self setupRack];
-//    [self zoomToLettersOwnedByCurrentPlayer];
-//    [self zoomToAllLetters];
-    [_boardScrollView zoomOut];
+    [self zoomOut];
   }
 }
 

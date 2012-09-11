@@ -54,6 +54,8 @@
 
 #define ALLOW_OPPONENTS_LETTERS 1
 
+extern NSString * const kSettingKeyDisableAutoZoom;
+
 extern NSString * const kAppStoreAppID;
 extern NSString * const kAppStorePublicURL;
 extern NSString * const kAppStoreReviewURL;

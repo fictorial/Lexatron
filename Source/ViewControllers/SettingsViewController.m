@@ -19,8 +19,9 @@
 #import "AppConstants.h"
 
 @interface SettingsViewController ()
-@property (nonatomic, strong) UIButton *soundButton;
 @property (nonatomic, strong) UIButton *accountButton;
+@property (nonatomic, strong) UIButton *soundButton;
+@property (nonatomic, strong) UIButton *zoomButton;
 @property (nonatomic, strong) UIButton *helpButton;
 @property (nonatomic, strong) UIButton *creditsButton;
 @property (nonatomic, strong) UIButton *resignButton;
@@ -59,8 +60,14 @@
 
   self.soundButton = [self addButtonWithTitle:[self soundButtonTitle]
                                         color:kGlossyGreenColor
-                                     selector:@selector(toggleSounds:)
-                                       center:CGPointMake(lx, h/2+vpadding/2+kGlossyButtonHeight/2)];
+                                     selector:@selector(doToggleSounds:)
+                                       center:CGPointMake(lx, CGRectGetMaxY(_accountButton.frame)+kGlossyButtonHeight)];
+
+  self.zoomButton = [self addButtonWithTitle:[self zoomButtonTitle]
+                                         color:kGlossyOrangeColor
+                                      selector:@selector(doToggleAutoZoom:)
+                                        center:CGPointMake(lx,
+                                                           CGRectGetMaxY(_soundButton.frame)+kGlossyButtonHeight)];
 
   self.helpButton = [self addButtonWithTitle:NSLocalizedString(@"How to play", nil)
                                        color:kGlossyGoldColor
@@ -73,12 +80,12 @@
   self.creditsButton = [self addButtonWithTitle:@"Credits"
                                           color:kGlossyBlueColor
                                        selector:@selector(showCredits:)
-                                         center:CGPointMake(rx, h/2+vpadding/2+kGlossyButtonHeight/2)];
+                                         center:CGPointMake(rx, CGRectGetMaxY(_helpButton.frame)+kGlossyButtonHeight)];
 
   self.resignButton = [self addButtonWithTitle:NSLocalizedString(@"Resign Match", nil)
                                          color:kGlossyRedColor
                                       selector:@selector(doResign:)
-                                        center:CGPointMake(w/2,
+                                        center:CGPointMake(rx,
                                                            CGRectGetMaxY(_creditsButton.frame)+kGlossyButtonHeight)];
 
   UIFont *idFont = [UIFont fontWithName:kFontName size:kFontSizeRegular];
@@ -153,13 +160,25 @@
   return enabled ? NSLocalizedString(@"Sound: on", nil) : NSLocalizedString(@"Sound: off", nil);
 }
 
-- (void)toggleSounds:(id)sender {
+- (void)doToggleSounds:(id)sender {
   NSLog(@"toggle sounds");
   LQAudioManager *audio = [LQAudioManager sharedManager];
   audio.soundEnabled = !audio.soundEnabled;
   if (audio.soundEnabled)
     [audio playEffect:kEffectPlayedWord];
   [_soundButton setTitle:[self soundButtonTitle] forState:UIControlStateNormal];
+}
+
+- (NSString *)zoomButtonTitle {
+  BOOL disabled = [[NSUserDefaults standardUserDefaults] boolForKey:kSettingKeyDisableAutoZoom];
+  return disabled ? NSLocalizedString(@"Auto Zoom: off", nil) : NSLocalizedString(@"Auto Zoom: on", nil);
+}
+
+- (void)doToggleAutoZoom:(id)sender {
+  NSLog(@"toggle auto-zoom");
+  BOOL currentValue = [[NSUserDefaults standardUserDefaults] boolForKey:kSettingKeyDisableAutoZoom];
+  [[NSUserDefaults standardUserDefaults] setBool:!currentValue forKey:kSettingKeyDisableAutoZoom];
+  [_zoomButton setTitle:[self zoomButtonTitle] forState:UIControlStateNormal];
 }
 
 - (void)loginOrLogout:(id)sender {
