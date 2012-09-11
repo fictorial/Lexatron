@@ -837,7 +837,7 @@
 
     if (!somePlacedWordHasAnExistingLetter) {
       DLog(@"No word formed was built off an existing word...");
-      NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: NSLocalizedString(@"Invalid letter placement. Place letters to form words using at least one letter from your existing words.", nil) };
+      NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: NSLocalizedString(@"Invalid letter placement. Place letters to form words using at least one letter from any existing word.", nil) };
       return [NSError errorWithDomain:kMatchErrorDomain code:kMatchErrorCodeNothingPlayed userInfo:userInfo];
     }
   }
