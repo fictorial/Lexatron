@@ -124,7 +124,6 @@
 		6082C32115DC2074004512E0 /* HelpControlsDragBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 6082C31C15DC2074004512E0 /* HelpControlsDragBoard.png */; };
 		6082C32215DC2074004512E0 /* HelpControlsDragRack.png in Resources */ = {isa = PBXBuildFile; fileRef = 6082C31D15DC2074004512E0 /* HelpControlsDragRack.png */; };
 		6082C32315DC2074004512E0 /* HelpControlsPinch.png in Resources */ = {isa = PBXBuildFile; fileRef = 6082C31E15DC2074004512E0 /* HelpControlsPinch.png */; };
-		6082C32415DC2074004512E0 /* HelpControlsSubmit.png in Resources */ = {isa = PBXBuildFile; fileRef = 6082C31F15DC2074004512E0 /* HelpControlsSubmit.png */; };
 		6082C32515DC2074004512E0 /* HelpControlsZoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 6082C32015DC2074004512E0 /* HelpControlsZoom.png */; };
 		6082C32715DC30F1004512E0 /* shorthelp.html in Resources */ = {isa = PBXBuildFile; fileRef = 6082C32615DC30F1004512E0 /* shorthelp.html */; };
 		6082C32915DC3867004512E0 /* HelpDirection.png in Resources */ = {isa = PBXBuildFile; fileRef = 6082C32815DC3867004512E0 /* HelpDirection.png */; };
@@ -320,7 +319,6 @@
 		6082C31C15DC2074004512E0 /* HelpControlsDragBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpControlsDragBoard.png; sourceTree = "<group>"; };
 		6082C31D15DC2074004512E0 /* HelpControlsDragRack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpControlsDragRack.png; sourceTree = "<group>"; };
 		6082C31E15DC2074004512E0 /* HelpControlsPinch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpControlsPinch.png; sourceTree = "<group>"; };
-		6082C31F15DC2074004512E0 /* HelpControlsSubmit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpControlsSubmit.png; sourceTree = "<group>"; };
 		6082C32015DC2074004512E0 /* HelpControlsZoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpControlsZoom.png; sourceTree = "<group>"; };
 		6082C32615DC30F1004512E0 /* shorthelp.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = shorthelp.html; sourceTree = "<group>"; };
 		6082C32815DC3867004512E0 /* HelpDirection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpDirection.png; sourceTree = "<group>"; };
@@ -768,7 +766,6 @@
 				6082C31D15DC2074004512E0 /* HelpControlsDragRack.png */,
 				6082C32815DC3867004512E0 /* HelpDirection.png */,
 				6082C31E15DC2074004512E0 /* HelpControlsPinch.png */,
-				6082C31F15DC2074004512E0 /* HelpControlsSubmit.png */,
 				6082C32015DC2074004512E0 /* HelpControlsZoom.png */,
 				60E9830B15DBF962005B1EC3 /* HelpRack.png */,
 				6082C31A15DC0B36004512E0 /* HelpMods.png */,
@@ -895,7 +892,6 @@
 				6082C32115DC2074004512E0 /* HelpControlsDragBoard.png in Resources */,
 				6082C32215DC2074004512E0 /* HelpControlsDragRack.png in Resources */,
 				6082C32315DC2074004512E0 /* HelpControlsPinch.png in Resources */,
-				6082C32415DC2074004512E0 /* HelpControlsSubmit.png in Resources */,
 				6082C32515DC2074004512E0 /* HelpControlsZoom.png in Resources */,
 				6082C32715DC30F1004512E0 /* shorthelp.html in Resources */,
 				6082C32915DC3867004512E0 /* HelpDirection.png in Resources */,

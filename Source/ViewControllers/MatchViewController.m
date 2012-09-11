@@ -504,8 +504,7 @@ enum {
                              [weakSelf setViewState:kViewStateNormal];
 
                              [weakSelf performBlock:^(id sender) {
-                               if (![weakSelf maybeShowSimpleTutorialPendingCheck:NO])
-                                 [weakSelf zoomToAllLetters];
+                               [weakSelf zoomToAllLetters];
                              } afterDelay:2];
 
                              [TestFlight passCheckpoint:@"matchAcceptedChallenge"];
@@ -635,7 +634,6 @@ enum {
     float delay = turn.type == kTurnTypePlay ? 1.5 : 0.1;
 
     __weak id weakMatch = _match;
-    __weak id weakRack = _rackView;
 
     [self performBlock:^(id sender) {
 

@@ -7,7 +7,7 @@
 	<key>ApplicationVersion</key>
 	<array>
 		<string>com.omnigroup.OmniGrafflePro</string>
-		<string>139.15.0.171074</string>
+		<string>139.16.0.171715</string>
 	</array>
 	<key>AutoAdjust</key>
 	<false/>
@@ -265,84 +265,6 @@ Tap the plus button to get started.}</string>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{374.14285192778095, 244.85714285714272}, {101.71428471181967, 50.857142857142861}}</string>
-			<key>Class</key>
-			<string>ShapedGraphic</string>
-			<key>FontInfo</key>
-			<dict>
-				<key>Color</key>
-				<dict>
-					<key>b</key>
-					<string>0.169191</string>
-					<key>g</key>
-					<string>0.344841</string>
-					<key>r</key>
-					<string>0.248304</string>
-				</dict>
-				<key>Font</key>
-				<string>Orbitron-Black</string>
-				<key>Size</key>
-				<real>24</real>
-			</dict>
-			<key>GridCenter</key>
-			<string>YES</string>
-			<key>ID</key>
-			<integer>61221</integer>
-			<key>Layer</key>
-			<integer>1</integer>
-			<key>Magnets</key>
-			<array>
-				<string>{1, 1}</string>
-				<string>{1, -1}</string>
-				<string>{-1, -1}</string>
-				<string>{-1, 1}</string>
-			</array>
-			<key>Shape</key>
-			<string>Diamond</string>
-			<key>Style</key>
-			<dict>
-				<key>fill</key>
-				<dict>
-					<key>Color</key>
-					<dict>
-						<key>b</key>
-						<string>0.858255</string>
-						<key>g</key>
-						<string>0.884511</string>
-						<key>r</key>
-						<string>0.863488</string>
-					</dict>
-					<key>Draws</key>
-					<string>NO</string>
-				</dict>
-				<key>shadow</key>
-				<dict>
-					<key>Draws</key>
-					<string>NO</string>
-				</dict>
-				<key>stroke</key>
-				<dict>
-					<key>Color</key>
-					<dict>
-						<key>b</key>
-						<string>0.303526</string>
-						<key>g</key>
-						<string>0.303591</string>
-						<key>r</key>
-						<string>0.303544</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>Text</key>
-			<dict>
-				<key>Pad</key>
-				<integer>0</integer>
-			</dict>
-			<key>Wrap</key>
-			<string>NO</string>
-		</dict>
-		<dict>
-			<key>Bounds</key>
 			<string>{{221.57142486005151, 66.857142857142833}, {101.71428471181967, 50.857142857142861}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
@@ -531,166 +453,6 @@ Tap the plus button to get started.}</string>
 					</dict>
 					<key>MiddleFraction</key>
 					<real>0.44642853736877441</real>
-				</dict>
-				<key>shadow</key>
-				<dict>
-					<key>Color</key>
-					<dict>
-						<key>a</key>
-						<string>0.25</string>
-						<key>b</key>
-						<string>0</string>
-						<key>g</key>
-						<string>0</string>
-						<key>r</key>
-						<string>0</string>
-					</dict>
-					<key>Draws</key>
-					<string>NO</string>
-					<key>Fuzziness</key>
-					<real>6.6424322128295898</real>
-					<key>ShadowVector</key>
-					<string>{0, 2}</string>
-				</dict>
-				<key>stroke</key>
-				<dict>
-					<key>Cap</key>
-					<integer>0</integer>
-					<key>Color</key>
-					<dict>
-						<key>b</key>
-						<string>0.302799</string>
-						<key>g</key>
-						<string>0.302946</string>
-						<key>r</key>
-						<string>0.302837</string>
-					</dict>
-					<key>Join</key>
-					<integer>0</integer>
-					<key>Width</key>
-					<real>0.25</real>
-				</dict>
-			</dict>
-			<key>Text</key>
-			<dict>
-				<key>Pad</key>
-				<integer>0</integer>
-			</dict>
-			<key>Wrap</key>
-			<string>NO</string>
-		</dict>
-		<dict>
-			<key>Bounds</key>
-			<string>{{408.04761349838748, 253.3333333333332}, {33.904761570606553, 33.904761904761905}}</string>
-			<key>Class</key>
-			<string>ShapedGraphic</string>
-			<key>FontInfo</key>
-			<dict>
-				<key>Font</key>
-				<string>AcknowledgeTT-BRK-</string>
-				<key>Size</key>
-				<real>36</real>
-			</dict>
-			<key>GridCenter</key>
-			<string>YES</string>
-			<key>ID</key>
-			<integer>60739</integer>
-			<key>Layer</key>
-			<integer>1</integer>
-			<key>Shape</key>
-			<string>AdjustableStar</string>
-			<key>ShapeData</key>
-			<dict/>
-			<key>Style</key>
-			<dict>
-				<key>fill</key>
-				<dict>
-					<key>Color</key>
-					<dict>
-						<key>a</key>
-						<string>0.22</string>
-						<key>b</key>
-						<string>0</string>
-						<key>g</key>
-						<string>0</string>
-						<key>r</key>
-						<string>0</string>
-					</dict>
-				</dict>
-				<key>shadow</key>
-				<dict>
-					<key>Draws</key>
-					<string>NO</string>
-				</dict>
-				<key>stroke</key>
-				<dict>
-					<key>Draws</key>
-					<string>NO</string>
-				</dict>
-			</dict>
-		</dict>
-		<dict>
-			<key>Bounds</key>
-			<string>{{374.14285192778095, 244.85714285714272}, {101.71428471181967, 50.857142857142861}}</string>
-			<key>Class</key>
-			<string>ShapedGraphic</string>
-			<key>FontInfo</key>
-			<dict>
-				<key>Color</key>
-				<dict>
-					<key>a</key>
-					<string>0.63</string>
-					<key>w</key>
-					<string>1</string>
-				</dict>
-				<key>Font</key>
-				<string>Futura-Medium</string>
-				<key>Size</key>
-				<real>7</real>
-			</dict>
-			<key>GridCenter</key>
-			<string>YES</string>
-			<key>ID</key>
-			<integer>61207</integer>
-			<key>Layer</key>
-			<integer>1</integer>
-			<key>Magnets</key>
-			<array>
-				<string>{1, 1}</string>
-				<string>{1, -1}</string>
-				<string>{-1, -1}</string>
-				<string>{-1, 1}</string>
-			</array>
-			<key>Shape</key>
-			<string>Diamond</string>
-			<key>Style</key>
-			<dict>
-				<key>fill</key>
-				<dict>
-					<key>Color</key>
-					<dict>
-						<key>b</key>
-						<string>0.181153</string>
-						<key>g</key>
-						<string>0.784053</string>
-						<key>r</key>
-						<string>0.935525</string>
-					</dict>
-					<key>FillType</key>
-					<integer>2</integer>
-					<key>GradientAngle</key>
-					<real>70</real>
-					<key>GradientColor</key>
-					<dict>
-						<key>b</key>
-						<string>0.356201</string>
-						<key>g</key>
-						<string>0.781306</string>
-						<key>r</key>
-						<string>0.42782</string>
-					</dict>
-					<key>MiddleFraction</key>
-					<real>0.5290798544883728</real>
 				</dict>
 				<key>shadow</key>
 				<dict>
@@ -2347,82 +2109,6 @@ Tap the plus button to get started.}</string>
 			<string>YES</string>
 			<key>ID</key>
 			<integer>57474</integer>
-			<key>Layer</key>
-			<integer>1</integer>
-			<key>Magnets</key>
-			<array>
-				<string>{1, 1}</string>
-				<string>{1, -1}</string>
-				<string>{-1, -1}</string>
-				<string>{-1, 1}</string>
-			</array>
-			<key>Shape</key>
-			<string>Diamond</string>
-			<key>Style</key>
-			<dict>
-				<key>fill</key>
-				<dict>
-					<key>Color</key>
-					<dict>
-						<key>b</key>
-						<string>0.858255</string>
-						<key>g</key>
-						<string>0.884511</string>
-						<key>r</key>
-						<string>0.863488</string>
-					</dict>
-				</dict>
-				<key>shadow</key>
-				<dict>
-					<key>Draws</key>
-					<string>NO</string>
-				</dict>
-				<key>stroke</key>
-				<dict>
-					<key>Color</key>
-					<dict>
-						<key>b</key>
-						<string>0.303526</string>
-						<key>g</key>
-						<string>0.303591</string>
-						<key>r</key>
-						<string>0.303544</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>Text</key>
-			<dict>
-				<key>Pad</key>
-				<integer>0</integer>
-			</dict>
-			<key>Wrap</key>
-			<string>NO</string>
-		</dict>
-		<dict>
-			<key>Bounds</key>
-			<string>{{374.14285192778095, 295.71428571428567}, {101.71428471181967, 50.857142857142861}}</string>
-			<key>Class</key>
-			<string>ShapedGraphic</string>
-			<key>FontInfo</key>
-			<dict>
-				<key>Color</key>
-				<dict>
-					<key>b</key>
-					<string>0.169191</string>
-					<key>g</key>
-					<string>0.344841</string>
-					<key>r</key>
-					<string>0.248304</string>
-				</dict>
-				<key>Font</key>
-				<string>Orbitron-Black</string>
-				<key>Size</key>
-				<real>24</real>
-			</dict>
-			<key>GridCenter</key>
-			<string>YES</string>
-			<key>ID</key>
-			<integer>57472</integer>
 			<key>Layer</key>
 			<integer>1</integer>
 			<key>Magnets</key>
@@ -5541,7 +5227,7 @@ Tap the plus button to get started.}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2012-08-16 05:25:52 +0000</string>
+	<string>2012-09-11 20:16:25 +0000</string>
 	<key>Modifier</key>
 	<string>Brian Hammond</string>
 	<key>NotesVisible</key>
@@ -5639,7 +5325,7 @@ Tap the plus button to get started.}</string>
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{-122.5, -65.5}, {601.5, 505}}</string>
+		<string>{{-122, -65.5}, {601.5, 505}}</string>
 		<key>Zoom</key>
 		<real>2</real>
 		<key>ZoomValues</key>

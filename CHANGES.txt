@@ -1,3 +1,79 @@
+Lexatron 1.0.22
+- Back to older version of the game. Experiment failed! No one wanted to play
+  long words because the opponent could get closer to the stars.
+- Cherry-picked enhancements and fixes from that version however:
+- fix: make chat button brighter so as to be more noticeable.
+- fix: don't ask to accept/reject multiple times (e.g. accept, view settings, back)
+- fix: do not show an alert from a push notification if user is viewing alert already
+- fix: logging in after deleting app could cause you to receive push notifications for the previous user
+- enhancement: convert board PDFs to images in the background to avoid initial delay when tapping a row in "Your Turn" 
+- enhancement: make alerts have less dim background to be less jarring
+- enhancement: don't animate the tiles in the rack when changing turns; overkill
+- enhancement: don't pulse the player names in the scoreboard; too distracting
+- enhancement: new setting to disable auto-zooming the board
+
+Lexatron 1.0.21
+- fix: re-add animation when earning a star (oops)
+
+Lexatron 1.0.20
+- enhancement: make alerts have less dim background to be less jarring
+- enhancement: don't animate the tiles in the rack when changing turns; overkill
+- enhancement: don't pulse the player names in the scoreboard; too distracting
+- enhancement: new setting to disable auto-zooming the board
+- fix: star assignments were sometimes displayed incorrectly
+- fix: don't ask to accept/reject multiple times (e.g. accept, view settings, back)
+- fix: show "You won (3 stars to X stars)" instead of the score if you won by stars
+- fix: do not show an alert from a push notification if user is viewing alert already
+
+Lexatron 1.0.19
+- fix: make chat button brighter so as to be more noticeable.
+- fix: pulse animations stop when app is backgrounded.
+- fix: scale up the star labels in the mini tutorial (ipad).
+- enhancement: convert board PDFs to images in the background to avoid initial delay when tapping a row in "Your Turn" 
+- fix: logging in after deleting app could cause you to receive push notifications for the previous user
+
+Lexatron 1.0.18
+- fix: can drag 1 letter only on 2nd player's first turn in this version
+- fix: disable swapping, shuffling, etc when it's not your turn
+
+Lexatron 1.0.17
+- mini tutorial displayed once
+- new title screen that reflects new board
+- updated the in-game help for new gameplay
+- tweaks to graphics
+
+Lexatron 1.0.16
+- entirely new gameplay experiment
+
+Lexatron 1.0.15
+- enhancement: play off opponent's letters; result: it sucks
+
+Lexatron 1.0.14
+- fix: help said the "!" modifier was 35 points; but it is really 25
+
+Lexatron 1.0.13
+- fix: some modifiers were incorrectly placed 
+
+Lexatron 1.0.12
+- enhancement: add beta tester names in credits
+
+Lexatron 1.0.11
+- fix: board was disappearing sometimes when loading a match
+
+Lexatron 1.0.10
+- enhancement: the small board was too small; made it a bit larger
+- enhancement: lowered the number of tiles initially used in the bag from 180 to 105
+- enhancement: moved some of the modifiers like !, 3W, 2W, etc.
+- note: current matches have been deleted for new board
+- enhancement: highlight board square that you will drop on if you let go of a letter at that point
+- enhancement: highlight the rack when dragging a letter back to the rack
+- fix: crash when scrolling in Their Turn or Completed
+- enhancement: better iOS6 compatibility
+
+
+Lexatron 1.0.9
+- Enhancement: new, smaller board layout for shorter match duration
+
 Lexatron 1.0.8.5
 - Enhancement: in-game chat
 - Fix: board goes low resolution when another view controller is loaded
@@ -58,3 +134,4 @@ Lexatron 1.0
 - First release!
 
 vim:wrap
+
