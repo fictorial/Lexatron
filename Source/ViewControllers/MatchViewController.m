@@ -751,7 +751,10 @@ enum {
   __weak id weakSelf = self;
 
   if (_match.passAndPlay) {
-    float delay = turn.type == kTurnTypePlay ? 1.5 : 0.1;
+    float delay = 0.1;
+
+    if (turn.type == kTurnTypePlay)
+      delay = turn.starEarned != -1 ? 4: 1.5;
 
     __weak id weakMatch = _match;
     __weak id weakRack = _rackView;

@@ -892,7 +892,7 @@
   turn.starEarned = -1;
   for (Letter *letter in addedLetters) {
     int starEarned = starAt(letter.cellIndex);
-    if (starEarned != -1 && letter.turnNumber != -1) {
+    if (starEarned != -1) {
       DLog(@"player earned star # %d on this turn", starEarned);
       turn.starEarned = starEarned;
       break;  // can only earn one per turn due to board layout and rack size.
