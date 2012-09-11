@@ -630,7 +630,7 @@
   DLog(@"currentPlayer: %d starCount: %d", _currentPlayerNumber, starCount);
 
   if (starCount >= 3) {
-    self.state = kMatchStateEndedNormal;
+    self.state = kMatchStateEndedStars;
 
     self.winningPlayer = _currentPlayerNumber;
     self.losingPlayer = [self opponentPlayerNumber];
@@ -1457,9 +1457,25 @@
   if (_turns.count == 0)
     return nil;
 
-  NSString *opponentName = [self currentUserPlayerNumber] == 0 ? [_secondPlayer usernameForDisplay] : [_firstPlayer usernameForDisplay];
+  NSString *opponentName = ([self currentUserPlayerNumber] == 0
+                            ? [_secondPlayer usernameForDisplay]
+                            : [_firstPlayer usernameForDisplay]);
 
   Turn *turn = [_turns lastObject];
+
+  if (turn.matchState == kMatchStateEndedStars) {
+    if (_winningPlayer == [self currentUserPlayerNumber]) {
+      int losingStarCount = _losingPlayer == 0 ? [self starCountForPlayerNumber:0] : [self starCountForPlayerNumber:1];
+      return [NSString stringWithFormat:@"You won vs %@ (3 stars to %d star%@)!",
+              opponentName, losingStarCount, losingStarCount == 1 ? @"" : @"s"];
+    }
+
+    if (_losingPlayer == [self currentUserPlayerNumber]) {
+      int losingStarCount = _losingPlayer == 0 ? [self starCountForPlayerNumber:0] : [self starCountForPlayerNumber:1];
+      return [NSString stringWithFormat:@"%@ won (3 stars to %d star%@)",
+              opponentName, losingStarCount, losingStarCount == 1 ? @"" : @"s"];
+    }
+  }
 
   if (turn.matchState == kMatchStateEndedNormal) {
     if (_winningPlayer == -1 && _losingPlayer == -1) {

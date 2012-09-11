@@ -145,7 +145,11 @@ NSString * const kPushNotificationHandledNotification = @"PushNotificationHandle
       return;
     }
     
-    if (match.state == kMatchStateEndedNormal || match.state == kMatchStateEndedResign || match.state == kMatchStateEndedTimeout) {
+    if (match.state == kMatchStateEndedNormal ||
+        match.state == kMatchStateEndedStars  ||
+        match.state == kMatchStateEndedResign ||
+        match.state == kMatchStateEndedTimeout) {
+
       BOOL opponentWon = match.winningPlayer == [match opponentPlayerNumber];
       [weakSelf sendMatchEndedPushTo:opponent badgeCount:badgeCount won:opponentWon matchID:[match matchID]];
       return;

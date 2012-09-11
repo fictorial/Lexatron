@@ -555,6 +555,7 @@ enum {
                            }
                          }];
   } else if (_match.state == kMatchStateEndedNormal ||
+             _match.state == kMatchStateEndedStars ||
              _match.state == kMatchStateEndedResign) {
 
     self.viewState = kViewStateEnded;
@@ -716,6 +717,7 @@ enum {
   }
 
   if (match.state == kMatchStateEndedNormal ||
+      match.state == kMatchStateEndedStars ||
       match.state == kMatchStateEndedResign) {
 
     [self handleMatchEnded];

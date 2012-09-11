@@ -11,7 +11,8 @@ enum {
   kMatchStateActive,         // challenge accepted
   kMatchStateEndedNormal,    // match ended normally
   kMatchStateEndedResign,    // match ended with player resignation
-  kMatchStateEndedTimeout    // match ended since player failed to act (rude!)
+  kMatchStateEndedTimeout,   // match ended since player failed to act (rude!)
+  kMatchStateEndedStars
 };
 
 enum {
