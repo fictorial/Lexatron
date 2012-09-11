@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) UIImageView *imageView;
 
++ (void)convertPDFs;
 - (id)initWithContainerSize:(CGSize)size;
 - (CGRect)boardFromCellX:(CGFloat)x y:(CGFloat)y;  // frame for board cell (x,y)
 - (CGPoint)boardToCell:(CGPoint)point;             // (x,y) of board cell at point
