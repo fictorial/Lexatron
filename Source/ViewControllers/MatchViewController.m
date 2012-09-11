@@ -593,7 +593,7 @@ enum {
       UIImageView *starLabels = [[UIImageView alloc] initWithImage:[UIImage imageWithName:@"StarLabels"]];
       starLabels.bounds = CGRectMake(0, 0, kBoardWidthPoints, kBoardHeightPoints);
       starLabels.center = CGPointMake(_boardScrollView.bounds.size.width/2, _boardScrollView.bounds.size.height/2);
-      starLabels.contentMode = UIViewContentModeCenter;
+      starLabels.contentMode = UIViewContentModeScaleAspectFit;
       starLabels.alpha = 0;
       [_boardScrollView addSubview:starLabels];
 
