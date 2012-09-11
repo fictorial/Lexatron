@@ -138,9 +138,6 @@ enum {
                         [[_match playerForPlayerNumber:1] usernameForDisplay],
                         _match.scoreForSecondPlayer];
 
-  _player1Label.alpha = _match.currentPlayerNumber == 0 ? 1 : 0.4;
-  _player2Label.alpha = _match.currentPlayerNumber == 1 ? 1 : 0.4;
-
   float player1Width = [_player1Label.text sizeWithFont:_player1Label.font].width;
   float player2Width = [_player2Label.text sizeWithFont:_player2Label.font].width;
 
@@ -159,9 +156,6 @@ enum {
 
   // Make the current player's label pulse
 
-  [_player1Label.layer removeAllAnimations];
-  [_player2Label.layer removeAllAnimations];
-
   if (_match.state == kMatchStateActive) {
     UILabel *activePlayerLabel, *inactivePlayerLabel;
 
@@ -173,7 +167,12 @@ enum {
       inactivePlayerLabel = _player1Label;
     }
 
-    [activePlayerLabel.layer addAnimation:[self pulseAnimation] forKey:@"transform.scale"];
+    [UIView animateWithDuration:0.4 animations:^{
+      activePlayerLabel.transform = CGAffineTransformMakeScale(1.1, 1.1);
+      inactivePlayerLabel.transform = CGAffineTransformMakeScale(0.9, 0.9);
+      activePlayerLabel.alpha = 1;
+      inactivePlayerLabel.alpha = 0.3;
+    }];
   }
 
   // Show the stars each player has earned
@@ -564,8 +563,6 @@ enum {
 
     [self updateScoreboard];
   }
-
-  [_rackView popTilesIn];
 }
 
 - (BOOL)maybeShowSimpleTutorial {
@@ -751,7 +748,6 @@ enum {
                               colors:@[ kGlossyBlackColor ]
                                block:^(int buttonPressed) {
                                  [weakSelf setupRack];
-                                 [weakRack popTilesIn];
                                  [weakSelf hideActivityHUD];
 
                                  if ([weakSelf match].passAndPlay) {
@@ -759,7 +755,6 @@ enum {
                                  }
 
                                  [weakSelf performBlock:^(id sender) {
-//                                   [weakSelf zoomToLettersOwnedByCurrentPlayer];
                                    [weakSelf zoomToAllLetters];
                                  } afterDelay:2];
                                }];

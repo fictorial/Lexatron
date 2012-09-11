@@ -48,7 +48,7 @@
 #define kGlossyPurpleColor      [UIColor colorWithRed:0.678 green:0.424 blue:0.886 alpha:1.000]
 #define kGlossyLightBlueColor   [UIColor colorWithRed:0.451 green:0.741 blue:0.780 alpha:1.000]
 
-#define kAlertCoverColor        [UIColor colorWithWhite:0.235 alpha:0.5]
+#define kAlertCoverColor        [UIColor colorWithWhite:0.235 alpha:0.2]
 
 #define kTileDropHighlightColor [[UIColor darkGrayColor] colorWithAlphaComponent:0.5]
 
