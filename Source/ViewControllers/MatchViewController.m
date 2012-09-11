@@ -552,6 +552,7 @@ enum {
 
                              [weakSelf performBlock:^(id sender) {
                                [weakSelf zoomToAllLetters];
+                               [weakSelf maybeShowSimpleTutorialPendingCheck:NO];
                              } afterDelay:2];
 
                              [TestFlight passCheckpoint:@"matchAcceptedChallenge"];
@@ -571,7 +572,12 @@ enum {
   }
 }
 
+
 - (BOOL)maybeShowSimpleTutorial {
+  return [self maybeShowSimpleTutorialPendingCheck:YES];
+}
+
+- (BOOL)maybeShowSimpleTutorialPendingCheck:(BOOL)pendingCheck {
 
   // Show "I'm too lazy to read more than 2 lines of text but this game is the sux0r lol" tutorial.
   // But, show it only once lest we be inundated with 1-star reviews from our oh-so-gentle App Store reviewers.
@@ -582,14 +588,19 @@ enum {
   if ([[NSUserDefaults standardUserDefaults] boolForKey:basicTipKey])
     return NO;
 
+  if (pendingCheck && _match.state == kMatchStatePending)
+    return NO;
+
   __weak id weakSelf = self;
 
   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:basicTipKey];
   [self performBlock:^(id sender) {
+    [[weakSelf boardScrollView] zoomOut];
+    
     [self showHUDWithActivity:NO caption:NSLocalizedString(@"Place letters to form words ...", nil)];
     [self performBlock:^(id sender) {
       [weakSelf hideActivityHUD];
-      [self showHUDWithActivity:NO caption:NSLocalizedString(@"Reach any 3 out of the 5 stars and you win!", nil)];
+      [weakSelf showHUDWithActivity:NO caption:NSLocalizedString(@"Reach any 3 out of the 5 stars and you win!", nil)];
 
       // Highlight where the stars since people are fucking blind apparently.
       // Only show it on each player's first turn of a match.
@@ -617,7 +628,7 @@ enum {
 
       } afterDelay:3.5];
     } afterDelay:2.5];
-  } afterDelay:1.5];
+  } afterDelay:1];
 
   return YES;
 }
