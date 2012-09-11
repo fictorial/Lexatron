@@ -14,6 +14,7 @@
   UINavigationController *nav = (UINavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
   if ([nav.topViewController isKindOfClass:BaseViewController.class]) {
     BaseViewController *baseVC = (BaseViewController *)nav.topViewController;
+    [baseVC hideActivityHUD];
     [baseVC showNoticeAlertWithCaption:errorMsg];
   }
 }
