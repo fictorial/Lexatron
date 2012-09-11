@@ -36,8 +36,6 @@ enum {
 @property (nonatomic, strong) RackView *rackView;
 @property (nonatomic, strong) UILabel *player1Label;
 @property (nonatomic, strong) UILabel *player2Label;
-@property (nonatomic, strong) UIImageView *player1ColorTile;
-@property (nonatomic, strong) UIImageView *player2ColorTile;
 @property (nonatomic, strong) UIButton *submitButton;
 @property (nonatomic, strong) UIButton *chatButton;
 @property (nonatomic, strong) UIButton *swapButton;
@@ -88,7 +86,7 @@ enum {
 
   self.boardScrollView = [[BoardScrollView alloc] initWithFrame:CGRectMake(0, 0, kBoardWidthPoints, kBoardHeightPoints)];
   _boardScrollView.backgroundColor = [UIColor clearColor];
-  _boardScrollView.center = CGPointMake(w/2, h/2);
+  _boardScrollView.center = CGPointMake(w/2, h/2 - (ISPAD ? 10 : 4));
   _boardScrollView.delegate = self;
   [self.view addSubview:_boardScrollView];
   [self updateBoardFromMatchState];
@@ -116,21 +114,19 @@ enum {
 }
 
 - (void)setupScoreboard {
-  self.player1Label = [self makeScoreboardLabel];
-  self.player2Label = [self makeScoreboardLabel];
-  [self.view addSubview:_player1Label];
-  [self.view addSubview:_player2Label];
-
-  self.player1ColorTile = [[UIImageView alloc] initWithImage:[UIImage imageWithName:@"Player1Tile"]];
-  self.player2ColorTile = [[UIImageView alloc] initWithImage:[UIImage imageWithName:@"Player2Tile"]];
-  [self.view addSubview:_player1ColorTile];
-  [self.view addSubview:_player2ColorTile];
-
-  [self updateScoreboard];  // sets .text
-  [self updateScoreboardTiles];
+  [self updateScoreboard];
 }
 
 - (void)updateScoreboard {
+  [_player1Label removeFromSuperview];
+  [_player2Label removeFromSuperview];
+
+  self.player1Label = [self makeScoreboardLabel];
+  self.player2Label = [self makeScoreboardLabel];
+
+  [self.view addSubview:_player1Label];
+  [self.view addSubview:_player2Label];
+
   _player1Label.text = [NSString stringWithFormat:@"%@   %d",
                         [[_match playerForPlayerNumber:0] usernameForDisplay],
                         _match.scoreForFirstPlayer];
@@ -139,20 +135,11 @@ enum {
                         [[_match playerForPlayerNumber:1] usernameForDisplay],
                         _match.scoreForSecondPlayer];
 
-  _player1Label.alpha = _match.currentPlayerNumber == 0 ? 1 : 0.4;
-  _player2Label.alpha = _match.currentPlayerNumber == 1 ? 1 : 0.4;
-
   float player1Width = [_player1Label.text sizeWithFont:_player1Label.font].width;
   float player2Width = [_player2Label.text sizeWithFont:_player2Label.font].width;
 
-  float margin = SCALED(10);
-  float bigMargin = SCALED(25);
-
-
-  float fullWidth = (_player1ColorTile.image.size.width + margin +
-                     player1Width + bigMargin + player2Width +
-                     margin + _player2ColorTile.image.size.width);
-
+  float bigMargin = SCALED(40);
+  float fullWidth = (player1Width + bigMargin + player2Width);
   float labelHeight = SCALED(20);
   float labelY = SCALED(30) - labelHeight/2;
 
@@ -161,34 +148,42 @@ enum {
 
   float cx = CGRectGetWidth(self.view.bounds)/2;
 
-  _player1ColorTile.center = CGPointMake(cx - fullWidth/2 + _player1ColorTile.image.size.width/2, labelY);
-  _player1Label.center = CGPointMake(CGRectGetMaxX(_player1ColorTile.frame) + margin + player1Width/2, labelY);
+  _player1Label.center = CGPointMake(cx - fullWidth/2 + player1Width/2, labelY);
+  _player2Label.center = CGPointMake(CGRectGetMaxX(_player1Label.frame) + bigMargin + player2Width/2, labelY);
 
-  _player2ColorTile.center = CGPointMake(CGRectGetMaxX(_player1Label.frame) + bigMargin + _player2ColorTile.image.size.width/2, labelY);
-  _player2Label.center = CGPointMake(CGRectGetMaxX(_player2ColorTile.frame) + margin + player2Width/2, labelY);
-}
+  // Make the current player's label pulse
 
-- (void)updateScoreboardTiles {
-  UIImageView *activeIV, *inactiveIV;
+  if (_match.state == kMatchStateActive ||
+      _match.state == kMatchStatePending) {
+    
+    UILabel *activePlayerLabel, *inactivePlayerLabel;
 
-  if (_match.currentPlayerNumber == 0) {
-    activeIV = _player1ColorTile;
-    inactiveIV = _player2ColorTile;
-  } else {
-    activeIV = _player2ColorTile;
-    inactiveIV = _player1ColorTile;
+    if (_match.currentPlayerNumber == 0) {
+      activePlayerLabel = _player1Label;
+      inactivePlayerLabel = _player2Label;
+    } else {
+      activePlayerLabel = _player2Label;
+      inactivePlayerLabel = _player1Label;
+    }
+
+    [UIView animateWithDuration:0.4 animations:^{
+      activePlayerLabel.transform = CGAffineTransformMakeScale(1.1, 1.1);
+      inactivePlayerLabel.transform = CGAffineTransformMakeScale(0.9, 0.9);
+      activePlayerLabel.alpha = 1;
+      inactivePlayerLabel.alpha = 0.3;
+    }];
   }
 
-  [inactiveIV.layer removeAllAnimations];
-  [activeIV.layer addAnimation:[self pulseAnimation] forKey:@"transform.scale"];
+  [self bringAlertViewsToTheFront];
 }
+
 
 - (CABasicAnimation *)pulseAnimation {
   CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
 
-  animation.duration = 0.4;
+  animation.duration = 0.6;
   animation.fromValue = @(1);
-  animation.toValue = @(0.65);
+  animation.toValue = @(0.86);
   animation.repeatCount = HUGE_VALF;
   animation.autoreverses = YES;
 
@@ -504,10 +499,13 @@ enum {
                              [TestFlight passCheckpoint:@"matchDeclinedChallenge"];
                              // See -match:turnDidHappen: for when we go back and why not here.
                            } else if (buttonPressed == 1) {  // Accept
+                             [weakSelf setHasAcceptedChallenge:YES];
+
                              [weakSelf setViewState:kViewStateNormal];
 
                              [weakSelf performBlock:^(id sender) {
-                               [weakSelf zoomToLettersOwnedByCurrentPlayer];
+                               if (![weakSelf maybeShowSimpleTutorialPendingCheck:NO])
+                                 [weakSelf zoomToAllLetters];
                              } afterDelay:2];
 
                              [TestFlight passCheckpoint:@"matchAcceptedChallenge"];
@@ -522,14 +520,7 @@ enum {
   } else {
     self.viewState = kViewStateNormal;
 
-    if ([_match currentUserIsCurrentPlayer]) {
-      [self.boardScrollView zoomOut];
-//      [self performBlock:^(id sender) {
-//        [weakSelf zoomToLettersOwnedByCurrentPlayer];
-//      } afterDelay:2];
-    }
-
-    [self updateScoreboardTiles];
+    [self updateScoreboard];
   }
 
   [_rackView popTilesIn];
@@ -621,7 +612,6 @@ enum {
   }
 
   [self updateScoreboard];
-  [self updateScoreboardTiles];
 
   if (match.state == kMatchStateEndedNormal ||
       match.state == kMatchStateEndedResign) {
@@ -641,14 +631,13 @@ enum {
   }
 
   if (_match.passAndPlay) {
-    float delay = turn.type == kTurnTypePlay ? 3.5 : 0.1;
+    float delay = turn.type == kTurnTypePlay ? 1.5 : 0.1;
 
     __weak id weakSelf = self;
     __weak id weakMatch = _match;
     __weak id weakRack = _rackView;
 
     [self performBlock:^(id sender) {
-      [weakRack popTilesOut];
 
       NSString *message = [NSString stringWithFormat:NSLocalizedString(@"Please pass the device to %@.", nil),
                            [[weakMatch currentUserPlayer] usernameForDisplay]];
@@ -658,7 +647,6 @@ enum {
                               colors:@[ kGlossyBlackColor ]
                                block:^(int buttonPressed) {
                                  [weakSelf setupRack];
-                                 [weakRack popTilesIn];
                                  [weakSelf hideActivityHUD];
 
                                  if ([weakSelf match].passAndPlay) {
@@ -666,7 +654,7 @@ enum {
                                  }
 
                                  [weakSelf performBlock:^(id sender) {
-                                   [weakSelf zoomToLettersOwnedByCurrentPlayer];
+                                   [weakSelf zoomOut];
                                  } afterDelay:2];
                                }];
     } afterDelay:delay];   // Let score show in HUD for a bit.
@@ -675,7 +663,7 @@ enum {
   }
 
   [self performBlock:^(id sender) {
-    [_boardScrollView zoomOut];
+    [weakSelf zoomOut];
   } afterDelay:0.75];
 }
 
@@ -719,17 +707,22 @@ enum {
 }
 
 - (void)changeHighlightedLettersToNormal {
-  [self performBlock:^(id sender) {
-    for (UIView *subview in _boardScrollView.boardView.subviews) {
-      if ([subview isKindOfClass:[TileView class]]) {
-        TileView *tileView = (TileView *)subview;
-        if (tileView.letter.turnNumber == -1) {
-          tileView.letter = [_match letterAtCellIndex:tileView.letter.cellIndex];
-          [tileView fadeIn:0.4 delegate:nil];
-        }
-      }
-    }
-  } afterDelay:2.5];
+  [[self allLetters] each:^(TileView *tileView) {
+    tileView.letter = [_match letterAtCellIndex:tileView.letter.cellIndex];
+    tileView.isNew = NO;
+  }];
+//
+//  [self performBlock:^(id sender) {
+//    for (UIView *subview in _boardScrollView.boardView.subviews) {
+//      if ([subview isKindOfClass:[TileView class]]) {
+//        TileView *tileView = (TileView *)subview;
+//        if (tileView.letter.turnNumber == -1) {
+//          tileView.letter = [_match letterAtCellIndex:tileView.letter.cellIndex];
+//          [tileView fadeIn:0.4 delegate:nil];
+//        }
+//      }
+//    }
+//  } afterDelay:2.5];
 }
 
 float squaredDistance(float x1, float y1, float x2, float y2) {
@@ -1207,37 +1200,57 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
   return [self boundingRectForLetters:[_match allLetters]];
 }
 
+- (BOOL)autoZoomEnabled {
+  return ![[NSUserDefaults standardUserDefaults] boolForKey:kSettingKeyDisableAutoZoom];
+}
+
+- (void)zoomOut {
+  if (![self autoZoomEnabled])
+    return;
+
+  [_boardScrollView zoomOut];
+}
+
 - (void)zoomToLettersPlacedInThisTurn {
+  if (![self autoZoomEnabled])
+    return;
+
   CGRect boundsForAll = [self boundingRectForLettersPlacedThisTurn];
   [self.boardScrollView zoomToRect:boundsForAll animated:YES];
 }
 
 - (void)zoomToLettersOwnedByCurrentPlayer {
+  if (![self autoZoomEnabled])
+    return;
+
   CGRect bounds = [self boundingRectForLettersOwnedByCurrentPlayer];
 
   CGFloat boardCellSizeUnscaled = CGRectGetWidth(self.boardScrollView.bounds) / kBoardSize;
   bounds = CGRectInset(bounds,
-                       -boardCellSizeUnscaled * 1.5,
-                       -boardCellSizeUnscaled * 1.5);
+                       -boardCellSizeUnscaled * 2,
+                       -boardCellSizeUnscaled * 2);
 
   [self.boardScrollView zoomToRect:bounds animated:YES];
 }
 
 - (void)zoomToAllLetters {
+  if (![self autoZoomEnabled])
+    return;
+
   CGFloat boardCellSizeUnscaled = CGRectGetWidth(self.boardScrollView.bounds) / kBoardSize;
 
   CGRect rect = [self boundingRectForAllLetters];
 
   if (rect.size.width > 0) {
     CGRect boundsForAll = CGRectInset(rect,
-                                      -boardCellSizeUnscaled * 1.5,
-                                      -boardCellSizeUnscaled * 1.5);
+                                      -boardCellSizeUnscaled * 2,
+                                      -boardCellSizeUnscaled * 2);
 
     DLog(@"zoom to %@", NSStringFromCGRect(boundsForAll));
 
-    [self.boardScrollView zoomToRect:boundsForAll animated:YES];
+    [_boardScrollView zoomToRect:boundsForAll animated:YES];
   } else {
-    [self.boardScrollView zoomOut];
+    [_boardScrollView zoomOut];
   }
 }
 
@@ -1320,6 +1333,7 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
     return;
   }
 
+  [self updateScoreboard];
   [self performBlock:^(id sender) {
     self.viewState = kViewStateEnded;
   } afterDelay:1];
@@ -1327,12 +1341,12 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 }
 
 - (void)enterGameOverState {
-  [self.boardScrollView zoomOut];
+  [_boardScrollView zoomOut];  // bypass auto-zoom setting
 
   _rackView.hidden = YES;
   _endedLabel.hidden = NO;
   _submitButton.hidden = YES;
-  _chatButton.hidden = NO;  // chat after match ends
+  _chatButton.hidden = NO; // can still chat after game ends.
   _shuffleButton.hidden = YES;
   _swapButton.hidden = YES;
   _swapInfoView.hidden = YES;
@@ -1387,6 +1401,8 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
     rematchButton.backgroundColor = [UIColor clearColor];
     [rematchButton addTarget:self action:@selector(doRematch:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rematchButton];
+
+    [summaryLabel popIn:0.4 delegate:nil];
   }
 
   if (currentPlayerWon) {
@@ -1412,8 +1428,9 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
         tileView.letter = [_match letterAtCellIndex:tileView.letter.cellIndex];
         tileView.isNew = NO;
         [tileView jumpWithDelay:delay repeat:YES];
+        [tileView.superview bringSubviewToFront:tileView];
         delay += 0.15;
-      }];      
+      }];
     } afterDelay:2.5];
 
     _boardScrollView.clipsToBounds = NO;
@@ -1448,6 +1465,10 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 }
 
 - (void)appBecameActive:(NSNotification *)notification {
+  if (_match.state != kMatchStateActive && _match.state != kMatchStatePending) {
+    [self goBack];
+  }
+
   if (!_match.currentUserIsCurrentPlayer && self.navigationController.topViewController == self) {
     DLog(@"app became active and it's not your turn and we're on top -- reload!");
 
@@ -1515,7 +1536,7 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
     [_match recallLettersPlacedInCurrentTurn];
     [self setupRack];
-    [self zoomToLettersOwnedByCurrentPlayer];
+    [self zoomOut];
   }
 }
 

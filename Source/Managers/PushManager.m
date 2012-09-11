@@ -145,7 +145,9 @@ NSString * const kPushNotificationHandledNotification = @"PushNotificationHandle
       return;
     }
     
-    if (match.state == kMatchStateEndedNormal || match.state == kMatchStateEndedResign || match.state == kMatchStateEndedTimeout) {
+    if (match.state == kMatchStateEndedNormal ||
+        match.state == kMatchStateEndedResign ||
+        match.state == kMatchStateEndedTimeout) {
       BOOL opponentWon = match.winningPlayer == [match opponentPlayerNumber];
       [weakSelf sendMatchEndedPushTo:opponent badgeCount:badgeCount won:opponentWon matchID:[match matchID]];
       return;
@@ -337,6 +339,7 @@ NSString * const kPushNotificationHandledNotification = @"PushNotificationHandle
   DLog(@"trying to handle push notification: %@", userInfo);
 
   BaseViewController *topBaseVC = [self getTopBaseViewControllerIfAny];
+
   if ([topBaseVC isKindOfClass:MatchViewController.class]) {
     MatchViewController *matchVC = (MatchViewController *)topBaseVC;
     Match *match = matchVC.match;
@@ -346,26 +349,24 @@ NSString * const kPushNotificationHandledNotification = @"PushNotificationHandle
     }
   }
 
-  NSString *pushType = [userInfo objectForKey:@"pushType"];
-  
-  if ([pushType isEqualToString:kPushTypeChallenge]) {
-    BaseViewController *topBaseVC = [self getTopBaseViewControllerIfAny];
-    
-    if ([topBaseVC isKindOfClass:MatchViewController.class]) {
-      MatchViewController *matchVC = (MatchViewController *)topBaseVC;
-      Match *match = matchVC.match;
+  if ([topBaseVC isKindOfClass:MatchViewController.class]) {
+    MatchViewController *matchVC = (MatchViewController *)topBaseVC;
+    Match *match = matchVC.match;
 
-      if (match.currentUserIsCurrentPlayer) {
-        DLog(@"not showing challenge now since user is viewing match in which it is their turn currently... would be annoying to be interrupted for a new match challenge here.");
-        return NO;
-      }
-    }
-
-    if (topBaseVC && [topBaseVC isShowingAlert]) {
-      DLog(@"not showing challenge now since user has alert open already");
+    if (match.currentUserIsCurrentPlayer) {
+      DLog(@"not showing challenge now since user is viewing match in which it is their turn currently... would be annoying to be interrupted for a new match challenge here.");
       return NO;
     }
+  }
 
+  if (topBaseVC && [topBaseVC isShowingAlert]) {
+    DLog(@"not showing challenge now since user has alert open already");
+    return NO;
+  }
+
+  NSString *pushType = [userInfo objectForKey:@"pushType"];
+
+  if ([pushType isEqualToString:kPushTypeChallenge]) {
     __weak id weakSelf = self;
 
     [self handleInboundPushUserInfo:userInfo

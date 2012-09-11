@@ -51,6 +51,8 @@
 - (void)showActionableAlertWithCaption:(NSString *)caption block:(AlertBlock)block;
 - (void)hideAllAlerts;
 - (BOOL)isShowingAlert;
+- (void)bringAlertViewsToTheFront;
+
 
 - (void)startTimeoutTimer;
 - (void)removeTimeoutTimer;
