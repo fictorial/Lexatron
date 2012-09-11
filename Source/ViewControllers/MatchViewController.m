@@ -1567,6 +1567,8 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
     rematchButton.backgroundColor = [UIColor clearColor];
     [rematchButton addTarget:self action:@selector(doRematch:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rematchButton];
+
+    [summaryLabel popIn:0.4 delegate:nil];
   }
 
   if (currentPlayerWon) {
