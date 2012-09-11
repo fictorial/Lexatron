@@ -156,7 +156,9 @@ enum {
 
   // Make the current player's label pulse
 
-  if (_match.state == kMatchStateActive) {
+  if (_match.state == kMatchStateActive ||
+      _match.state == kMatchStatePending) {
+    
     UILabel *activePlayerLabel, *inactivePlayerLabel;
 
     if (_match.currentPlayerNumber == 0) {
