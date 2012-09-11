@@ -564,11 +564,11 @@
   NSMutableArray *p0 = [NSMutableArray array];
   NSMutableArray *p1 = [NSMutableArray array];
 
-  if (a) [(a.playerOwner == 0 ? p0 : p1) addObject:@0];
-  if (b) [(b.playerOwner == 0 ? p0 : p1) addObject:@1];
-  if (c) [(c.playerOwner == 0 ? p0 : p1) addObject:@2];
-  if (d) [(d.playerOwner == 0 ? p0 : p1) addObject:@3];
-  if (e) [(e.playerOwner == 0 ? p0 : p1) addObject:@4];
+  if (a && a.turnNumber != -1) [(a.playerOwner == 0 ? p0 : p1) addObject:@0];
+  if (b && b.turnNumber != -1) [(b.playerOwner == 0 ? p0 : p1) addObject:@1];
+  if (c && c.turnNumber != -1) [(c.playerOwner == 0 ? p0 : p1) addObject:@2];
+  if (d && d.turnNumber != -1) [(d.playerOwner == 0 ? p0 : p1) addObject:@3];
+  if (e && e.turnNumber != -1) [(e.playerOwner == 0 ? p0 : p1) addObject:@4];
 
   return @{ @0: p0, @1: p1 };
 }
@@ -816,7 +816,7 @@
   DLog(@"valid words: %d, invalid words: %d", validWords.count, invalidWords.count);
 
   if (validWords.count == 0 && invalidWords.count == 0) {
-    NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: NSLocalizedString(@"Nothing was placed.", nil) };
+    NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: NSLocalizedString(@"No valid words were placed.", nil) };
     return [NSError errorWithDomain:kMatchErrorDomain code:kMatchErrorCodeNothingPlayed userInfo:userInfo];
   }
 
@@ -892,7 +892,7 @@
   turn.starEarned = -1;
   for (Letter *letter in addedLetters) {
     int starEarned = starAt(letter.cellIndex);
-    if (starEarned != -1) {
+    if (starEarned != -1 && letter.turnNumber != -1) {
       DLog(@"player earned star # %d on this turn", starEarned);
       turn.starEarned = starEarned;
       break;  // can only earn one per turn due to board layout and rack size.
