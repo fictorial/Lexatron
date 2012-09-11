@@ -206,6 +206,7 @@
     DLog(@"not linked with fb");
   }
 
+  [[PushManager sharedManager] subscribeToCurrentUserChannel];
   [self updateAppIconBadgeTo:0];
 }
 
