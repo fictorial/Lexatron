@@ -286,6 +286,10 @@ enum {
 }
 
 - (void)doShuffle:(id)sender {
+  if (!_match.passAndPlay && ![_match currentUserIsCurrentPlayer]) {
+    [self showNotYourTurnError];
+    return;
+  }
   [self recall];
   [_match shuffleRack];
   [self setupRack];
@@ -402,6 +406,11 @@ enum {
 }
 
 - (void)doShowSwapView:(id)sender {
+  if (!_match.passAndPlay && ![_match currentUserIsCurrentPlayer]) {
+    [self showNotYourTurnError];
+    return;
+  }
+
   if (![_match canExchangeLettersInRack]) {
     [self showNoticeAlertWithCaption:@"There are not enough letters remaining to swap"];
     return;
@@ -1322,7 +1331,7 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
   _rackView.hidden = YES;
   _endedLabel.hidden = NO;
   _submitButton.hidden = YES;
-  _chatButton.hidden = YES;
+  _chatButton.hidden = NO;  // chat after match ends
   _shuffleButton.hidden = YES;
   _swapButton.hidden = YES;
   _swapInfoView.hidden = YES;
@@ -1462,6 +1471,8 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
       }];
     }];
   }
+
+  [self updateScoreboard];
 }
 
 - (BOOL)canBecomeFirstResponder {
@@ -1469,6 +1480,11 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 }
 
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+  if (!_match.passAndPlay && ![_match currentUserIsCurrentPlayer]) {
+    [self showNotYourTurnError];
+    return;
+  }
+
   DLog(@"shook device");
 
   NSArray *currentLetters = [_match lettersOnBoardPlacedInCurrentTurn];

@@ -11,6 +11,9 @@
 #import "MatchLogic.h"
 #import "UIImage+PDF.h"
 
+static UIImage *zoomedOutBoardImage;
+static UIImage *zoomedInBoardImage;
+
 static inline int sign(float x) {
   return x == 0 ? 0 : x < 0 ? -1 : 1;
 }
@@ -21,33 +24,56 @@ static inline int sideOfLine(CGPoint A, CGPoint B, CGPoint P) {
 
 @interface BoardView ()
 @property (nonatomic, strong) UIView *selectionView;
-@property (nonatomic, strong) UIImage *zoomedOutBoardImage;
-@property (nonatomic, strong) UIImage *zoomedInBoardImage;
 @end
 
 @implementation BoardView {
   UILabel *_label;
 }
 
++ (void)convertPDFs {
+  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+    CGSize zoomedOutSize = CGSizeMake(kBoardWidthPoints, kBoardHeightPoints);
+    CGSize zoomedInSize  = CGSizeMake(zoomedOutSize.width * kBoardMaxZoomScale,
+                                      zoomedOutSize.height * kBoardMaxZoomScale);
+
+    DLog(@"converting PDF to images...");
+
+    zoomedOutBoardImage = [UIImage imageWithPDFNamed:@"Board.pdf" atSize:zoomedOutSize];
+    zoomedInBoardImage = [UIImage imageWithPDFNamed:@"Board.pdf" atSize:zoomedInSize];
+
+    DLog(@"done converting PDF to images.");
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"boardPDFsConverted" object:nil];
+  });
+}
+
 - (id)initWithContainerSize:(CGSize)size {
   self = [super initWithFrame:CGRectMake(0,0,1,1)];
 
-  CGSize zoomedOutSize = CGSizeMake(kBoardWidthPoints, kBoardHeightPoints);
-  CGSize zoomedInSize  = CGSizeMake(zoomedOutSize.width * kBoardMaxZoomScale,
-                                    zoomedOutSize.height * kBoardMaxZoomScale);
-
-  self.zoomedOutBoardImage = [UIImage imageWithPDFNamed:@"Board.pdf" atSize:zoomedOutSize];
-  self.zoomedInBoardImage = [UIImage imageWithPDFNamed:@"Board.pdf" atSize:zoomedInSize];
-
-  _imageView = [[UIImageView alloc] initWithImage:_zoomedOutBoardImage];
-
-  self.frame = _imageView.bounds;
-  [self addSubview:_imageView];
+  if (!zoomedOutBoardImage) {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(conversionDidFinish:) name:@"boardPDFsConverted" object:nil];
+  } else {
+    [self setImageViewFromConvertedImage];
+  }
   return self;
 }
 
+- (void)dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)conversionDidFinish:(NSNotification *)notification {
+  [self setImageViewFromConvertedImage];
+}
+
+- (void)setImageViewFromConvertedImage {
+  _imageView = [[UIImageView alloc] initWithImage:zoomedOutBoardImage];
+  self.frame = _imageView.bounds;
+  [self addSubview:_imageView];
+}
+
 - (void)willZoomIn {
-  _imageView.image = _zoomedInBoardImage;
+  _imageView.image = zoomedInBoardImage;
   _imageView.frame = CGRectMake(0, 0, _imageView.image.size.width/kBoardMaxZoomScale, _imageView.image.size.height/kBoardMaxZoomScale);
   self.bounds = _imageView.bounds;
 
@@ -55,7 +81,7 @@ static inline int sideOfLine(CGPoint A, CGPoint B, CGPoint P) {
 }
 
 - (void)didZoomOut {
-  _imageView.image = _zoomedOutBoardImage;
+  _imageView.image = zoomedOutBoardImage;
   _imageView.frame = CGRectMake(0, 0, _imageView.image.size.width, _imageView.image.size.height);
   self.bounds = _imageView.bounds;
 

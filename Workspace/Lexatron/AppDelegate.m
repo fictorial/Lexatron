@@ -19,6 +19,7 @@
 #import "ActivityViewController.h"
 #import "Appirater.h"
 #import "iVersion.h"
+#import "BoardView.h"
 
 @implementation AppDelegate {
   UINavigationController *_navigationController;
@@ -113,6 +114,8 @@
       [[PushManager sharedManager] handleInboundPush:pushInfo];
     } afterDelay:2];
   }
+
+  [BoardView convertPDFs];
 
   // Show any pass-and-play match that was active the last time the app was terminated.
 
