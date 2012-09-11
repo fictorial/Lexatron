@@ -219,6 +219,8 @@ enum {
 
     secondX += starSize + starsMargin;
   }
+
+  [self bringAlertViewsToTheFront];
 }
 
 - (CABasicAnimation *)pulseAnimation {
@@ -731,7 +733,7 @@ enum {
   }
 
   if (_match.passAndPlay) {
-    float delay = turn.type == kTurnTypePlay ? 3.5 : 0.1;
+    float delay = turn.type == kTurnTypePlay ? 1.5 : 0.1;
 
     __weak id weakSelf = self;
     __weak id weakMatch = _match;
@@ -755,7 +757,7 @@ enum {
                                  }
 
                                  [weakSelf performBlock:^(id sender) {
-                                   [weakSelf zoomToAllLetters];
+                                   [[weakSelf boardScrollView] zoomOut];
                                  } afterDelay:2];
                                }];
     } afterDelay:delay];   // Let score show in HUD for a bit.
@@ -862,17 +864,22 @@ enum {
 }
 
 - (void)changeHighlightedLettersToNormal {
-  [self performBlock:^(id sender) {
-    for (UIView *subview in _boardScrollView.boardView.subviews) {
-      if ([subview isKindOfClass:[TileView class]]) {
-        TileView *tileView = (TileView *)subview;
-        if (tileView.letter.turnNumber == -1) {
-          tileView.letter = [_match letterAtCellIndex:tileView.letter.cellIndex];
-          [tileView fadeIn:0.4 delegate:nil];
-        }
-      }
-    }
-  } afterDelay:2.5];
+  [[self allLetters] each:^(TileView *tileView) {
+    tileView.letter = [_match letterAtCellIndex:tileView.letter.cellIndex];
+    tileView.isNew = NO;
+  }];
+//
+//  [self performBlock:^(id sender) {
+//    for (UIView *subview in _boardScrollView.boardView.subviews) {
+//      if ([subview isKindOfClass:[TileView class]]) {
+//        TileView *tileView = (TileView *)subview;
+//        if (tileView.letter.turnNumber == -1) {
+//          tileView.letter = [_match letterAtCellIndex:tileView.letter.cellIndex];
+//          [tileView fadeIn:0.4 delegate:nil];
+//        }
+//      }
+//    }
+//  } afterDelay:2.5];
 }
 
 float squaredDistance(float x1, float y1, float x2, float y2) {
@@ -1663,7 +1670,8 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
     [_match recallLettersPlacedInCurrentTurn];
     [self setupRack];
 //    [self zoomToLettersOwnedByCurrentPlayer];
-    [self zoomToAllLetters];
+//    [self zoomToAllLetters];
+    [_boardScrollView zoomOut];
   }
 }
 

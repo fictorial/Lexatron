@@ -286,6 +286,13 @@ enum {
   return NO;
 }
 
+- (void)bringAlertViewsToTheFront {
+  for (UIView *subview in self.view.subviews) {
+    if ([subview isKindOfClass:AlertView.class])
+      [subview.superview bringSubviewToFront:subview];
+  }
+}
+
 - (void)startTimeoutTimer {
   [self removeTimeoutTimer];
   
