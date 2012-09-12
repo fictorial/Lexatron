@@ -1,1 +1,15 @@
-- wildcard space
++ bomb in bag (3)
++ draw bomb icon in tile
++ on submit, if bomb(s) placed, recall other tiles placed
++ blow up letters in radius of bomb on submit
++ tell match delegate that letters were blown up
++ match vc plays explosion particle system at cell
++ match vc plays sound effect
++ match vc removes blown up tile views
++ in turn, note that bomb was played and where
++ add turn description for bomb
++ opponent plays explosion effects too
+- maybe show blast radius as shadow on bomb tile?
+
+- write-up help for this
+

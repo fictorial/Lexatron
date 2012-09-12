@@ -12,6 +12,8 @@ int letterValue(int letter);
 + (id)letter:(int)letter;
 - (int)score;
 - (int)effectiveLetter;                      // letter if non-blank else substituteLetter
+- (BOOL)isBlank;
+- (BOOL)isBomb;
 
 @end
 

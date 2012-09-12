@@ -41,6 +41,14 @@
   return (_letter == ' ') ? _substituteLetter : _letter;
 }
 
+- (BOOL)isBlank {
+  return _letter == ' ';
+}
+
+- (BOOL)isBomb {
+  return _letter == kBombLetter;
+}
+
 - (BOOL)isEqual:(id)object {
   if (object == self)
     return YES;

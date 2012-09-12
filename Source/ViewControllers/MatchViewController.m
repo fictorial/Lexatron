@@ -16,6 +16,7 @@
 #import "ExplosionView.h"
 #import "Chat.h"
 #import "ChatViewController.h"
+#import "UIImage+PDF.h"
 
 enum {
   kViewStateNormal,        // viewing/playing active match
@@ -27,7 +28,8 @@ enum {
 enum {
   kMatchEndSummaryLabelTag = 888,
   kMatchEndRematchButtonTag,
-  kDropTargetViewTag
+  kDropTargetViewTag,
+  kBlastRadiusImageViewTag
 };
 
 @interface MatchViewController ()
@@ -93,12 +95,19 @@ enum {
 }
 
 - (void)updateBoardFromMatchState {
+  [[self allLetters] each:^(id sender) {
+    [sender removeFromSuperview];
+  }];
+
   [_match.board enumerateKeysAndObjectsUsingBlock:^(NSNumber *cellNumber, Letter *letter, BOOL *stop) {
     CGRect cellRect = [_boardScrollView.boardView boardFromCellX:cellX(letter.cellIndex) y:cellY(letter.cellIndex)];
     TileView *boardTileView = [TileView viewWithFrame:cellRect letter:letter];
     [boardTileView configureForBoardDisplay];
+    boardTileView.dragDelegate = self;
     [_boardScrollView.boardView addSubview:boardTileView];
   }];
+
+  [_boardScrollView.boardView updateTilesRemainingLabelFromMatch:_match];
 }
 
 - (UILabel *)makeScoreboardLabel {
@@ -151,11 +160,11 @@ enum {
   _player1Label.center = CGPointMake(cx - fullWidth/2 + player1Width/2, labelY);
   _player2Label.center = CGPointMake(CGRectGetMaxX(_player1Label.frame) + bigMargin + player2Width/2, labelY);
 
-  // Make the current player's label pulse
+  // Make the current player's label obvious whose turn it is
 
   if (_match.state == kMatchStateActive ||
       _match.state == kMatchStatePending) {
-    
+
     UILabel *activePlayerLabel, *inactivePlayerLabel;
 
     if (_match.currentPlayerNumber == 0) {
@@ -169,6 +178,7 @@ enum {
     [UIView animateWithDuration:0.4 animations:^{
       activePlayerLabel.transform = CGAffineTransformMakeScale(1.1, 1.1);
       inactivePlayerLabel.transform = CGAffineTransformMakeScale(0.9, 0.9);
+
       activePlayerLabel.alpha = 1;
       inactivePlayerLabel.alpha = 0.3;
     }];
@@ -261,6 +271,10 @@ enum {
     [self performBlock:^(id sender) {
       [self showNoticeAlertWithCaption:[error localizedDescription]];
     } afterDelay:0.33];
+
+    if (error.code == kMatchErrorCodeNoLettersToBlowUp) {
+      [self recall];
+    }
   }
 
   // NB: zoomOut happens in match:turnDidHappen: and not here.
@@ -518,32 +532,35 @@ enum {
 
   } else {
     self.viewState = kViewStateNormal;
-
-    [self updateScoreboard];
   }
+}
 
+- (void)showWhatOpponentDid {
+  [self updateBoardFromMatchState];
+  
+  [self showHUDWithActivity:NO caption:[_match mostRecentTurnDescription]];
+  [self makeHUDNonModal];  // Can get annoying if you just want to get going.
+
+  __weak id weakSelf = self;
+  [self performBlock:^(id sender) {
+    [weakSelf hideActivityHUD];
+  } afterDelay:1.5];
+
+  Turn *mostRecentTurn = [_match.turns lastObject];
+
+  if (mostRecentTurn.type == kTurnTypeBomb) {
+    [self showBombExplosionsFromTurn:mostRecentTurn];
+  } else {
+    [self highlightLettersPlayedByOpponentInMostRecentTurn];
+  }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-  __weak id weakSelf = self;
-
   if (!_seenMostRecentTurnDescription && [_match currentUserPlayerNumber] == _match.currentPlayerNumber) {
     self.seenMostRecentTurnDescription = YES;
-
-    [self showHUDWithActivity:NO caption:[_match mostRecentTurnDescription]];
-    [self makeHUDNonModal];  // Can get annoying if you just want to get going.
-
-    [self performBlock:^(id sender) {
-      [weakSelf hideActivityHUD];
-    } afterDelay:1.5];
-
     [[LQAudioManager sharedManager] playEffect:kEffectNewGame];
-
-    [self highlightLettersPlayedByOpponentInMostRecentTurn];
+    [self showWhatOpponentDid];
   }
-
-  [_boardScrollView.boardView updateTilesRemainingLabelFromMatch:_match];
-
   [super viewDidAppear:animated];
 }
 
@@ -609,8 +626,6 @@ enum {
     return;
   }
 
-  [self updateScoreboard];
-
   if (match.state == kMatchStateEndedNormal ||
       match.state == kMatchStateEndedResign) {
 
@@ -631,11 +646,21 @@ enum {
   __weak id weakSelf = self;
 
   if (_match.passAndPlay) {
-    float delay = turn.type == kTurnTypePlay ? 1.5 : 0.1;
+    float delay = 0.1;
+
+    if (turn.type == kTurnTypeBomb)
+      delay = 6;
+    else if (turn.type == kTurnTypePlay)
+      delay = 1.5;
 
     __weak id weakMatch = _match;
 
     [self performBlock:^(id sender) {
+      [self updateScoreboard];
+
+      [UIView animateWithDuration:0.4 animations:^{
+        [[weakSelf rackView] setAlpha:0];
+      }];
 
       NSString *message = [NSString stringWithFormat:NSLocalizedString(@"Please pass the device to %@.", nil),
                            [[weakMatch currentUserPlayer] usernameForDisplay]];
@@ -646,11 +671,7 @@ enum {
                                block:^(int buttonPressed) {
                                  [weakSelf setupRack];
                                  [weakSelf hideActivityHUD];
-
-                                 if ([weakSelf match].passAndPlay) {
-                                   [weakSelf highlightLettersPlayedByOpponentInMostRecentTurn];
-                                 }
-
+                                 [weakSelf showWhatOpponentDid];
                                  [weakSelf performBlock:^(id sender) {
                                    [weakSelf zoomOut];
                                  } afterDelay:2];
@@ -658,11 +679,80 @@ enum {
     } afterDelay:delay];   // Let score show in HUD for a bit.
   } else {
     [self setupRack];
+    [self updateScoreboard];
   }
 
   [self performBlock:^(id sender) {
     [weakSelf zoomOut];
   } afterDelay:0.75];
+}
+
+- (void)match:(Match *)match didBlowUpLettersAtIndices:(NSArray *)indices withBombAtCellIndex:(int)bombCellIndex {
+  [self zoomOut];
+
+  __weak id weakSelf = self;
+
+  [weakSelf showHUDWithActivity:NO caption:@"THREE!"];
+
+  [self performBlock:^(id sender) {
+    [weakSelf showHUDWithActivity:NO caption:@"TWO!"];
+    [[LQAudioManager sharedManager] playEffect:kEffectBombCharge];
+  } afterDelay:1];
+
+  [self performBlock:^(id sender) {
+    [weakSelf showHUDWithActivity:NO caption:@"ONE!"];
+  } afterDelay:2];
+
+  [self performBlock:^(id sender) {
+    [weakSelf hideActivityHUD];
+    [weakSelf runExplosionAtCellIndex:bombCellIndex];
+  } afterDelay:3];
+
+  [self performBlock:^(id sender) {
+    [weakSelf updateBoardFromMatchState];
+  } afterDelay:3.25];
+}
+
+- (void)runExplosionAtCellIndex:(int)bombCellIndex {
+  AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+  [[LQAudioManager sharedManager] playEffect:kEffectBombExplode];
+
+  CGRect bombCell = [_boardScrollView.boardView boardFromCellX:cellX(bombCellIndex) y:cellY(bombCellIndex)];
+  CGPoint explodePoint = CGPointMake(CGRectGetMidX(bombCell), CGRectGetMidY(bombCell));
+  CGPoint explodePointWindowSpace = [_boardScrollView.boardView convertPoint:explodePoint toView:self.view.window];
+
+  ExplosionView *boomView = [ExplosionView new];
+  [boomView useBombEmitter];
+  [self.view.window addSubview:boomView];
+  [boomView explodeFromPoint:explodePointWindowSpace completion:^{
+    [UIView animateWithDuration:0.4 animations:^{
+      boomView.alpha = 0;
+    } completion:^(BOOL finished) {
+      [boomView removeFromSuperview];
+    }];
+  }];
+
+  __weak id weakSelf = self;
+
+  [self performBlock:^(id sender) {
+    CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+    anim.values = @[
+    [NSValue valueWithCATransform3D:CATransform3DMakeTranslation(-7.0f, 0.0f, 0.0f)],
+    [NSValue valueWithCATransform3D:CATransform3DMakeTranslation(3+arc4random()%5, 2+arc4random()%3, 0.0f)]
+    ];
+    anim.autoreverses = YES;
+    anim.repeatCount = 3 + arc4random()%4;
+    anim.duration = 0.07f;
+    [[weakSelf view].window.layer addAnimation:anim forKey:nil];
+  } afterDelay:0.1];
+}
+
+- (void)showBombExplosionsFromTurn:(Turn *)turn {
+  __weak id weakSelf = self;
+  [self performBlock:^(id sender) {
+    for (NSNumber *index in turn.bombsDetonatedAtCellIndices)
+      [weakSelf runExplosionAtCellIndex:[index intValue]];
+  } afterDelay:0.2];
 }
 
 - (void)matchWillSaveRemotely:(Match *)match {
@@ -754,15 +844,17 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 }
 
 - (void)highlightLettersPlayedByOpponentInMostRecentTurn {
+  __weak id weakSelf = self;
+
   [self performBlock:^(id sender) {
-    [[self allLetters] each:^(TileView *tileView) {
+    [[weakSelf allLetters] each:^(TileView *tileView) {
       tileView.letter = [_match letterAtCellIndex:tileView.letter.cellIndex];
       tileView.isNew = NO;
     }];
 
     __block NSTimeInterval delay = 0;
 
-    [[self lettersPlayedByOpponentInMostRecentTurn] each:^(TileView *tileView) {
+    [[weakSelf lettersPlayedByOpponentInMostRecentTurn] each:^(TileView *tileView) {
       tileView.letter = [_match letterAtCellIndex:tileView.letter.cellIndex];
       tileView.isNew = YES;
       [tileView jumpWithDelay:delay repeat:NO];
@@ -850,7 +942,6 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
   // Tiles already on the board that's being dragged should be hidden
   // when the drag proxy is being dragged around.
 
-  //  tileView.hidden = (tileView.letter.cellIndex != -1);
   tileView.alpha = 0.02;
 }
 
@@ -882,14 +973,11 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
   NSAssert(sourceLetter != nil, @"expected existing source letter item");
 
-  BOOL wasOnTheBoard = (sourceLetter.cellIndex != -1);
-
   if (![_match moveLetter:sourceLetter toRackAtIndex:targetRackIndex])
     return NO;
 
-  if (wasOnTheBoard)
-    [tileView removeFromSuperview];
-
+  [self updateBoardFromMatchState];
+  [self updateBlastRadiusImages];
   [self setupRack];
 
   return YES;
@@ -975,13 +1063,32 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
   if (![_match moveLetter:letter toBoardAtCellIndex:cellIndex])
     return NO;
 
+  // Placing bombs and letters are mutually exclusive.
+  // Using a bomb is alone a turn in and of itself so the player cannot play word(s) too.
+
+  if ([letter isBomb]) {
+    if ([_match nonBombLettersOnBoardPlacedInCurrentTurn].count > 0)
+      [self maybeShowBombPlacementTip];
+
+    [_match recallLettersPlacedInCurrentTurnIncludingBombs:NO];
+  } else {
+    if ([_match bombsPlacedInCurrentTurn].count > 0)
+      [self maybeShowBombPlacementTip];
+
+    [_match recallBombsPlacedInCurrentTurn];
+  }
+
+  [self updateBlastRadiusImages];
+
   // If the letter dropped was a blank, have the user choose a substitute letter.
 
   __weak id weakSelf = self;
 
   TileChooserCallback continueWithLetter = ^(int letterValue) {
-    if (letterValue >= 'A' && letterValue <= 'Z') {
-      letter.substituteLetter = letterValue;
+    if ((letterValue >= 'A' && letterValue <= 'Z') || letterValue == kBombLetter) {
+
+      if ([letter isBlank])
+        letter.substituteLetter = letterValue;
 
       TileView *boardTileView = [TileView viewWithFrame:cellRect letter:letter];
       [boardTileView configureForBoardDisplay];
@@ -1038,7 +1145,7 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
     }
   };
 
-  if (tileView.letter.cellIndex == toCellIndex && sourceLetter.letter == ' ') {
+  if (tileView.letter.cellIndex == toCellIndex && [sourceLetter isBlank]) {
     DLog(@"drop in-place => change the substitute letter of this blank tile");
     [self showBlankChooserWithCallback:continueWithLetter];
     return YES;
@@ -1046,6 +1153,17 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
   if (![_match moveLetter:sourceLetter toBoardAtCellIndex:toCellIndex])
     return NO;
+
+  if ([tileView.letter isBomb]) {
+    // Recall other letters placed this turn when dragging a bomb from the rack to the board.
+    // Using a bomb is alone a turn in and of itself so the player cannot play word(s) too.
+
+    [_match recallLettersPlacedInCurrentTurnIncludingBombs:NO];
+  }
+
+  [self updateBlastRadiusImages];
+
+//  [self updateBoardFromMatchState];
 
   tileView.letter.cellIndex = toCellIndex;
   tileView.letter.rackIndex = -1;
@@ -1067,6 +1185,8 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
     DLog(@"------ end dragging operation: not tile view");
     return NO;
   }
+
+  NSAssert([draggableView isKindOfClass:[TileView class]], @"expected tile");
 
   TileView *tileView = (TileView *)draggableView;
 
@@ -1352,8 +1472,9 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
   BOOL isTie = (_match.winningPlayer == -1 && _match.losingPlayer == -1);
   BOOL currentPlayerWon = (_match.winningPlayer == [_match currentUserPlayerNumber] && !isTie);
 
-  // Loser gets to rematch or in PNP matches, whomever is holding the device...
-  BOOL showRematchOption = !currentPlayerWon || _match.passAndPlay;
+  // Loser gets to rematch
+  
+  BOOL showRematchOption = !currentPlayerWon;
 
   NSString *caption;
   if (currentPlayerWon) {
@@ -1411,6 +1532,7 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
       [self performBlock:^(id sender) {
         ExplosionView *boomView = [ExplosionView new];
+        [boomView useStarEmitter];
         [self.view.window addSubview:boomView];
         [boomView explodeFromPoint:self.view.window.center completion:^{
           [UIView animateWithDuration:0.4 animations:^{
@@ -1532,9 +1654,80 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
       }
     }];
 
-    [_match recallLettersPlacedInCurrentTurn];
+    [_match recallLettersPlacedInCurrentTurnIncludingBombs:YES];
     [self setupRack];
     [self zoomOut];
+  }
+}
+
+- (void)removeBlastRadiusImagesWithFadeOut:(BOOL)fadeOut {
+  __weak id weakSelf = self;
+
+  [[_boardScrollView.boardView.subviews select:^BOOL(UIView *view) {
+    return view.tag == kBlastRadiusImageViewTag;
+  }] each:^(UIImageView *imageView) {
+    if (fadeOut) {
+      [imageView fadeOut:0.4 delegate:nil];
+
+      [weakSelf performBlock:^(id sender) {
+        [imageView removeFromSuperview];
+      } afterDelay:0.4];
+    } else {
+      [imageView removeFromSuperview];
+    }
+  }];
+}
+
+- (void)updateBlastRadiusImages {
+  UIImage *blastRadiusImage = [UIImage imageWithName:@"BlastRadius"];
+
+  // Remove all existing blast radius images
+
+  [self removeBlastRadiusImagesWithFadeOut:NO];
+
+  // Add a blast radius image for each bomb on the board
+
+  __weak id weakSelf = self;
+
+  [[_match bombsPlacedInCurrentTurn] enumerateObjectsUsingBlock:^(Letter *letter, NSUInteger idx, BOOL *stop) {
+    // We scale up the @2x by 400% and the normal version by 200% since when we zoom in (by 2 or so) the image will be scaled up
+    // and we want it to look acceptable
+
+    UIImageView *iv = [[UIImageView alloc] initWithImage:blastRadiusImage];
+    iv.bounds = CGRectMake(0, 0, blastRadiusImage.size.width/2, blastRadiusImage.size.height/2);
+
+    CGRect cellRect = [_boardScrollView.boardView boardFromCellX:cellX(letter.cellIndex) y:cellY(letter.cellIndex)];
+    iv.center = CGPointMake(CGRectGetMidX(cellRect), CGRectGetMidY(cellRect));
+
+    iv.tag = kBlastRadiusImageViewTag;
+    [_boardScrollView.boardView addSubview:iv];
+
+    iv.hidden = YES;
+    [weakSelf performBlock:^(id sender) {
+      [iv popIn:0.7 delegate:nil];
+    } afterDelay:1.2];
+
+    [weakSelf performBlock:^(id sender) {
+      [weakSelf removeBlastRadiusImagesWithFadeOut:YES];
+    } afterDelay:2.7];
+  }];
+}
+
+- (void)maybeShowBombPlacementTip {
+  NSString *tipKey = @"shownBombPlacementTip";
+  
+  int seenTimes = [[NSUserDefaults standardUserDefaults] integerForKey:tipKey];
+
+  if (seenTimes < 3) {
+    [[NSUserDefaults standardUserDefaults] setInteger:seenTimes+1 forKey:tipKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    [self showHUDWithActivity:NO caption:NSLocalizedString(@"You may place only letters or only bombs in one turn, not both.", nil)];
+
+    __weak id weakSelf = self;
+    [self performBlock:^(id sender) {
+      [weakSelf hideActivityHUD];
+    } afterDelay:3.5];
   }
 }
 

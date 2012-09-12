@@ -22,6 +22,8 @@ enum {
   kEffectRecall,
   kEffectSlide,
   kEffectNewGame,
+  kEffectBombCharge,
+  kEffectBombExplode,
 
   kEffectCount
 };

@@ -1,5 +1,4 @@
 #import "Match.h"
-#import "MatchConstants.h"
 #import "WordList.h"
 #import "Word.h"
 #import "Letter.h"
@@ -58,11 +57,14 @@
 
     // See Texts/Tiles.txt
 
-    NSDictionary *tileDistribution = @{ @'A':@(12), @'B':@(2), @'C':@(2),
-    @'D':@(6), @'E':@(8), @'F':@(2), @'G':@(4), @'H':@(5), @'I':@(10),
-    @'J':@(1), @'K':@(1), @'L':@(5), @'M':@(2), @'N':@(6), @'O':@(10),
-    @'P':@(2), @'Q':@(1), @'R':@(8), @'S':@(6), @'T':@(9), @'U':@(5),
-    @'V':@(2), @'W':@(2), @'X':@(1), @'Y':@(2), @'Z':@(1), @' ':@(4) };
+    NSDictionary *tileDistribution = @{
+    @'A':@12, @'B':@2, @'C':@2, @'D':@6, @'E':@8,
+    @'F':@2, @'G':@4, @'H':@5, @'I':@10, @'J':@1,
+    @'K':@1, @'L':@5, @'M':@2, @'N':@6, @'O':@10,
+    @'P':@2, @'Q':@1, @'R':@8, @'S':@6, @'T':@9,
+    @'U':@5, @'V':@2, @'W':@2, @'X':@1, @'Y':@2,
+    @'Z':@1, @' ':@4, @(kBombLetter):@3
+    };
 
     // Bag is just a shuffled, flattened array of letters.
 
@@ -193,18 +195,24 @@
 
   if (turn.wordsFormed.count > 0) {
     wordsFormed = [turn.wordsFormed map:^id(id word) {
-      if ([word isKindOfClass:[Word class]])
+      if ([word isKindOfClass:Word.class])
         return [[word string] uppercaseString];
       return word;
     }];
   }
-  
+
+  DLog(@"encoded turn with words: %@", wordsFormed);
+
+  NSArray *bombs = turn.bombsDetonatedAtCellIndices;
+  if (!bombs) bombs = @[];
+
   return @{
   @"turnType": @(turn.type),
   @"player": @(turn.playerNumber),
   @"state": @(turn.matchState),
   @"wordsFormed": wordsFormed,
-  @"scoreDelta": @(turn.scoreDelta)
+  @"scoreDelta": @(turn.scoreDelta),
+  @"bombsDetonated": bombs
   };
 }
 
@@ -215,6 +223,7 @@
   turn.matchState = [turnDict intForKey:@"state"];
   turn.wordsFormed = [turnDict objectForKey:@"wordsFormed"];
   turn.scoreDelta = [turnDict intForKey:@"scoreDelta"];
+  turn.bombsDetonatedAtCellIndices = [turnDict objectForKey:@"bombsDetonated"];
   return turn;
 }
 
@@ -464,6 +473,24 @@
   return [letters copy];
 }
 
+- (NSArray *)nonBombLettersOnBoardPlacedInCurrentTurn {
+  NSMutableArray *letters = [NSMutableArray arrayWithCapacity:10];
+  [_board each:^(id key, Letter *letter) {
+    if (letter.turnNumber == -1 && letter.playerOwner == _currentPlayerNumber && ![letter isBomb])
+      [letters addObject:letter];
+  }];
+  return [letters copy];
+}
+
+- (NSArray *)bombsPlacedInCurrentTurn {
+  NSMutableArray *letters = [NSMutableArray array];
+  [_board each:^(id key, Letter *letter) {
+    if (letter.turnNumber == -1 && letter.playerOwner == _currentPlayerNumber && [letter isBomb])
+      [letters addObject:letter];
+  }];
+  return [letters copy];
+}
+
 - (NSArray *)allLetters {
   return [_board allValues];
 }
@@ -653,10 +680,11 @@
 
   // Update scores
 
-  if (_currentPlayerNumber == 0)
+  if (_currentPlayerNumber == 0) {
     _scoreForFirstPlayer += _scoreDelta;
-  else
+  } else {
     _scoreForSecondPlayer += _scoreDelta;
+  }
 
   turn.scoreDelta = _scoreDelta;
 
@@ -761,6 +789,36 @@
 
   NSArray *addedLetters = [self lettersOnBoardPlacedInCurrentTurn];
 
+  // Only letters or only bombs may be placed in one turn.
+  // Thus, if we have only bombs, blow them up!
+
+  if ([addedLetters select:^BOOL(id obj) { return [obj isBomb]; }].count == addedLetters.count) {
+    if (_board.count - [self lettersOnBoardPlacedInCurrentTurn].count == 0) {
+      NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: NSLocalizedString(@"There are no letters to blow up yet ... patience, grasshopper.", nil) };
+      return [NSError errorWithDomain:kMatchErrorDomain code:kMatchErrorCodeNoLettersToBlowUp userInfo:userInfo];
+    }
+
+    DLog(@"KaBOOM!");
+
+    NSMutableArray *bombIndices = [NSMutableArray arrayWithCapacity:addedLetters.count];
+
+    [addedLetters each:^(Letter *letter) {
+      [bombIndices addObject:@(letter.cellIndex)];
+      [self detonateBombAtCellIndex:letter.cellIndex];
+    }];
+
+    DLog(@"bombs at: %@", bombIndices);
+
+    Turn *turn = [Turn new];
+    turn.playerNumber = _currentPlayerNumber;
+    turn.type = kTurnTypeBomb;
+    turn.matchState = _state;
+    turn.bombsDetonatedAtCellIndices = bombIndices;
+    [self playerDidAct:turn];
+
+    return nil;
+  }
+
   if (addedLetters.count == 0 || (addedLetters.count <= 1 && _turns.count < 2)) {
     NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: NSLocalizedString(@"Drag some letters from the rack to the board and try again.", nil) };
     return [NSError errorWithDomain:kMatchErrorDomain code:kMatchErrorCodeNothingPlayed userInfo:userInfo];
@@ -774,12 +832,12 @@
 
   if (isFirstWord && _currentPlayerNumber == 0) {
     if ([addedLetters select:^BOOL(Letter *letter) { return letter.cellIndex == kStartCellIndexForFirstPlayer; }].count == 0) {
-      NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: NSLocalizedString(@"Start by forming a word from your start space (the green one with the arrow in top-left corner)", nil) };
+      NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: NSLocalizedString(@"Start by forming a word from your start space (the green one in the top-left corner)", nil) };
       return [NSError errorWithDomain:kMatchErrorDomain code:kMatchErrorCodeFirstNotOnStart userInfo:userInfo];
     }
   } else if (isFirstWord && _currentPlayerNumber == 1) {
     if ([addedLetters select:^BOOL(Letter *letter) { return letter.cellIndex == kStartCellIndexForSecondPlayer; }].count == 0) {
-      NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: NSLocalizedString(@"Start by forming a word from your start space (the orange one with the arrow in bottom-left corner)", nil) };
+      NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: NSLocalizedString(@"Start by forming a word from your start space (the orange one in the bottom-left corner)", nil) };
       return [NSError errorWithDomain:kMatchErrorDomain code:kMatchErrorCodeFirstNotOnStart userInfo:userInfo];
     }
   }
@@ -804,7 +862,7 @@
   DLog(@"valid words: %d, invalid words: %d", validWords.count, invalidWords.count);
 
   if (validWords.count == 0 && invalidWords.count == 0) {
-    NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: NSLocalizedString(@"Nothing was placed.", nil) };
+    NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: NSLocalizedString(@"No valid words were formed.", nil) };
     return [NSError errorWithDomain:kMatchErrorDomain code:kMatchErrorCodeNothingPlayed userInfo:userInfo];
   }
 
@@ -1137,7 +1195,7 @@
     NSAssert([self currentUserPlayerNumber] == _currentPlayerNumber, @"not your turn");
   }
 
-  [self recallLettersPlacedInCurrentTurn];
+  [self recallLettersPlacedInCurrentTurnIncludingBombs:YES];
 
   Turn *turn = [Turn new];
   turn.playerNumber = _currentPlayerNumber;
@@ -1149,7 +1207,7 @@
 - (void)resign {
   self.state = kMatchStateEndedResign;
 
-  [self recallLettersPlacedInCurrentTurn];
+  [self recallLettersPlacedInCurrentTurnIncludingBombs:YES];
 
   Turn *turn = [Turn new];
   turn.playerNumber = _currentPlayerNumber;
@@ -1393,7 +1451,7 @@
   return n;
 }
 
-- (void)recallLettersPlacedInCurrentTurn {
+- (void)recallLettersPlacedInCurrentTurnIncludingBombs:(BOOL)includingBombs {
   if (!_passAndPlay) {
     NSAssert([self currentUserPlayerNumber] == _currentPlayerNumber, @"not your turn");
   }
@@ -1401,6 +1459,24 @@
   NSMutableArray *rack = _currentPlayerNumber == 0 ? _rackForFirstPlayer : _rackForSecondPlayer;
 
   [[self lettersOnBoardPlacedInCurrentTurn] enumerateObjectsUsingBlock:^(Letter *letter, NSUInteger idx, BOOL *stop) {
+    if (!includingBombs && [letter isBomb])
+      return;
+    [self removeLetterFromBoard:letter];
+    [self addLetter:letter toRack:rack];
+    letter.turnNumber = -1;
+  }];
+}
+
+- (void)recallBombsPlacedInCurrentTurn {
+  if (!_passAndPlay) {
+    NSAssert([self currentUserPlayerNumber] == _currentPlayerNumber, @"not your turn");
+  }
+
+  NSMutableArray *rack = _currentPlayerNumber == 0 ? _rackForFirstPlayer : _rackForSecondPlayer;
+
+  [[self lettersOnBoardPlacedInCurrentTurn] enumerateObjectsUsingBlock:^(Letter *letter, NSUInteger idx, BOOL *stop) {
+    if (![letter isBomb])
+      return;
     [self removeLetterFromBoard:letter];
     [self addLetter:letter toRack:rack];
     letter.turnNumber = -1;
@@ -1464,7 +1540,11 @@
       return [NSString stringWithFormat:NSLocalizedString(@"You passed vs %@", nil), opponentName];
 
     case kTurnTypePlay: {
-      NSString *words = [turn.wordsFormed componentsJoinedByString:@", "];
+      NSString *words = [[turn.wordsFormed map:^id(id obj) {
+        if ([obj isKindOfClass:Word.class])
+          return [[obj string] uppercaseString];
+        return obj;
+      }] componentsJoinedByString:@", "];
       if ([self currentUserPlayerNumber] == _currentPlayerNumber)
         return [NSString stringWithFormat:NSLocalizedString(@"%@ played %@ for %d points", nil), opponentName, words, turn.scoreDelta];
       return [NSString stringWithFormat:NSLocalizedString(@"You played %@ for %d points vs %@", nil), words, turn.scoreDelta, opponentName];
@@ -1484,6 +1564,21 @@
       if ([self currentUserPlayerNumber] == _currentPlayerNumber)
         return [NSString stringWithFormat:NSLocalizedString(@"%@ exchanged tiles", nil), opponentName];
       return [NSString stringWithFormat:NSLocalizedString(@"You exchanged tiles vs %@", nil), opponentName];
+
+    case kTurnTypeBomb: {
+      int bombCount = turn.bombsDetonatedAtCellIndices.count;
+      
+      if ([self currentUserPlayerNumber] == _currentPlayerNumber)
+        return [NSString stringWithFormat:NSLocalizedString(@"%@ detonated %@ bomb%@!", nil),
+                opponentName,
+                bombCount == 1 ? @"a" : [NSString stringWithFormat:@"%d", bombCount],
+                bombCount == 1 ? @"" : @"s"];
+
+      return [NSString stringWithFormat:NSLocalizedString(@"You detonated %@ bomb%@ vs %@", nil),
+              opponentName,
+              bombCount == 1 ? @"a" : [NSString stringWithFormat:@"%d", bombCount],
+              bombCount == 1 ? @"" : @"s"];
+    }
   }
 
   return nil;
@@ -1507,7 +1602,7 @@
 
   DLog(@"exchanging letters in rack at indexes: %@", indexes);
 
-  [self recallLettersPlacedInCurrentTurn];
+  [self recallLettersPlacedInCurrentTurnIncludingBombs:YES];
 
   NSMutableArray *rack = _currentPlayerNumber == 0 ? _rackForFirstPlayer : _rackForSecondPlayer;
 
@@ -1552,10 +1647,10 @@
   // Put any blanks at the end but leave the rest shuffled.
 
   NSArray *sortedArray = [shuffledArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-    if (obj1 == [NSNull null])
+    if (obj1 == [NSNull null] || [obj1 isBomb] || [obj1 isBlank])
       return NSOrderedDescending;
 
-    if (obj2 == [NSNull null])
+    if (obj2 == [NSNull null] || [obj1 isBomb] || [obj1 isBlank])
       return NSOrderedAscending;
 
     return NSOrderedSame;
@@ -1660,5 +1755,57 @@
   return [_match.updatedAt timeAgoInWords];
 }
 
+#pragma mark - bombs
+
+- (void)detonateBombAtCellIndex:(int)cellIndex {
+  DLog(@"detonate bomb at cell %d, %d", cellX(cellIndex), cellY(cellIndex));
+
+  Letter *bombLetter = [_board objectForKey:@(cellIndex)];
+
+  if (![bombLetter isBomb]) {
+    DLog(@"cannot detonate -- not a bomb!");
+    return;
+  }
+
+  [self removeLetterFromBoard:bombLetter]; // it blows itself up / single-use.
+
+  NSMutableArray *indicesBlownUp = [NSMutableArray arrayWithCapacity:10];
+
+  float blastRadiusSquared = kBombBlastRadius * kBombBlastRadius;
+
+  int blastX = cellX(cellIndex);
+  int blastY = cellY(cellIndex);
+
+  for (int y = 0; y < kBoardSize; ++y) {
+    for (int x = 0; x < kBoardSize; ++x) {
+      
+      if (!isValidCell(x, y))
+        continue;
+
+      Letter *letter = [self letterAtCellIndex:cellIndexFor(x, y)];
+
+#if BLOW_UP_OWN_LETTERS
+
+      if (!letter)
+        continue;
+
+#else
+
+      if (!letter || letter.playerOwner == _currentPlayerNumber)
+        continue;
+
+#endif
+
+      float distanceSquared = (blastX - x) * (blastX - x) + (blastY - y) * (blastY - y);
+      if (distanceSquared <= blastRadiusSquared) {  // avoid sqrtf call -- no need.
+        DLog(@"cell at %d, %d in blast radius -- bye!", x, y);
+        [indicesBlownUp addObject:@(letter.cellIndex)];
+        [self removeLetterFromBoard:letter];
+      }
+    }
+  }
+
+  [_delegate match:self didBlowUpLettersAtIndices:[indicesBlownUp copy] withBombAtCellIndex:cellIndex];
+}
 
 @end

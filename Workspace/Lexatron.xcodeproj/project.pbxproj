@@ -128,6 +128,11 @@
 		6082C32715DC30F1004512E0 /* shorthelp.html in Resources */ = {isa = PBXBuildFile; fileRef = 6082C32615DC30F1004512E0 /* shorthelp.html */; };
 		6082C32915DC3867004512E0 /* HelpDirection.png in Resources */ = {isa = PBXBuildFile; fileRef = 6082C32815DC3867004512E0 /* HelpDirection.png */; };
 		6082C32B15DC396D004512E0 /* HelpOverlap.png in Resources */ = {isa = PBXBuildFile; fileRef = 6082C32A15DC396D004512E0 /* HelpOverlap.png */; };
+		60AAE8051600ECFD00E018F8 /* FireBall.png in Resources */ = {isa = PBXBuildFile; fileRef = 60AAE8041600ECFD00E018F8 /* FireBall.png */; };
+		60AAE8091600F5BA00E018F8 /* explode.caf in Resources */ = {isa = PBXBuildFile; fileRef = 60AAE8071600F5BA00E018F8 /* explode.caf */; };
+		60AAE80A1600F5BA00E018F8 /* charge.caf in Resources */ = {isa = PBXBuildFile; fileRef = 60AAE8081600F5BA00E018F8 /* charge.caf */; };
+		60AAE80C160113FD00E018F8 /* BlastRadius.png in Resources */ = {isa = PBXBuildFile; fileRef = 60AAE80B160113FD00E018F8 /* BlastRadius.png */; };
+		60AAE80E160114FD00E018F8 /* BlastRadius@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60AAE80D160114FD00E018F8 /* BlastRadius@2x.png */; };
 		60AF510815E414F300AF5B07 /* SwapButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 60AF510615E414F300AF5B07 /* SwapButton.png */; };
 		60AF510915E414F300AF5B07 /* SwapButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60AF510715E414F300AF5B07 /* SwapButton@2x.png */; };
 		60BA6E0C15E8A2B600BBBB05 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60BA6E0B15E8A2B600BBBB05 /* ChatViewController.m */; };
@@ -138,7 +143,6 @@
 		60DD11B715D62B48008E07B5 /* Star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60DD11B515D62B48008E07B5 /* Star@2x.png */; };
 		60DD11B915D96BF5008E07B5 /* new-game.caf in Resources */ = {isa = PBXBuildFile; fileRef = 60DD11B815D96BF5008E07B5 /* new-game.caf */; };
 		60DD11BB15D9F536008E07B5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60DD11BA15D9F536008E07B5 /* Parse.framework */; };
-		60DD11C415D9FD7D008E07B5 /* MatchConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DD11C315D9FD7D008E07B5 /* MatchConstants.m */; };
 		60DD11C615D9FDA6008E07B5 /* WordList.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DD11C515D9FDA6008E07B5 /* WordList.m */; };
 		60DD11C815D9FDE6008E07B5 /* BoardUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DD11C715D9FDE6008E07B5 /* BoardUtil.m */; };
 		60DD11CA15D9FE31008E07B5 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DD11C915D9FE31008E07B5 /* Word.m */; };
@@ -151,6 +155,8 @@
 		60E9830A15DBF391005B1EC3 /* HelpLetters.png in Resources */ = {isa = PBXBuildFile; fileRef = 60E9830715DBF391005B1EC3 /* HelpLetters.png */; };
 		60E9830C15DBF962005B1EC3 /* HelpRack.png in Resources */ = {isa = PBXBuildFile; fileRef = 60E9830B15DBF962005B1EC3 /* HelpRack.png */; };
 		60E9830E15DBFFC5005B1EC3 /* HelpStartEnd.png in Resources */ = {isa = PBXBuildFile; fileRef = 60E9830D15DBFFC5005B1EC3 /* HelpStartEnd.png */; };
+		60EE84BA16004BC5009CE138 /* Bomb.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60EE84B916004BC5009CE138 /* Bomb.pdf */; };
+		60EE84BD1600521F009CE138 /* DraggableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EE84BC1600521F009CE138 /* DraggableImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -323,6 +329,11 @@
 		6082C32615DC30F1004512E0 /* shorthelp.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = shorthelp.html; sourceTree = "<group>"; };
 		6082C32815DC3867004512E0 /* HelpDirection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpDirection.png; sourceTree = "<group>"; };
 		6082C32A15DC396D004512E0 /* HelpOverlap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpOverlap.png; sourceTree = "<group>"; };
+		60AAE8041600ECFD00E018F8 /* FireBall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FireBall.png; sourceTree = "<group>"; };
+		60AAE8071600F5BA00E018F8 /* explode.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = explode.caf; sourceTree = "<group>"; };
+		60AAE8081600F5BA00E018F8 /* charge.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = charge.caf; sourceTree = "<group>"; };
+		60AAE80B160113FD00E018F8 /* BlastRadius.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlastRadius.png; sourceTree = "<group>"; };
+		60AAE80D160114FD00E018F8 /* BlastRadius@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlastRadius@2x.png"; sourceTree = "<group>"; };
 		60AF510615E414F300AF5B07 /* SwapButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwapButton.png; sourceTree = "<group>"; };
 		60AF510715E414F300AF5B07 /* SwapButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SwapButton@2x.png"; sourceTree = "<group>"; };
 		60BA6E0A15E8A2B600BBBB05 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
@@ -338,13 +349,11 @@
 		60DD11B815D96BF5008E07B5 /* new-game.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "new-game.caf"; sourceTree = "<group>"; };
 		60DD11BA15D9F536008E07B5 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		60DD11BC15D9FC0C008E07B5 /* Match.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Match.h; sourceTree = "<group>"; };
-		60DD11BD15D9FC51008E07B5 /* MatchConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchConstants.h; sourceTree = "<group>"; };
 		60DD11BE15D9FC6F008E07B5 /* BoardUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardUtil.h; sourceTree = "<group>"; };
 		60DD11BF15D9FC83008E07B5 /* WordList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordList.h; sourceTree = "<group>"; };
 		60DD11C015D9FC94008E07B5 /* Letter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Letter.h; sourceTree = "<group>"; };
 		60DD11C115D9FCA8008E07B5 /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
 		60DD11C215D9FCBE008E07B5 /* Turn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Turn.h; sourceTree = "<group>"; };
-		60DD11C315D9FD7D008E07B5 /* MatchConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchConstants.m; sourceTree = "<group>"; };
 		60DD11C515D9FDA6008E07B5 /* WordList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordList.m; sourceTree = "<group>"; };
 		60DD11C715D9FDE6008E07B5 /* BoardUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardUtil.m; sourceTree = "<group>"; };
 		60DD11C915D9FE31008E07B5 /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
@@ -359,6 +368,9 @@
 		60E9830715DBF391005B1EC3 /* HelpLetters.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpLetters.png; sourceTree = "<group>"; };
 		60E9830B15DBF962005B1EC3 /* HelpRack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpRack.png; sourceTree = "<group>"; };
 		60E9830D15DBFFC5005B1EC3 /* HelpStartEnd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpStartEnd.png; sourceTree = "<group>"; };
+		60EE84B916004BC5009CE138 /* Bomb.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Bomb.pdf; sourceTree = "<group>"; };
+		60EE84BB1600521F009CE138 /* DraggableImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableImageView.h; sourceTree = "<group>"; };
+		60EE84BC1600521F009CE138 /* DraggableImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableImageView.m; sourceTree = "<group>"; };
 		79B5CFF097734030963C564F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -509,6 +521,9 @@
 		605FB18715D0B93200766E5C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				60AAE80D160114FD00E018F8 /* BlastRadius@2x.png */,
+				60AAE80B160113FD00E018F8 /* BlastRadius.png */,
+				60EE84B916004BC5009CE138 /* Bomb.pdf */,
 				60E9830415DBF391005B1EC3 /* Help */,
 				60DD11B415D62B48008E07B5 /* Star.png */,
 				60DD11B515D62B48008E07B5 /* Star@2x.png */,
@@ -525,6 +540,7 @@
 				605FB1B315D0B93200766E5C /* Icons */,
 				605FB1BE15D0B93200766E5C /* Title.png */,
 				605FB1BF15D0B93200766E5C /* Title@2x.png */,
+				60AAE8041600ECFD00E018F8 /* FireBall.png */,
 			);
 			name = Images;
 			path = ../../Images;
@@ -584,6 +600,8 @@
 		605FB1C815D0B93200766E5C /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				60AAE8071600F5BA00E018F8 /* explode.caf */,
+				60AAE8081600F5BA00E018F8 /* charge.caf */,
 				60DD11B815D96BF5008E07B5 /* new-game.caf */,
 				600A3FA015D190F8006402E5 /* back.caf */,
 				605FB1C915D0B93200766E5C /* end-lost.caf */,
@@ -641,8 +659,6 @@
 			isa = PBXGroup;
 			children = (
 				605FB1E615D0B93200766E5C /* MatchLogic.h */,
-				60DD11BD15D9FC51008E07B5 /* MatchConstants.h */,
-				60DD11C315D9FD7D008E07B5 /* MatchConstants.m */,
 				60DD11BF15D9FC83008E07B5 /* WordList.h */,
 				60DD11C515D9FDA6008E07B5 /* WordList.m */,
 				60DD11BE15D9FC6F008E07B5 /* BoardUtil.h */,
@@ -732,6 +748,8 @@
 				600A3FDA15D22156006402E5 /* TileChooserView.m */,
 				605FB21215D0B93200766E5C /* DraggableView.h */,
 				605FB21315D0B93200766E5C /* DraggableView.m */,
+				60EE84BB1600521F009CE138 /* DraggableImageView.h */,
+				60EE84BC1600521F009CE138 /* DraggableImageView.m */,
 				605FB21415D0B93200766E5C /* ExplosionView.h */,
 				605FB21515D0B93200766E5C /* ExplosionView.m */,
 				600A3FCE15D21566006402E5 /* TileView.h */,
@@ -899,6 +917,12 @@
 				60DABB8015DD6F460081B12A /* help.css in Resources */,
 				60AF510815E414F300AF5B07 /* SwapButton.png in Resources */,
 				60AF510915E414F300AF5B07 /* SwapButton@2x.png in Resources */,
+				60EE84BA16004BC5009CE138 /* Bomb.pdf in Resources */,
+				60AAE8051600ECFD00E018F8 /* FireBall.png in Resources */,
+				60AAE8091600F5BA00E018F8 /* explode.caf in Resources */,
+				60AAE80A1600F5BA00E018F8 /* charge.caf in Resources */,
+				60AAE80C160113FD00E018F8 /* BlastRadius.png in Resources */,
+				60AAE80E160114FD00E018F8 /* BlastRadius@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -956,7 +980,6 @@
 				600A3FD615D2181F006402E5 /* BoardScrollView.m in Sources */,
 				600A3FDB15D22156006402E5 /* RackView.m in Sources */,
 				600A3FDC15D22156006402E5 /* TileChooserView.m in Sources */,
-				60DD11C415D9FD7D008E07B5 /* MatchConstants.m in Sources */,
 				60DD11C615D9FDA6008E07B5 /* WordList.m in Sources */,
 				60DD11C815D9FDE6008E07B5 /* BoardUtil.m in Sources */,
 				60DD11CA15D9FE31008E07B5 /* Word.m in Sources */,
@@ -980,6 +1003,7 @@
 				60767F7115DF53DD000D2488 /* AlertView.m in Sources */,
 				60BA6E0C15E8A2B600BBBB05 /* ChatViewController.m in Sources */,
 				60BA6E2015EB1A4F00BBBB05 /* Chat.m in Sources */,
+				60EE84BD1600521F009CE138 /* DraggableImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

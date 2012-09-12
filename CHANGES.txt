@@ -1,4 +1,7 @@
 Lexatron 1.0.23
+- Add bomb tiles (3 per match) that you can place on the board to blow up 
+  any nearby tiles. Use these if you get blocked to blow up some letters and
+  make room for you to continue on!
 
 Lexatron 1.0.22
 - Back to older version of the game. Experiment failed! No one wanted to play

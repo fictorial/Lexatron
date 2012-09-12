@@ -82,7 +82,7 @@
   [self setupParse];
 
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  self.window.backgroundColor = [UIColor blackColor];
+  self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Cloth"]];
   UIViewController *firstVC = [PFUser currentUser] ? [ActivityViewController controller] : [WelcomeViewController controller];
   _navigationController = [[UINavigationController alloc] initWithRootViewController:firstVC];
   _navigationController.navigationBarHidden = YES;

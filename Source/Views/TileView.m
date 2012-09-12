@@ -9,10 +9,12 @@
 #import "TileView.h"
 #import "MatchLogic.h"
 #import "UIView-GeomHelpers.h"
+#import "UIImage+PDF.h"
 
 enum {
   kLetterLabelTag = 1,
-  kPointLabelTag
+  kPointLabelTag,
+  kBombImageViewTag
 };
 
 @implementation TileView {
@@ -53,7 +55,7 @@ enum {
 
   [self configureBoardDisplayCommon];
 
-  [self updateLabels];
+  [self updateLetterDisplay];
 }
 
 - (void)configureForBoardDisplayAsPlaceholder {
@@ -74,24 +76,49 @@ enum {
 
   self.transform = CGAffineTransformIdentity;
 
-  [self updateLabels];
+  [self updateLetterDisplay];
 }
 
 - (void)setLetter:(Letter *)aLetter {
   _letter = [aLetter copy];
-  [self updateLabels];
+  [self updateLetterDisplay];
   [self setNeedsDisplay];
 }
 
 - (void)setIsNew:(BOOL)newlyPlaced {
   _isNew = newlyPlaced;
-  [self updateLabels];
+  [self updateLetterDisplay];
   [self setNeedsDisplay];
 }
 
-- (void)updateLabels {
+- (void)updateLetterDisplay {
   [[self viewWithTag:kLetterLabelTag] removeFromSuperview];
   [[self viewWithTag:kPointLabelTag] removeFromSuperview];
+
+  // Draw bomb if a bomb!
+
+  if ([_letter isBomb]) {
+    float bombWidth = CGRectGetWidth(self.bounds)*2/3.;
+    float bombHeight = CGRectGetHeight(self.bounds)*2/3.;
+
+    UIImage *bombImage = [UIImage imageWithPDFNamed:@"Bomb.pdf" atWidth:MIN(self.bounds.size.width, self.bounds.size.height)];
+
+    UIImageView *bombImageView = [[UIImageView alloc] initWithImage:bombImage];
+    bombImageView.contentMode = UIViewContentModeScaleAspectFit;
+    bombImageView.frame = CGRectIntegral(CGRectMake(0, 0, bombWidth, bombHeight));
+    bombImageView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+    bombImageView.tag = kBombImageViewTag;
+    bombImageView.autoresizingMask = (UIViewAutoresizingFlexibleLeftMargin|
+                                      UIViewAutoresizingFlexibleRightMargin|
+                                      UIViewAutoresizingFlexibleTopMargin|
+                                      UIViewAutoresizingFlexibleBottomMargin);
+    [[self viewWithTag:kBombImageViewTag] removeFromSuperview];
+    [self addSubview:bombImageView];
+
+    return;
+  }
+
+  // Draw letter
 
   UIFont *letterFont = [UIFont fontWithName:kTileLetterFontName size:roundf(self.bounds.size.height/1.7)];
   NSString *letterText = [NSString stringWithFormat:@"%c", [_letter effectiveLetter]];
@@ -106,15 +133,17 @@ enum {
   letterLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
   [self addSubview:letterLabel];
 
-  if (_letter.letter != ' ') {
+  // Draw point value. NB: blanks have no value so don't bother.
+
+  if (![_letter isBlank]) {
     CGFloat pointsFontSize = MAX(8, roundf(self.bounds.size.height/3.7));
     UIFont *pointsFont = [UIFont fontWithName:kTilePointFontName size:pointsFontSize];
     NSString *pointsText = [NSString stringWithFormat:@"%d", letterValue(_letter.letter)];
     CGSize pointsLabelSize = [pointsText sizeWithFont:pointsFont];
     CGFloat xOffset = _letter.letter == 'Q' ? -2 : 0;  // Fucker is wide!
     CGRect pointLabelFrame = CGRectIntegral(CGRectMake(self.bounds.size.width/2 + letterSize.width/2 + xOffset,
-                                        self.bounds.size.height/2 + letterSize.height/2 - pointsLabelSize.height - 2,
-                                        pointsLabelSize.width, pointsLabelSize.height));
+                                                       self.bounds.size.height/2 + letterSize.height/2 - pointsLabelSize.height - 2,
+                                                       pointsLabelSize.width, pointsLabelSize.height));
     UILabel *pointsLabel = [[UILabel alloc] initWithFrame:pointLabelFrame];
     pointsLabel.backgroundColor = [UIColor clearColor];
     pointsLabel.font = pointsFont;
@@ -189,7 +218,7 @@ enum {
         self.center = originalCenter;
       } completion:^(BOOL finished) {
       }];
-  }
+    }
   }];
 }
 

@@ -6,6 +6,7 @@
 - (void)match:(Match *)match turnDidHappen:(Turn *)turn;
 - (void)matchDidSaveRemotely:(Match *)match success:(BOOL)success;
 - (void)matchWillSaveRemotely:(Match *)match;
+- (void)match:(Match *)match didBlowUpLettersAtIndices:(NSArray *)indices withBombAtCellIndex:(int)bombCellIndex;
 @end
 
 enum {
@@ -14,7 +15,8 @@ enum {
   kMatchErrorCodeNoBlanks,                 // words formed must be on contiguous tiles
   kMatchErrorCodeInvalidWords,             // not in dictionary; userInfo is array of invalid words
   kMatchErrorCodeNothingPlayed,            // nothing was placed!
-  kMatchErrorCodeTooShort                  // word formed is too short.
+  kMatchErrorCodeTooShort,                 // word formed is too short.
+  kMatchErrorCodeNoLettersToBlowUp         // Player placed bomb but there are no letters to blow up.
 };
 
 extern NSString * const kMatchErrorDomain;
@@ -57,6 +59,8 @@ typedef void (^DecodeMatchCompletionBlock)(Match *match, NSError *error);
 
 - (BOOL)isCellOccupied:(int)index;
 - (NSArray *)lettersOnBoardPlacedInCurrentTurn;
+- (NSArray *)nonBombLettersOnBoardPlacedInCurrentTurn;
+- (NSArray *)bombsPlacedInCurrentTurn;
 - (NSArray *)allLetters;
 - (void)removeLettersPlacedInCurrentTurn;
 - (NSArray *)lettersOwnedByPlayerNumber:(int)playerNumber;  // NSArray of Letter*
@@ -72,8 +76,10 @@ typedef void (^DecodeMatchCompletionBlock)(Match *match, NSError *error);
 - (void)pass;
 - (void)resign;
 - (void)decline;
-- (void)recallLettersPlacedInCurrentTurn;
 - (void)shuffleRack;
+
+- (void)recallLettersPlacedInCurrentTurnIncludingBombs:(BOOL)includingBombs;
+- (void)recallBombsPlacedInCurrentTurn;
 
 - (BOOL)canExchangeLettersInRack;
 - (void)exchangeRackLettersAtIndexes:(NSArray *)indexes;  // Really, this a turn action

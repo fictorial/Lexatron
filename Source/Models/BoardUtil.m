@@ -1,5 +1,4 @@
 #import "BoardUtil.h"
-#import "MatchConstants.h"
 
 int cellY(int cellIndex) {
   return (cellIndex < 0) ? -1 : cellIndex / kBoardSize;

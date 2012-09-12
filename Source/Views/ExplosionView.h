@@ -10,6 +10,9 @@
 
 @interface ExplosionView : UIView
 
+- (void)useBombEmitter;
+- (void)useStarEmitter;
+
 - (void)explodeFromPoint:(CGPoint)point completion:(void(^)())completion;
 
 @end

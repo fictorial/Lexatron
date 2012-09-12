@@ -15,5 +15,9 @@ NSString * const kAppStoreReviewURL = @"itms-apps://ax.itunes.apple.com/WebObjec
 NSString * const kAppStoreInternalURL = @"itms-apps://itunes.apple.com/app/id549386086";
 
 
-
 NSString * const kSettingKeyDisableAutoZoom = @"disableAutoZoom";
+
+
+NSString * const kTurnDidEndNotification = @"TurnDidEndNotification";
+NSString * const kMatchErrorDomain = @"MatchErrorDomain";
+NSString * const kPassAndPlayDefaultsKey = @"passAndPlayMatch";
