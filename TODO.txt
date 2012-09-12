@@ -9,7 +9,7 @@
 + in turn, note that bomb was played and where
 + add turn description for bomb
 + opponent plays explosion effects too
-- maybe show blast radius as shadow on bomb tile?
++ maybe show blast radius as shadow on bomb tile?
 
 - write-up help for this
 
