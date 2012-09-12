@@ -1,3 +1,5 @@
+Lexatron 1.0.23
+
 Lexatron 1.0.22
 - Back to older version of the game. Experiment failed! No one wanted to play
   long words because the opponent could get closer to the stars.
