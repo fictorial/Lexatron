@@ -890,11 +890,7 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
   return nil;
 }
 
-// Note: must be implemented for zooming to work.
-
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale {
-  DLog(@"done zooming");
-
+- (void)onZoomChange {
   _boardScrollView.userInteractionEnabled = YES;
 
   if (_boardScrollView.zoomScale > _boardScrollView.minimumZoomScale) {
@@ -906,6 +902,15 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
   }
 
   [self.view bringSubviewToFront:[self.view viewWithTag:kBackButtonTag]];
+}
+
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
+  [self onZoomChange];
+}
+
+// Note: must be implemented for zooming to work.
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale {
+  [self onZoomChange];
 }
 
 - (BOOL)draggableViewCanBeDragged:(DraggableView *)draggableView {
@@ -1347,6 +1352,8 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 - (void)zoomOut {
   if (![self autoZoomEnabled])
     return;
+
+  [self showScoreboard:YES];
 
   [_boardScrollView zoomOut];
 }
