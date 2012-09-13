@@ -523,13 +523,8 @@ enum {
                              // See -match:turnDidHappen: for when we go back and why not here.
                            } else if (buttonPressed == 1) {  // Accept
                              [weakSelf setHasAcceptedChallenge:YES];
-
                              [weakSelf setViewState:kViewStateNormal];
-
-                             [weakSelf performBlock:^(id sender) {
-                               [weakSelf zoomToAllLetters];
-                             } afterDelay:2];
-
+                             [weakSelf zoomOut];
                              [TestFlight passCheckpoint:@"matchAcceptedChallenge"];
                            }
                          }];
