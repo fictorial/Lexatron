@@ -119,11 +119,20 @@ enum {
   label.textAlignment = UITextAlignmentCenter;
   label.shadowColor = [UIColor colorWithWhite:1 alpha:0.4];
   label.shadowOffset = CGSizeMake(0,1);
+//  label.layer.cornerRadius = SCALED(5);
+//  label.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
   return label;
 }
 
 - (void)setupScoreboard {
   [self updateScoreboard];
+}
+
+- (void)showScoreboard:(BOOL)show {
+  [UIView animateWithDuration:0.4 animations:^{
+    _player1Label.alpha = show ? 1.0 : 0;
+    _player2Label.alpha = show ? 1.0 : 0;
+  }];
 }
 
 - (void)updateScoreboard {
@@ -854,12 +863,20 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
     __block NSTimeInterval delay = 0;
 
+    [weakSelf boardScrollView].clipsToBounds = NO;  // Jump off the top maybe.
+
     [[weakSelf lettersPlayedByOpponentInMostRecentTurn] each:^(TileView *tileView) {
       tileView.letter = [_match letterAtCellIndex:tileView.letter.cellIndex];
       tileView.isNew = YES;
       [tileView jumpWithDelay:delay repeat:NO];
       delay += 0.1;
     }];
+
+// For now, keeping the board unclipped... I like it.
+//    [weakSelf performBlock:^(id sender) {
+//      [weakSelf boardScrollView].clipsToBounds = YES;
+//    } afterDelay:delay + 0.4];
+
   } afterDelay:1.33];
 }
 
@@ -880,10 +897,15 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
   _boardScrollView.userInteractionEnabled = YES;
 
-  if (_boardScrollView.zoomScale > _boardScrollView.minimumZoomScale)
+  if (_boardScrollView.zoomScale > _boardScrollView.minimumZoomScale) {
     [_boardScrollView onZoomIn];
-  else
+    [self showScoreboard:NO];
+  } else {
     [_boardScrollView onZoomOut];
+    [self showScoreboard:YES];
+  }
+
+  [self.view bringSubviewToFront:[self.view viewWithTag:kBackButtonTag]];
 }
 
 - (BOOL)draggableViewCanBeDragged:(DraggableView *)draggableView {
@@ -1553,7 +1575,7 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
       }];
     } afterDelay:2.5];
 
-    _boardScrollView.clipsToBounds = NO;
+    _boardScrollView.clipsToBounds = NO;  // Jump off the top.
   }
 }
 

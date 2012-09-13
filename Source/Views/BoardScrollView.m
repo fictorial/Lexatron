@@ -29,8 +29,8 @@
   self.bounces = YES;
   self.bouncesZoom = YES;
 
-  self.showsVerticalScrollIndicator = YES;
-  self.showsHorizontalScrollIndicator = YES;
+  self.showsVerticalScrollIndicator = NO;
+  self.showsHorizontalScrollIndicator = NO;
 
   _boardView = [[BoardView alloc] initWithContainerSize:frame.size];
   [self addSubview:_boardView];

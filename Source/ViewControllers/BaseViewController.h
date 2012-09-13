@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "AlertView.h"
 
+enum {
+  kSettingsButtonTag = 999,
+  kBackButtonTag,
+  kBoardViewTag,
+};
+
 @interface BaseViewController : UIViewController
 
 @property (nonatomic, assign) BOOL requiresAuthenticatedUser;

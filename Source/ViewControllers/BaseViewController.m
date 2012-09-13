@@ -13,12 +13,6 @@
 #import "UIImage+PDF.h"
 #import "UIGlossyButton.h"
 
-enum {
-  kSettingsButtonTag = 999,
-  kBackButtonTag,
-  kBoardViewTag,
-};
-
 @interface BaseViewController ()
 @property (nonatomic, assign, readwrite) BOOL isShowingHUD;
 @end
