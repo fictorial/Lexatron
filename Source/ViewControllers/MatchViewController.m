@@ -129,10 +129,40 @@ enum {
 }
 
 - (void)showScoreboard:(BOOL)show {
-  [UIView animateWithDuration:0.4 animations:^{
-    _player1Label.alpha = show ? 1.0 : 0;
-    _player2Label.alpha = show ? 1.0 : 0;
-  }];
+  if (show) {
+    [self showWhoseTurnItIs];
+  } else {
+    [UIView animateWithDuration:0.4 animations:^{
+      _player1Label.alpha = 0;
+      _player2Label.alpha = 0;
+    }];
+  }
+}
+
+- (void)showWhoseTurnItIs {
+  // Make the current player's label obvious whose turn it is
+
+  if (_match.state == kMatchStateActive ||
+      _match.state == kMatchStatePending) {
+
+    UILabel *activePlayerLabel, *inactivePlayerLabel;
+
+    if (_match.currentPlayerNumber == 0) {
+      activePlayerLabel = _player1Label;
+      inactivePlayerLabel = _player2Label;
+    } else {
+      activePlayerLabel = _player2Label;
+      inactivePlayerLabel = _player1Label;
+    }
+
+    [UIView animateWithDuration:0.4 animations:^{
+      activePlayerLabel.transform = CGAffineTransformMakeScale(1.1, 1.1);
+      inactivePlayerLabel.transform = CGAffineTransformMakeScale(0.9, 0.9);
+
+      activePlayerLabel.alpha = 1;
+      inactivePlayerLabel.alpha = 0.3;
+    }];
+  }
 }
 
 - (void)updateScoreboard {
@@ -169,29 +199,7 @@ enum {
   _player1Label.center = CGPointMake(cx - fullWidth/2 + player1Width/2, labelY);
   _player2Label.center = CGPointMake(CGRectGetMaxX(_player1Label.frame) + bigMargin + player2Width/2, labelY);
 
-  // Make the current player's label obvious whose turn it is
-
-  if (_match.state == kMatchStateActive ||
-      _match.state == kMatchStatePending) {
-
-    UILabel *activePlayerLabel, *inactivePlayerLabel;
-
-    if (_match.currentPlayerNumber == 0) {
-      activePlayerLabel = _player1Label;
-      inactivePlayerLabel = _player2Label;
-    } else {
-      activePlayerLabel = _player2Label;
-      inactivePlayerLabel = _player1Label;
-    }
-
-    [UIView animateWithDuration:0.4 animations:^{
-      activePlayerLabel.transform = CGAffineTransformMakeScale(1.1, 1.1);
-      inactivePlayerLabel.transform = CGAffineTransformMakeScale(0.9, 0.9);
-
-      activePlayerLabel.alpha = 1;
-      inactivePlayerLabel.alpha = 0.3;
-    }];
-  }
+  [self showWhoseTurnItIs];
 
   [self bringAlertViewsToTheFront];
 }
