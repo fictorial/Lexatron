@@ -63,12 +63,7 @@
     @'K':@1, @'L':@5, @'M':@2, @'N':@6, @'O':@10,
     @'P':@2, @'Q':@1, @'R':@8, @'S':@6, @'T':@9,
     @'U':@5, @'V':@2, @'W':@2, @'X':@1, @'Y':@2,
-    @'Z':@1, @' ':@4,
-#if DEBUG
-    @(kBombLetter):@7
-#else
-    @(kBombLetter):@3
-#endif
+    @'Z':@1, @' ':@4, @(kBombLetter):@3
     };
 
     // Bag is just a shuffled, flattened array of letters.

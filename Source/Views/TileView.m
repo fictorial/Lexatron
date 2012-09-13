@@ -77,6 +77,9 @@ enum {
   self.transform = CGAffineTransformIdentity;
 
   [self updateLetterDisplay];
+
+  self.layer.borderWidth = 1;
+  self.layer.borderColor = [[self textColor] colorWithAlphaComponent:0.1].CGColor;
 }
 
 - (void)setLetter:(Letter *)aLetter {

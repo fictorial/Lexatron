@@ -675,7 +675,7 @@ enum {
       NSString *message = [NSString stringWithFormat:NSLocalizedString(@"Please pass the device to %@.", nil),
                            [[weakMatch currentUserPlayer] usernameForDisplay]];
 
-      [weakSelf showAlertWithCaption:message
+      [weakSelf showAlertWithCaption:message  // @"Lexatron - in the App Store on Oct 1, 2012"
                               titles:@[ @"OK" ]
                               colors:@[ kGlossyBlackColor ]
                                block:^(int buttonPressed) {
@@ -931,8 +931,12 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
     [self showScoreboard:NO];
   } else {
     [_boardScrollView onZoomOut];
-    if (!_showingBombCountdown)
-      [self showScoreboard:YES];
+    if (!_showingBombCountdown) {
+      __weak id weakSelf = self;
+      [self performBlock:^(id sender) {
+        [weakSelf showScoreboard:YES];
+      } afterDelay:0.7];
+    }
   }
 
   [self.view bringSubviewToFront:[self.view viewWithTag:kBackButtonTag]];
@@ -1035,6 +1039,7 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
   [self updateBoardFromMatchState];
   [self updateBlastRadiusImages];    // after board to be on top (easily)
   [self setupRack];
+  [self zoomToLettersPlacedInThisTurn];
 
   return YES;
 }
@@ -1134,9 +1139,6 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
     [_match recallBombsPlacedInCurrentTurn];
   }
 
-  [self updateBoardFromMatchState];
-  [self updateBlastRadiusImages];    // after board to be on top (easily)
-
   // If the letter dropped was a blank, have the user choose a substitute letter.
 
   __weak id weakSelf = self;
@@ -1156,6 +1158,9 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
       [_match moveLetter:letter toRackAtIndex:rackIndexBefore];
       [weakSelf setupRack];
     }
+
+    [weakSelf updateBoardFromMatchState];
+    [weakSelf updateBlastRadiusImages];    // after board to be on top (easily)
   };
 
   if (letter.letter == ' ') {
@@ -1377,9 +1382,10 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 - (void)zoomOut {
   if (![self autoZoomEnabled])
     return;
-
-  if (!_showingBombCountdown)
+  
+  if (!_showingBombCountdown) {
     [self showScoreboard:YES];
+  }
 
   [_boardScrollView zoomOut];
 }
@@ -1711,8 +1717,9 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
     [_match recallLettersPlacedInCurrentTurnIncludingBombs:YES];
     [self setupRack];
-    [self zoomOut];
   }
+
+  [self zoomOut];
 }
 
 - (void)removeBlastRadiusImagesWithFadeOut:(BOOL)fadeOut {
