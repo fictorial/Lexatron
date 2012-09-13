@@ -118,8 +118,6 @@ enum {
   label.textAlignment = UITextAlignmentCenter;
   label.shadowColor = [UIColor colorWithWhite:1 alpha:0.4];
   label.shadowOffset = CGSizeMake(0,1);
-//  label.layer.cornerRadius = SCALED(5);
-//  label.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
   return label;
 }
 
@@ -668,10 +666,10 @@ enum {
     __weak id weakMatch = _match;
 
     [self performBlock:^(id sender) {
-      [self updateScoreboard];
-
       [UIView animateWithDuration:0.4 animations:^{
         [[weakSelf rackView] setAlpha:0];
+      } completion:^(BOOL finished) {
+        [weakSelf updateScoreboard];
       }];
 
       NSString *message = [NSString stringWithFormat:NSLocalizedString(@"Please pass the device to %@.", nil),
@@ -754,7 +752,7 @@ enum {
 
   [self performBlock:^(id sender) {
     [weakSelf updateBoardFromMatchState];
-  } afterDelay:5.3];
+  } afterDelay:5.0];
 }
 
 - (void)runExplosionAtCellIndex:(int)bombCellIndex {
@@ -933,7 +931,8 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
     [self showScoreboard:NO];
   } else {
     [_boardScrollView onZoomOut];
-    [self showScoreboard:YES];
+    if (!_showingBombCountdown)
+      [self showScoreboard:YES];
   }
 
   [self.view bringSubviewToFront:[self.view viewWithTag:kBackButtonTag]];
@@ -1034,7 +1033,7 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
     return NO;
 
   [self updateBoardFromMatchState];
-  [self updateBlastRadiusImages];
+  [self updateBlastRadiusImages];    // after board to be on top (easily)
   [self setupRack];
 
   return YES;
@@ -1135,8 +1134,8 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
     [_match recallBombsPlacedInCurrentTurn];
   }
 
-  [self updateBlastRadiusImages];
   [self updateBoardFromMatchState];
+  [self updateBlastRadiusImages];    // after board to be on top (easily)
 
   // If the letter dropped was a blank, have the user choose a substitute letter.
 
@@ -1149,11 +1148,6 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
       if ([letter isBlank])
         letter.substituteLetter = letterValue;
-
-//      TileView *boardTileView = [TileView viewWithFrame:cellRect letter:letter];
-//      [boardTileView configureForBoardDisplay];
-//      boardTileView.dragDelegate = self;
-//      [_boardScrollView.boardView addSubview:boardTileView];
 
       [weakSelf performBlock:^(id sender) {
         [weakSelf zoomToLettersPlacedInThisTurn];
@@ -1384,7 +1378,8 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
   if (![self autoZoomEnabled])
     return;
 
-  [self showScoreboard:YES];
+  if (!_showingBombCountdown)
+    [self showScoreboard:YES];
 
   [_boardScrollView zoomOut];
 }

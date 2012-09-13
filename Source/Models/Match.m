@@ -65,7 +65,7 @@
     @'U':@5, @'V':@2, @'W':@2, @'X':@1, @'Y':@2,
     @'Z':@1, @' ':@4,
 #if DEBUG
-    @(kBombLetter):@20
+    @(kBombLetter):@7
 #else
     @(kBombLetter):@3
 #endif
