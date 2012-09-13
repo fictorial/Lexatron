@@ -26,6 +26,8 @@
   self.userInteractionEnabled = YES;
   self.scrollEnabled = YES;
 
+  self.clipsToBounds = NO;
+
   self.bounces = YES;
   self.bouncesZoom = YES;
 

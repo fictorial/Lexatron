@@ -704,25 +704,30 @@ enum {
 
   __weak id weakSelf = self;
 
-  [weakSelf showHUDWithActivity:NO caption:@"THREE!"];
-
   [self performBlock:^(id sender) {
-    [weakSelf showHUDWithActivity:NO caption:@"TWO!"];
-    [[LQAudioManager sharedManager] playEffect:kEffectBombCharge];
+    [weakSelf showHUDWithActivity:NO caption:@"THREE!"];
   } afterDelay:1];
 
   [self performBlock:^(id sender) {
+    [[LQAudioManager sharedManager] playEffect:kEffectBombCharge];
+  } afterDelay:1.5];
+
+  [self performBlock:^(id sender) {
+    [weakSelf showHUDWithActivity:NO caption:@"TWO!"];
+  } afterDelay:2.2];
+
+  [self performBlock:^(id sender) {
     [weakSelf showHUDWithActivity:NO caption:@"ONE!"];
-  } afterDelay:2];
+  } afterDelay:3.2];
 
   [self performBlock:^(id sender) {
     [weakSelf hideActivityHUD];
     [weakSelf runExplosionAtCellIndex:bombCellIndex];
-  } afterDelay:3];
+  } afterDelay:3.3];
 
   [self performBlock:^(id sender) {
     [weakSelf updateBoardFromMatchState];
-  } afterDelay:3.25];
+  } afterDelay:3.5];
 }
 
 - (void)runExplosionAtCellIndex:(int)bombCellIndex {
