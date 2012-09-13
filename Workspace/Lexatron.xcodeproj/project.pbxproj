@@ -38,6 +38,7 @@
 		60350ACB15D2E1DC00D6C067 /* Player1Tile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60350AC715D2E1DC00D6C067 /* Player1Tile@2x.png */; };
 		60350ACC15D2E1DC00D6C067 /* Player2Tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 60350AC815D2E1DC00D6C067 /* Player2Tile.png */; };
 		60350ACD15D2E1DC00D6C067 /* Player2Tile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60350AC915D2E1DC00D6C067 /* Player2Tile@2x.png */; };
+		6036A5B3160188B400860E8A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6036A5B2160188B400860E8A /* Default-568h@2x.png */; };
 		6043F72B16012B54000E9750 /* HelpBombRack.png in Resources */ = {isa = PBXBuildFile; fileRef = 6043F72A16012B54000E9750 /* HelpBombRack.png */; };
 		605FB05515D0B75F00766E5C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 605FB05415D0B75F00766E5C /* UIKit.framework */; };
 		605FB05715D0B75F00766E5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 605FB05615D0B75F00766E5C /* Foundation.framework */; };
@@ -212,6 +213,7 @@
 		60350AC715D2E1DC00D6C067 /* Player1Tile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Player1Tile@2x.png"; sourceTree = "<group>"; };
 		60350AC815D2E1DC00D6C067 /* Player2Tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player2Tile.png; sourceTree = "<group>"; };
 		60350AC915D2E1DC00D6C067 /* Player2Tile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Player2Tile@2x.png"; sourceTree = "<group>"; };
+		6036A5B2160188B400860E8A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		6043F72A16012B54000E9750 /* HelpBombRack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpBombRack.png; sourceTree = "<group>"; };
 		605FB05015D0B75F00766E5C /* Lexatron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lexatron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		605FB05415D0B75F00766E5C /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -576,6 +578,7 @@
 		605FB1B015D0B93200766E5C /* Default */ = {
 			isa = PBXGroup;
 			children = (
+				6036A5B2160188B400860E8A /* Default-568h@2x.png */,
 				600A3FA415D198B3006402E5 /* Default.png */,
 				600A3FA215D19791006402E5 /* Default@2x.png */,
 			);
@@ -927,6 +930,7 @@
 				60AAE80C160113FD00E018F8 /* BlastRadius.png in Resources */,
 				60AAE80E160114FD00E018F8 /* BlastRadius@2x.png in Resources */,
 				6043F72B16012B54000E9750 /* HelpBombRack.png in Resources */,
+				6036A5B3160188B400860E8A /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
