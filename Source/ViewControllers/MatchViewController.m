@@ -716,16 +716,16 @@ enum {
 
   [self performBlock:^(id sender) {
     [weakSelf showHUDWithActivity:NO caption:@"TWO!"];
-  } afterDelay:2.2];
+  } afterDelay:2.11];
 
   [self performBlock:^(id sender) {
     [weakSelf showHUDWithActivity:NO caption:@"ONE!"];
-  } afterDelay:3.2];
+  } afterDelay:3.22];
 
   [self performBlock:^(id sender) {
     [weakSelf hideActivityHUD];
     [weakSelf setShowingBombCountdown:NO];
-  } afterDelay:3.3];
+  } afterDelay:4.44];
 }
 
 - (void)match:(Match *)match didBlowUpLettersAtIndices:(NSArray *)indices withBombAtCellIndex:(int)bombCellIndex {
@@ -735,15 +735,27 @@ enum {
 
   [self performBlock:^(id sender) {
     [[LQAudioManager sharedManager] playEffect:kEffectBombCharge];
-  } afterDelay:1.5];
+  } afterDelay:2.5];
 
   [self performBlock:^(id sender) {
     [weakSelf runExplosionAtCellIndex:bombCellIndex];
-  } afterDelay:3.3];
+  } afterDelay:4.4];
+
+  [self performBlock:^(id sender) {
+    [indices each:^(id sender) {
+      int index = [sender intValue];
+      [[weakSelf boardScrollView].boardView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([obj isKindOfClass:TileView.class] && [(TileView *)obj letter].cellIndex == index) {
+          *stop = YES;
+          [obj slideOutTo:arc4random()%kFTAnimationBottomRight duration:0.5 delegate:nil];
+        }
+      }];
+    }];
+  } afterDelay:4.7];
 
   [self performBlock:^(id sender) {
     [weakSelf updateBoardFromMatchState];
-  } afterDelay:3.5];
+  } afterDelay:5.6];
 }
 
 - (void)runExplosionAtCellIndex:(int)bombCellIndex {
@@ -1122,11 +1134,13 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
       [self maybeShowBombPlacementTip];
 
     [_match recallLettersPlacedInCurrentTurnIncludingBombs:NO];
+    [self updateBoardFromMatchState];
   } else {
     if ([_match bombsPlacedInCurrentTurn].count > 0)
       [self maybeShowBombPlacementTip];
 
     [_match recallBombsPlacedInCurrentTurn];
+    [self updateBoardFromMatchState];
   }
 
   [self updateBlastRadiusImages];

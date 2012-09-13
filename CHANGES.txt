@@ -1,3 +1,7 @@
+Lexatron 1.0.24
+- Disable clipping on the board... Zooming in will cover a lot more space. I like it. It's more immersive.
+- Fix countdown timer for explosions if you blow up multiple bombs in a single turn.
+
 Lexatron 1.0.23
 - Add bomb tiles (3 per match) that you can place on the board to blow up 
   any nearby tiles. Use these if you get blocked to blow up some letters and

@@ -44,7 +44,7 @@
 - (CAEmitterCell *)bombEmitterCell {
   CAEmitterCell* cell = [CAEmitterCell emitterCell];
   [cell setName:@"cell"];
-  cell.color = [[UIColor colorWithRed:0.8 green:0.4 blue:0.2 alpha:0.8] CGColor];
+  cell.color = [[UIColor colorWithRed:0.8 green:0.4 blue:0.2 alpha:0.5] CGColor];
   cell.redRange = 0.2;
   cell.greenRange = 0.1;
   cell.blueRange = 0;
