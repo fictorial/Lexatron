@@ -47,6 +47,7 @@ enum {
 @property (nonatomic, assign) int viewState;
 @property (nonatomic, assign) BOOL seenMostRecentTurnDescription;
 @property (nonatomic, strong) ChatViewController *chatVC;
+@property (nonatomic, assign) BOOL showingBombCountdown;
 @end
 
 @implementation MatchViewController
@@ -699,7 +700,12 @@ enum {
   } afterDelay:0.75];
 }
 
-- (void)match:(Match *)match didBlowUpLettersAtIndices:(NSArray *)indices withBombAtCellIndex:(int)bombCellIndex {
+- (void)showBombCountdown {
+  if (_showingBombCountdown)
+    return;
+
+  _showingBombCountdown = YES;
+
   [self zoomOut];
 
   __weak id weakSelf = self;
@@ -707,10 +713,6 @@ enum {
   [self performBlock:^(id sender) {
     [weakSelf showHUDWithActivity:NO caption:@"THREE!"];
   } afterDelay:1];
-
-  [self performBlock:^(id sender) {
-    [[LQAudioManager sharedManager] playEffect:kEffectBombCharge];
-  } afterDelay:1.5];
 
   [self performBlock:^(id sender) {
     [weakSelf showHUDWithActivity:NO caption:@"TWO!"];
@@ -722,6 +724,20 @@ enum {
 
   [self performBlock:^(id sender) {
     [weakSelf hideActivityHUD];
+    [weakSelf setShowingBombCountdown:NO];
+  } afterDelay:3.3];
+}
+
+- (void)match:(Match *)match didBlowUpLettersAtIndices:(NSArray *)indices withBombAtCellIndex:(int)bombCellIndex {
+  [self showBombCountdown];
+
+  __weak id weakSelf = self;
+
+  [self performBlock:^(id sender) {
+    [[LQAudioManager sharedManager] playEffect:kEffectBombCharge];
+  } afterDelay:1.5];
+
+  [self performBlock:^(id sender) {
     [weakSelf runExplosionAtCellIndex:bombCellIndex];
   } afterDelay:3.3];
 
