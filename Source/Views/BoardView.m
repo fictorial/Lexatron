@@ -28,6 +28,7 @@ static inline int sideOfLine(CGPoint A, CGPoint B, CGPoint P) {
 
 @implementation BoardView {
   UILabel *_label;
+  BOOL _zoomed;
 }
 
 + (void)convertPDFs {
@@ -78,6 +79,7 @@ static inline int sideOfLine(CGPoint A, CGPoint B, CGPoint P) {
   self.bounds = _imageView.bounds;
 
   _label.hidden = YES;
+  _zoomed = YES;
 }
 
 - (void)didZoomOut {
@@ -86,6 +88,7 @@ static inline int sideOfLine(CGPoint A, CGPoint B, CGPoint P) {
   self.bounds = _imageView.bounds;
 
   _label.hidden = NO;
+  _zoomed = NO;
 }
 
 - (CGRect)boardFromCellX:(CGFloat)x y:(CGFloat)y {
@@ -191,6 +194,14 @@ static inline int sideOfLine(CGPoint A, CGPoint B, CGPoint P) {
   _label.numberOfLines = 2;
   _label.font = [UIFont fontWithName:kFontName size:kFontSizeSmall];
   [_imageView addSubview:_label];
+
+  _label.hidden = YES;
+
+  if (!_zoomed) {
+    [self performBlock:^(id sender) {
+      [_label fadeIn:0.9 delegate:nil];
+    } afterDelay:2];
+  }
 }
 
 #if 0

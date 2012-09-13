@@ -107,8 +107,6 @@ enum {
     boardTileView.dragDelegate = self;
     [_boardScrollView.boardView addSubview:boardTileView];
   }];
-
-  [_boardScrollView.boardView updateTilesRemainingLabelFromMatch:_match];
 }
 
 - (UILabel *)makeScoreboardLabel {
@@ -550,7 +548,8 @@ enum {
 
 - (void)showWhatOpponentDid {
   [self updateBoardFromMatchState];
-  
+  [_boardScrollView.boardView updateTilesRemainingLabelFromMatch:_match];
+
   [self showHUDWithActivity:NO caption:[_match mostRecentTurnDescription]];
   [self makeHUDNonModal];  // Can get annoying if you just want to get going.
 
@@ -755,7 +754,7 @@ enum {
 
   [self performBlock:^(id sender) {
     [weakSelf updateBoardFromMatchState];
-  } afterDelay:5.6];
+  } afterDelay:5.3];
 }
 
 - (void)runExplosionAtCellIndex:(int)bombCellIndex {
