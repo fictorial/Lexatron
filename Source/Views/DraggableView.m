@@ -10,7 +10,7 @@
 
 @interface DraggableView ()
 @property (nonatomic, assign) CGRect startFrame;
-@property (nonatomic, strong) DraggableView *dragProxy;
+@property (nonatomic, strong, readwrite) DraggableView *dragProxy;
 @end
 
 @implementation DraggableView
@@ -61,6 +61,8 @@
   // Let user see through it to route to a drop area.
 
   _dragProxy.alpha = 0.7;
+
+  self.alpha = 0.02;
 
   [targetView addSubview:_dragProxy];
 

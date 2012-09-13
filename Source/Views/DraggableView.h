@@ -34,6 +34,7 @@
 // Default: YES
 
 @property (nonatomic, assign) BOOL draggable;
+@property (nonatomic, strong, readonly) DraggableView *dragProxy;
 
 @property (nonatomic, weak) id<DraggableViewDragDelegate> dragDelegate;
 @property (nonatomic, weak) id<DraggableViewTouchDelegate> touchDelegate;

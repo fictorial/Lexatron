@@ -195,13 +195,7 @@ static inline int sideOfLine(CGPoint A, CGPoint B, CGPoint P) {
   _label.font = [UIFont fontWithName:kFontName size:kFontSizeSmall];
   [_imageView addSubview:_label];
 
-  _label.hidden = YES;
-
-  if (!_zoomed) {
-    [self performBlock:^(id sender) {
-      [_label fadeIn:0.9 delegate:nil];
-    } afterDelay:2];
-  }
+  _label.hidden = _zoomed;
 }
 
 #if 0

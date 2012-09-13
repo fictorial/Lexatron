@@ -96,7 +96,7 @@ enum {
 }
 
 - (void)updateBoardFromMatchState {
-  [[self allLetters] each:^(id sender) {
+  [[self allLetters] each:^(TileView *sender) {
     [sender removeFromSuperview];
   }];
 
@@ -1000,11 +1000,6 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
   }
 
   [tileView makeProxyForDraggingInView:self.view];
-
-  // Tiles already on the board that's being dragged should be hidden
-  // when the drag proxy is being dragged around.
-
-  tileView.alpha = 0.02;
 }
 
 - (BOOL)isDropOnRack:(CGPoint)point {
@@ -1133,31 +1128,32 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
       [self maybeShowBombPlacementTip];
 
     [_match recallLettersPlacedInCurrentTurnIncludingBombs:NO];
-    [self updateBoardFromMatchState];
   } else {
     if ([_match bombsPlacedInCurrentTurn].count > 0)
       [self maybeShowBombPlacementTip];
 
     [_match recallBombsPlacedInCurrentTurn];
-    [self updateBoardFromMatchState];
   }
 
   [self updateBlastRadiusImages];
+  [self updateBoardFromMatchState];
 
   // If the letter dropped was a blank, have the user choose a substitute letter.
 
   __weak id weakSelf = self;
 
   TileChooserCallback continueWithLetter = ^(int letterValue) {
+    tileView.alpha = 1;
+    
     if ((letterValue >= 'A' && letterValue <= 'Z') || letterValue == kBombLetter) {
 
       if ([letter isBlank])
         letter.substituteLetter = letterValue;
 
-      TileView *boardTileView = [TileView viewWithFrame:cellRect letter:letter];
-      [boardTileView configureForBoardDisplay];
-      boardTileView.dragDelegate = self;
-      [_boardScrollView.boardView addSubview:boardTileView];
+//      TileView *boardTileView = [TileView viewWithFrame:cellRect letter:letter];
+//      [boardTileView configureForBoardDisplay];
+//      boardTileView.dragDelegate = self;
+//      [_boardScrollView.boardView addSubview:boardTileView];
 
       [weakSelf performBlock:^(id sender) {
         [weakSelf zoomToLettersPlacedInThisTurn];
@@ -1226,8 +1222,6 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
   }
 
   [self updateBlastRadiusImages];
-
-//  [self updateBoardFromMatchState];
 
   tileView.letter.cellIndex = toCellIndex;
   tileView.letter.rackIndex = -1;

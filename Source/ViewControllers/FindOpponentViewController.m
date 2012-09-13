@@ -998,10 +998,10 @@ typedef enum {
 
   if (!match) {
     PFUser *player1 = [PFUser user];
-    player1.username = NSLocalizedString(@"Player1", @"Name of first player for pass-and-play matches");
+    player1.username = NSLocalizedString(@"Tom", @"Name of first player for pass-and-play matches");
 
     PFUser *player2 = [PFUser user];
-    player2.username = NSLocalizedString(@"Player2", @"Name of first player for pass-and-play matches");
+    player2.username = NSLocalizedString(@"Jerry", @"Name of first player for pass-and-play matches");
 
     match = [[Match alloc] initWithPlayer:player1 player:player2];
     match.passAndPlay = YES;

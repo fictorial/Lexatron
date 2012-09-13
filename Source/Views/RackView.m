@@ -49,6 +49,9 @@ enum {
       [tileView configureForRackDisplayWithSize:cellSize];
       [self addSubview:tileView];
     }
+
+    self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.1];
+    self.layer.cornerRadius = SCALED(5);
   }
 
   return self;
