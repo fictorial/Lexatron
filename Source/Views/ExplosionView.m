@@ -48,7 +48,7 @@
   cell.redRange = 0.2;
   cell.greenRange = 0.1;
   cell.blueRange = 0;
-  cell.contents = (id)[[UIImage imageWithName:@"FireBall"] CGImage];
+  cell.contents = (id)[[UIImage imageNamed:@"FireBall"] CGImage];
   cell.birthRate = 0;
   cell.lifetime = 1;
   cell.lifetimeRange = 0.5;
@@ -63,7 +63,7 @@
 - (CAEmitterCell *)starEmitterCell {
   CAEmitterCell* cell = [CAEmitterCell emitterCell];
   [cell setName:@"cell"];
-  cell.contents = (id)[[UIImage imageWithName:@"Star"] CGImage];
+  cell.contents = (id)[[UIImage imageNamed:@"Star"] CGImage];
   cell.birthRate = 0;
   cell.lifetime = 4;
   cell.lifetimeRange = 4/3.;
