@@ -44,7 +44,7 @@ enum {
   UIFont *welcomeFont = [UIFont fontWithName:kFontName size:kFontSizeRegular];
   CGSize welcomeTextSize = [welcomeText sizeWithFont:welcomeFont
                                    constrainedToSize:CGSizeMake(self.view.bounds.size.width/4,
-                                                                self.view.bounds.size.height)
+                                                                [self effectiveViewHeight])
                                        lineBreakMode:UILineBreakModeWordWrap];
 
   UIView *welcomeBg = [[UIView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width-welcomeTextSize.width-40,

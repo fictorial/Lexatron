@@ -26,7 +26,7 @@
   [super loadView];
 
   float w = self.view.bounds.size.width;
-  float h = self.view.bounds.size.height;
+  float h = [self effectiveViewHeight];
 
   float cx = w/2;
   float cy = h/2;

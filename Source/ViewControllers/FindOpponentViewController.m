@@ -47,7 +47,7 @@ typedef enum {
   [super loadView];
 
   float w = self.view.bounds.size.width;
-  float h = self.view.bounds.size.height;
+  float h = [self effectiveViewHeight];
   float cy = h/2;
   float pad = SCALED(20);
   float lx = w/3.33;

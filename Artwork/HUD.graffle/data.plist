@@ -290,6 +290,197 @@
 	<array>
 		<dict>
 			<key>Bounds</key>
+			<string>{{20, 67}, {40, 12}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Color</key>
+				<dict>
+					<key>a</key>
+					<string>0.18</string>
+					<key>w</key>
+					<string>1</string>
+				</dict>
+				<key>Font</key>
+				<string>Futura-CondensedMedium</string>
+				<key>Size</key>
+				<real>10</real>
+			</dict>
+			<key>ID</key>
+			<integer>62010</integer>
+			<key>Shape</key>
+			<string>Rectangle</string>
+			<key>Style</key>
+			<dict>
+				<key>fill</key>
+				<dict>
+					<key>Color</key>
+					<dict>
+						<key>b</key>
+						<string>0.253155</string>
+						<key>g</key>
+						<string>0.253209</string>
+						<key>r</key>
+						<string>0.25317</string>
+					</dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>shadow</key>
+				<dict>
+					<key>Color</key>
+					<dict>
+						<key>a</key>
+						<string>0.37</string>
+						<key>b</key>
+						<string>0</string>
+						<key>g</key>
+						<string>0</string>
+						<key>r</key>
+						<string>0</string>
+					</dict>
+					<key>Draws</key>
+					<string>NO</string>
+					<key>Fuzziness</key>
+					<real>2.6275753974914551</real>
+					<key>ShadowVector</key>
+					<string>{0, 3}</string>
+				</dict>
+				<key>stroke</key>
+				<dict>
+					<key>Color</key>
+					<dict>
+						<key>b</key>
+						<string>0.999836</string>
+						<key>g</key>
+						<string>1</string>
+						<key>r</key>
+						<string>0.999894</string>
+					</dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Align</key>
+				<integer>2</integer>
+				<key>Pad</key>
+				<integer>4</integer>
+				<key>RTFD</key>
+				<data>
+				BAtzdHJlYW10eXBlZIHoA4QBQISEhBJOU0F0dHJpYnV0
+				ZWRTdHJpbmcAhIQITlNPYmplY3QAhZKEhIQITlNTdHJp
+				bmcBlIQBKwRCQUNLhoQCaUkBBJKEhIQMTlNEaWN0aW9u
+				YXJ5AJSEAWkEkoSWlhBOU1BhcmFncmFwaFN0eWxlhpKE
+				hIQXTlNNdXRhYmxlUGFyYWdyYXBoU3R5bGUAhIQQTlNQ
+				YXJhZ3JhcGhTdHlsZQCUhARDQ0BTAQCFgQAIhARbMWZd
+				g83MTD2GkoSWlgdOU0NvbG9yhpKEhIQHTlNDb2xvcgCU
+				hAFjA4QCZmYBg+xROD6GkoSWlgZOU0ZvbnSGkoSEhAZO
+				U0ZvbnQelJk4hAVbNTZjXQYAAAAuAAAA//5GAHUAdAB1
+				AHIAYQAtAEMAbwBuAGQAZQBuAHMAZQBkAE0AZQBkAGkA
+				dQBtAAAAhAFmCp8AnwGfAJ8AhpKElpYOTlNPcmlnaW5h
+				bEZvbnSGkoSimSSEBVszNmNdBgAAABwAAAD//kcAaQBs
+				AGwAUwBhAG4AcwAtAEIAbwBsAGQAow2fAJ8BnwCfAIaG
+				hg==
+				</data>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
+{\fonttbl\f0\fnil\fcharset0 Futura-CondensedMedium;}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qr
+
+\f0\fs20 \cf2 BACK}</string>
+				<key>alpha</key>
+				<array>
+					<array>
+						<integer>0</integer>
+						<integer>4</integer>
+						<real>0.18000000715255737</real>
+					</array>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Bounds</key>
+			<string>{{20, 60}, {40, 26}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Color</key>
+				<dict>
+					<key>a</key>
+					<string>0.18</string>
+					<key>w</key>
+					<string>1</string>
+				</dict>
+				<key>Font</key>
+				<string>GillSans-Bold</string>
+				<key>Size</key>
+				<real>13</real>
+			</dict>
+			<key>ID</key>
+			<integer>62011</integer>
+			<key>Rotation</key>
+			<real>180</real>
+			<key>Shape</key>
+			<string>HorizontalTriangle</string>
+			<key>Style</key>
+			<dict>
+				<key>fill</key>
+				<dict>
+					<key>Color</key>
+					<dict>
+						<key>a</key>
+						<string>0.61</string>
+						<key>b</key>
+						<string>0.253155</string>
+						<key>g</key>
+						<string>0.253209</string>
+						<key>r</key>
+						<string>0.25317</string>
+					</dict>
+				</dict>
+				<key>shadow</key>
+				<dict>
+					<key>Color</key>
+					<dict>
+						<key>a</key>
+						<string>0.37</string>
+						<key>b</key>
+						<string>0</string>
+						<key>g</key>
+						<string>0</string>
+						<key>r</key>
+						<string>0</string>
+					</dict>
+					<key>Draws</key>
+					<string>NO</string>
+					<key>Fuzziness</key>
+					<real>2.6275753974914551</real>
+					<key>ShadowVector</key>
+					<string>{0, 3}</string>
+				</dict>
+				<key>stroke</key>
+				<dict>
+					<key>Color</key>
+					<dict>
+						<key>b</key>
+						<string>0.999836</string>
+						<key>g</key>
+						<string>1</string>
+						<key>r</key>
+						<string>0.999894</string>
+					</dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>Bounds</key>
 			<string>{{306, 131}, {76, 38}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
@@ -1871,18 +2062,18 @@
 				BAtzdHJlYW10eXBlZIHoA4QBQISEhBJOU0F0dHJpYnV0
 				ZWRTdHJpbmcAhIQITlNPYmplY3QAhZKEhIQITlNTdHJp
 				bmcBlIQBKwFUhoQCaUkBAZKEhIQMTlNEaWN0aW9uYXJ5
-				AJSEAWkEkoSWlhBOU1BhcmFncmFwaFN0eWxlhpKEhIQQ
-				TlNQYXJhZ3JhcGhTdHlsZQCUhARDQ0BTAgCEhIQHTlNB
-				cnJheQCUmQyShISECU5TVGV4dFRhYgCUhAJDZgAchpKE
-				n54AOIaShJ+eAFSGkoSfngBwhpKEn54AgYwAhpKEn54A
-				gagAhpKEn54AgcQAhpKEn54AgeAAhpKEn54AgfwAhpKE
-				n54AgRgBhpKEn54AgTQBhpKEn54AgVABhoaBAAiEBFsx
-				Zl2DzcxMPYaShJaWB05TQ29sb3KGkoSEhAdOU0NvbG9y
-				AJSEAWMDhAJmZgCDAAAAP4aShJaWBk5TRm9udIaShISE
-				Bk5TRm9udB6UmSSEBVszNmNdBgAAABwAAAD//kYAdQB0
-				AHUAcgBhAC0ATQBlAGQAaQB1AG0AhAFmCaEAoQGhAKEA
-				hpKElpYGTlNLZXJuhpKEhIQITlNOdW1iZXIAhIQHTlNW
-				YWx1ZQCUhAEqhKWlAIaGhg==
+				AJSEAWkEkoSWlgZOU0tlcm6GkoSEhAhOU051bWJlcgCE
+				hAdOU1ZhbHVlAJSEASqEhAFmnQCGkoSWlhBOU1BhcmFn
+				cmFwaFN0eWxlhpKEhIQQTlNQYXJhZ3JhcGhTdHlsZQCU
+				hARDQ0BTAgCEhIQHTlNBcnJheQCUmQyShISECU5TVGV4
+				dFRhYgCUhAJDZgAchpKEpKIAOIaShKSiAFSGkoSkogBw
+				hpKEpKIAgYwAhpKEpKIAgagAhpKEpKIAgcQAhpKEpKIA
+				geAAhpKEpKIAgfwAhpKEpKIAgRgBhpKEpKIAgTQBhpKE
+				pKIAgVABhoaBAAiEBFsxZl2DzcxMPYaShJaWBk5TRm9u
+				dIaShISEBk5TRm9udB6UmSSEBVszNmNdBgAAABwAAAD/
+				/kYAdQB0AHUAcgBhAC0ATQBlAGQAaQB1AG0AnQmEAWMA
+				pgGmAKYAhpKElpYHTlNDb2xvcoaShISEB05TQ29sb3IA
+				lKYDhAJmZgCDAAAAP4aGhg==
 				</data>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
@@ -3688,74 +3879,6 @@ T}</string>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{20, 60}, {40, 30}}</string>
-			<key>Class</key>
-			<string>ShapedGraphic</string>
-			<key>FontInfo</key>
-			<dict>
-				<key>Font</key>
-				<string>GillSans-Bold</string>
-				<key>Size</key>
-				<real>13</real>
-			</dict>
-			<key>ID</key>
-			<integer>54088</integer>
-			<key>Rotation</key>
-			<real>180</real>
-			<key>Shape</key>
-			<string>HorizontalTriangle</string>
-			<key>Style</key>
-			<dict>
-				<key>fill</key>
-				<dict>
-					<key>Color</key>
-					<dict>
-						<key>b</key>
-						<string>0.253155</string>
-						<key>g</key>
-						<string>0.253209</string>
-						<key>r</key>
-						<string>0.25317</string>
-					</dict>
-				</dict>
-				<key>shadow</key>
-				<dict>
-					<key>Color</key>
-					<dict>
-						<key>a</key>
-						<string>0.37</string>
-						<key>b</key>
-						<string>0</string>
-						<key>g</key>
-						<string>0</string>
-						<key>r</key>
-						<string>0</string>
-					</dict>
-					<key>Draws</key>
-					<string>NO</string>
-					<key>Fuzziness</key>
-					<real>2.6275753974914551</real>
-					<key>ShadowVector</key>
-					<string>{0, 3}</string>
-				</dict>
-				<key>stroke</key>
-				<dict>
-					<key>Color</key>
-					<dict>
-						<key>b</key>
-						<string>0.999836</string>
-						<key>g</key>
-						<string>1</string>
-						<key>r</key>
-						<string>0.999894</string>
-					</dict>
-					<key>Draws</key>
-					<string>NO</string>
-				</dict>
-			</dict>
-		</dict>
-		<dict>
-			<key>Bounds</key>
 			<string>{{40, 120}, {30, 30}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
@@ -4145,7 +4268,7 @@ T}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2012-09-12 20:17:04 +0000</string>
+	<string>2012-09-14 16:23:38 +0000</string>
 	<key>Modifier</key>
 	<string>Brian Hammond</string>
 	<key>NotesVisible</key>

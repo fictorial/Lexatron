@@ -59,9 +59,10 @@ enum {
 - (BOOL)isShowingAlert;
 - (void)bringAlertViewsToTheFront;
 
-
 - (void)startTimeoutTimer;
 - (void)removeTimeoutTimer;
 - (void)handleTimeout:(id)sender;
+
+- (CGFloat)effectiveViewHeight;
 
 @end

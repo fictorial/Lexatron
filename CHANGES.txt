@@ -1,6 +1,12 @@
 Lexatron 1.0.24
-- Disable clipping on the board... Zooming in will cover a lot more space. I like it. It's more immersive.
+- Upgrade to Parse 1.1.5 to support armv7s (iPhone5)
+- Upgrade to TestFlight 1.0B3 to support armv7s (iPhone5)
+- Disable clipping on the board... Zooming in will cause the board to take up the full display window 
 - Fix countdown timer for explosions if you blow up multiple bombs in a single turn.
+- iOS6 and iPhone5 support
+- Many small polishing tweaks
+- Video trailer up on YouTube: https://www.youtube.com/watch?v=nv5nGhkrRMU
+- Closed the beta test - only a small "Core Testers" group will get beta updates from here on out
 
 Lexatron 1.0.23
 - Add bomb tiles (3 per match) that you can place on the board to blow up 

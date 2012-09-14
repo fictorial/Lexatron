@@ -19,7 +19,7 @@
   [super loadView];
 
   float w = self.view.bounds.size.width;
-  float h = self.view.bounds.size.height;
+  float h = [self effectiveViewHeight];
 
   float cw = w * 3/4.;
   float margin = SCALED(14);

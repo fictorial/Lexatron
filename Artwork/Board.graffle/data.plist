@@ -36,7 +36,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2012-09-12 19:02:53 +0000</string>
+	<string>2012-09-13 18:54:21 +0000</string>
 	<key>Modifier</key>
 	<string>Brian Hammond</string>
 	<key>NotesVisible</key>
@@ -176,7 +176,7 @@
 			<array>
 				<dict>
 					<key>Bounds</key>
-					<string>{{100, 240}, {40, 20}}</string>
+					<string>{{95, 247.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -267,7 +267,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{80, 230}, {40, 20}}</string>
+					<string>{{75, 237.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -358,7 +358,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{60, 220}, {40, 20}}</string>
+					<string>{{55, 227.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -449,7 +449,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{40, 210}, {40, 20}}</string>
+					<string>{{35, 217.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -540,7 +540,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{20, 200}, {40, 20}}</string>
+					<string>{{15, 207.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -631,7 +631,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{20, 80}, {40, 20}}</string>
+					<string>{{15, 87.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -722,7 +722,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{40, 70}, {40, 20}}</string>
+					<string>{{35, 77.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -813,7 +813,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{80, 50}, {40, 20}}</string>
+					<string>{{75, 57.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -904,7 +904,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{100, 40}, {40, 20}}</string>
+					<string>{{95, 47.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -995,7 +995,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{60, 60}, {40, 20}}</string>
+					<string>{{55, 67.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -1086,7 +1086,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{220, 220}, {40, 20}}</string>
+					<string>{{215, 227.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -1210,7 +1210,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{220, 60}, {40, 20}}</string>
+					<string>{{215, 67.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -1334,7 +1334,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{220, 80}, {40, 20}}</string>
+					<string>{{215, 87.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -1425,7 +1425,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{220, 200}, {40, 20}}</string>
+					<string>{{215, 207.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -1516,7 +1516,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{320, 190}, {40, 20}}</string>
+					<string>{{315, 197.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -1645,7 +1645,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{320, 90}, {40, 20}}</string>
+					<string>{{315, 97.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -1774,7 +1774,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{120, 90}, {40, 20}}</string>
+					<string>{{115, 97.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -1903,7 +1903,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{120, 190}, {40, 20}}</string>
+					<string>{{115, 197.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -2032,7 +2032,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{260, 160}, {40, 20}}</string>
+					<string>{{255, 167.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -2161,7 +2161,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{180, 120}, {40, 20}}</string>
+					<string>{{175, 127.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -2290,7 +2290,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{260, 120}, {40, 20}}</string>
+					<string>{{255, 127.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -2419,7 +2419,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{180, 160}, {40, 20}}</string>
+					<string>{{175, 167.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -2548,7 +2548,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{320, 190}, {40, 20}}</string>
+					<string>{{315, 197.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -2677,7 +2677,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{420, 180}, {40, 20}}</string>
+					<string>{{415, 187.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -2806,7 +2806,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{320, 90}, {40, 20}}</string>
+					<string>{{315, 97.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -2935,7 +2935,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{140, 240}, {40, 20}}</string>
+					<string>{{135, 247.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -3064,7 +3064,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{20, 180}, {40, 20}}</string>
+					<string>{{15, 187.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -3193,7 +3193,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{420, 100}, {40, 20}}</string>
+					<string>{{415, 107.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -3322,7 +3322,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{300, 40}, {40, 20}}</string>
+					<string>{{295, 47.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -3451,7 +3451,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{220, 140}, {40, 20}}</string>
+					<string>{{215, 147.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -3575,7 +3575,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{120, 90}, {40, 20}}</string>
+					<string>{{115, 97.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -3704,7 +3704,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{140, 40}, {40, 20}}</string>
+					<string>{{135, 47.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -3833,7 +3833,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{20, 100}, {40, 20}}</string>
+					<string>{{15, 107.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -3962,7 +3962,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{220, 200}, {40, 20}}</string>
+					<string>{{215, 207.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -4091,7 +4091,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{220, 80}, {40, 20}}</string>
+					<string>{{215, 87.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -4220,7 +4220,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{380, 140}, {40, 20}}</string>
+					<string>{{375, 147.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -4351,7 +4351,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{60, 140}, {40, 20}}</string>
+					<string>{{55, 147.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -4482,7 +4482,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{20, 100}, {40, 20}}</string>
+					<string>{{15, 107.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -4573,7 +4573,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{40, 90}, {40, 20}}</string>
+					<string>{{35, 97.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -4664,7 +4664,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{60, 80}, {40, 20}}</string>
+					<string>{{55, 87.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -4755,7 +4755,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{100, 60}, {40, 20}}</string>
+					<string>{{95, 67.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -4846,7 +4846,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{120, 50}, {40, 20}}</string>
+					<string>{{115, 57.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -4937,7 +4937,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{140, 40}, {40, 20}}</string>
+					<string>{{135, 47.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -5028,7 +5028,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{160, 50}, {40, 20}}</string>
+					<string>{{155, 57.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -5119,7 +5119,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{180, 60}, {40, 20}}</string>
+					<string>{{175, 67.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -5210,7 +5210,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{200, 70}, {40, 20}}</string>
+					<string>{{195, 77.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -5301,7 +5301,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{220, 80}, {40, 20}}</string>
+					<string>{{215, 87.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -5392,7 +5392,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{240, 70}, {40, 20}}</string>
+					<string>{{235, 77.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -5483,7 +5483,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{260, 60}, {40, 20}}</string>
+					<string>{{255, 67.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -5574,7 +5574,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{280, 50}, {40, 20}}</string>
+					<string>{{275, 57.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -5665,7 +5665,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{300, 40}, {40, 20}}</string>
+					<string>{{295, 47.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -5756,7 +5756,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{320, 50}, {40, 20}}</string>
+					<string>{{315, 57.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -5847,7 +5847,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{340, 60}, {40, 20}}</string>
+					<string>{{335, 67.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -5938,7 +5938,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{360, 70}, {40, 20}}</string>
+					<string>{{355, 77.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -6029,7 +6029,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{380, 80}, {40, 20}}</string>
+					<string>{{375, 87.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -6120,7 +6120,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{400, 90}, {40, 20}}</string>
+					<string>{{395, 97.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -6211,7 +6211,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{420, 100}, {40, 20}}</string>
+					<string>{{415, 107.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -6302,7 +6302,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{400, 110}, {40, 20}}</string>
+					<string>{{395, 117.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -6393,7 +6393,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{380, 120}, {40, 20}}</string>
+					<string>{{375, 127.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -6484,7 +6484,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{360, 130}, {40, 20}}</string>
+					<string>{{355, 137.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -6575,7 +6575,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{340, 140}, {40, 20}}</string>
+					<string>{{335, 147.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -6666,7 +6666,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{360, 150}, {40, 20}}</string>
+					<string>{{355, 157.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -6757,7 +6757,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{380, 160}, {40, 20}}</string>
+					<string>{{375, 167.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -6848,7 +6848,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{400, 170}, {40, 20}}</string>
+					<string>{{395, 177.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -6939,7 +6939,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{420, 180}, {40, 20}}</string>
+					<string>{{415, 187.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -7030,7 +7030,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{400, 190}, {40, 20}}</string>
+					<string>{{395, 197.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -7121,7 +7121,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{380, 200}, {40, 20}}</string>
+					<string>{{375, 207.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -7212,7 +7212,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{360, 210}, {40, 20}}</string>
+					<string>{{355, 217.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -7303,7 +7303,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{340, 220}, {40, 20}}</string>
+					<string>{{335, 227.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -7394,7 +7394,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{320, 230}, {40, 20}}</string>
+					<string>{{315, 237.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -7485,7 +7485,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{280, 230}, {40, 20}}</string>
+					<string>{{275, 237.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -7576,7 +7576,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{260, 220}, {40, 20}}</string>
+					<string>{{255, 227.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -7667,7 +7667,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{240, 210}, {40, 20}}</string>
+					<string>{{235, 217.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -7758,7 +7758,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{220, 200}, {40, 20}}</string>
+					<string>{{215, 207.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -7849,7 +7849,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{200, 210}, {40, 20}}</string>
+					<string>{{195, 217.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -7940,7 +7940,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{180, 220}, {40, 20}}</string>
+					<string>{{175, 227.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -8031,7 +8031,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{160, 230}, {40, 20}}</string>
+					<string>{{155, 237.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -8122,7 +8122,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{140, 240}, {40, 20}}</string>
+					<string>{{135, 247.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -8213,7 +8213,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{120, 230}, {40, 20}}</string>
+					<string>{{115, 237.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -8304,7 +8304,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{100, 220}, {40, 20}}</string>
+					<string>{{95, 227.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -8395,7 +8395,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{80, 210}, {40, 20}}</string>
+					<string>{{75, 217.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -8486,7 +8486,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{60, 200}, {40, 20}}</string>
+					<string>{{55, 207.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -8577,7 +8577,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{40, 190}, {40, 20}}</string>
+					<string>{{35, 197.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -8668,7 +8668,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{20, 180}, {40, 20}}</string>
+					<string>{{15, 187.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -8759,7 +8759,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{40, 170}, {40, 20}}</string>
+					<string>{{35, 177.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -8850,7 +8850,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{60, 160}, {40, 20}}</string>
+					<string>{{55, 167.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -8941,7 +8941,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{80, 150}, {40, 20}}</string>
+					<string>{{75, 157.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -9032,7 +9032,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{100, 140}, {40, 20}}</string>
+					<string>{{95, 147.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -9123,7 +9123,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{80, 130}, {40, 20}}</string>
+					<string>{{75, 137.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -9214,7 +9214,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{60, 120}, {40, 20}}</string>
+					<string>{{55, 127.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -9305,7 +9305,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{40, 110}, {40, 20}}</string>
+					<string>{{35, 117.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -9396,7 +9396,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{120, 190}, {40, 20}}</string>
+					<string>{{115, 197.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -9525,7 +9525,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{300, 240}, {40, 20}}</string>
+					<string>{{295, 247.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -9654,7 +9654,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{260, 160}, {40, 20}}</string>
+					<string>{{255, 167.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -9750,7 +9750,7 @@
 					<array>
 						<dict>
 							<key>Bounds</key>
-							<string>{{33.297682444254534, 46.748550415039247}, {13.535652796427403, 6.502899169921724}}</string>
+							<string>{{28.297682444254534, 54.248550415039247}, {13.535652796427403, 6.502899169921724}}</string>
 							<key>Class</key>
 							<string>ShapedGraphic</string>
 							<key>FontInfo</key>
@@ -9823,7 +9823,7 @@
 						</dict>
 						<dict>
 							<key>Bounds</key>
-							<string>{{20, 40}, {40, 20}}</string>
+							<string>{{15, 47.5}, {40, 20}}</string>
 							<key>Class</key>
 							<string>ShapedGraphic</string>
 							<key>FontInfo</key>
@@ -9942,7 +9942,7 @@
 					<array>
 						<dict>
 							<key>Bounds</key>
-							<string>{{32.798708721443532, 246.22915140787754}, {14.402580702746349, 7.541714986165367}}</string>
+							<string>{{27.798708721443532, 253.72915140787754}, {14.402580702746349, 7.541714986165367}}</string>
 							<key>Class</key>
 							<string>ShapedGraphic</string>
 							<key>FontInfo</key>
@@ -10015,7 +10015,7 @@
 						</dict>
 						<dict>
 							<key>Bounds</key>
-							<string>{{20, 240}, {40, 20}}</string>
+							<string>{{15, 247.5}, {40, 20}}</string>
 							<key>Class</key>
 							<string>ShapedGraphic</string>
 							<key>FontInfo</key>
@@ -10134,7 +10134,7 @@
 					<array>
 						<dict>
 							<key>Bounds</key>
-							<string>{{434.83333333333343, 244.99999999999994}, {10, 10}}</string>
+							<string>{{429.83333333333343, 252.49999999999994}, {10, 10}}</string>
 							<key>Class</key>
 							<string>ShapedGraphic</string>
 							<key>FontInfo</key>
@@ -10182,7 +10182,7 @@
 						</dict>
 						<dict>
 							<key>Bounds</key>
-							<string>{{420, 240}, {40, 20}}</string>
+							<string>{{415, 247.5}, {40, 20}}</string>
 							<key>Class</key>
 							<string>ShapedGraphic</string>
 							<key>FontInfo</key>
@@ -10301,7 +10301,7 @@
 					<array>
 						<dict>
 							<key>Bounds</key>
-							<string>{{435.16666666666674, 44.666666666666657}, {10, 10}}</string>
+							<string>{{430.16666666666674, 52.166666666666657}, {10, 10}}</string>
 							<key>Class</key>
 							<string>ShapedGraphic</string>
 							<key>FontInfo</key>
@@ -10349,7 +10349,7 @@
 						</dict>
 						<dict>
 							<key>Bounds</key>
-							<string>{{420, 40}, {40, 20}}</string>
+							<string>{{415, 47.5}, {40, 20}}</string>
 							<key>Class</key>
 							<string>ShapedGraphic</string>
 							<key>FontInfo</key>
@@ -10463,7 +10463,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{300, 240}, {40, 20}}</string>
+					<string>{{295, 247.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -10554,7 +10554,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{260, 160}, {40, 20}}</string>
+					<string>{{255, 167.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -10685,7 +10685,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{220, 180}, {40, 20}}</string>
+					<string>{{215, 187.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -10776,7 +10776,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{220, 140}, {40, 20}}</string>
+					<string>{{215, 147.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -10867,7 +10867,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{300, 220}, {40, 20}}</string>
+					<string>{{295, 227.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -10958,7 +10958,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{300, 180}, {40, 20}}</string>
+					<string>{{295, 187.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -11049,7 +11049,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{300, 140}, {40, 20}}</string>
+					<string>{{295, 147.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -11140,7 +11140,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{260, 100}, {40, 20}}</string>
+					<string>{{255, 107.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -11231,7 +11231,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{180, 80}, {40, 20}}</string>
+					<string>{{175, 87.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -11322,7 +11322,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{140, 100}, {40, 20}}</string>
+					<string>{{135, 107.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -11413,7 +11413,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{100, 120}, {40, 20}}</string>
+					<string>{{95, 127.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -11504,7 +11504,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{100, 80}, {40, 20}}</string>
+					<string>{{95, 87.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -11595,7 +11595,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{260, 140}, {40, 20}}</string>
+					<string>{{255, 147.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -11686,7 +11686,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{100, 160}, {40, 20}}</string>
+					<string>{{95, 167.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -11777,7 +11777,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{340, 160}, {40, 20}}</string>
+					<string>{{335, 167.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -11868,7 +11868,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{300, 160}, {40, 20}}</string>
+					<string>{{295, 167.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -11959,7 +11959,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{220, 160}, {40, 20}}</string>
+					<string>{{215, 167.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -12050,7 +12050,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{180, 160}, {40, 20}}</string>
+					<string>{{175, 167.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -12141,7 +12141,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{140, 160}, {40, 20}}</string>
+					<string>{{135, 167.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -12232,7 +12232,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{100, 100}, {40, 20}}</string>
+					<string>{{95, 107.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -12323,7 +12323,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{300, 120}, {40, 20}}</string>
+					<string>{{295, 127.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -12414,7 +12414,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{220, 120}, {40, 20}}</string>
+					<string>{{215, 127.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -12505,7 +12505,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{340, 200}, {40, 20}}</string>
+					<string>{{335, 207.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -12596,7 +12596,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{380, 180}, {40, 20}}</string>
+					<string>{{375, 187.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -12687,7 +12687,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{340, 180}, {40, 20}}</string>
+					<string>{{335, 187.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -12778,7 +12778,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{300, 200}, {40, 20}}</string>
+					<string>{{295, 207.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -12869,7 +12869,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{260, 200}, {40, 20}}</string>
+					<string>{{255, 207.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -12960,7 +12960,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{260, 180}, {40, 20}}</string>
+					<string>{{255, 187.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -13051,7 +13051,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{180, 200}, {40, 20}}</string>
+					<string>{{175, 207.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -13142,7 +13142,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{180, 180}, {40, 20}}</string>
+					<string>{{175, 187.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -13233,7 +13233,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{140, 180}, {40, 20}}</string>
+					<string>{{135, 187.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -13324,7 +13324,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{340, 120}, {40, 20}}</string>
+					<string>{{335, 127.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -13415,7 +13415,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{260, 120}, {40, 20}}</string>
+					<string>{{255, 127.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -13506,7 +13506,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{300, 100}, {40, 20}}</string>
+					<string>{{295, 107.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -13597,7 +13597,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{220, 100}, {40, 20}}</string>
+					<string>{{215, 107.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -13688,7 +13688,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{260, 80}, {40, 20}}</string>
+					<string>{{255, 87.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -13779,7 +13779,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{180, 140}, {40, 20}}</string>
+					<string>{{175, 147.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -13870,7 +13870,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{140, 140}, {40, 20}}</string>
+					<string>{{135, 147.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -13961,7 +13961,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{180, 120}, {40, 20}}</string>
+					<string>{{175, 127.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -14052,7 +14052,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{140, 120}, {40, 20}}</string>
+					<string>{{135, 127.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -14143,7 +14143,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{180, 100}, {40, 20}}</string>
+					<string>{{175, 107.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -14234,7 +14234,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{140, 80}, {40, 20}}</string>
+					<string>{{135, 87.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -14325,7 +14325,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{140, 60}, {40, 20}}</string>
+					<string>{{135, 67.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -14416,7 +14416,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{60, 100}, {40, 20}}</string>
+					<string>{{55, 107.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -14507,7 +14507,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{160, 150}, {40, 20}}</string>
+					<string>{{155, 157.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -14598,7 +14598,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{120, 150}, {40, 20}}</string>
+					<string>{{115, 157.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -14689,7 +14689,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{200, 130}, {40, 20}}</string>
+					<string>{{195, 137.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -14780,7 +14780,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{160, 130}, {40, 20}}</string>
+					<string>{{155, 137.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -14871,7 +14871,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{240, 110}, {40, 20}}</string>
+					<string>{{235, 117.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -14962,7 +14962,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{200, 110}, {40, 20}}</string>
+					<string>{{195, 117.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -15053,7 +15053,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{280, 90}, {40, 20}}</string>
+					<string>{{275, 97.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -15144,7 +15144,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{240, 90}, {40, 20}}</string>
+					<string>{{235, 97.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -15235,7 +15235,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{320, 70}, {40, 20}}</string>
+					<string>{{315, 77.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -15326,7 +15326,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{280, 70}, {40, 20}}</string>
+					<string>{{275, 77.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -15417,7 +15417,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{360, 90}, {40, 20}}</string>
+					<string>{{355, 97.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -15508,7 +15508,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{360, 110}, {40, 20}}</string>
+					<string>{{355, 117.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -15599,7 +15599,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{360, 170}, {40, 20}}</string>
+					<string>{{355, 177.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -15690,7 +15690,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{360, 190}, {40, 20}}</string>
+					<string>{{355, 197.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -15781,7 +15781,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{320, 90}, {40, 20}}</string>
+					<string>{{315, 97.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -15872,7 +15872,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{320, 110}, {40, 20}}</string>
+					<string>{{315, 117.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -15963,7 +15963,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{320, 130}, {40, 20}}</string>
+					<string>{{315, 137.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -16054,7 +16054,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{320, 150}, {40, 20}}</string>
+					<string>{{315, 157.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -16145,7 +16145,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{320, 170}, {40, 20}}</string>
+					<string>{{315, 177.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -16236,7 +16236,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{320, 190}, {40, 20}}</string>
+					<string>{{315, 197.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -16327,7 +16327,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{320, 210}, {40, 20}}</string>
+					<string>{{315, 217.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -16418,7 +16418,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{280, 110}, {40, 20}}</string>
+					<string>{{275, 117.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -16509,7 +16509,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{280, 130}, {40, 20}}</string>
+					<string>{{275, 137.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -16600,7 +16600,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{280, 150}, {40, 20}}</string>
+					<string>{{275, 157.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -16691,7 +16691,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{280, 170}, {40, 20}}</string>
+					<string>{{275, 177.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -16782,7 +16782,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{280, 190}, {40, 20}}</string>
+					<string>{{275, 197.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -16873,7 +16873,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{280, 210}, {40, 20}}</string>
+					<string>{{275, 217.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -16964,7 +16964,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{240, 130}, {40, 20}}</string>
+					<string>{{235, 137.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -17055,7 +17055,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{240, 150}, {40, 20}}</string>
+					<string>{{235, 157.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -17146,7 +17146,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{240, 170}, {40, 20}}</string>
+					<string>{{235, 177.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -17237,7 +17237,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{240, 190}, {40, 20}}</string>
+					<string>{{235, 197.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -17328,7 +17328,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{200, 150}, {40, 20}}</string>
+					<string>{{195, 157.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -17419,7 +17419,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{200, 170}, {40, 20}}</string>
+					<string>{{195, 177.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -17510,7 +17510,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{200, 190}, {40, 20}}</string>
+					<string>{{195, 197.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -17601,7 +17601,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{160, 170}, {40, 20}}</string>
+					<string>{{155, 177.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -17692,7 +17692,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{160, 190}, {40, 20}}</string>
+					<string>{{155, 197.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -17783,7 +17783,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{160, 210}, {40, 20}}</string>
+					<string>{{155, 217.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -17874,7 +17874,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{120, 170}, {40, 20}}</string>
+					<string>{{115, 177.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -17965,7 +17965,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{120, 190}, {40, 20}}</string>
+					<string>{{115, 197.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -18056,7 +18056,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{80, 190}, {40, 20}}</string>
+					<string>{{75, 197.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -18147,7 +18147,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{80, 170}, {40, 20}}</string>
+					<string>{{75, 177.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -18238,7 +18238,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{120, 210}, {40, 20}}</string>
+					<string>{{115, 217.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -18329,7 +18329,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{260, 160}, {40, 20}}</string>
+					<string>{{255, 167.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -18420,7 +18420,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{380, 100}, {40, 20}}</string>
+					<string>{{375, 107.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -18511,7 +18511,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{340, 80}, {40, 20}}</string>
+					<string>{{335, 87.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -18602,7 +18602,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{140, 220}, {40, 20}}</string>
+					<string>{{135, 227.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -18693,7 +18693,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{100, 200}, {40, 20}}</string>
+					<string>{{95, 207.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -18784,7 +18784,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{200, 90}, {40, 20}}</string>
+					<string>{{195, 97.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -18875,7 +18875,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{160, 110}, {40, 20}}</string>
+					<string>{{155, 117.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -18966,7 +18966,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{160, 90}, {40, 20}}</string>
+					<string>{{155, 97.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -19057,7 +19057,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{160, 70}, {40, 20}}</string>
+					<string>{{155, 77.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -19148,7 +19148,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{120, 90}, {40, 20}}</string>
+					<string>{{115, 97.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -19239,7 +19239,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{120, 70}, {40, 20}}</string>
+					<string>{{115, 77.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -19330,7 +19330,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{120, 110}, {40, 20}}</string>
+					<string>{{115, 117.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -19421,7 +19421,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{120, 130}, {40, 20}}</string>
+					<string>{{115, 137.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -19512,7 +19512,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{80, 90}, {40, 20}}</string>
+					<string>{{75, 97.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -19603,7 +19603,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{80, 70}, {40, 20}}</string>
+					<string>{{75, 77.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -19694,7 +19694,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{80, 110}, {40, 20}}</string>
+					<string>{{75, 117.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -19785,7 +19785,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{140, 200}, {40, 20}}</string>
+					<string>{{135, 207.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -19876,7 +19876,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{100, 180}, {40, 20}}</string>
+					<string>{{95, 187.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -19967,7 +19967,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{60, 180}, {40, 20}}</string>
+					<string>{{55, 187.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -20058,7 +20058,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{340, 100}, {40, 20}}</string>
+					<string>{{335, 107.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -20149,7 +20149,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{300, 100}, {40, 20}}</string>
+					<string>{{295, 107.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -20240,7 +20240,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{300, 80}, {40, 20}}</string>
+					<string>{{295, 87.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -20331,7 +20331,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{300, 60}, {40, 20}}</string>
+					<string>{{295, 67.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -20422,7 +20422,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{420, 200}, {40, 20}}</string>
+					<string>{{415, 207.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -20513,7 +20513,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{400, 210}, {40, 20}}</string>
+					<string>{{395, 217.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -20604,7 +20604,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{380, 220}, {40, 20}}</string>
+					<string>{{375, 227.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -20695,7 +20695,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{360, 230}, {40, 20}}</string>
+					<string>{{355, 237.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -20786,7 +20786,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{340, 240}, {40, 20}}</string>
+					<string>{{335, 247.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -20877,7 +20877,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{340, 40}, {40, 20}}</string>
+					<string>{{335, 47.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -20968,7 +20968,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{360, 50}, {40, 20}}</string>
+					<string>{{355, 57.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -21059,7 +21059,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{380, 60}, {40, 20}}</string>
+					<string>{{375, 67.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -21150,7 +21150,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{400, 70}, {40, 20}}</string>
+					<string>{{395, 77.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -21241,7 +21241,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{420, 80}, {40, 20}}</string>
+					<string>{{415, 87.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -21332,7 +21332,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{420, 220}, {40, 20}}</string>
+					<string>{{415, 227.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -21423,7 +21423,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{400, 230}, {40, 20}}</string>
+					<string>{{395, 237.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -21514,7 +21514,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{380, 240}, {40, 20}}</string>
+					<string>{{375, 247.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -21605,7 +21605,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{60, 240}, {40, 20}}</string>
+					<string>{{55, 247.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -21696,7 +21696,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{40, 230}, {40, 20}}</string>
+					<string>{{35, 237.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -21787,7 +21787,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{20, 220}, {40, 20}}</string>
+					<string>{{15, 227.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -21878,7 +21878,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{20, 60}, {40, 20}}</string>
+					<string>{{15, 67.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -21969,7 +21969,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{60, 40}, {40, 20}}</string>
+					<string>{{55, 47.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -22060,7 +22060,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{40, 50}, {40, 20}}</string>
+					<string>{{35, 57.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -22151,7 +22151,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{380, 40}, {40, 20}}</string>
+					<string>{{375, 47.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -22242,7 +22242,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{400, 50}, {40, 20}}</string>
+					<string>{{395, 57.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -22333,7 +22333,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{420, 60}, {40, 20}}</string>
+					<string>{{415, 67.5}, {40, 20}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -22431,8 +22431,6 @@
 				<real>10</real>
 				<key>MajorGridSpacing</key>
 				<integer>1</integer>
-				<key>SnapsToGrid</key>
-				<string>YES</string>
 			</dict>
 			<key>HPages</key>
 			<integer>1</integer>

@@ -30,12 +30,23 @@
   return [[self alloc] initWithNibName:nil bundle:nil];
 }
 
+- (CGFloat)effectiveViewHeight {
+  CGFloat h =  ([UIApplication sharedApplication].statusBarHidden
+          ? CGRectGetHeight(self.view.frame)
+          : CGRectGetHeight(self.view.frame) - MIN(CGRectGetWidth([UIApplication sharedApplication].statusBarFrame),
+                                                   CGRectGetHeight([UIApplication sharedApplication].statusBarFrame)));
+
+  return h;
+}
+
 - (void)loadView {
   CGRect screenBounds = [UIScreen mainScreen].bounds;
   CGRect frame = CGRectMake(0, 0, screenBounds.size.height, screenBounds.size.width);   // Swap for landscape
 
   self.view = [[UIView alloc] initWithFrame:frame];
   self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Cloth"]];
+
+  self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 
   if ([self shouldDisplayBackgroundBoardImage]) {
     UIImageView *bgView = [[UIImageView alloc] initWithImage:[UIImage imageWithName:@"Default"]];
@@ -63,7 +74,7 @@
                                           settingsButtonImage.size.height/2 + kButtonMargin);
     else
       settingsButton.center = CGPointMake(settingsButtonImage.size.width/2 + kButtonMargin,
-                                          CGRectGetHeight(self.view.frame) - settingsButtonImage.size.height/2 - kButtonMargin);
+                                          [self effectiveViewHeight] - settingsButtonImage.size.height/2 - kButtonMargin);
     [settingsButton addTarget:self action:@selector(showSettings:) forControlEvents:UIControlEventTouchUpInside];
     settingsButton.tag = kSettingsButtonTag;
     [settingsButton addStandardShadowing];

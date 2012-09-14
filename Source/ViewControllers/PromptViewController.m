@@ -30,7 +30,7 @@
   [super loadView];
 
   self.textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, SCALED(200), SCALED(30))];
-  _textField.center = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/4);
+  _textField.center = CGPointMake(self.view.bounds.size.width/2, [self effectiveViewHeight]/4);
   _textField.backgroundColor = [UIColor whiteColor];
   _textField.delegate = self;
   _textField.font = [UIFont fontWithName:kFontName size:kFontSizeRegular];

@@ -85,11 +85,11 @@ enum {
 
 - (void)setupBoard {
   float w = self.view.bounds.size.width;
-  float h = self.view.bounds.size.height;
+  float h = [self effectiveViewHeight];
 
   self.boardScrollView = [[BoardScrollView alloc] initWithFrame:CGRectMake(0, 0, kBoardWidthPoints, kBoardHeightPoints)];
   _boardScrollView.backgroundColor = [UIColor clearColor];
-  _boardScrollView.center = CGPointMake(w/2, h/2 - (ISPAD ? 10 : 4));
+  _boardScrollView.center = CGPointMake(w/2, h/2 - (ISPAD ? 10 : 6));
   _boardScrollView.delegate = self;
   [self.view addSubview:_boardScrollView];
   [self updateBoardFromMatchState];
@@ -186,7 +186,7 @@ enum {
   float bigMargin = SCALED(40);
   float fullWidth = (player1Width + bigMargin + player2Width);
   float labelHeight = SCALED(20);
-  float labelY = SCALED(30) - labelHeight/2;
+  float labelY = SCALED(28) - labelHeight/2;
 
   _player1Label.frame = CGRectMake(0,0,player1Width,labelHeight);
   _player2Label.frame = CGRectMake(0,0,player2Width,labelHeight);
@@ -243,7 +243,7 @@ enum {
   [_swapButton setImage:swapButtonImage forState:UIControlStateNormal];
   [_swapButton sizeToFit];
   _swapButton.center = CGPointMake(swapButtonImage.size.width*1.5+kButtonMargin*2,
-                                   CGRectGetHeight(self.view.frame) - swapButtonImage.size.height/2 - kButtonMargin);
+                                   [self effectiveViewHeight] - swapButtonImage.size.height/2 - kButtonMargin);
   [_swapButton addTarget:self action:@selector(doShowSwapView:) forControlEvents:UIControlEventTouchUpInside];
   [_swapButton addStandardShadowing];
   [self.view addSubview:_swapButton];
@@ -255,7 +255,7 @@ enum {
   [_submitButton setImage:submitButtonImage forState:UIControlStateNormal];
   [_submitButton sizeToFit];
   _submitButton.center = CGPointMake(self.view.bounds.size.width-submitButtonImage.size.width/2-kButtonMargin,
-                                     self.view.bounds.size.height-submitButtonImage.size.height/2-kButtonMargin);
+                                     [self effectiveViewHeight]-submitButtonImage.size.height/2-kButtonMargin);
   [_submitButton addTarget:self action:@selector(doSubmitTurn:) forControlEvents:UIControlEventTouchUpInside];
   [_submitButton addStandardShadowing];
   [self.view addSubview:_submitButton];
@@ -302,7 +302,7 @@ enum {
   [_shuffleButton setImage:shuffleButtonImage forState:UIControlStateNormal];
   [_shuffleButton sizeToFit];
   _shuffleButton.center = CGPointMake(self.view.bounds.size.width-shuffleButtonImage.size.width*1.5-kButtonMargin*2,
-                                      self.view.bounds.size.height-shuffleButtonImage.size.height/2-kButtonMargin);
+                                      [self effectiveViewHeight]-shuffleButtonImage.size.height/2-kButtonMargin);
   [_shuffleButton addTarget:self action:@selector(doShuffle:) forControlEvents:UIControlEventTouchUpInside];
   [_shuffleButton addStandardShadowing];
   [self.view addSubview:_shuffleButton];
@@ -390,7 +390,7 @@ enum {
   int margin = SCALED(15);
   int buttonCount = 2;
   int hw = self.view.bounds.size.width/2;
-  int hh = self.view.bounds.size.height/2;
+  int hh = [self effectiveViewHeight]/2;
   int labelHeight = SCALED(30);
   int vh = bh * buttonCount + margin * (buttonCount-1) + labelHeight;
   int vw = bw;
