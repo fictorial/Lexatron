@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "_default": {
+            "link": "lexatron-dev"
+        }, 
+        "lexatron-dev": {
+            "applicationId": "a0142efFhptyzQFQGARMGB3rzWvMzGBGaisu9Dix", 
+            "masterKey": "N7SGh3VI2FmxQFT7UgEwjJO1y2qIUnxkbgvSeeqI"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.0.23"
+    }
+}
