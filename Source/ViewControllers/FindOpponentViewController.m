@@ -340,8 +340,6 @@ typedef enum {
 
   [TestFlight passCheckpoint:@"findByFacebook"];
 
-  [self showActivityHUD];
-
   __weak id weakSelf = self;
 
   self.selectorMode = kSelectorModeFacebook;
@@ -349,6 +347,7 @@ typedef enum {
   if ([PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
     DLog(@"current user is linked with fb");
 
+    [self showActivityHUD];
     [self _fetchFacebookFriends];
   } else {
     DLog(@"trying to link with fb ...");
@@ -369,6 +368,7 @@ typedef enum {
        // Fetch Facebook ID of the linked account.
        // Calls -request:didLoad: or -request:didFailWithError:
 
+       [weakSelf showActivityHUD];
        facebookIdRequest = [[PFFacebookUtils facebook] requestWithGraphPath:@"me?fields=id" andDelegate:self];
      }];
   }
