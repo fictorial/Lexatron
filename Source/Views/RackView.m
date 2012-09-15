@@ -194,27 +194,35 @@ enum {
   }
 }
 
-- (void)slideTiles:(NSDictionary *)movements {
+- (void)slideTiles:(NSDictionary *)movements completion:(void (^)(void))completion {
   __weak id weakSelf = self;
 
-  [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+  [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
     [movements each:^(id key, id obj) {
       int fromIndex = [key intValue];
       int toIndex = [obj intValue];
       DLog(@"Slide tile from index %d to %d", fromIndex, toIndex);
 
-      for (id subview in [weakSelf subviews]) {
-        if ([subview isKindOfClass:TileView.class]) {
-          TileView *tileView = (TileView *)subview;
-          if (tileView.letter.rackIndex == fromIndex) {
-            tileView.frame = [weakSelf frameForCellAtIndex:toIndex];
-            break;
-          }
-        }
+      TileView *tileView = [weakSelf tileAtSlot:fromIndex];
+      if (tileView) {
+        tileView.alpha = 1;
+        tileView.frame = [weakSelf frameForCellAtIndex:toIndex];
       }
     }];
   } completion:^(BOOL finished) {
+    completion();
   }];
+}
+
+- (TileView *)tileAtSlot:(int)slot {
+  for (id subview in self.subviews) {
+    if ([subview isKindOfClass:TileView.class]) {
+      TileView *tileView = (TileView *)subview;
+      if (tileView.letter.rackIndex == slot)
+        return tileView;
+    }
+  }
+  return nil;
 }
 
 @end

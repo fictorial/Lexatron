@@ -62,7 +62,10 @@
 
   _dragProxy.alpha = 0.7;
 
-  self.alpha = 0.02;
+  // We don't want to remove this view from its parent since we'd no longer get touch events
+  // and would thus be unable to move our proxy around.
+
+  self.alpha = 0.01;
 
   [targetView addSubview:_dragProxy];
 

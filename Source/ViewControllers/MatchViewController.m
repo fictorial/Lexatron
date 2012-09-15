@@ -313,18 +313,30 @@ enum {
     [self showNotYourTurnError];
     return;
   }
+
   [self recall];
 
+  [self animateRackForOperation:^{
+    [_match shuffleRack];
+  }];
+
+  [[LQAudioManager sharedManager] playEffect:kEffectShuffle];
+  [TestFlight passCheckpoint:@"matchShuffledRack"];
+}
+
+- (void)animateRackForOperation:(void (^)(void))operation {
   NSArray *rackBefore = [_match rackForCurrentUser];
 
   int indexesBefore[kRackTileCount];
   for (int i = 0; i < kRackTileCount; ++i) {
     id obj = [rackBefore objectAtIndex:i];
-    if ([obj isKindOfClass:Letter.class])
+    if ([obj isKindOfClass:Letter.class]) {
       indexesBefore[i] = [obj rackIndex];
+      DLog(@"index before %d", [obj rackIndex]);
+    }
   }
 
-  [_match shuffleRack];
+  operation();
 
   NSArray *rackAfter = [_match rackForCurrentUser];
 
@@ -333,7 +345,8 @@ enum {
   for (id obj in rackBefore) {
     if ([obj isKindOfClass:Letter.class]) {
       for (id objAfter in rackAfter) {
-        if (obj == objAfter) {
+        if ([obj isEqual:objAfter]) {
+          DLog(@"index after %d", [objAfter rackIndex]);
           [movements setObject:@([objAfter rackIndex]) forKey:@(indexesBefore[i])];
           break;
         }
@@ -341,17 +354,12 @@ enum {
     }
     ++i;
   }
-  [_rackView slideTiles:movements];
-
-  // Now just replace the rack entirely which doesn't flicker or anything.
 
   __weak id weakSelf = self;
-  [self performBlock:^(id sender) {
-    [weakSelf setupRack];
-  } afterDelay:0.5];
 
-  [[LQAudioManager sharedManager] playEffect:kEffectShuffle];
-  [TestFlight passCheckpoint:@"matchShuffledRack"];
+  [_rackView slideTiles:movements completion:^{
+    [weakSelf setupRack];
+  }];
 }
 
 - (void)addChatButton {
@@ -1067,12 +1075,12 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
   NSAssert(sourceLetter != nil, @"expected existing source letter item");
 
-  if (![_match moveLetter:sourceLetter toRackAtIndex:targetRackIndex])
-    return NO;
+  [self animateRackForOperation:^{
+    [_match moveLetter:sourceLetter toRackAtIndex:targetRackIndex];
+  }];
 
   [self updateBoardFromMatchState];
   [self updateBlastRadiusImages];    // after board to be on top (easily)
-  [self setupRack];
   [self zoomToLettersPlacedInThisTurn];
 
   return YES;
@@ -1189,8 +1197,10 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
         [weakSelf zoomToLettersPlacedInThisTurn];
       } afterDelay:0.5];
     } else {
-      [_match moveLetter:letter toRackAtIndex:rackIndexBefore];
-      [weakSelf setupRack];
+      [self animateRackForOperation:^{
+        [_match moveLetter:letter toRackAtIndex:rackIndexBefore];
+      }];
+//      [weakSelf setupRack];
     }
 
     [weakSelf updateBoardFromMatchState];

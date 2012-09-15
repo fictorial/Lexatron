@@ -86,6 +86,7 @@ typedef void (^DecodeMatchCompletionBlock)(Match *match, NSError *error);
 
 - (NSArray *)rackForCurrentUser;  // array of Letter*; nil if not in the match
 - (NSString *)rackAsString:(NSArray *)rack;
+- (void)setReorderedCurrentPlayerRack:(NSArray *)letters;
 
 - (int)bagTileCount;
 

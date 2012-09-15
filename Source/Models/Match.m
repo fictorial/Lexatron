@@ -22,6 +22,9 @@
 
 @property (nonatomic, copy, readwrite) NSString *chatThreadID;
 
+@property (nonatomic, readwrite, copy) NSArray *rackForFirstPlayer;  // NSArray of (Letter* or NSNull)
+@property (nonatomic, readwrite, copy) NSArray *rackForSecondPlayer;
+
 @end
 
 @implementation Match {
@@ -1301,6 +1304,13 @@
   return YES;
 }
 
+- (void)setReorderedCurrentPlayerRack:(NSArray *)letters {
+  if (_currentPlayerNumber == 0)
+    self.rackForFirstPlayer = letters;
+  else
+    self.rackForSecondPlayer = letters;
+}
+
 - (BOOL)moveLetter:(Letter *)letter toRackAtIndex:(int)targetRackIndex {
   NSParameterAssert(targetRackIndex >= 0 && targetRackIndex < kRackTileCount);
 
@@ -1319,32 +1329,49 @@
 
   DLog(@"before %@ rack = %@", NSStringFromSelector(_cmd), [self rackAsString:rack]);
 
-  BOOL wasAlreadyInRack = (letter.rackIndex != -1);
-
   if (letter.cellIndex != -1) {
     DLog(@"%@ move from board back to rack", NSStringFromSelector(_cmd));
     [self removeLetterFromBoard:letter];
   }
 
-  letter.cellIndex = -1;
+  int emptyIndex = letter.rackIndex;
 
-  id existingItem = [rack objectAtIndex:targetRackIndex];
-
-  if (wasAlreadyInRack) {
-    DLog(@"reorder by swapping letters within the rack");
-
-    [rack exchangeObjectAtIndex:letter.rackIndex withObjectAtIndex:targetRackIndex];
-
-    if (existingItem != [NSNull null])
-      [existingItem setRackIndex:letter.rackIndex];
-
-    letter.rackIndex = targetRackIndex;
-  } else {
-    letter.rackIndex = targetRackIndex;
-    [self addLetter:letter toRack:rack];
+  if (letter.rackIndex == -1) {
+    for (int i = 0; i < kRackTileCount; ++i) {
+      if ([rack objectAtIndex:i] == [NSNull null]) {
+        emptyIndex = i;
+        break;
+      }
+    }
   }
 
+  if (letter.rackIndex != -1)
+    [self removeLetterAtIndex:letter.rackIndex rack:rack];
+
+  if (emptyIndex != -1) {
+    DLog(@"empty = %d, target = %d", emptyIndex, targetRackIndex);
+
+    if (emptyIndex > targetRackIndex) {
+      for (int i = emptyIndex - 1; i >= targetRackIndex; --i) {
+        [rack exchangeObjectAtIndex:i withObjectAtIndex:i+1];
+      }
+    } else if (emptyIndex < targetRackIndex) {
+      for (int i = emptyIndex + 1; i <= targetRackIndex; ++i) {
+        [rack exchangeObjectAtIndex:i withObjectAtIndex:i-1];
+      }
+    }
+  }
+  
+  letter.cellIndex = -1;
+  letter.rackIndex = targetRackIndex;
   letter.substituteLetter = 0;
+  
+  [self addLetter:letter toRack:rack];
+
+  [rack enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    if (obj != [NSNull null])
+      [obj setRackIndex:idx];
+  }];
 
   DLog(@"after %@ rack = %@", NSStringFromSelector(_cmd), [self rackAsString:rack]);
 

@@ -24,6 +24,8 @@
 - (void)hideTiles;
 
 // indexBefore => indexAfter
-- (void)slideTiles:(NSDictionary *)movements;
+- (void)slideTiles:(NSDictionary *)movements completion:(void (^)(void))completion;
+
+- (TileView *)tileAtSlot:(int)slot;
 
 @end
