@@ -1,3 +1,7 @@
+Lexatron 1.0.25
+- Show the status bar at all times.
+- Animate the tiles in the rack when shuffling (finally).
+
 Lexatron 1.0.24
 - Upgrade to Parse 1.1.5 to support armv7s (iPhone5)
 - Upgrade to TestFlight 1.0B3 to support armv7s (iPhone5)

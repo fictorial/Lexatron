@@ -314,8 +314,42 @@ enum {
     return;
   }
   [self recall];
+
+  NSArray *rackBefore = [_match rackForCurrentUser];
+
+  int indexesBefore[kRackTileCount];
+  for (int i = 0; i < kRackTileCount; ++i) {
+    id obj = [rackBefore objectAtIndex:i];
+    if ([obj isKindOfClass:Letter.class])
+      indexesBefore[i] = [obj rackIndex];
+  }
+
   [_match shuffleRack];
-  [self setupRack];
+
+  NSArray *rackAfter = [_match rackForCurrentUser];
+
+  NSMutableDictionary *movements = [NSMutableDictionary dictionaryWithCapacity:rackBefore.count];
+  int i = 0;
+  for (id obj in rackBefore) {
+    if ([obj isKindOfClass:Letter.class]) {
+      for (id objAfter in rackAfter) {
+        if (obj == objAfter) {
+          [movements setObject:@([objAfter rackIndex]) forKey:@(indexesBefore[i])];
+          break;
+        }
+      }
+    }
+    ++i;
+  }
+  [_rackView slideTiles:movements];
+
+  // Now just replace the rack entirely which doesn't flicker or anything.
+
+  __weak id weakSelf = self;
+  [self performBlock:^(id sender) {
+    [weakSelf setupRack];
+  } afterDelay:0.5];
+
   [[LQAudioManager sharedManager] playEffect:kEffectShuffle];
   [TestFlight passCheckpoint:@"matchShuffledRack"];
 }

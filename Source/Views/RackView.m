@@ -20,7 +20,13 @@ enum {
 @property (nonatomic, strong) NSMutableSet *selectedLetters;  // of NSNumber(index)
 @end
 
-@implementation RackView
+@implementation RackView {
+  int _cellSize;
+}
+
+- (CGRect)frameForCellAtIndex:(int)index {
+  return CGRectMake(0.5 + index * _cellSize + index * SCALED(1), 0, _cellSize, _cellSize);
+}
 
 - (id)initWithFrame:(CGRect)frame
             letters:(NSArray *)letters
@@ -31,7 +37,7 @@ enum {
   self = [super initWithFrame:frame];
 
   if (self) {
-    int cellSize = (CGRectGetWidth(self.bounds) - (kRackTileCount - 1) * SCALED(1)) / kRackTileCount;
+    _cellSize = (CGRectGetWidth(self.bounds) - (kRackTileCount - 1) * SCALED(1)) / kRackTileCount;
 
     for (int i=0; i < kRackTileCount; ++i) {
       id letter = [letters objectAtIndex:i];
@@ -39,14 +45,14 @@ enum {
       if (letter == [NSNull null])
         continue;
 
-      TileView *tileView = [[TileView alloc] initWithFrame:CGRectMake(0.5 + i * cellSize + i * SCALED(1), 0, cellSize, cellSize)];
+      TileView *tileView = [[TileView alloc] initWithFrame:[self frameForCellAtIndex:i]];
       tileView.letter = letter;
       tileView.letter.rackIndex = i;
       tileView.userInteractionEnabled = YES;
       tileView.draggable = YES;
       tileView.dragDelegate = dragDelegate;
       tileView.touchDelegate = self;
-      [tileView configureForRackDisplayWithSize:cellSize];
+      [tileView configureForRackDisplayWithSize:_cellSize];
       [self addSubview:tileView];
     }
 
@@ -186,6 +192,29 @@ enum {
   for (int i = 0; i < kRackTileCount; ++i) {
     [[self viewForSlot:i] setHidden:YES];
   }
+}
+
+- (void)slideTiles:(NSDictionary *)movements {
+  __weak id weakSelf = self;
+
+  [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+    [movements each:^(id key, id obj) {
+      int fromIndex = [key intValue];
+      int toIndex = [obj intValue];
+      DLog(@"Slide tile from index %d to %d", fromIndex, toIndex);
+
+      for (id subview in [weakSelf subviews]) {
+        if ([subview isKindOfClass:TileView.class]) {
+          TileView *tileView = (TileView *)subview;
+          if (tileView.letter.rackIndex == fromIndex) {
+            tileView.frame = [weakSelf frameForCellAtIndex:toIndex];
+            break;
+          }
+        }
+      }
+    }];
+  } completion:^(BOOL finished) {
+  }];
 }
 
 @end

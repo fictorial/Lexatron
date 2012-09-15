@@ -16,13 +16,14 @@
             letters:(NSArray *)letters
        dragDelegate:(id<DraggableViewDragDelegate>)dragDelegate;
 
-//- (TileView *)viewForSlot:(int)index;  // TODO why expose this?
-
 - (void)beginSelectionMode;
 - (NSSet *)endSelectionMode;
 
 - (void)popTilesIn;
 - (void)popTilesOut;
 - (void)hideTiles;
+
+// indexBefore => indexAfter
+- (void)slideTiles:(NSDictionary *)movements;
 
 @end
