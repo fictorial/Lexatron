@@ -1,6 +1,7 @@
 Lexatron 1.0.25
 - Show the status bar at all times.
-- Animate the tiles in the rack when shuffling (finally).
+- Animate the tiles in the rack when shuffling.
+- Animate the rack when moving letters around within the rack and from board to rack.
 
 Lexatron 1.0.24
 - Upgrade to Parse 1.1.5 to support armv7s (iPhone5)
