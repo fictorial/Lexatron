@@ -1,0 +1,17 @@
+Lexatron is a turn-based word race!
+
+Form words using your letters starting from one corner of the board. Reach the
+opposite side first and win! Get blocked by your opponent's letters? Blow them
+up with a bomb and keep going!
+
+• turn-based, asynchronous gameplay
+• online 2-player multiplayer
+• random match-ups 
+• challenge your friends (contacts, Facebook)
+• pass-and-play matches
+• in-game chat
+• multiple random bombs per match
+• up to 25 simultaneous matches
+
+Watch the video trailer:  http://bit.ly/lexatrailer
+
