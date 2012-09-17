@@ -1339,6 +1339,9 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
   [self removeDropTargetView];
 
+
+  // Hovering over rack?  Highlight the rack.
+
   if ([self isDropOnRack:point]) {
     _rackView.layer.borderColor = kTileDropHighlightColor.CGColor;
     _rackView.layer.borderWidth = SCALED(2);
@@ -1347,22 +1350,48 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
 
   _rackView.layer.borderWidth = 0;
 
+
+  // auto-pan when dragging near a screen edge.
+  // does not work when atop the rack since that's intercepted above.
+
+  float scrollFactor = 0.45;
+  float interceptFactor = 0.09;
+
+  float dL = _boardScrollView.bounds.size.width*scrollFactor;
+  float dU = _boardScrollView.bounds.size.height*scrollFactor;
+  float dR = _boardScrollView.bounds.size.width*(1+scrollFactor);  // contentOffset is TL corner
+  float dD = _boardScrollView.bounds.size.height*(1+scrollFactor);  // contentOffset is TL corner
+
+  float cx = _boardScrollView.contentOffset.x;
+  float cy = _boardScrollView.contentOffset.y;
+
+  float cw = _boardScrollView.contentSize.width;
+  float ch = _boardScrollView.contentSize.height;
+
+  if (point.x <= self.view.bounds.size.width*interceptFactor) {
+    [_boardScrollView scrollRectToVisible:CGRectMake(MAX(0, cx - dL), cy, 1, 1) animated:YES];
+  } else if (point.y <= self.view.bounds.size.height*interceptFactor) {
+    [_boardScrollView scrollRectToVisible:CGRectMake(cx, MAX(0, cy - dU), 1, 1) animated:YES];
+  } else if (point.x >= self.view.bounds.size.width*(1-interceptFactor)) {
+    [_boardScrollView scrollRectToVisible:CGRectMake(MIN(cx + cw - 2, cx + dR), cy, 1, 1) animated:YES];
+  } else if (point.y >= CGRectGetMinY(_rackView.frame) - self.view.bounds.size.height*interceptFactor*2) {
+    TileView *tileView = (TileView *)draggableView;
+    if (tileView.letter.cellIndex != -1)  // don't want to pan when dragging from rack to board.
+      [_boardScrollView scrollRectToVisible:CGRectMake(cx, MIN(cy + ch - 2, cy + dD) + _rackView.bounds.size.height, 1, 1) animated:YES];
+  }
+
+  // Show placeholder/shadow on the board atop the hovered-over cell.
+
   point = [self.boardScrollView.boardView convertPoint:point fromView:self.view];
-
   CGPoint boardCell = [_boardScrollView.boardView boardToCell:point];
-
-  if (boardCell.x < 0 || boardCell.y < 0)
-    return;
-
-  CGRect cellRect = [_boardScrollView.boardView boardFromCellX:boardCell.x y:boardCell.y];
-
-//  DLog(@"hover tile atop board cell (%d, %d)", (int)boardCell.x, (int)boardCell.y);
-
-  TileView *tempView = [TileView viewWithFrame:cellRect letter:0];
-  [tempView configureForBoardDisplayAsPlaceholder];
-  tempView.tag = kDropTargetViewTag;
-  [_boardScrollView.boardView addSubview:tempView];
-  tempView.userInteractionEnabled = NO;
+  if (boardCell.x >= 0 && boardCell.y >= 0) {
+    CGRect cellRect = [_boardScrollView.boardView boardFromCellX:boardCell.x y:boardCell.y];
+    TileView *tempView = [TileView viewWithFrame:cellRect letter:0];
+    [tempView configureForBoardDisplayAsPlaceholder];
+    tempView.tag = kDropTargetViewTag;
+    [_boardScrollView.boardView addSubview:tempView];
+    tempView.userInteractionEnabled = NO;
+  }
 }
 
 - (void)draggableViewWasTouched:(DraggableView *)draggableView {
