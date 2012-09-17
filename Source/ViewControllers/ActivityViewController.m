@@ -26,8 +26,7 @@ typedef enum {
 
 @interface ActivityViewController ()
 
-@property (nonatomic, copy) NSArray *turnDescriptions;
-@property (nonatomic, copy) NSArray *matches;
+@property (nonatomic, copy) NSArray *synopses;
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *yourTurnButton;
@@ -195,7 +194,7 @@ typedef enum {
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return _turnDescriptions.count;
+  return _synopses.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -228,26 +227,12 @@ typedef enum {
     cell.accessoryView = disclosureIV;
   }
 
-  Match *aMatch = [_matches objectAtIndex:indexPath.row];
-  NSString *updatedAtInWords = [aMatch updatedAtInWords];
+  NSDictionary *synopsis = [_synopses objectAtIndex:indexPath.row];
+  NSString *desc = [synopsis objectForKey:@"desc"];
+  NSString *updatedAtInWords = [synopsis objectForKey:@"updated"];
 
-  id desc = [_turnDescriptions objectAtIndex:indexPath.row];
-
-  if (desc == [NSNull null])
-    desc = @"<no description: please send bug report!>";
-
-  if (_mode == kActivityModeYourTurn || _mode == kActivityModeCompleted) {
-    cell.textLabel.text = desc;
-    cell.detailTextLabel.text = updatedAtInWords;
-  } else if (_mode == kActivityModeTheirTurn) {
-    NSString *oppName = [[aMatch opponentPlayer] usernameForDisplay];
-    NSString *vs = [NSString stringWithFormat:@"vs %@", oppName];
-    NSString *modifiedDesc = [desc stringByReplacingOccurrencesOfString:vs withString:@""];
-
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@%@", modifiedDesc, updatedAtInWords];
-    cell.textLabel.text = oppName;
-  }
-
+  cell.textLabel.text = desc;
+  cell.detailTextLabel.text = updatedAtInWords;
   cell.detailTextLabel.textAlignment = UITextAlignmentRight;
 
   return cell;
@@ -264,9 +249,26 @@ typedef enum {
 
   [self showActivityHUD];
 
-  Match *match = [_matches objectAtIndex:indexPath.row];
-  MatchViewController *vc = [MatchViewController controllerWithMatch:match];
-  [self.navigationController pushViewController:vc animated:NO];
+  NSString *matchID = [[_synopses objectAtIndex:indexPath.row] objectForKey:@"matchID"];
+
+  PFQuery *query = [PFQuery queryWithClassName:@"Match"];
+
+  __weak id weakSelf = self;
+
+  [query getObjectInBackgroundWithId:matchID block:^(PFObject *object, NSError *error) {
+    [weakSelf hideActivityHUD];
+
+    if (error)
+      return;
+
+    [Match matchWithExistingMatchObject:object block:^(Match *aMatch, NSError *error) {
+      if (error)
+        return;
+
+      MatchViewController *vc = [MatchViewController controllerWithMatch:aMatch];
+      [[weakSelf navigationController] pushViewController:vc animated:NO];
+    }];
+  }];
 }
 
 #pragma mark - util
@@ -396,29 +398,9 @@ typedef enum {
       return;
     }
 
-    [weakSelf setMatches:[[objects select:^BOOL(PFObject *matchObj) {
-      // Random matches in pending state have no first player; remove those.
-      // Random matches in which a player has been found and set have no turns yet potentially.
-      // Note that other matches will not have this setup.
-      // Thus, exclude matches that have 0-length 'turns'.
+    [weakSelf setSynopses:objects];
 
-      return [matchObj objectForKey:@"firstPlayer"] != nil && [[matchObj objectForKey:@"turns"] count] > 0;
-    }] map:^id(PFObject *matchObj) {
-      return [Match matchWithExistingMatchObject:matchObj block:^(Match *match, NSError *error) {
-        if (error) {
-          DLog(@"failed to load match: %@", [error localizedDescription]);
-        }
-      }];
-    }]];
-
-    [weakSelf setTurnDescriptions:[[weakSelf matches] map:^id(Match *match) {
-      NSString *desc = [match mostRecentTurnDescription];
-      if (!desc)
-        return [NSNull null];
-      return desc;
-    }]];
-
-    if ([[weakSelf matches] count] == 0) {
+    if ([[weakSelf synopses] count] == 0) {
       [[weakSelf noMatchesLabel] fadeIn:0.4 delegate:nil];
     } else {
       [weakSelf noMatchesLabel].hidden = YES;
@@ -478,28 +460,17 @@ enum {
   label.layer.cornerRadius = SCALED(4);
   [_containerView addSubview:label];
 
-  __block int won = -1;
-  __block int lost = -1;
-  __block int ties = -1;
-
   __weak id weakSelf = self;
 
-  [[PFUser currentUser] countOfMatchesWon:^(int number, NSError *error) {
-    won = MAX(0, number);
-    if (won != -1 && lost != -1 && ties != -1)
-      [weakSelf updateAndShowRecordLabelWon:won lost:lost tied:ties];
-  }];
+  [[PFUser currentUser] getRecord:^(NSDictionary *dict, NSError *error) {
+    if (error) {
+      [error showParseError:@"fetch win-loss-tie record"];
+      return;
+    }
 
-  [[PFUser currentUser] countOfMatchesLost:^(int number, NSError *error) {
-    lost = MAX(0, number);
-    if (won != -1 && lost != -1 && ties != -1)
-      [weakSelf updateAndShowRecordLabelWon:won lost:lost tied:ties];
-  }];
-
-  [[PFUser currentUser] countOfMatchesTied:^(int number, NSError *error) {
-    ties = MAX(0, number);
-    if (won != -1 && lost != -1 && ties != -1)
-      [weakSelf updateAndShowRecordLabelWon:won lost:lost tied:ties];
+    [weakSelf updateAndShowRecordLabelWon:[dict intForKey:@"w"]
+                                     lost:[dict intForKey:@"l"]
+                                     tied:[dict intForKey:@"t"]];
   }];
 }
 

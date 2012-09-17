@@ -1,3 +1,5 @@
+typedef void (^DictResultBlock)(NSDictionary *dict, NSError *error);
+
 @interface PFUser (AppAdditions)
 
 // We use both username and displayName properties.
@@ -24,7 +26,6 @@
 
 // "actionable" => this user is current in a match and can _act_ (play/pass/etc.)
 
-- (void)countOfActionableMatches:(PFIntegerResultBlock)block;
 - (void)actionableMatches:(PFArrayResultBlock)block;
 - (void)unactionableMatches:(PFArrayResultBlock)block;
 - (void)completedMatches:(PFArrayResultBlock)block;
@@ -34,10 +35,8 @@
 
 - (void)countOfActiveMatches:(PFIntegerResultBlock)block;
 
-// Records
+// Calls block with win/loss/tie record.  {w:0,l:0,t:0}
 
-- (void)countOfMatchesWon:(PFIntegerResultBlock)block;
-- (void)countOfMatchesLost:(PFIntegerResultBlock)block;
-- (void)countOfMatchesTied:(PFIntegerResultBlock)block;
+- (void)getRecord:(DictResultBlock)block;
 
 @end

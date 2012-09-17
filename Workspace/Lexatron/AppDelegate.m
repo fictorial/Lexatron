@@ -162,7 +162,7 @@
   DLog(@"app became active: current user = %@", [PFUser currentUser]);
 
   [self extendFacebookToken];
-  [self refreshAppIconBadge];
+  [self clearBadge];
 }
 
 #pragma mark - user
@@ -185,7 +185,7 @@
 
 - (void)didLogin:(NSNotification *)notification {
   [[PushManager sharedManager] subscribeToCurrentUserChannel];
-  [self updateAppIconBadgeTo:0];
+  [self clearBadge];
 }
 
 - (void)didSignup:(NSNotification *)notification {
@@ -207,7 +207,7 @@
   }
 
   [[PushManager sharedManager] subscribeToCurrentUserChannel];
-  [self updateAppIconBadgeTo:0];
+  [self clearBadge];
 }
 
 #pragma mark - facebook
@@ -314,29 +314,14 @@
   }
 
 #endif
-
-  [self refreshAppIconBadge];
 }
 
-- (void)updateAppIconBadgeTo:(int)count {
-  DLog(@"count of actionable matches: %d", count);
-
-  [UIApplication sharedApplication].applicationIconBadgeNumber = count;
-}
-
-- (void)refreshAppIconBadge {
-  [self updateAppIconBadgeTo:0];
-
-  __weak id weakSelf = self;
-  [[PFUser currentUser] countOfActionableMatches:^(int number, NSError *error) {
-    if (error) {
-      DLog(@"failed to get count of actionable matches:%@", error);
-      [weakSelf updateAppIconBadgeTo:0];
-      return;
-    }
-
-    [weakSelf updateAppIconBadgeTo:number];
-  }];
+- (void)clearBadge {
+  PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+  if (currentInstallation.badge != 0) {
+    currentInstallation.badge = 0;
+    [currentInstallation saveEventually];
+  }
 }
 
 @end

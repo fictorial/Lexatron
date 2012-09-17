@@ -51,90 +51,22 @@ static NSString * const kBlockedUsersKey = @"blockedUsers";
   return [@"u" stringByAppendingString:self.objectId];
 }
 
-#pragma mark - match helpers
-
-// The current user is either the first or second player and the current player is the same.
-
-- (PFQuery *)queryForMyTurn:(BOOL)myTurn {
-  int currentNumber = myTurn ? 0 : 1;
-  int otherNumber = myTurn ? 1 : 0;
-  
-  PFQuery *firstPlayerQuery = [PFQuery queryWithClassName:@"Match"];
-  [firstPlayerQuery whereKey:@"firstPlayer" equalTo:self];
-  [firstPlayerQuery whereKey:@"currentPlayerNumber" equalTo:@(currentNumber)];
-  [firstPlayerQuery whereKey:@"state" containedIn:@[@(kMatchStateActive), @(kMatchStatePending)]];
-
-  PFQuery *secondPlayerQuery = [PFQuery queryWithClassName:@"Match"];
-  [secondPlayerQuery whereKey:@"secondPlayer" equalTo:self];
-  [secondPlayerQuery whereKey:@"currentPlayerNumber" equalTo:@(otherNumber)];
-  [secondPlayerQuery whereKey:@"state" containedIn:@[@(kMatchStateActive), @(kMatchStatePending)]];
-
-  PFQuery *orQuery = [PFQuery orQueryWithSubqueries:@[firstPlayerQuery, secondPlayerQuery]];
-  [orQuery orderByDescending:@"updatedAt"];
-
-  return orQuery;
-}
-
-// The current user is either the first or second player but we don't care whose turn it is.
-
-- (PFQuery *)queryForActiveMatches {
-  PFQuery *firstPlayerQuery = [PFQuery queryWithClassName:@"Match"];
-  [firstPlayerQuery whereKey:@"firstPlayer" equalTo:self];
-  [firstPlayerQuery whereKey:@"state" containedIn:@[@(kMatchStateActive), @(kMatchStatePending)]];
-
-  PFQuery *secondPlayerQuery = [PFQuery queryWithClassName:@"Match"];
-  [secondPlayerQuery whereKey:@"secondPlayer" equalTo:self];
-  [secondPlayerQuery whereKey:@"state" containedIn:@[@(kMatchStateActive), @(kMatchStatePending)]];
-
-  return [PFQuery orQueryWithSubqueries:@[firstPlayerQuery, secondPlayerQuery]];
-}
-
 - (void)countOfActiveMatches:(PFIntegerResultBlock)block {
 #if WORKAROUND_PARSE_NO_CLASS_ERROR
   block(0,nil);
   return;
 #endif
 
-  DLog(@"getting count of active matches...");
+  [PFCloud callFunctionInBackground:@"activeMatchCount" withParameters:@{} block:^(id object, NSError *error) {
+    if (error) {
+      DLog(@"CloudCode error => %@", [error localizedDescription]);
+      block(-1, error);
+      return;
+    }
 
-  PFQuery *query = [self queryForActiveMatches];
-
-  // do not include firstPlayer/secondPlayer since we just want the count here.
-
-  [query countObjectsInBackgroundWithBlock:block];
-}
-
-- (PFQuery *)actionableQuery {
-  PFQuery *query = [self queryForMyTurn:YES];
-
-  [query includeKey:@"firstPlayer"];
-  [query includeKey:@"secondPlayer"];
-
-  return query;
-}
-
-- (PFQuery *)unactionableQuery {
-  PFQuery *query = [self queryForMyTurn:NO];
-
-  [query includeKey:@"firstPlayer"];
-  [query includeKey:@"secondPlayer"];
-
-  return query;
-}
-
-- (void)countOfActionableMatches:(PFIntegerResultBlock)block {
-#if WORKAROUND_PARSE_NO_CLASS_ERROR
-  block(0,nil);
-  return;
-#endif
-
-  DLog(@"getting count of actionable matches...");
-
-  PFQuery *query = [self queryForMyTurn:YES];
-
-  // do not include firstPlayer/secondPlayer since we just want the count here.
-
-  [query countObjectsInBackgroundWithBlock:block];
+    DLog(@"actionableMatches via CloudCode => %@", object);
+    block([object intValue], nil);
+  }];
 }
 
 - (void)actionableMatches:(PFArrayResultBlock)block {
@@ -143,8 +75,16 @@ static NSString * const kBlockedUsersKey = @"blockedUsers";
   return;
 #endif
 
-  PFQuery *query = [self actionableQuery];
-  [query findObjectsInBackgroundWithBlock:block];
+  [PFCloud callFunctionInBackground:@"actionableMatches" withParameters:@{} block:^(id object, NSError *error) {
+    if (error) {
+      DLog(@"CloudCode error => %@", [error localizedDescription]);
+      block(nil, error);
+      return;
+    }
+
+    DLog(@"CloudCode => %@", object);
+    block(object, nil);
+  }];
 }
 
 - (void)unactionableMatches:(PFArrayResultBlock)block {
@@ -153,73 +93,42 @@ static NSString * const kBlockedUsersKey = @"blockedUsers";
   return;
 #endif
 
-  PFQuery *query = [self unactionableQuery];
-  [query findObjectsInBackgroundWithBlock:block];
+  [PFCloud callFunctionInBackground:@"unactionableMatches" withParameters:@{} block:^(id object, NSError *error) {
+    if (error) {
+      DLog(@"CloudCode error => %@", [error localizedDescription]);
+      block(nil, error);
+      return;
+    }
+
+    DLog(@"CloudCode => %@", object);
+    block(object, nil);
+  }];
 }
 
 - (void)completedMatches:(PFArrayResultBlock)block {
-  PFQuery *firstPlayerQuery = [PFQuery queryWithClassName:@"Match"];
-  [firstPlayerQuery whereKey:@"firstPlayer" equalTo:self];
-  [firstPlayerQuery whereKey:@"state" containedIn:@[@(kMatchStateEndedNormal), @(kMatchStateEndedResign), @(kMatchStateEndedTimeout)]];
+  [PFCloud callFunctionInBackground:@"completedMatches" withParameters:@{} block:^(id object, NSError *error) {
+    if (error) {
+      DLog(@"CloudCode error => %@", [error localizedDescription]);
+      block(nil, error);
+      return;
+    }
 
-  PFQuery *secondPlayerQuery = [PFQuery queryWithClassName:@"Match"];
-  [secondPlayerQuery whereKey:@"secondPlayer" equalTo:self];
-  [secondPlayerQuery whereKey:@"state" containedIn:@[@(kMatchStateEndedNormal), @(kMatchStateEndedResign), @(kMatchStateEndedTimeout)]];
-
-  PFQuery *orQuery = [PFQuery orQueryWithSubqueries:@[firstPlayerQuery, secondPlayerQuery]];
-  [orQuery orderByDescending:@"updatedAt"];  // want newest COMPLETED matches first.
-  [orQuery includeKey:@"firstPlayer"];
-  [orQuery includeKey:@"secondPlayer"];
-  orQuery.limit = 50;
-  [orQuery findObjectsInBackgroundWithBlock:block];
+    DLog(@"CloudCode => %@", object);
+    block(object, nil);
+  }];
 }
 
-- (void)countOfMatchesWon:(PFIntegerResultBlock)block {
-  PFQuery *firstPlayerQuery = [PFQuery queryWithClassName:@"Match"];
-  [firstPlayerQuery whereKey:@"firstPlayer" equalTo:self];
-  [firstPlayerQuery whereKey:@"winningPlayer" equalTo:@(0)];
-  [firstPlayerQuery whereKey:@"state" containedIn:@[@(kMatchStateEndedNormal), @(kMatchStateEndedResign), @(kMatchStateEndedTimeout)]];
+- (void)getRecord:(DictResultBlock)block {
+  [PFCloud callFunctionInBackground:@"getRecord" withParameters:@{} block:^(id object, NSError *error) {
+    if (error) {
+      DLog(@"CloudCode error => %@", [error localizedDescription]);
+      block(nil, error);
+      return;
+    }
 
-  PFQuery *secondPlayerQuery = [PFQuery queryWithClassName:@"Match"];
-  [secondPlayerQuery whereKey:@"secondPlayer" equalTo:self];
-  [secondPlayerQuery whereKey:@"winningPlayer" equalTo:@(1)];
-  [secondPlayerQuery whereKey:@"state" containedIn:@[@(kMatchStateEndedNormal), @(kMatchStateEndedResign), @(kMatchStateEndedTimeout)]];
-
-  PFQuery *orQuery = [PFQuery orQueryWithSubqueries:@[firstPlayerQuery, secondPlayerQuery]];
-  [orQuery countObjectsInBackgroundWithBlock:block];
+    DLog(@"CloudCode => %@", object);
+    block(object, nil);
+  }];
 }
-
-- (void)countOfMatchesLost:(PFIntegerResultBlock)block {
-  PFQuery *firstPlayerQuery = [PFQuery queryWithClassName:@"Match"];
-  [firstPlayerQuery whereKey:@"firstPlayer" equalTo:self];
-  [firstPlayerQuery whereKey:@"losingPlayer" equalTo:@(0)];
-  [firstPlayerQuery whereKey:@"state" containedIn:@[@(kMatchStateEndedNormal), @(kMatchStateEndedResign), @(kMatchStateEndedTimeout)]];
-
-  PFQuery *secondPlayerQuery = [PFQuery queryWithClassName:@"Match"];
-  [secondPlayerQuery whereKey:@"secondPlayer" equalTo:self];
-  [secondPlayerQuery whereKey:@"losingPlayer" equalTo:@(1)];
-  [secondPlayerQuery whereKey:@"state" containedIn:@[@(kMatchStateEndedNormal), @(kMatchStateEndedResign), @(kMatchStateEndedTimeout)]];
-
-  PFQuery *orQuery = [PFQuery orQueryWithSubqueries:@[firstPlayerQuery, secondPlayerQuery]];
-  [orQuery countObjectsInBackgroundWithBlock:block];
-}
-
-- (void)countOfMatchesTied:(PFIntegerResultBlock)block {
-  PFQuery *firstPlayerQuery = [PFQuery queryWithClassName:@"Match"];
-  [firstPlayerQuery whereKey:@"firstPlayer" equalTo:self];
-  [firstPlayerQuery whereKey:@"losingPlayer" equalTo:@(-1)];
-  [firstPlayerQuery whereKey:@"winningPlayer" equalTo:@(-1)];
-  [firstPlayerQuery whereKey:@"state" containedIn:@[@(kMatchStateEndedNormal), @(kMatchStateEndedResign), @(kMatchStateEndedTimeout)]];
-
-  PFQuery *secondPlayerQuery = [PFQuery queryWithClassName:@"Match"];
-  [secondPlayerQuery whereKey:@"secondPlayer" equalTo:self];
-  [secondPlayerQuery whereKey:@"losingPlayer" equalTo:@(-1)];
-  [secondPlayerQuery whereKey:@"winningPlayer" equalTo:@(-1)];
-  [secondPlayerQuery whereKey:@"state" containedIn:@[@(kMatchStateEndedNormal), @(kMatchStateEndedResign), @(kMatchStateEndedTimeout)]];
-
-  PFQuery *orQuery = [PFQuery orQueryWithSubqueries:@[firstPlayerQuery, secondPlayerQuery]];
-  [orQuery countObjectsInBackgroundWithBlock:block];
-}
-
 
 @end

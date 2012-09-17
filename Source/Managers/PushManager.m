@@ -129,37 +129,25 @@ NSString * const kPushNotificationHandledNotification = @"PushNotificationHandle
     return;
   }
     
-  // We have to set the badge to an absolute value each time we push.
-  // There's no place that maintains a count per APS device token ...
-  
-  [opponent countOfActionableMatches:^(int badgeCount, NSError *error) {
-    if (error) {
-      DLog(@"error: %@", [error localizedDescription]);
-      return;
-    }
+  if (match.state == kMatchStatePending) {
+    [self sendChallengePushTo:opponent matchID:[match matchID]];
+    return;
+  }
 
-    DLog(@"opponent has %d actionable matches (app icon badge value)", badgeCount);
-    
-    if (match.state == kMatchStatePending) {
-      [self sendChallengePushTo:opponent badgeCount:badgeCount matchID:[match matchID]];
-      return;
-    }
-    
-    if (match.state == kMatchStateEndedNormal ||
-        match.state == kMatchStateEndedResign ||
-        match.state == kMatchStateEndedTimeout) {
-      BOOL opponentWon = match.winningPlayer == [match opponentPlayerNumber];
-      [weakSelf sendMatchEndedPushTo:opponent badgeCount:badgeCount won:opponentWon matchID:[match matchID]];
-      return;
-    }
-    
-    if (match.state == kMatchStateActive) {
-      [weakSelf sendYourTurnPushTo:opponent badgeCount:badgeCount matchID:[match matchID]];
-    }
-  }];
+  if (match.state == kMatchStateEndedNormal ||
+      match.state == kMatchStateEndedResign ||
+      match.state == kMatchStateEndedTimeout) {
+    BOOL opponentWon = match.winningPlayer == [match opponentPlayerNumber];
+    [weakSelf sendMatchEndedPushTo:opponent won:opponentWon matchID:[match matchID]];
+    return;
+  }
+
+  if (match.state == kMatchStateActive) {
+    [weakSelf sendYourTurnPushTo:opponent matchID:[match matchID]];
+  }
 }
 
-- (void)sendChallengePushTo:(PFUser *)opponent badgeCount:(int)badgeCount matchID:(NSString *)matchID {
+- (void)sendChallengePushTo:(PFUser *)opponent matchID:(NSString *)matchID {
   PFUser *localUser = [PFUser currentUser];
 
   DLog(@"sending a match-challenge push from %@ to %@ on channel %@",
@@ -174,7 +162,7 @@ NSString * const kPushNotificationHandledNotification = @"PushNotificationHandle
 
   NSDictionary *payload = @{
   @"alert": alert,
-  @"badge": @(badgeCount),
+  @"badge": @"Increment",  // http://blog.parse.com/2012/07/18/badge-management-for-ios
   @"pushType": kPushTypeChallenge,
   @"opponentID": localUser.objectId,
   @"opponent": displayName,
@@ -197,7 +185,6 @@ NSString * const kPushNotificationHandledNotification = @"PushNotificationHandle
 }
 
 - (void)sendMatchEndedPushTo:(PFUser *)opponent 
-                  badgeCount:(int)badgeCount
                          won:(BOOL)opponentWon
                      matchID:(NSString *)matchID {
   
@@ -222,7 +209,7 @@ NSString * const kPushNotificationHandledNotification = @"PushNotificationHandle
 
   NSDictionary *payload = @{
   @"alert": alert,
-  @"badge": @(badgeCount),
+  @"badge": @"Increment",
   @"pushType": kPushTypeEnded,
   @"otherPlayerID": localUser.objectId,
   @"otherPlayer": displayName,
@@ -245,7 +232,6 @@ NSString * const kPushNotificationHandledNotification = @"PushNotificationHandle
 }
 
 - (void)sendYourTurnPushTo:(PFUser *)opponent 
-                badgeCount:(int)badgeCount 
                    matchID:(NSString *)matchID {
   
   PFUser *localUser = [PFUser currentUser];
@@ -262,7 +248,7 @@ NSString * const kPushNotificationHandledNotification = @"PushNotificationHandle
 
   NSDictionary *payload = @{
   @"alert": alert,
-  @"badge": @(badgeCount),
+  @"badge": @"Increment",
   @"pushType": kPushTypeTurn,
   @"opponentID": localUser.objectId,
   @"opponent": displayName,
