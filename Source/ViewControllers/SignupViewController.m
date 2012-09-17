@@ -28,7 +28,7 @@ NSString * const kSignupNotification = @"UserDidSignup";
   int buttonCenterX = w/3;
 
   self.usernameField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, tfWidth, tfHeight)];
-  _usernameField.center = CGPointMake(buttonCenterX, SCALED(40));
+  _usernameField.center = CGPointMake(buttonCenterX, SCALED(34));
   _usernameField.backgroundColor = [UIColor whiteColor];
   _usernameField.delegate = self;
   _usernameField.font = [UIFont fontWithName:kFontName size:kFontSizeRegular];
@@ -41,7 +41,7 @@ NSString * const kSignupNotification = @"UserDidSignup";
   _usernameField.autocorrectionType = UITextAutocorrectionTypeNo;
   [self.view addSubview:_usernameField];
 
-  int margin = ISPAD ? 40 : 12;
+  int margin = ISPAD ? 40 : 8;
 
   self.passwordField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, tfWidth, tfHeight)];
   _passwordField.center = CGPointMake(buttonCenterX, CGRectGetMaxY(_usernameField.frame) + tfHeight/2 + margin);
