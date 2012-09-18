@@ -15,6 +15,7 @@
 #import "PromptViewController.h"
 #import "LQAudioManager.h"
 
+#import <Twitter/Twitter.h>
 
 typedef enum {
   kSelectorModeNone,
@@ -31,6 +32,7 @@ typedef enum {
 @property (nonatomic, strong) UIButton *contactsButton;
 @property (nonatomic, strong) UIButton *usernameButton;
 @property (nonatomic, strong) UIButton *passAndPlayButton;
+@property (nonatomic, strong) UIButton *tweetButton;
 @property (nonatomic, assign) SelectorMode selectorMode;                   // What is the user selector being used for?
 
 @end
@@ -85,10 +87,26 @@ typedef enum {
 
   [_passAndPlayButton setTitleColor:kGlossyBrownColor forState:UIControlStateNormal];
   _passAndPlayButton.titleLabel.shadowOffset = CGSizeZero;
+
+  self.tweetButton = [[UIButton alloc] initWithFrame:CGRectZero];
+  UIImage *twitterImage = [UIImage imageWithName:@"twitter"];
+  [_tweetButton setImage:twitterImage forState:UIControlStateNormal];
+  [_tweetButton sizeToFit];
+  [_tweetButton addTarget:self action:@selector(playButtonSound:) forControlEvents:UIControlEventTouchUpInside];
+  [_tweetButton addTarget:self action:@selector(doTweetInvite:) forControlEvents:UIControlEventTouchUpInside];
+  _tweetButton.center = CGPointMake(w/2, h - twitterImage.size.height/2 - SCALED(2));
+  [self.view addSubview:_tweetButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+
+  PFUser *currentUser = [PFUser currentUser];
+  if (currentUser && currentUser.isAuthenticated) {
+    _tweetButton.hidden = ![TWTweetComposeViewController canSendTweet];
+  } else {
+    _tweetButton.hidden = YES;
+  }
 
   if (![self isShowingHUD])
     [self slideInButtons];
@@ -1010,6 +1028,25 @@ typedef enum {
   MatchViewController *vc = [MatchViewController controllerWithMatch:match];
   [self.navigationController pushViewController:vc animated:NO];
 }
+
+#pragma mark - twitter
+
+- (void)doTweetInvite:(id)sender {
+  if ([TWTweetComposeViewController canSendTweet]) {
+    TWTweetComposeViewController *vc = [[TWTweetComposeViewController alloc] init];
+
+    NSString *fmt = NSLocalizedString(@"Let's play %@! My username is \"%@\". #Lexatron",
+                                      @"Tweet about the app (first %@ is app name; second %@ is username");
+
+    NSString *displayName = [[PFUser currentUser] usernameForDisplay];
+
+    NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
+    [vc setInitialText:[NSString stringWithFormat:fmt, appName, displayName]];
+
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
+  }
+}
+
 
 #pragma mark - match
 

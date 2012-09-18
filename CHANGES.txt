@@ -13,6 +13,7 @@ Lexatron 1.0.25
 - Auto-forfeit matches due to inactivity after 10 days
 - Determination of date-interval is done on server; no client spoofing by changing iOS date
 - Auto-pan the board when dragging near a screen edge.
+- Add twitter button to tweet about app in Find a Friend to Play if you have a Twitter account setup in the device's Settings.
 
 Lexatron 1.0.24
 - Upgrade to Parse 1.1.5 to support armv7s (iPhone5)
