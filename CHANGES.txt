@@ -12,6 +12,7 @@ Lexatron 1.0.25
 - Auto-decline unanswered challenges after 3 days
 - Auto-forfeit matches due to inactivity after 10 days
 - Determination of date-interval is done on server; no client spoofing by changing iOS date
+- Auto-pan the board when dragging near a screen edge.
 
 Lexatron 1.0.24
 - Upgrade to Parse 1.1.5 to support armv7s (iPhone5)
