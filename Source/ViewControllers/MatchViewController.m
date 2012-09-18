@@ -1360,13 +1360,13 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
   float dL = _boardScrollView.bounds.size.width*scrollFactor;
   float dU = _boardScrollView.bounds.size.height*scrollFactor;
   float dR = _boardScrollView.bounds.size.width*(1+scrollFactor);  // contentOffset is TL corner
-  float dD = _boardScrollView.bounds.size.height*(1+scrollFactor);  // contentOffset is TL corner
+//  float dD = _boardScrollView.bounds.size.height*(1+scrollFactor);  // contentOffset is TL corner
 
   float cx = _boardScrollView.contentOffset.x;
   float cy = _boardScrollView.contentOffset.y;
 
   float cw = _boardScrollView.contentSize.width;
-  float ch = _boardScrollView.contentSize.height;
+//  float ch = _boardScrollView.contentSize.height;
 
   if (point.x <= self.view.bounds.size.width*interceptFactor) {
     [_boardScrollView scrollRectToVisible:CGRectMake(MAX(0, cx - dL), cy, 1, 1) animated:YES];
@@ -1374,11 +1374,15 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
     [_boardScrollView scrollRectToVisible:CGRectMake(cx, MAX(0, cy - dU), 1, 1) animated:YES];
   } else if (point.x >= self.view.bounds.size.width*(1-interceptFactor)) {
     [_boardScrollView scrollRectToVisible:CGRectMake(MIN(cx + cw - 2, cx + dR), cy, 1, 1) animated:YES];
-  } else if (point.y >= CGRectGetMinY(_rackView.frame) - self.view.bounds.size.height*interceptFactor*2) {
-    TileView *tileView = (TileView *)draggableView;
-    if (tileView.letter.cellIndex != -1)  // don't want to pan when dragging from rack to board.
-      [_boardScrollView scrollRectToVisible:CGRectMake(cx, MIN(cy + ch - 2, cy + dD) + _rackView.bounds.size.height, 1, 1) animated:YES];
   }
+
+  // This does not work well since the user that wishes to drag a tile back to the rack ends up scrolling the board.
+  // For now, no auto-pan down.
+//  } else if (point.y >= CGRectGetMinY(_rackView.frame) - self.view.bounds.size.height*interceptFactor*2) {
+//    TileView *tileView = (TileView *)draggableView;
+//    if (tileView.letter.cellIndex != -1)  // don't want to pan when dragging from rack to board.
+//      [_boardScrollView scrollRectToVisible:CGRectMake(cx, MIN(cy + ch - 2, cy + dD) + _rackView.bounds.size.height, 1, 1) animated:YES];
+//  }
 
   // Show placeholder/shadow on the board atop the hovered-over cell.
 
