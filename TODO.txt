@@ -5,6 +5,7 @@ LAUNCH
 - create a press release
   - pr/mac
   - dopresskit.com
+  - gamespress.com
 
 - figure out sites to send review requests
   - toucharcade.com
@@ -38,6 +39,8 @@ FEATURES
 --------------------------------------------------------------------------------
 IDEAS
 --------------------------------------------------------------------------------
+
+- Use PubNub.com to have a timed 1:1 game?
 
 - show turn history as list
   - maybe 3-finger swipe to the right to reveal it?

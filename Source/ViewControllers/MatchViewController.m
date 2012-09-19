@@ -873,6 +873,7 @@ enum {
   }
 
   [self showHUDWithActivity:NO caption:caption];
+  [self makeHUDNonModal];
   [self performBlock:^(id sender) {
     [self hideActivityHUD];
   } afterDelay:1.45];
@@ -883,18 +884,6 @@ enum {
     tileView.letter = [_match letterAtCellIndex:tileView.letter.cellIndex];
     tileView.isNew = NO;
   }];
-//
-//  [self performBlock:^(id sender) {
-//    for (UIView *subview in _boardScrollView.boardView.subviews) {
-//      if ([subview isKindOfClass:[TileView class]]) {
-//        TileView *tileView = (TileView *)subview;
-//        if (tileView.letter.turnNumber == -1) {
-//          tileView.letter = [_match letterAtCellIndex:tileView.letter.cellIndex];
-//          [tileView fadeIn:0.4 delegate:nil];
-//        }
-//      }
-//    }
-//  } afterDelay:2.5];
 }
 
 float squaredDistance(float x1, float y1, float x2, float y2) {
@@ -1519,6 +1508,7 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
                                         @"Player tries to perform unauthorized gameplay action; you can remove the Emoji icon of course.");
 
   [self showHUDWithActivity:NO caption:caption];
+  [self makeHUDNonModal];
 
   __weak id weakSelf = self;
   [self performBlock:^(id sender) {
@@ -1575,6 +1565,7 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
     [weakSelf performBlock:^(id sender) {
       [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHasSeenBlankChooserTip];
       [weakSelf showHUDWithActivity:NO caption:NSLocalizedString(@"Pick a letter for the blank tile", nil)];
+      [weakSelf makeHUDNonModal];
     } afterDelay:0.6];
 
     [weakSelf performBlock:^(id sender) {
@@ -1862,6 +1853,7 @@ float squaredDistance(float x1, float y1, float x2, float y2) {
     [[NSUserDefaults standardUserDefaults] synchronize];
 
     [self showHUDWithActivity:NO caption:NSLocalizedString(@"You may place only letters or only bombs in one turn, not both.", nil)];
+    [self makeHUDNonModal];
 
     __weak id weakSelf = self;
     [self performBlock:^(id sender) {

@@ -6,6 +6,10 @@
         "lexatron-dev": {
             "applicationId": "a0142efFhptyzQFQGARMGB3rzWvMzGBGaisu9Dix", 
             "masterKey": "N7SGh3VI2FmxQFT7UgEwjJO1y2qIUnxkbgvSeeqI"
+        }, 
+        "lexatron-prod": {
+            "applicationId": "5WcUeWwrin0PM46XWR8ODj5chxYk6Mm7QZs8f1BX", 
+            "masterKey": "2EIqHBEg6AipThWqa00PpcKzHp1GlQg7fUXRgpkc"
         }
     }, 
     "global": {

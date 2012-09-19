@@ -1,4 +1,4 @@
-Lexatron 1.0.25
+Lexatron 1.0.26
 - Show the status bar at all times.
 - Animate the tiles in the rack when shuffling.
 - Animate the rack when moving letters around within the rack and from board to rack.
