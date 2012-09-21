@@ -30,7 +30,7 @@
   [super loadView];
 
   self.textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, SCALED(200), SCALED(30))];
-  _textField.center = CGPointMake(self.view.bounds.size.width/2, [self effectiveViewHeight]/4);
+  _textField.center = CGPointMake(self.view.bounds.size.width/2, SCALED(60));
   _textField.backgroundColor = [UIColor whiteColor];
   _textField.delegate = self;
   _textField.font = [UIFont fontWithName:kFontName size:kFontSizeRegular];
@@ -44,7 +44,7 @@
   [self.view addSubview:_textField];
 
   float w = self.view.bounds.size.width;
-  float margin = SCALED(12);
+  float margin = SCALED(10);
 
   [self addButtonWithTitle:@"OK"
                      color:kGlossyGreenColor
