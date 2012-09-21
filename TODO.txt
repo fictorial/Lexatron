@@ -4,13 +4,17 @@ LAUNCH
 
 - create a press release
   - pr/mac
-  - dopresskit.com
   - gamespress.com
 
 - figure out sites to send review requests
   - toucharcade.com
   - boardgeek.com
   - boardtodeath.tv
+  - indiegamer.com
+  - diygamer.com
+  - indiedb.com
+  - /r/IndieGaming
+  - indiegamemag.com
 
 - submit the app to apple
   - hold for developer release

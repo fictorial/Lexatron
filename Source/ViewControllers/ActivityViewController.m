@@ -183,7 +183,7 @@ typedef enum {
 
   [self performBlock:^(id sender) {
     [self refresh];
-  } afterDelay:0.55];
+  } afterDelay:1];
 }
 
 - (BOOL)shouldShowBackButton {
@@ -426,8 +426,16 @@ typedef enum {
 }
 
 - (void)refresh {
+  [self removeTimeoutTimer];
+
   [self updateChooserButtonState];
-  [_pullToRefreshView startLoadingAndExpand:YES];
+
+  [_pullToRefreshView finishLoading];
+
+  [self performBlock:^(id sender) {
+    [_pullToRefreshView startLoadingAndExpand:YES];
+  } afterDelay:0.4];
+
 }
 
 enum {

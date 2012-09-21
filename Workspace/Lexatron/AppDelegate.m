@@ -213,7 +213,10 @@
 #pragma mark - facebook
 
 - (void)extendFacebookToken {
-  [PFFacebookUtils extendAccessTokenIfNeededForUser:[PFUser currentUser] block:^(BOOL succeeded, NSError *error) {}];
+  DLog(@"maybe extending FB token...");
+
+  // TODO This is crashing... Fuck me. I have to get this thing submitted to Apple!!
+  // [PFFacebookUtils extendAccessTokenIfNeededForUser:[PFUser currentUser] block:^(BOOL succeeded, NSError *error) {}];
 }
 
 - (BOOL)application:(UIApplication *)application
@@ -262,8 +265,12 @@
 
   // Completely give up on the signup process through facebook-login.
 
-  [PFUser logOut];
-  [[PFUser currentUser] deleteEventually];
+  if ([[[[error userInfo] objectForKey:@"error"] objectForKey:@"type"]
+       isEqualToString: @"OAuthException"]) {
+    NSLog(@"The facebook token was invalidated");
+
+    [PFUser logOut];
+  }
 
   [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
   [(UINavigationController *)self.window.rootViewController popToRootViewControllerAnimated:YES];

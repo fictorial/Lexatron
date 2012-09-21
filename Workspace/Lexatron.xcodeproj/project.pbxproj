@@ -140,12 +140,12 @@
 		60AF510915E414F300AF5B07 /* SwapButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60AF510715E414F300AF5B07 /* SwapButton@2x.png */; };
 		60BA6E0C15E8A2B600BBBB05 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60BA6E0B15E8A2B600BBBB05 /* ChatViewController.m */; };
 		60BA6E2015EB1A4F00BBBB05 /* Chat.m in Sources */ = {isa = PBXBuildFile; fileRef = 60BA6E1F15EB1A4F00BBBB05 /* Chat.m */; };
+		60C0C47B160CE74C0001FE88 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C0C47A160CE74C0001FE88 /* Parse.framework */; };
 		60DABB8015DD6F460081B12A /* help.css in Resources */ = {isa = PBXBuildFile; fileRef = 60DABB7F15DD6F460081B12A /* help.css */; };
 		60DD11AC15D4CBE2008E07B5 /* Board.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60DD11A915D4CBE2008E07B5 /* Board.pdf */; };
 		60DD11B615D62B48008E07B5 /* Star.png in Resources */ = {isa = PBXBuildFile; fileRef = 60DD11B415D62B48008E07B5 /* Star.png */; };
 		60DD11B715D62B48008E07B5 /* Star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60DD11B515D62B48008E07B5 /* Star@2x.png */; };
 		60DD11B915D96BF5008E07B5 /* new-game.caf in Resources */ = {isa = PBXBuildFile; fileRef = 60DD11B815D96BF5008E07B5 /* new-game.caf */; };
-		60DD11BB15D9F536008E07B5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60DD11BA15D9F536008E07B5 /* Parse.framework */; };
 		60DD11C615D9FDA6008E07B5 /* WordList.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DD11C515D9FDA6008E07B5 /* WordList.m */; };
 		60DD11C815D9FDE6008E07B5 /* BoardUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DD11C715D9FDE6008E07B5 /* BoardUtil.m */; };
 		60DD11CA15D9FE31008E07B5 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DD11C915D9FE31008E07B5 /* Word.m */; };
@@ -348,6 +348,7 @@
 		60BA6E0B15E8A2B600BBBB05 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		60BA6E1E15EB1A4F00BBBB05 /* Chat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chat.h; sourceTree = "<group>"; };
 		60BA6E1F15EB1A4F00BBBB05 /* Chat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chat.m; sourceTree = "<group>"; };
+		60C0C47A160CE74C0001FE88 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		60DABB7515DD44F60081B12A /* AppConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConstants.h; sourceTree = "<group>"; };
 		60DABB7615DD45390081B12A /* iPadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPadHelper.h; sourceTree = "<group>"; };
 		60DABB7F15DD6F460081B12A /* help.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = help.css; sourceTree = "<group>"; };
@@ -355,7 +356,6 @@
 		60DD11B415D62B48008E07B5 /* Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star.png; sourceTree = "<group>"; };
 		60DD11B515D62B48008E07B5 /* Star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star@2x.png"; sourceTree = "<group>"; };
 		60DD11B815D96BF5008E07B5 /* new-game.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "new-game.caf"; sourceTree = "<group>"; };
-		60DD11BA15D9F536008E07B5 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		60DD11BC15D9FC0C008E07B5 /* Match.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Match.h; sourceTree = "<group>"; };
 		60DD11BE15D9FC6F008E07B5 /* BoardUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardUtil.h; sourceTree = "<group>"; };
 		60DD11BF15D9FC83008E07B5 /* WordList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordList.h; sourceTree = "<group>"; };
@@ -408,7 +408,7 @@
 				605FB05515D0B75F00766E5C /* UIKit.framework in Frameworks */,
 				605FB05715D0B75F00766E5C /* Foundation.framework in Frameworks */,
 				4BA219F8F287431DB6A96CB2 /* libPods.a in Frameworks */,
-				60DD11BB15D9F536008E07B5 /* Parse.framework in Frameworks */,
+				60C0C47B160CE74C0001FE88 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,8 +481,8 @@
 		605FB05315D0B75F00766E5C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				60C0C47A160CE74C0001FE88 /* Parse.framework */,
 				60640D3F160281180072597E /* libsqlite3.dylib */,
-				60DD11BA15D9F536008E07B5 /* Parse.framework */,
 				605FB29215D0BE1500766E5C /* StoreKit.framework */,
 				605FB16315D0B8D400766E5C /* Accounts.framework */,
 				605FB16415D0B8D400766E5C /* AddressBook.framework */,

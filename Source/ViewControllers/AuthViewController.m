@@ -93,7 +93,7 @@
   // NB: offline_access seems to fix issues with Parse and FB tokens.
   // https://parse.com/tutorials/integrating-facebook
   
-  NSArray *perms = @[@"offline_access"];
+  NSArray *perms = @[];
 
   [PFFacebookUtils logInWithPermissions:perms block:^(PFUser *user, NSError *error) {
     if (!user) {
@@ -106,6 +106,8 @@
       }
 
       [weakSelf showActivityHUD];
+
+      DLog(@"getting 'me' info from FB...");
 
       [[PFFacebookUtils facebook] requestWithGraphPath:@"me" andDelegate:self];
     }
