@@ -160,8 +160,6 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   DLog(@"app became active: current user = %@", [PFUser currentUser]);
-
-  [self extendFacebookToken];
   [self clearBadge];
 }
 
@@ -199,8 +197,6 @@
 
       [user setObject:[NSNumber numberWithBool:YES] forKey:@"loginViaFB"];
       [[PFFacebookUtils facebook] requestWithGraphPath:@"me" andDelegate:self];
-    } else {
-      [self extendFacebookToken];
     }
   } else {
     DLog(@"not linked with fb");
@@ -211,13 +207,6 @@
 }
 
 #pragma mark - facebook
-
-- (void)extendFacebookToken {
-  DLog(@"maybe extending FB token...");
-
-  // TODO This is crashing... Fuck me. I have to get this thing submitted to Apple!!
-  // [PFFacebookUtils extendAccessTokenIfNeededForUser:[PFUser currentUser] block:^(BOOL succeeded, NSError *error) {}];
-}
 
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
@@ -325,10 +314,8 @@
 
 - (void)clearBadge {
   PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-  if (currentInstallation.badge != 0) {
-    currentInstallation.badge = 0;
-    [currentInstallation saveEventually];
-  }
+  currentInstallation.badge = 0;
+  [currentInstallation saveEventually];
 }
 
 @end
