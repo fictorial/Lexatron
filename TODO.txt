@@ -1,51 +1,21 @@
---------------------------------------------------------------------------------
-LAUNCH
---------------------------------------------------------------------------------
+- press release
+  - pr/mac, gamespress
 
-- create a press release
-  - pr/mac
-  - gamespress.com
+- create board with some of the big names in letters
+  - touch arcade
+  - 148apps
+  - ign
+  - tech crunch
+  - game trailers
+  - app advice
 
-- figure out sites to send review requests
-  - toucharcade.com
-  - boardgeek.com
-  - boardtodeath.tv
-  - indiegamer.com
-  - diygamer.com
-  - indiedb.com
-  - /r/IndieGaming
-  - indiegamemag.com
+- submit to apple
+- get promo codes
+- write review sites
+- update iversion plist
 
-- submit the app to apple
-  - hold for developer release
-  - release on a weds
-
-- write emails for each review site
-  - add a screenshot with their name as one of the words on the board
-
-- when on the app store, update facebook app settings with iTunes app ID
-- always update iVersion plist at fictorial.com/lexatron/versions.plist
-- update TheRealLexatron twitter account 
-- update Facebook fan page
-
---------------------------------------------------------------------------------
-FEATURES
---------------------------------------------------------------------------------
-
+features to do later:
 - game center leaderboards
-  - highest score in a match
-  - highest score in a single turn
-  - most wins
-
-- block/unblock users UI
-  - also, add to find a friend... don't start match if user blocks the creator
-
---------------------------------------------------------------------------------
-IDEAS
---------------------------------------------------------------------------------
-
-- Use PubNub.com to have a timed 1:1 game?
-
-- show turn history as list
-  - maybe 3-finger swipe to the right to reveal it?
-  - tap on a word to get its definition
+- options for IAP?
+- block/unblock users
+- turn history as slide out on side (touch word to define it)

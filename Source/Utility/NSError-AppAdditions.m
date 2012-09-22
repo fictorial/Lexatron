@@ -4,7 +4,7 @@
 @implementation NSError (AppAdditions)
 
 - (void)showParseError:(NSString *)actionDescription {
-  NSString *errorFmt = NSLocalizedString(@"Failed to %@. Please try again later.",
+  NSString *errorFmt = NSLocalizedString(@"Failed to %@.",
                                          @"Failed to do something (first %@) because of error (second %@)");
   
   NSString *errorMsg = [NSString stringWithFormat:errorFmt, actionDescription, [self localizedDescription]];

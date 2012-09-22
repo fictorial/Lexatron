@@ -375,7 +375,13 @@ typedef enum {
      permissions:nil
      block:^(BOOL succeeded, NSError *error) {
        if (error) {
-         [error showParseError:NSLocalizedString(@"link accounts", nil)];
+         if (error.code == kPFErrorAccountAlreadyLinked) {
+           [weakSelf showNoticeAlertWithCaption:@"Failed to link to your Facebook account as it is already linked to another Lexatron user."];
+           return;
+         } else {
+           [error showParseError:NSLocalizedString(@"link accounts", nil)];
+         }
+         
          [weakSelf setSelectorMode:kSelectorModeNone];
          [weakSelf hideActivityHUD];
          return;

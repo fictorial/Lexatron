@@ -70,7 +70,7 @@ function summarizeActivityForMatches(matches, user) {
     // Note that other matches will not have this setup.
     // Thus, exclude matches that have 0-length 'turns'.
 
-    if (!firstPlayer || !allTurns || allTurns.length == 0)
+    if (typeof firstPlayer == 'undefined' || typeof allTurns == 'undefined' || allTurns.length == 0)
       continue;
 
     var secondPlayer = match.get("secondPlayer");
@@ -153,7 +153,7 @@ function summarizeActivityForMatches(matches, user) {
         matchDescription = "You exchanged tiles vs " + opponentName;
       }
     } else if (mostRecentTurn.turnType == TURN_BOMB) {
-      var bombCount = mostRecentTurn.bombsDetonatedAtCellIndices.length;
+      var bombCount = mostRecentTurn.bombsDetonated.length;
       if (currentUserPlayerNumber == currentPlayerNumber) {
         matchDescription = opponentName + " detonated " + (bombCount == 1 ? "a bomb" : bombCount + " bombs!");
       } else {
