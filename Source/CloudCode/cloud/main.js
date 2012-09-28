@@ -82,8 +82,8 @@ function summarizeActivityForMatches(matches, user) {
     var winningPlayerNumber = match.get("winningPlayer");
     var losingPlayerNumber = match.get("losingPlayer");
 
-    var scoreForFirstPlayer = match.get("scoreForFirstPlayer");
-    var scoreForSecondPlayer = match.get("scoreForSecondPlayer");
+    var scoreForFirstPlayer = match.get("scoreFirstPlayer");
+    var scoreForSecondPlayer = match.get("scoreSecondPlayer");
 
     var currentUserPlayerNumber = -1;
     var opponentPlayerNumber = -1;
@@ -208,46 +208,26 @@ function queryMyMatches(request, response, myTurn) {
     return;
   }
 
-  var q1Results, q2Results;
-
-  var maybeRespond = function () {
-    if (q1Results && q2Results) {
-      var matches = q1Results.concat(q2Results);
-      response.success(summarizeActivityForMatches(matches, request.user));
-    }
-  };
-
   var q1 = new Parse.Query("Match");
   q1.containedIn("state", [PENDING,ACTIVE]);
   q1.equalTo("firstPlayer", request.user);
   q1.equalTo("currentPlayerNumber", myTurn ? 0 : 1);
-  q1.descending("updatedAt");
-  q1.include("firstPlayer");
-  q1.include("secondPlayer");
-  q1.find({
-    success: function (results) {
-               q1Results = results || [];
-               maybeRespond();
-             },
-    error: function () {
-             response.error("q1 fail");
-           }
-  });
 
   var q2 = new Parse.Query("Match");
   q2.containedIn("state", [PENDING,ACTIVE]);
   q2.equalTo("secondPlayer", request.user);
   q2.equalTo("currentPlayerNumber", myTurn ? 1 : 0);
-  q2.descending("updatedAt");
-  q2.include("firstPlayer");
-  q2.include("secondPlayer");
-  q2.find({
+
+  var orQuery = Parse.Query.or(q1, q2);
+  orQuery.descending("updatedAt");
+  orQuery.include("firstPlayer");
+  orQuery.include("secondPlayer");
+  orQuery.find({
     success: function (results) {
-               q2Results = results || [];
-               maybeRespond();
+               response.success(summarizeActivityForMatches(results, request.user));
              },
     error: function () {
-             response.error("q2 fail");
+             response.error("query failed");
            }
   });
 }
@@ -269,36 +249,21 @@ Parse.Cloud.define("activeMatchCount", function (request, response) {
     return;
   }
 
-  var count1, count2;
-  var maybeRespond = function () {
-    if (count1 != undefined && count2 != undefined) {
-      response.success(count1 + count2);
-    }
-  };
-
   var q1 = new Parse.Query("Match");
   q1.containedIn("state", [PENDING,ACTIVE]);
   q1.equalTo("firstPlayer", request.user);
-  q1.count({
-    success: function (results) {
-               count1 = results;
-               maybeRespond();
-             },
-    error: function () {
-             response.error("q1 fail");
-           }
-  });
 
   var q2 = new Parse.Query("Match");
   q2.containedIn("state", [PENDING,ACTIVE]);
   q2.equalTo("secondPlayer", request.user);
-  q2.count({
+
+  var orQuery = Parse.Query.or(q1, q2);
+  orQuery.count({
     success: function (results) {
-               count2 = results;
-               maybeRespond();
+               response.success(count1 + count2);
              },
     error: function () {
-             response.error("q2 fail");
+             response.error("q1 fail");
            }
   });
 });
@@ -314,7 +279,6 @@ Parse.Cloud.define("completedMatches", function (request, response) {
   var maybeRespond = function () {
     if (q1Results && q2Results) {
       var matches = q1Results.concat(q2Results);
-      response.success(summarizeActivityForMatches(matches, request.user));
     }
   };
 
@@ -322,31 +286,22 @@ Parse.Cloud.define("completedMatches", function (request, response) {
   q1.containedIn("state", [ENDED_NORMAL, ENDED_RESIGN, ENDED_TIMEOUT]);
   q1.equalTo("firstPlayer", request.user);
   q1.include("secondPlayer");
-  q1.descending("updatedAt");
   q1.limit(50);
-  q1.find({
-    success: function (results) {
-               q1Results = results || [];
-               maybeRespond();
-             },
-    error: function () {
-             response.error("q1 fail");
-           }
-  });
 
   var q2 = new Parse.Query("Match");
   q2.containedIn("state", [ENDED_NORMAL, ENDED_RESIGN, ENDED_TIMEOUT]);
   q2.equalTo("secondPlayer", request.user);
   q2.include("firstPlayer");
-  q2.descending("updatedAt");
   q2.limit(50);
-  q2.find({
+
+  var orQuery = Parse.Query.or(q1, q2);
+  orQuery.descending("updatedAt");
+  orQuery.find({
     success: function (results) {
-               q2Results = results || [];
-               maybeRespond();
+               response.success(summarizeActivityForMatches(results, request.user));
              },
     error: function () {
-             response.error("q2 fail");
+             response.error("query failed");
            }
   });
 });
@@ -380,31 +335,13 @@ function queryRecord(wantWin, wantLose, user, callback) {
     q2.equalTo("losingPlayer", 1);
   }
 
-  var count1, count2;
-
-  var maybeRespond = function () {
-    if (count1 != undefined && count2 != undefined) {
-      callback(count1 + count2);
-    }
-  };
-
-  q1.count({
+  var orQuery = Parse.Query.or(q1, q2);
+  orQuery.count({
     success: function (results) {
-               count1 = results;
-               maybeRespond();
+               callback(results);
              },
     error: function () {
-             callback(undefined, "q1 fail");
-           }
-  });
-
-  q2.count({
-    success: function (results) {
-               count2 = results;
-               maybeRespond();
-             },
-    error: function () {
-             callback(undefined, "q2 fail");
+             callback(undefined, "query failed");
            }
   });
 }

@@ -1,3 +1,6 @@
+- check out AppVersal
+
+
 - press release
   - pr/mac, gamespress
 
@@ -19,3 +22,4 @@ features to do later:
 - options for IAP?
 - block/unblock users
 - turn history as slide out on side (touch word to define it)
+- analytics: check out keen.io
